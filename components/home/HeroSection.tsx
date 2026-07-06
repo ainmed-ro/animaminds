@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/ws-grup-zambete.jpg"
+          src="/images/ws-sala-prezentare.jpg"
           alt="AnimaMinds workshop"
           fill
           className="object-cover object-center"

@@ -39,16 +39,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="bg-white rounded-xl px-3 py-1 shadow-sm">
-              <Image
-                src="/images/loggo.jpg"
-                alt="AnimaMinds"
-                width={140}
-                height={52}
-                className="object-contain h-10 w-auto"
-                priority
-              />
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="flex flex-col items-center leading-none">
+              <span
+                className="text-xl font-semibold tracking-tight"
+                style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+              >
+                AnimaMinds
+              </span>
+              <span
+                className="text-[9px] tracking-widest uppercase"
+                style={{ color: "var(--sage)", letterSpacing: "0.15em" }}
+              >
+                where people &amp; ideas grow
+              </span>
             </div>
           </Link>
 
