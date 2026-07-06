@@ -69,9 +69,12 @@ export default function PovEsteaNoastra() {
                 <p className="text-lg leading-relaxed">
                   Așa s-a născut AnimaMinds: cu credința că{" "}
                   <strong style={{ color: "var(--sage)" }}>
-                    creșterea se construiește împreună
+                    oamenii se ridică unii pe alții
                   </strong>
-                  , nu în izolare.
+                  , că împreună mergem mai departe și mai sus, și că{" "}
+                  <strong style={{ color: "var(--sage)" }}>
+                    cea mai bună versiune a ta apare în prezența celor potriviți.
+                  </strong>
                 </p>
               </div>
             </div>
