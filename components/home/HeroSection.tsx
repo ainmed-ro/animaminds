@@ -13,7 +13,7 @@ export default function HeroSection() {
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-workshop.jpg"
+          src="/images/ws-grup-zambete.jpg"
           alt="AnimaMinds workshop"
           fill
           className="object-cover object-center"
@@ -114,41 +114,23 @@ export default function HeroSection() {
 
           {/* Social proof */}
           <div
-            className={`flex flex-wrap items-center gap-8 mt-14 transition-all duration-700 delay-500 ${
+            className={`flex flex-wrap items-center gap-6 mt-14 transition-all duration-700 delay-500 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="flex items-center gap-3">
-              <div
-                className="flex items-center gap-2 px-3 py-2 rounded-full"
-                style={{ backgroundColor: "rgba(124,154,126,0.12)" }}
-              >
-                <Users size={15} style={{ color: "var(--sage)" }} />
-                <span
-                  className="text-sm font-medium"
-                  style={{ color: "var(--charcoal)" }}
-                >
-                  Comunitate activă
-                </span>
-              </div>
+            <div className="text-center">
+              <p className="text-3xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--sage)" }}>+7.000</p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--charcoal-soft)" }}>oameni care au crescut cu noi</p>
             </div>
-            <div className="h-4 w-px bg-gray-300" />
-            <div className="flex items-center gap-2">
-              <span
-                className="text-sm"
-                style={{ color: "var(--charcoal-soft)" }}
-              >
-                Parteneri CPD Group
-              </span>
+            <div className="h-10 w-px bg-gray-200" />
+            <div className="text-center">
+              <p className="text-3xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--sage)" }}>+20</p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--charcoal-soft)" }}>programe livrate în teren</p>
             </div>
-            <div className="h-4 w-px bg-gray-300" />
-            <div className="flex items-center gap-2">
-              <span
-                className="text-sm"
-                style={{ color: "var(--charcoal-soft)" }}
-              >
-                Formare acreditată
-              </span>
+            <div className="h-10 w-px bg-gray-200" />
+            <div className="text-center">
+              <p className="text-3xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--sage)" }}>100%</p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--charcoal-soft)" }}>practică, zero teorie goală</p>
             </div>
           </div>
         </div>

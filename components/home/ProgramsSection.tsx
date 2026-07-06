@@ -6,7 +6,7 @@ import { useInView } from "@/hooks/useInView";
 
 const programs = [
   {
-    image: "/images/digital-training.jpg",
+    image: "/images/workshop-indoor.jpg",
     category: "Workshop",
     title: "Competențe digitale în educație",
     description:
@@ -16,7 +16,7 @@ const programs = [
     color: "var(--sage)",
   },
   {
-    image: "/images/workshop-activity.jpg",
+    image: "/images/workshop-seara.jpg",
     category: "Program de formare",
     title: "Leadership autentic",
     description:
@@ -26,7 +26,7 @@ const programs = [
     color: "var(--terracotta)",
   },
   {
-    image: "/images/laptop-training.jpg",
+    image: "/images/workshop-notes.jpg",
     category: "Mentorat",
     title: "Mentoring 1:1 pentru formatori",
     description:

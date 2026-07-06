@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 import { Heart, Lightbulb, Network, TrendingUp } from "lucide-react";
 
@@ -114,6 +115,20 @@ export default function ContributionSection() {
               </div>
             );
           })}
+        </div>
+
+        {/* Photo strip */}
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { src: "/images/postit-echipa.jpg", alt: "Echipă" },
+            { src: "/images/biletet-personal.jpg", alt: "Bilet personal" },
+            { src: "/images/workshop-sala.jpg", alt: "Sală workshop" },
+            { src: "/images/workshop-activity.jpg", alt: "Activitate workshop" },
+          ].map((photo, i) => (
+            <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
+              <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" quality={75} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

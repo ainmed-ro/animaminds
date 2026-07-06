@@ -4,10 +4,14 @@ import { useInView } from "@/hooks/useInView";
 import { Quote } from "lucide-react";
 
 const photos = [
-  { src: "/images/postit-echipa.jpg", alt: "Lucru în echipă" },
-  { src: "/images/workshop-activ.jpg", alt: "Workshop AnimaMinds" },
-  { src: "/images/biletet-personal.jpg", alt: "Moment de reflecție" },
-  { src: "/images/workshop-sala.jpg", alt: "Sesiune de formare" },
+  { src: "/images/ws-participanti-ridica.jpg", alt: "Participanți activi" },
+  { src: "/images/ws-cartonas-afirmatie.jpg", alt: "Activitate practică" },
+  { src: "/images/ws-plicuri-nume.jpg", alt: "Activitate cu plicuri" },
+  { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare workshop" },
+  { src: "/images/celebration.jpg", alt: "Celebrare" },
+  { src: "/images/sala-mare.jpg", alt: "Sală mare de formare" },
+  { src: "/images/summer-workshop.jpg", alt: "Workshop de vară" },
+  { src: "/images/group-outdoor.jpg", alt: "Grup în aer liber" },
 ];
 
 export default function CommunitySection() {
@@ -46,7 +50,7 @@ export default function CommunitySection() {
 
         {/* Photo mosaic */}
         <div
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 transition-all duration-700 delay-200 ${
+          className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 transition-all duration-700 delay-200 grid-rows-2 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >

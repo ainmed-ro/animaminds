@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 import { Building2, GraduationCap, Users2, Briefcase, ArrowRight } from "lucide-react";
 
@@ -124,6 +125,27 @@ export default function PartnershipsSection() {
           </div>
         </div>
 
+        {/* Photo strip */}
+        <div className="mt-16 grid grid-cols-3 md:grid-cols-6 gap-3">
+          {[
+            { src: "/images/alina-prezentare.jpg", alt: "Prezentare Alina" },
+            { src: "/images/diplome-zambet.jpg", alt: "Diplome" },
+            { src: "/images/group-photo.jpg", alt: "Grup" },
+            { src: "/images/grup-masa.jpg", alt: "Grup la masă" },
+            { src: "/images/outdoor-group.jpg", alt: "Grup outdoor" },
+            { src: "/images/team-outdoor.jpg", alt: "Echipă outdoor" },
+            { src: "/images/team-work.jpg", alt: "Lucru în echipă" },
+            { src: "/images/workshop-activ.jpg", alt: "Workshop activ" },
+            { src: "/images/workshop-audience.jpg", alt: "Audiență" },
+            { src: "/images/workshop-group-raise.jpg", alt: "Grup ridicat" },
+            { src: "/images/workshop-small.jpg", alt: "Workshop mic" },
+            { src: "/images/workshop-table.jpg", alt: "Workshop la masă" },
+          ].map((photo, i) => (
+            <div key={i} className="relative rounded-xl overflow-hidden aspect-square">
+              <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" quality={70} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

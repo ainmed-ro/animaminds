@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Acasă" },
@@ -38,21 +39,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-full bg-sage flex items-center justify-center">
-                <span className="text-white font-bold text-sm" style={{ fontFamily: "Playfair Display, serif" }}>
-                  A
-                </span>
-              </div>
-              <span
-                className={`text-xl font-semibold tracking-tight transition-colors duration-300 ${
-                  scrolled ? "text-charcoal" : "text-charcoal"
-                }`}
-                style={{ fontFamily: "Playfair Display, serif" }}
-              >
-                AnimaMinds
-              </span>
+          <Link href="/" className="flex items-center group">
+            <div className="bg-white rounded-xl px-3 py-1 shadow-sm">
+              <Image
+                src="/images/loggo.jpg"
+                alt="AnimaMinds"
+                width={140}
+                height={52}
+                className="object-contain h-10 w-auto"
+                priority
+              />
             </div>
           </Link>
 

@@ -12,11 +12,12 @@ export default function PovEsteaNoastra() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section
-        className="py-24 lg:py-32 relative overflow-hidden"
-        style={{ backgroundColor: "var(--cream)" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image src="/images/ws-sala-atenta.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.75) 50%, rgba(124,154,126,0.10) 100%)" }} />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
           <div className="max-w-3xl">
             <span className="section-label">Povestea noastră</span>
             <div className="line-accent my-4" />
@@ -78,7 +79,7 @@ export default function PovEsteaNoastra() {
             <div>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                 <Image
-                  src="/images/workshop-audience.jpg"
+                  src="/images/ws-sala-prezentare.jpg"
                   alt="Comunitate AnimaMinds"
                   fill
                   className="object-cover"
@@ -157,6 +158,58 @@ export default function PovEsteaNoastra() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery */}
+      <section className="py-20" style={{ backgroundColor: "var(--cream)" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="section-label">Din teren</span>
+            <div className="line-accent mx-auto my-4" />
+            <h2 className="text-4xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Oameni reali. Momente reale.
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { src: "/images/ws-sala-atenta.jpg", alt: "Sală de formare" },
+              { src: "/images/ws-participanti-ridica.jpg", alt: "Participanți activi" },
+              { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare workshop" },
+              { src: "/images/ws-cartonas-afirmatie.jpg", alt: "Activitate practică" },
+              { src: "/images/ws-plicuri-nume.jpg", alt: "Activitate cu plicuri" },
+            ].map((photo, i) => (
+              <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  quality={80}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* In action band */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+              <Image src="/images/ws-grup-zambete.jpg" alt="Echipa AnimaMinds cu participanții" fill className="object-cover" quality={85} />
+              <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
+                <p className="text-white text-sm font-medium">La final, totul se vede pe fețe.</p>
+              </div>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+              <Image src="/images/ws-formator-ecran.jpg" alt="Formare în acțiune" fill className="object-cover" quality={85} />
+              <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
+                <p className="text-white text-sm font-medium">Practică. Nu teorie.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

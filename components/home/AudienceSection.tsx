@@ -56,7 +56,7 @@ export default function AudienceSection() {
           >
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
               <Image
-                src="/images/workshop-audience.jpg"
+                src="/images/ws-sala-atenta.jpg"
                 alt="Comunitate AnimaMinds"
                 fill
                 className="object-cover"
@@ -79,7 +79,7 @@ export default function AudienceSection() {
                 className="text-2xl font-bold"
                 style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}
               >
-                500+
+                7.000+
               </p>
               <p className="text-xs mt-1" style={{ color: "var(--charcoal-soft)" }}>
                 participanți la programele noastre
