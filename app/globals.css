@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --sage: #7C9A7E;
+  --sage-light: #A8C4AA;
+  --sage-dark: #5A7A5C;
+  --cream: #F5F0E8;
+  --cream-dark: #EDE5D6;
+  --terracotta: #C4785A;
+  --terracotta-light: #D9967E;
+  --charcoal: #2D2D2D;
+  --charcoal-soft: #4A4A4A;
+  --white: #FFFFFF;
+  --gray-warm: #F8F5F0;
+  --gray-medium: #9E9E9E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'DM Sans', sans-serif;
+  color: var(--charcoal);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'Inter', 'DM Sans', sans-serif;
+}
+
+.text-sage { color: var(--sage); }
+.text-terracotta { color: var(--terracotta); }
+.text-cream { color: var(--cream); }
+.text-charcoal { color: var(--charcoal); }
+
+.bg-sage { background-color: var(--sage); }
+.bg-sage-light { background-color: var(--sage-light); }
+.bg-sage-dark { background-color: var(--sage-dark); }
+.bg-cream { background-color: var(--cream); }
+.bg-cream-dark { background-color: var(--cream-dark); }
+.bg-terracotta { background-color: var(--terracotta); }
+.bg-gray-warm { background-color: var(--gray-warm); }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--sage);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--sage-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(124, 154, 126, 0.3);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--charcoal);
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--charcoal);
+}
+
+.btn-secondary:hover {
+  background-color: var(--charcoal);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-outline-sage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--sage);
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--sage);
+}
+
+.btn-outline-sage:hover {
+  background-color: var(--sage);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.gradient-sage {
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+}
+
+.gradient-cream {
+  background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
+}
+
+.line-accent {
+  width: 60px;
+  height: 3px;
+  background-color: var(--terracotta);
+  border-radius: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose-animaminds p {
+  line-height: 1.8;
+  color: var(--charcoal-soft);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--sage) !important;
+  box-shadow: 0 0 0 3px rgba(124, 154, 126, 0.15);
+}
+
+::selection {
+  background-color: var(--sage-light);
+  color: var(--charcoal);
+}
+
+.footer-nav-link {
+  color: rgba(255,255,255,0.65);
+}
+.footer-nav-link:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: clamp(2rem, 8vw, 3.5rem); }
+  h2 { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+}
