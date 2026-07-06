@@ -39,27 +39,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0" style={{ border: "2px solid var(--sage)" }}>
-              <Image
-                src="/images/loggo.jpg"
-                alt="AnimaMinds logo"
-                fill
-                className="object-cover object-center scale-150"
-                priority
-              />
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span
-                className="text-xl font-semibold"
-                style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
-              >
-                AnimaMinds
-              </span>
-              <span className="text-[9px] uppercase tracking-widest" style={{ color: "var(--sage)" }}>
-                where people &amp; ideas grow
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/images/loggo.jpg"
+              alt="AnimaMinds"
+              width={200}
+              height={75}
+              className="object-contain w-auto"
+              style={{ height: "60px" }}
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
