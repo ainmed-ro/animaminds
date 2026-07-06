@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0" style={{ border: "2px solid var(--sage)" }}>
+            <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0" style={{ border: "2px solid var(--sage)" }}>
               <Image
                 src="/images/loggo.jpg"
                 alt="AnimaMinds logo"
@@ -51,12 +51,12 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col leading-tight">
               <span
-                className="text-lg font-semibold"
+                className="text-xl font-semibold"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
                 AnimaMinds
               </span>
-              <span className="text-[8px] uppercase tracking-widest" style={{ color: "var(--sage)" }}>
+              <span className="text-[9px] uppercase tracking-widest" style={{ color: "var(--sage)" }}>
                 where people &amp; ideas grow
               </span>
             </div>
