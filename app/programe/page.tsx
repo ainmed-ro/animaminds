@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Globe, Anchor, MessageCircle, Sparkles, Brain, Heart } from "lucide-react";
+import { ArrowRight, Anchor, MessageCircle, Sparkles, Brain, Heart } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Programe",
@@ -82,10 +82,6 @@ export default function ProgramePage() {
             <p className="text-xl leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
               Programele noastre sunt pentru profesori, echipe din companii, tineri și părinți. Nu livrăm teorie — livrăm experiențe practice care se văd în comportamentul de zi cu zi.
             </p>
-            <div className="flex items-center gap-2 text-sm" style={{ color: "var(--sage)" }}>
-              <Globe size={16} />
-              <span>În proces de acreditare internațională CPD (UK)</span>
-            </div>
           </div>
         </div>
       </section>
