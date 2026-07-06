@@ -1,82 +1,63 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { Clock, Users, ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, Globe, Anchor, MessageCircle, Sparkles, Brain, Heart } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Programe",
   description:
-    "Explorează programele AnimaMinds: workshopuri, formări profesionale, mentorat și programe pentru organizații. Practică, comunitate și impact real.",
+    "Programe AnimaMinds pentru profesori, echipe din mediul privat și tineri: reziliență, comunicare, AI, metacogniție și educație parentală.",
 };
 
 const programs = [
   {
-    image: "/images/digital-training.jpg",
-    badge: "Workshop",
+    icon: Anchor,
+    badge: "Reziliență & Wellbeing",
     badgeColor: "var(--sage)",
-    title: "Competențe digitale în educație",
+    iconBg: "rgba(124,154,126,0.12)",
+    title: "Cum rămâi ancorat când totul în jur se mișcă prea repede",
     description:
-      "Un program intensiv pentru profesori și formatori care vor să integreze tehnologia în procesul de predare și formare. De la instrumente colaborative la crearea de conținut interactiv.",
-    duration: "2 zile",
-    participants: "15–25 participanți",
-    includes: [
-      "Platforme digitale de colaborare",
-      "Creare conținut multimedia",
-      "Evaluare digitală",
-      "Resurse post-program",
-    ],
-    for: "Profesori, formatori, educatori",
+      "Un program pentru cei care simt că nu mai au timp să respire. Explorăm împreună ce te epuizează, ce te reîncarcă și cum îți construiești resurse interne care rezistă în timp — indiferent de presiunea din jur.",
+    for: "Profesori · Echipe din companii · Manageri · Oricine se simte copleșit",
   },
   {
-    image: "/images/workshop-activity.jpg",
-    badge: "Program de formare",
+    icon: MessageCircle,
+    badge: "Comunicare",
     badgeColor: "var(--terracotta)",
-    title: "Leadership autentic",
+    iconBg: "rgba(196,120,90,0.12)",
+    title: "Ai ceva important de spus. Asigură-te că se aude.",
     description:
-      "Un program de 3 luni pentru manageri și lideri care vor să conducă cu integritate, să construiască echipe puternice și să comunice cu impact.",
-    duration: "3 luni (sesiuni bilunare)",
-    participants: "8–16 participanți",
-    includes: [
-      "Stiluri de leadership",
-      "Comunicare nonviolentă",
-      "Managementul conflictelor",
-      "Coaching individual inclus",
-    ],
-    for: "Manageri, directori, lideri de echipă",
+      "Nu este despre tehnici de convingere sau discursuri perfecte. Este despre claritate, curaj și conexiune reală. Învățăm să spunem ce avem de spus fără să rănim și fără să tăcem când contează.",
+    for: "Profesioniști · Manageri · Profesori · Tineri la început de carieră",
   },
   {
-    image: "/images/laptop-training.jpg",
-    badge: "Mentorat",
+    icon: Sparkles,
+    badge: "AI & Digital",
     badgeColor: "var(--sage)",
-    title: "Mentoring 1:1 pentru formatori",
+    iconBg: "rgba(124,154,126,0.12)",
+    title: "Viitorul nu este pentru cei care știu mai mult. Este pentru cei care știu să întrebe mai bine.",
     description:
-      "Sesiuni individuale cu formatori experimentați din rețeaua AnimaMinds. Ideal pentru cei care vor să-și construiască sau să-și rafineze practica de formare.",
-    duration: "Flexibil (min. 3 luni)",
-    participants: "Individual",
-    includes: [
-      "Sesiuni 1:1 personalizate",
-      "Plan de acțiune individual",
-      "Feedback pe livrabile",
-      "Acces la rețeaua AnimaMinds",
-    ],
-    for: "Formatori, traineri, facilitatori",
+      "Inteligența artificială nu vine să îți ia locul. Vine să preia ce este plictisitor, repetitiv și consumator de timp — ca tu să te poți ocupa de ce contează cu adevărat. Fără jargon, fără frică, cu aplicații concrete.",
+    for: "Profesori · Corporatiști · Antreprenori · Tineri care vor să rămână relevanți",
   },
   {
-    image: "/images/hero-workshop.jpg",
-    badge: "Organizații",
+    icon: Brain,
+    badge: "Dezvoltare personală",
     badgeColor: "var(--terracotta)",
-    title: "Programe personalizate pentru companii",
+    iconBg: "rgba(196,120,90,0.12)",
+    title: "Nu este despre cât știi. Este despre cum gândești.",
     description:
-      "Proiectăm și livrăm programe de formare interne adaptate culturii, obiectivelor și echipei fiecărei organizații. De la onboarding la programe de leadership.",
-    duration: "Personalizat",
-    participants: "Personalizat",
-    includes: [
-      "Analiză de nevoi",
-      "Design curricular personalizat",
-      "Livrare on-site sau online",
-      "Raport de impact",
-    ],
-    for: "Companii, instituții, ONG-uri",
+      "De ce unii oameni absorb și aplică rapid, iar alții simt că se învârt în cerc? Răspunsul este în cum gândim despre gândire. Acest program îți oferă instrumentele să înveți mai eficient — la orice vârstă, în orice domeniu.",
+    for: "Studenți și tineri · Profesioniști în reconversie · Profesori · Oricine vrea să progreseze",
+  },
+  {
+    icon: Heart,
+    badge: "Familie & Comunitate",
+    badgeColor: "var(--sage)",
+    iconBg: "rgba(124,154,126,0.12)",
+    title: "Copiii nu vin cu instrucțiuni. Dar putem învăța împreună.",
+    description:
+      "Nu există părinți perfecți — și nici nu trebuie să existe. Există părinți prezenți, care încearcă să înțeleagă. Acest program este un spațiu în care explorăm împreună ce au nevoie copiii noștri și cum construim relații care durează.",
+    for: "Părinți · Cadre didactice · ONG-uri și școli · Companii cu programe de wellbeing familial",
   },
 ];
 
@@ -84,158 +65,104 @@ export default function ProgramePage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section
-        className="py-24 lg:py-28"
-        style={{ backgroundColor: "var(--cream)" }}
-      >
+      <section className="py-24 lg:py-28" style={{ backgroundColor: "var(--cream)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <span className="section-label">Programe</span>
             <div className="line-accent my-4" />
             <h1
               className="text-5xl sm:text-6xl font-semibold mb-5"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
-              Ce facem{" "}
+              Experiențe care{" "}
               <span className="italic" style={{ color: "var(--sage)" }}>
-                împreună
+                schimbă ceva
               </span>
             </h1>
-            <p
-              className="text-xl leading-relaxed"
-              style={{ color: "var(--charcoal-soft)" }}
-            >
-              Programele AnimaMinds sunt proiectate pentru impact real, nu
-              pentru certificate. Fiecare experiență este concepută cu grijă
-              pentru a genera schimbare autentică.
+            <p className="text-xl leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
+              Programele noastre sunt pentru profesori, echipe din companii, tineri și părinți. Nu livrăm teorie — livrăm experiențe practice care se văd în comportamentul de zi cu zi.
             </p>
+            <div className="flex items-center gap-2 text-sm" style={{ color: "var(--sage)" }}>
+              <Globe size={16} />
+              <span>În proces de acreditare internațională CPD (UK)</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Programs list */}
+      {/* Programs */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {programs.map((program, i) => (
-            <div
-              key={program.title}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                i % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Image */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          {programs.map((program) => {
+            const Icon = program.icon;
+            return (
               <div
-                className={`relative rounded-2xl overflow-hidden aspect-[4/3] ${
-                  i % 2 === 1 ? "lg:order-2" : ""
-                }`}
+                key={program.title}
+                className="rounded-2xl border p-8 flex flex-col sm:flex-row gap-8 items-start"
+                style={{ borderColor: "var(--cream-dark)", backgroundColor: "white" }}
               >
-                <Image
-                  src={program.image}
-                  alt={program.title}
-                  fill
-                  className="object-cover"
-                  quality={75}
-                />
+                {/* Icon placeholder */}
                 <div
-                  className="absolute top-4 left-4 px-3 py-1 rounded-full text-white text-xs font-medium"
-                  style={{ backgroundColor: program.badgeColor }}
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: program.iconBg }}
                 >
-                  {program.badge}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                <h2
-                  className="text-3xl sm:text-4xl font-semibold mb-4"
-                  style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
-                >
-                  {program.title}
-                </h2>
-                <p
-                  className="text-lg leading-relaxed mb-6"
-                  style={{ color: "var(--charcoal-soft)" }}
-                >
-                  {program.description}
-                </p>
-
-                {/* Meta */}
-                <div
-                  className="flex flex-wrap gap-4 mb-6 pb-6 border-b"
-                  style={{ borderColor: "var(--cream-dark)" }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Clock size={15} style={{ color: "var(--sage)" }} />
-                    <span className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-                      {program.duration}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users size={15} style={{ color: "var(--sage)" }} />
-                    <span className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-                      {program.participants}
-                    </span>
-                  </div>
+                  <Icon size={36} style={{ color: program.badgeColor }} />
                 </div>
 
-                {/* Includes */}
-                <div className="mb-6">
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--charcoal-soft)" }}>
-                    Ce include
+                {/* Content */}
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <span
+                      className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full text-white"
+                      style={{ backgroundColor: program.badgeColor }}
+                    >
+                      {program.badge}
+                    </span>
+                    <span
+                      className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border"
+                      style={{ color: "var(--charcoal-soft)", borderColor: "var(--cream-dark)" }}
+                    >
+                      În curând
+                    </span>
+                  </div>
+                  <h2
+                    className="text-2xl sm:text-3xl font-semibold mb-3"
+                    style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+                  >
+                    {program.title}
+                  </h2>
+                  <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>
+                    {program.description}
                   </p>
-                  <ul className="space-y-2">
-                    {program.includes.map((item) => (
-                      <li key={item} className="flex items-center gap-2">
-                        <CheckCircle size={15} style={{ color: "var(--sage)", flexShrink: 0 }} />
-                        <span className="text-sm" style={{ color: "var(--charcoal)" }}>
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-xs" style={{ color: "var(--charcoal-soft)" }}>
+                    <span className="font-semibold">Pentru: </span>{program.for}
+                  </p>
                 </div>
-
-                {/* For whom */}
-                <p className="text-xs mb-5" style={{ color: "var(--charcoal-soft)" }}>
-                  <span className="font-semibold">Pentru: </span>
-                  {program.for}
-                </p>
-
-                <Link
-                  href="/contact"
-                  className="btn-primary group inline-flex"
-                >
-                  Solicită informații
-                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-                </Link>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
-      {/* Custom programs CTA */}
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--cream)" }}
-      >
+      {/* CTA */}
+      <section className="py-20" style={{ backgroundColor: "var(--sage)" }}>
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2
-            className="text-4xl font-semibold mb-5"
-            style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+            className="text-4xl font-semibold text-white mb-5"
+            style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Nu găsești ce cauți?
+            Vrei un program construit exact pentru tine?
           </h2>
-          <p
-            className="text-lg leading-relaxed mb-8"
-            style={{ color: "var(--charcoal-soft)" }}
-          >
-            Proiectăm programe personalizate pentru fiecare client. Spune-ne
-            nevoile tale și construim împreună soluția potrivită.
+          <p className="text-lg mb-8" style={{ color: "rgba(255,255,255,0.85)" }}>
+            Adaptăm orice program pentru echipa, organizația sau contextul tău. Hai să vorbim despre ce ai nevoie cu adevărat.
           </p>
-          <Link href="/contact" className="btn-primary group">
-            Hai să vorbim
-            <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg font-medium bg-white transition-all hover:shadow-lg"
+            style={{ color: "var(--sage)" }}
+          >
+            Contactează-ne
+            <ArrowRight size={15} />
           </Link>
         </div>
       </section>

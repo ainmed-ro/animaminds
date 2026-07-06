@@ -124,30 +124,6 @@ export default function PartnershipsSection() {
           </div>
         </div>
 
-        {/* CPD Group mention */}
-        <div
-          className={`mt-16 p-8 rounded-2xl text-center transition-all duration-700 delay-400 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-          style={{ backgroundColor: "rgba(124,154,126,0.1)", border: "1px solid rgba(124,154,126,0.2)" }}
-        >
-          <p className="text-sm font-medium mb-1" style={{ color: "var(--sage)" }}>
-            Partener strategic
-          </p>
-          <p
-            className="text-xl font-semibold"
-            style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
-          >
-            CPD Group
-          </p>
-          <p
-            className="text-sm mt-2 max-w-lg mx-auto"
-            style={{ color: "var(--charcoal-soft)" }}
-          >
-            Colaborăm cu CPD Group pentru a aduce standarde internaționale de
-            formare profesională în România.
-          </p>
-        </div>
       </div>
     </section>
   );
