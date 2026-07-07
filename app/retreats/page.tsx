@@ -292,13 +292,22 @@ export default function RetreatsPage() {
                   </div>
 
                   <div className="pt-5 border-t" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
-                    <Link
-                      href={(retreat as { link?: string }).link ?? "/contact"}
-                      className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
-                      style={{ color: retreat.accentColor }}
-                    >
-                      {(retreat as { link?: string }).link ? "Descoperă experiența →" : "Rezervă un loc →"}
-                    </Link>
+                    {(retreat as { link?: string }).link ? (
+                      <Link
+                        href={(retreat as { link?: string }).link!}
+                        className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
+                        style={{ color: retreat.accentColor }}
+                      >
+                        Descoperă experiența →
+                      </Link>
+                    ) : (
+                      <span
+                        className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full"
+                        style={{ backgroundColor: "rgba(0,0,0,0.04)", color: "var(--charcoal-soft)" }}
+                      >
+                        În pregătire
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
