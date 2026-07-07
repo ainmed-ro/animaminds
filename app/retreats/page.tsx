@@ -2,81 +2,108 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AnimaMinds Retreats — Experiențe imersive de transformare",
+  title: "AnimaMinds Retreats — Experiențe de 2–3 zile în natură",
   description:
-    "Retreat-uri de 2–3 zile în locații speciale — munte, mare, natură. Versiuni extinse ale experiențelor AnimaMinds pentru un nivel mai profund de reflecție, dezvoltare și reconectare.",
+    "Retreat-uri de 2–3 zile la Zărnești – Piatra Craiului. Conversații cu sens, reflecție și timp pentru a privi lucrurile cu mai multă claritate.",
   openGraph: {
     title: "AnimaMinds Retreats",
-    description: "Experiențe imersive de transformare în natură.",
+    description: "Experiențe umane în natură.",
     url: "https://animaminds.ro/retreats",
   },
 };
 
+const commonInfo = [
+  { icon: "📍", label: "Locație", value: "Zărnești – Deny Inn Resort & Spa" },
+  { icon: "🛏️", label: "Cazare", value: "Inclusă" },
+  { icon: "👥", label: "Grup", value: "20–25 participanți" },
+  { icon: "📅", label: "Perioadă", value: "În curs de stabilire" },
+];
+
 const retreats = [
-  {
-    id: "mintea-2-0-retreat",
-    name: "MINTEA 2.0",
-    tag: "Retreat",
-    subtitle: "Claritate mentală profundă în liniștea naturii",
-    duration: "3 zile · 2 nopți",
-    setting: "Munte · Locație secretă",
-    category: "Mind",
-    categoryColor: "#7C9A7E",
-    description:
-      "Departe de zgomotul digital, în mijlocul naturii, reconstruim modul în care gândim, decidem și ne concentrăm. Un retreat complet dedicat clarității mentale și calității atenției.",
-    includes: ["Sesiuni de reflecție ghidată", "Practici de focus profund", "Timp în natură structurat", "Jurnal de claritate", "Grup mic — maxim 12 persoane"],
-  },
   {
     id: "busola-interioara-retreat",
     name: "BUSOLA INTERIOARĂ",
-    tag: "Retreat",
-    subtitle: "Redescoperă direcția când totul pare neclaru",
+    subtitle: "Claritate și direcție când lucrurile par neclare",
     duration: "3 zile · 2 nopți",
-    setting: "Natură · Spațiu de retreat",
-    category: "Wellbeing",
-    categoryColor: "#9B7EBD",
+    accentColor: "#9B7EBD",
+    badge: "Prima experiență AnimaMinds în pregătire",
     description:
-      "Un retreat pentru oamenii aflați în momente de schimbare, căutare sau redefinire. Trei zile de introspecție ghidată, conversații autentice și reconectare cu valorile profunde.",
-    includes: ["Cartografiere personală", "Conversații 1:1 cu facilitatorul", "Exerciții de redefinire a direcției", "Seară de reflecție în natură", "Plan personal post-retreat"],
+      "Un retreat pentru oamenii care se află într-un moment de schimbare, alegere sau restart. Trei zile de conversații cu sens, reflecție și timp pentru a privi lucrurile cu mai multă claritate.",
+    includes: [
+      "Activități experiențiale ghidate",
+      "Exerciții individuale și de grup",
+      "Conversații cu sens",
+      "Timp în natură",
+      "Comunitatea participanților",
+    ],
+  },
+  {
+    id: "mintea-2-0-retreat",
+    name: "MINTEA 2.0",
+    subtitle: "Claritate mentală în liniștea naturii",
+    duration: "3 zile · 2 nopți",
+    accentColor: "#7C9A7E",
+    badge: null,
+    description:
+      "Departe de agitația zilnică și de zgomotul digital, explorăm cum ne folosim atenția, cum luăm decizii și cum construim mai multă claritate în viața de zi cu zi.",
+    includes: [
+      "Activități de reflecție ghidată",
+      "Exerciții de focus și atenție",
+      "Timp în natură",
+      "Jurnal de claritate",
+      "Comunitatea participanților",
+    ],
   },
   {
     id: "reset-mental-retreat",
     name: "RESET MENTAL",
-    tag: "Retreat",
-    subtitle: "Oprește-te. Respiră. Reîncarcă-te complet.",
+    subtitle: "Oprește-te. Respiră. Privește lucrurile altfel.",
     duration: "2 zile · 1 noapte",
-    setting: "Mare sau munte · Liniște totală",
-    category: "Wellbeing",
-    categoryColor: "#9B7EBD",
+    accentColor: "#9B7EBD",
+    badge: null,
     description:
-      "Un weekend de deconectare completă și reconectare profundă. Fără agende încărcate, fără presiune. Doar spațiu, natură și instrumente reale pentru a-ți reîncărca resursele interioare.",
-    includes: ["Sesiuni de respirație și mișcare", "Timp liber structurat în natură", "Practici de prezență", "Cină comunitară", "Ritual de închidere și intenție"],
+      "Un weekend fără agendă încărcată și fără presiune. Spațiu, natură și oameni cu care poți vorbi deschis despre ce te obosește și ce îți dă energie.",
+    includes: [
+      "Activități de mișcare și prezență",
+      "Timp liber în natură",
+      "Conversații autentice",
+      "Cină împreună",
+      "Comunitatea participanților",
+    ],
   },
   {
     id: "human-upgrade-retreat",
     name: "HUMAN UPGRADE",
-    tag: "Retreat",
     subtitle: "Ce rămâne esențial uman în era inteligenței artificiale",
     duration: "3 zile · 2 nopți",
-    setting: "Spațiu de inovație · Natură",
-    category: "Future",
-    categoryColor: "#C4714F",
+    accentColor: "#C4714F",
+    badge: null,
     description:
-      "Un retreat imersiv despre identitate, adaptabilitate și competențele umane care nu pot fi automatizate. Explorăm ce înseamnă să fii uman, cu adevărat, în lumea de azi.",
-    includes: ["Workshop-uri de gândire critică", "Sesiuni de creativitate aplicată", "Conversații despre viitorul muncii", "Exerciții de adaptabilitate", "Manifesto personal"],
+      "Explorăm împreună ce înseamnă să gândești critic, să te adaptezi și să rămâi tu însuți într-o lume care se schimbă rapid. O conversație sinceră despre prezent și viitor.",
+    includes: [
+      "Activități de gândire critică",
+      "Exerciții de creativitate aplicată",
+      "Conversații despre viitorul muncii",
+      "Exerciții de adaptabilitate",
+      "Comunitatea participanților",
+    ],
   },
   {
     id: "leadership-fara-masca-retreat",
     name: "LEADERSHIP FĂRĂ MASCĂ",
-    tag: "Retreat",
-    subtitle: "Conducere autentică dintr-un loc de forță, nu de frică",
+    subtitle: "Cum conduci oameni reali, nu organigrame",
     duration: "3 zile · 2 nopți",
-    setting: "Locație premium · Natură",
-    category: "Leadership",
-    categoryColor: "#4A6FA5",
+    accentColor: "#4A6FA5",
+    badge: null,
     description:
-      "Un retreat exclusivist pentru lideri care vor să conducă cu autenticitate. Explorăm vulnerabilitatea, încrederea, comunicarea și leadershipul bazat pe valori în sesiuni intensive și conversații profunde.",
-    includes: ["Sesiuni intensive de leadership", "Coaching individual", "Exerciții de vulnerabilitate și încredere", "Masterclass cu facilitatori seniori", "Comunitate de lideri post-retreat"],
+      "Un retreat pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când renunți la performanță și ești pur și simplu om.",
+    includes: [
+      "Dialoguri despre leadership autentic",
+      "Exerciții de încredere și colaborare",
+      "Activități experiențiale",
+      "Reflecție individuală și de grup",
+      "Conexiuni autentice între participanți",
+    ],
   },
 ];
 
@@ -154,22 +181,24 @@ export default function RetreatsPage() {
                 className="text-4xl font-semibold mb-8 leading-tight"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
-                Unele transformări nu pot fi comprimate într-o zi.
+                Unele schimbări au nevoie de timp.
               </h2>
-              <p className="text-lg leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
-                Experiențele AnimaMinds sunt construite pentru impact real. Retreat-urile merg și mai departe — oferă spațiu, timp și profunzime pentru transformări care rămân.
-              </p>
-              <p className="text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                Natura, liniștea și contextul imersiv creează condițiile în care oamenii se deschid cu adevărat — față de ei înșiși și față de ceilalți.
-              </p>
+              <div className="space-y-4 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                <p>Sunt conversații pe care nu le putem purta într-o oră. Sunt întrebări la care nu găsim răspuns într-o zi obișnuită.</p>
+                <p>Și sunt momente în viață în care avem nevoie să ne oprim puțin, să respirăm și să privim lucrurile cu mai multă claritate.</p>
+                <p>AnimaMinds Retreats s-au născut din această nevoie.</p>
+                <p>Ne întâlnim în locuri liniștite, aproape de natură, departe de ritmul obișnuit al zilelor noastre. Explorăm idei, împărtășim experiențe, învățăm unii de la alții și ne oferim timp pentru lucrurile pe care, de cele mai multe ori, le amânăm.</p>
+                <p className="font-medium" style={{ color: "var(--charcoal)" }}>Nu promitem rețete magice și nici schimbări peste noapte.</p>
+                <p>Promitem însă un spațiu sigur, oameni autentici, conversații cu sens și experiențe care pot rămâne cu tine mult timp după ce te întorci acasă.</p>
+              </div>
             </div>
 
             <div className="space-y-4">
               {[
-                { icon: "◎", title: "Grup mic", desc: "Maxim 12–15 participanți per retreat" },
+                { icon: "◎", title: "Grup restrâns", desc: "20–25 participanți per retreat" },
                 { icon: "◇", title: "Locații speciale", desc: "Munte, mare, natură — departe de zgomot" },
                 { icon: "△", title: "Imersiv complet", desc: "2–3 zile de experiență neîntreruptă" },
-                { icon: "○", title: "Facilitatori seniori", desc: "Alina Niculae & Mihaela Spina" },
+                { icon: "○", title: "Oameni și conversații care contează", desc: "Alina Niculae & Mihaela Spina" },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-5 p-5 rounded-xl bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
                   <span className="text-2xl mt-0.5" style={{ color: "#7C9A7E" }}>{item.icon}</span>
@@ -206,27 +235,20 @@ export default function RetreatsPage() {
                 className="group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                 style={{ borderColor: "rgba(0,0,0,0.07)", boxShadow: "0 2px 24px rgba(0,0,0,0.06)" }}
               >
-                {/* Card top bar */}
-                <div className="h-2 w-full" style={{ backgroundColor: retreat.categoryColor }} />
+                <div className="h-2 w-full" style={{ backgroundColor: retreat.accentColor }} />
 
                 <div className="p-8">
-                  <div className="flex items-start justify-between mb-6">
-                    <div>
+                  <div className="flex items-start justify-between mb-4">
+                    {retreat.badge ? (
                       <span
-                        className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-                        style={{ backgroundColor: `${retreat.categoryColor}15`, color: retreat.categoryColor }}
+                        className="text-xs font-semibold px-3 py-1 rounded-full"
+                        style={{ backgroundColor: `${retreat.accentColor}20`, color: retreat.accentColor }}
                       >
-                        {retreat.category}
+                        {retreat.badge}
                       </span>
-                    </div>
-                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-50 text-gray-500">
+                    ) : <span />}
+                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-50 text-gray-500 flex-shrink-0 ml-2">
                       {retreat.duration}
-                    </span>
-                  </div>
-
-                  <div className="mb-2">
-                    <span className="text-xs uppercase tracking-widest font-semibold" style={{ color: retreat.categoryColor }}>
-                      {retreat.tag}
                     </span>
                   </div>
 
@@ -237,7 +259,7 @@ export default function RetreatsPage() {
                     {retreat.name}
                   </h3>
 
-                  <p className="text-sm font-medium italic mb-4" style={{ color: retreat.categoryColor }}>
+                  <p className="text-sm font-medium italic mb-4" style={{ color: retreat.accentColor }}>
                     {retreat.subtitle}
                   </p>
 
@@ -245,28 +267,34 @@ export default function RetreatsPage() {
                     {retreat.description}
                   </p>
 
-                  <div className="mb-8">
+                  <div className="mb-6">
                     <p className="text-xs uppercase tracking-widest font-semibold mb-3" style={{ color: "var(--charcoal-soft)" }}>
-                      Inclus
+                      Ce include
                     </p>
                     <ul className="space-y-2">
                       {retreat.includes.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-sm" style={{ color: "var(--charcoal-soft)" }}>
-                          <span style={{ color: retreat.categoryColor }} className="mt-0.5 flex-shrink-0">✓</span>
+                          <span style={{ color: retreat.accentColor }} className="mt-0.5 flex-shrink-0">✓</span>
                           {item}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
-                    <span className="text-xs" style={{ color: "var(--charcoal-soft)" }}>
-                      📍 {retreat.setting}
-                    </span>
+                  <div className="grid grid-cols-2 gap-2 mb-6">
+                    {commonInfo.map((info) => (
+                      <div key={info.label} className="flex items-center gap-2 text-xs" style={{ color: "var(--charcoal-soft)" }}>
+                        <span>{info.icon}</span>
+                        <span><strong>{info.label}:</strong> {info.value}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-5 border-t" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
                     <Link
                       href="/contact"
                       className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
-                      style={{ color: retreat.categoryColor }}
+                      style={{ color: retreat.accentColor }}
                     >
                       Rezervă un loc →
                     </Link>
