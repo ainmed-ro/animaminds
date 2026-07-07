@@ -1,40 +1,19 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Clock, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const programs = [
-  {
-    image: "/images/workshop-indoor.jpg",
-    category: "Workshop",
-    title: "Competențe digitale în educație",
-    description:
-      "Instrumente digitale practice pentru profesori și formatori. De la platforme collaborative la crearea de conținut interactiv.",
-    duration: "2 zile",
-    participants: "15-25 pers.",
-    color: "var(--sage)",
-  },
-  {
-    image: "/images/workshop-seara.jpg",
-    category: "Program de formare",
-    title: "Leadership autentic",
-    description:
-      "Dezvoltă un stil de conducere bazat pe valori, empatie și comunicare clară. Pentru manageri și lideri de echipă.",
-    duration: "3 luni",
-    participants: "8-16 pers.",
-    color: "var(--terracotta)",
-  },
-  {
-    image: "/images/workshop-notes.jpg",
-    category: "Mentorat",
-    title: "Mentoring 1:1 pentru formatori",
-    description:
-      "Sesiuni individuale cu formatori experimentați pentru a-ți clarifica direcția, a depăși blocaje și a-ți accelera creșterea.",
-    duration: "Flexibil",
-    participants: "Individual",
-    color: "var(--sage)",
-  },
+const experiences = [
+  { name: "MINTEA 2.0", subtitle: "Cum să gândești clar într-o lume care îți fură atenția", category: "Mind", color: "#7C9A7E" },
+  { name: "HUMAN UPGRADE", subtitle: "Abilități umane pentru era inteligenței artificiale", category: "Future", color: "#C4714F" },
+  { name: "AI FĂRĂ HAOS", subtitle: "Cum folosim AI fără să ne pierdem judecata", category: "Future", color: "#C4714F" },
+  { name: "THE ATTENTION LAB", subtitle: "Reconstruirea atenției într-o lume a distragerilor", category: "Mind", color: "#7C9A7E" },
+  { name: "EMOȚII SUB CONTROL", subtitle: "Cum reacționezi inteligent când ești sub presiune", category: "Human", color: "#8B6F5E" },
+  { name: "CONVERSAȚII CARE SCHIMBĂ TOT", subtitle: "Puterea dialogului în relații, echipe și organizații", category: "Human", color: "#8B6F5E" },
+  { name: "OAMENI GREI, CONVERSAȚII GRELE", subtitle: "Cum gestionezi conflictele și personalitățile dificile", category: "Human", color: "#8B6F5E" },
+  { name: "LEADERSHIP FĂRĂ MASCĂ", subtitle: "Cum conduci oameni reali, nu organigrame", category: "Leadership", color: "#4A6FA5" },
+  { name: "RESET MENTAL", subtitle: "O pauză pentru claritate, energie și echilibru", category: "Wellbeing", color: "#9B7EBD" },
+  { name: "BUSOLA INTERIOARĂ", subtitle: "Claritate și direcție într-o lume plină de opțiuni", category: "Wellbeing", color: "#9B7EBD" },
 ];
 
 export default function ProgramsSection() {
@@ -54,94 +33,84 @@ export default function ProgramsSection() {
           }`}
         >
           <div>
-            <span className="section-label">Programe</span>
+            <span className="section-label">AnimaMinds Experiences</span>
             <div className="line-accent my-4" />
             <h2
               className="text-4xl sm:text-5xl font-semibold"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
-              Ce facem împreună
+              Experiențe cu identitate proprie.
             </h2>
           </div>
           <Link
-            href="/programe"
+            href="/experiences"
             className="flex items-center gap-2 text-sm font-medium group flex-shrink-0"
             style={{ color: "var(--sage)" }}
           >
-            Toate programele
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-1"
-            />
+            Toate experiențele
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {programs.map((program, i) => (
-            <div
-              key={program.title}
-              className={`card-hover rounded-2xl overflow-hidden bg-white transition-all duration-700 ${
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {experiences.map((exp, i) => (
+            <Link
+              href="/experiences"
+              key={exp.name}
+              className={`group bg-white rounded-2xl p-6 flex flex-col transition-all duration-700 hover:-translate-y-1 hover:shadow-xl ${
                 inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{
-                transitionDelay: `${i * 120}ms`,
-                boxShadow: "0 2px 20px rgba(0,0,0,0.06)",
+                transitionDelay: `${i * 60}ms`,
+                boxShadow: "0 2px 16px rgba(0,0,0,0.05)",
+                textDecoration: "none",
               }}
             >
-              {/* Image */}
-              <div className="relative h-52 overflow-hidden">
-                <Image
-                  src={program.image}
-                  alt={program.title}
-                  fill
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                  quality={75}
+              <div className="flex items-center justify-between mb-5">
+                <span
+                  className="text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full"
+                  style={{ backgroundColor: `${exp.color}15`, color: exp.color }}
+                >
+                  {exp.category}
+                </span>
+                <div
+                  className="w-2 h-2 rounded-full opacity-40 group-hover:opacity-100 transition-opacity"
+                  style={{ backgroundColor: exp.color }}
                 />
-                <div
-                  className="absolute top-4 left-4 px-3 py-1 rounded-full text-white text-xs font-medium"
-                  style={{ backgroundColor: program.color }}
-                >
-                  {program.category}
-                </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3
-                  className="text-xl font-semibold mb-3"
-                  style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
-                >
-                  {program.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed mb-5"
-                  style={{ color: "var(--charcoal-soft)" }}
-                >
-                  {program.description}
-                </p>
-
-                {/* Meta */}
-                <div
-                  className="flex items-center gap-5 pt-4 border-t"
-                  style={{ borderColor: "var(--cream-dark)" }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Clock size={13} style={{ color: "var(--sage)" }} />
-                    <span className="text-xs" style={{ color: "var(--charcoal-soft)" }}>
-                      {program.duration}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users size={13} style={{ color: "var(--sage)" }} />
-                    <span className="text-xs" style={{ color: "var(--charcoal-soft)" }}>
-                      {program.participants}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <h3
+                className="text-base font-bold mb-2 leading-tight"
+                style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+              >
+                {exp.name}
+              </h3>
+              <p className="text-xs leading-relaxed flex-1 mb-4" style={{ color: "var(--charcoal-soft)" }}>
+                {exp.subtitle}
+              </p>
+              <span
+                className="text-xs font-medium flex items-center gap-1 transition-all group-hover:gap-2"
+                style={{ color: exp.color }}
+              >
+                Descoperă →
+              </span>
+            </Link>
           ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div
+          className={`mt-12 text-center transition-all duration-700 delay-500 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <Link
+            href="/retreats"
+            className="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-xl border transition-all hover:shadow-md"
+            style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.1)" }}
+          >
+            ✦ Descoperă și AnimaMinds Retreats — experiențe imersive de 2–3 zile
+          </Link>
         </div>
       </div>
     </section>
