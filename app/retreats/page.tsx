@@ -26,7 +26,8 @@ const retreats = [
     subtitle: "Claritate și direcție când lucrurile par neclare",
     duration: "3 zile · 2 nopți",
     accentColor: "#9B7EBD",
-    badge: "Prima experiență AnimaMinds în pregătire",
+    badge: "Înscrieri deschise",
+    link: "/retreats/busola-interioara",
     description:
       "Un retreat pentru oamenii care se află într-un moment de schimbare, alegere sau restart. Trei zile de conversații cu sens, reflecție și timp pentru a privi lucrurile cu mai multă claritate.",
     includes: [
@@ -292,11 +293,11 @@ export default function RetreatsPage() {
 
                   <div className="pt-5 border-t" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
                     <Link
-                      href="/contact"
+                      href={(retreat as { link?: string }).link ?? "/contact"}
                       className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
                       style={{ color: retreat.accentColor }}
                     >
-                      Rezervă un loc →
+                      {(retreat as { link?: string }).link ? "Descoperă experiența →" : "Rezervă un loc →"}
                     </Link>
                   </div>
                 </div>
