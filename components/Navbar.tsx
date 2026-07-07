@@ -8,7 +8,7 @@ import Image from "next/image";
 const navLinks = [
   { href: "/", label: "Acasă" },
   { href: "/povestea-noastra", label: "Povestea noastră" },
-  { href: "/programe", label: "Programe" },
+  { href: "/experiences", label: "Experiences" },
   { href: "/colaboreaza", label: "Colaborează cu noi" },
   { href: "/contact", label: "Contact" },
 ];
