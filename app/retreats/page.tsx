@@ -144,11 +144,8 @@ export default function RetreatsPage() {
             </span>
           </h1>
 
-          <p className="text-xl leading-relaxed max-w-2xl mb-6" style={{ color: "rgba(255,255,255,0.7)" }}>
-            AnimaMinds Retreats sunt experiențe imersive de 2–3 zile organizate în locații speciale — munte, mare, natură.
-          </p>
-          <p className="text-lg leading-relaxed max-w-2xl mb-14" style={{ color: "rgba(255,255,255,0.5)" }}>
-            Versiuni extinse ale experiențelor AnimaMinds, pentru cei care aleg un nivel mai profund de reflecție, transformare și reconectare.
+          <p className="text-xl leading-relaxed max-w-2xl mb-14" style={{ color: "rgba(255,255,255,0.7)" }}>
+            AnimaMinds Retreats sunt experiențe desfășurate pe parcursul mai multor zile, în locuri liniștite, unde oamenii și ideile au timp să crească împreună.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -160,56 +157,73 @@ export default function RetreatsPage() {
               Descoperă retreat-urile
             </a>
             <Link
-              href="/contact"
+              href="/retreats/busola-interioara"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium transition-all border"
               style={{ color: "rgba(255,255,255,0.8)", borderColor: "rgba(255,255,255,0.15)" }}
             >
-              Rezervă un loc
+              Înscrie-mă
             </Link>
           </div>
         </div>
       </section>
 
-      {/* DIFERENȚĂ RETREATS VS EXPERIENCES */}
-      <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
+      {/* CE ESTE UN RETREAT */}
+      <section className="py-28 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#7C9A7E" }}>
-                De ce Retreats?
+                Despre retreat
               </p>
               <h2
-                className="text-4xl font-semibold mb-8 leading-tight"
+                className="text-4xl font-semibold mb-10 leading-tight"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
-                Unele schimbări au nevoie de timp.
+                Ce este un retreat?
               </h2>
-              <div className="space-y-4 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                <p>Sunt conversații pe care nu le putem purta într-o oră. Sunt întrebări la care nu găsim răspuns într-o zi obișnuită.</p>
-                <p>Și sunt momente în viață în care avem nevoie să ne oprim puțin, să respirăm și să privim lucrurile cu mai multă claritate.</p>
-                <p>AnimaMinds Retreats s-au născut din această nevoie.</p>
-                <p>Ne întâlnim în locuri liniștite, aproape de natură, departe de ritmul obișnuit al zilelor noastre. Explorăm idei, împărtășim experiențe, învățăm unii de la alții și ne oferim timp pentru lucrurile pe care, de cele mai multe ori, le amânăm.</p>
-                <p className="font-medium" style={{ color: "var(--charcoal)" }}>Nu promitem rețete magice și nici schimbări peste noapte.</p>
-                <p>Promitem însă un spațiu sigur, oameni autentici, conversații cu sens și experiențe care pot rămâne cu tine mult timp după ce te întorci acasă.</p>
+              <div className="space-y-5 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                <p>Un retreat este o experiență desfășurată pe parcursul mai multor zile, într-un cadru liniștit, departe de ritmul obișnuit al vieții de zi cu zi.</p>
+                <p>Combină învățarea, conversațiile autentice, activitățile de grup, timpul petrecut în natură și momentele de reflecție într-un context care oferă mai mult spațiu pentru oameni, idei și experiențe care contează.</p>
               </div>
             </div>
-
-            <div className="space-y-4">
+            <div className="space-y-4 pt-2">
               {[
-                { icon: "◎", title: "Grup restrâns", desc: "20–25 participanți per retreat" },
-                { icon: "◇", title: "Locații speciale", desc: "Munte, mare, natură — departe de zgomot" },
-                { icon: "△", title: "Imersiv complet", desc: "2–3 zile de experiență neîntreruptă" },
-                { icon: "○", title: "Oameni și conversații care contează", desc: "Alina Niculae & Mihaela Spina" },
+                { label: "Nu este un curs.", sub: "Nu există teste, note sau materie de parcurs." },
+                { label: "Nu este o conferință.", sub: "Nu stai în sală să asculți prelegeri." },
+                { label: "Nu este o vacanță.", sub: "Există intenție, structură și experiențe cu sens." },
+                { label: "Este un timp pe care alegi să ți-l oferi ție.", sub: "" },
               ].map((item) => (
-                <div key={item.title} className="flex items-start gap-5 p-5 rounded-xl bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
-                  <span className="text-2xl mt-0.5" style={{ color: "#7C9A7E" }}>{item.icon}</span>
-                  <div>
-                    <h3 className="font-semibold mb-1" style={{ color: "var(--charcoal)", fontFamily: "Playfair Display, serif" }}>{item.title}</h3>
-                    <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>{item.desc}</p>
-                  </div>
+                <div key={item.label} className="p-5 rounded-xl border-l-4" style={{ borderColor: "#7C9A7E", backgroundColor: "#F5F0E8" }}>
+                  <p className="font-semibold" style={{ color: "var(--charcoal)" }}>{item.label}</p>
+                  {item.sub && <p className="text-sm mt-1" style={{ color: "var(--charcoal-soft)" }}>{item.sub}</p>}
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EDITORIAL */}
+      <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-8" style={{ color: "#7C9A7E" }}>
+            De ce acum?
+          </p>
+          <h2
+            className="text-4xl sm:text-5xl font-semibold mb-12 leading-tight"
+            style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+          >
+            Locul unde oamenii și ideile{" "}
+            <span className="italic" style={{ color: "#7C9A7E" }}>cresc împreună.</span>
+          </h2>
+          <div className="space-y-6 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+            <p>Sfârșitul verii este, pentru mulți dintre noi, un moment de bilanț, de reașezare și de noi începuturi.</p>
+            <p>Înainte ca ritmul obișnuit să revină, înainte ca agenda să se umple din nou și responsabilitățile să preia controlul, îți oferim ocazia să faci o pauză.</p>
+            <p>Nu pentru a fugi de viața de zi cu zi.</p>
+            <p className="font-medium" style={{ color: "var(--charcoal)" }}>Ci pentru a te întoarce la ea cu mai multă claritate.</p>
+            <p>Un weekend la munte, cu aer curat, oameni deschiși, conversații care contează și experiențe care îți oferă spațiu pentru reflecție.</p>
+            <p>Pentru că uneori cele mai importante răspunsuri apar în liniște.</p>
+            <p>Iar cele mai valoroase idei cresc atunci când sunt împărtășite cu oamenii potriviți.</p>
           </div>
         </div>
       </section>
