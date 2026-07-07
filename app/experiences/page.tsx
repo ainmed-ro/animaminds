@@ -14,11 +14,34 @@ export const metadata: Metadata = {
 
 const experiences = [
   {
+    id: "ai-fara-haos",
+    name: "AI FĂRĂ HAOS",
+    subtitle: "Cum folosim inteligența artificială fără să ne pierdem judecata",
+    accentColor: "#C4714F",
+    description:
+      "O experiență practică despre integrarea responsabilă a inteligenței artificiale în activitatea profesională.",
+  },
+  {
+    id: "oameni-grei",
+    name: "OAMENI GREI, CONVERSAȚII GRELE",
+    subtitle: "Cum gestionezi conflictele și personalitățile dificile",
+    accentColor: "#8B6F5E",
+    description:
+      "O experiență despre gestionarea tensiunilor și menținerea profesionalismului în relațiile dificile.",
+  },
+  {
+    id: "busola-interioara",
+    name: "BUSOLA INTERIOARĂ",
+    subtitle: "Claritate și direcție într-o lume plină de opțiuni",
+    accentColor: "#9B7EBD",
+    description:
+      "O experiență pentru oamenii care se află într-un moment de schimbare, alegere sau restart și au nevoie de mai multă claritate înainte de următorul pas.",
+  },
+  {
     id: "mintea-2-0",
     name: "MINTEA 2.0",
     subtitle: "Cum să gândești clar într-o lume care îți fură atenția",
-    category: "Mind",
-    categoryColor: "#7C9A7E",
+    accentColor: "#7C9A7E",
     description:
       "Experiență dedicată clarității mentale, atenției și luării deciziilor într-un mediu dominat de suprastimulare și zgomot informațional.",
   },
@@ -26,62 +49,31 @@ const experiences = [
     id: "human-upgrade",
     name: "HUMAN UPGRADE",
     subtitle: "Abilități umane pentru era inteligenței artificiale",
-    category: "Future",
-    categoryColor: "#C4714F",
+    accentColor: "#C4714F",
     description:
       "O explorare a competențelor care rămân esențial umane: gândire critică, adaptabilitate, creativitate și discernământ.",
-  },
-  {
-    id: "ai-fara-haos",
-    name: "AI FĂRĂ HAOS",
-    subtitle: "Cum folosim inteligența artificială fără să ne pierdem judecata",
-    category: "Future",
-    categoryColor: "#C4714F",
-    description:
-      "O experiență practică despre integrarea responsabilă a inteligenței artificiale în activitatea profesională.",
-  },
-  {
-    id: "attention-lab",
-    name: "THE ATTENTION LAB",
-    subtitle: "Reconstruirea atenției într-o lume a distragerilor",
-    category: "Mind",
-    categoryColor: "#7C9A7E",
-    description:
-      "Un proces de conștientizare și dezvoltare a capacității de concentrare și focus profund.",
-  },
-  {
-    id: "emotii-sub-control",
-    name: "EMOȚII SUB CONTROL",
-    subtitle: "Cum reacționezi inteligent când ești sub presiune",
-    category: "Human",
-    categoryColor: "#8B6F5E",
-    description:
-      "Instrumente practice pentru autoreglare emoțională și gestionarea situațiilor dificile.",
   },
   {
     id: "conversatii-care-schimba-tot",
     name: "CONVERSAȚII CARE SCHIMBĂ TOT",
     subtitle: "Puterea dialogului în relații, echipe și organizații",
-    category: "Human",
-    categoryColor: "#8B6F5E",
+    accentColor: "#8B6F5E",
     description:
       "Despre feedback, limite, ascultare activă și conversații care produc schimbare.",
   },
   {
-    id: "oameni-grei",
-    name: "OAMENI GREI, CONVERSAȚII GRELE",
-    subtitle: "Cum gestionezi conflictele și personalitățile dificile",
-    category: "Human",
-    categoryColor: "#8B6F5E",
+    id: "emotii-sub-control",
+    name: "EMOȚII SUB CONTROL",
+    subtitle: "Cum reacționezi inteligent când ești sub presiune",
+    accentColor: "#8B6F5E",
     description:
-      "O experiență despre gestionarea tensiunilor și menținerea profesionalismului în relațiile dificile.",
+      "Instrumente practice pentru autoreglare emoțională și gestionarea situațiilor dificile.",
   },
   {
     id: "leadership-fara-masca",
     name: "LEADERSHIP FĂRĂ MASCĂ",
     subtitle: "Cum conduci oameni reali, nu organigrame",
-    category: "Leadership",
-    categoryColor: "#4A6FA5",
+    accentColor: "#4A6FA5",
     description:
       "Leadership autentic bazat pe încredere, comunicare și influență pozitivă.",
   },
@@ -89,19 +81,17 @@ const experiences = [
     id: "reset-mental",
     name: "RESET MENTAL",
     subtitle: "O pauză pentru claritate, energie și echilibru",
-    category: "Wellbeing",
-    categoryColor: "#9B7EBD",
+    accentColor: "#9B7EBD",
     description:
       "O experiență dedicată regăsirii echilibrului și reconectării cu ceea ce contează cu adevărat.",
   },
   {
-    id: "busola-interioara",
-    name: "BUSOLA INTERIOARĂ",
-    subtitle: "Claritate și direcție într-o lume plină de opțiuni",
-    category: "Wellbeing",
-    categoryColor: "#9B7EBD",
+    id: "attention-lab",
+    name: "THE ATTENTION LAB",
+    subtitle: "Reconstruirea atenției într-o lume a distragerilor",
+    accentColor: "#7C9A7E",
     description:
-      "Pentru oamenii aflați în perioade de schimbare, căutare sau redefinire personală și profesională.",
+      "Un proces de conștientizare și dezvoltare a capacității de concentrare și focus profund.",
   },
 ];
 
@@ -200,18 +190,8 @@ export default function ExperiencesPage() {
               <div
                 key={exp.id}
                 className="group bg-white rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.06)" }}
+                style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.06)", borderTop: `3px solid ${exp.accentColor}` }}
               >
-                <div className="flex items-center justify-between mb-6">
-                  <span
-                    className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-                    style={{ backgroundColor: `${exp.categoryColor}15`, color: exp.categoryColor }}
-                  >
-                    {exp.category}
-                  </span>
-                  <div className="w-8 h-8 rounded-full opacity-20 group-hover:opacity-40 transition-opacity" style={{ backgroundColor: exp.categoryColor }} />
-                </div>
-
                 <h3
                   className="text-xl font-bold mb-3 leading-tight"
                   style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)", letterSpacing: "-0.01em" }}
@@ -219,7 +199,7 @@ export default function ExperiencesPage() {
                   {exp.name}
                 </h3>
 
-                <p className="text-sm font-medium mb-4 italic" style={{ color: exp.categoryColor }}>
+                <p className="text-sm font-medium mb-5 italic" style={{ color: exp.accentColor }}>
                   {exp.subtitle}
                 </p>
 
@@ -229,11 +209,11 @@ export default function ExperiencesPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 text-sm font-medium transition-all group-hover:gap-3"
-                  style={{ color: "var(--charcoal)" }}
+                  className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
+                  style={{ color: exp.accentColor }}
                 >
-                  Află mai mult
-                  <span className="text-base transition-transform group-hover:translate-x-1" style={{ color: exp.categoryColor }}>→</span>
+                  Explorează experiența
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
                 </Link>
               </div>
             ))}
@@ -251,13 +231,13 @@ export default function ExperiencesPage() {
             className="text-4xl sm:text-5xl font-semibold mb-8 leading-tight"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
-            Poate următoarea experiență{" "}
+            Nu știi care experiență{" "}
             <span className="italic" style={{ color: "var(--terracotta)" }}>
-              începe cu o conversație.
+              ți se potrivește?
             </span>
           </h2>
           <p className="text-lg leading-relaxed mb-12" style={{ color: "var(--charcoal-soft)" }}>
-            Fie că reprezentați o instituție, o companie, o organizație sau căutați o experiență pentru dezvoltarea personală, vă invităm să descoperim împreună ceea ce se potrivește cel mai bine contextului și obiectivelor dumneavoastră.
+            Hai să discutăm despre obiectivele, provocările și contextul tău. Împreună alegem experiența potrivită pentru tine, echipa sau organizația ta.
           </p>
           <Link
             href="/contact"
