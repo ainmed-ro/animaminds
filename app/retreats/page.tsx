@@ -96,7 +96,7 @@ const retreats = [
     accentColor: "#4A6FA5",
     badge: null,
     description:
-      "Un retreat pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când renunți la performanță și ești pur și simplu om.",
+      "Un retreat pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când renunți la măști și alegi autenticitatea.",
     includes: [
       "Dialoguri despre leadership autentic",
       "Exerciții de încredere și colaborare",
@@ -137,9 +137,9 @@ export default function RetreatsPage() {
             className="text-5xl sm:text-6xl lg:text-7xl font-semibold mb-8 leading-tight text-white"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Unele schimbări au nevoie{" "}
+            Loc pentru gânduri mai clare.{" "}
             <span className="italic" style={{ color: "#7C9A7E" }}>
-              de spațiu.
+              Oameni mai apropiați. Timp pentru tine.
             </span>
           </h1>
 
