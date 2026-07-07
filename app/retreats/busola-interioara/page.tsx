@@ -1,13 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const MAX_SPOTS = 25;
 const MIN_CONFIRM = 15;
 
-const editions = [
-  { id: "ed1", label: "Ediția I", dates: "28–31 august 2026", spotsUsed: 7 },
-  { id: "ed2", label: "Ediția II", dates: "4–6 septembrie 2026", spotsUsed: 3 },
+const EDITIONS = [
+  { id: "ed1", label: "Ediția I", dates: "28–31 august 2026" },
+  { id: "ed2", label: "Ediția II", dates: "4–6 septembrie 2026" },
 ];
 
 function getStatus(used: number) {
@@ -26,6 +26,31 @@ const includes = [
   "Mesele incluse conform pachetului",
   "Accesul la facilitățile locației",
   "Comunitatea participanților",
+  "📜 Certificat de Participare",
+  "📄 Fișa competențelor dezvoltate",
+];
+
+const competencies = [
+  "Comunicare interpersonală",
+  "Colaborare și lucru în echipă",
+  "Adaptabilitate și gestionarea schimbării",
+  "Inteligență emoțională",
+  "Leadership personal",
+  "Reziliență profesională",
+  "Gestionarea stresului",
+  "Wellbeing și prevenirea epuizării profesionale",
+  "Luarea deciziilor",
+  "Autoreflecție profesională",
+  "Competențe transversale",
+];
+
+const orgTypes = [
+  { icon: "🏥", label: "Spitale" },
+  { icon: "🏫", label: "Școli" },
+  { icon: "🏛️", label: "Instituții publice" },
+  { icon: "🤝", label: "ONG-uri" },
+  { icon: "🏢", label: "Companii" },
+  { icon: "🌐", label: "Organizații profesionale" },
 ];
 
 type FormData = {
@@ -36,17 +61,48 @@ type FormData = {
 export default function BusolaInterioarePage() {
   const [showForm, setShowForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [form, setForm] = useState<FormData>({
     nume: "", email: "", telefon: "", editie: "", participanti: "1", observatii: "",
   });
+  const [spotsOccupied, setSpotsOccupied] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    fetch("/api/spots")
+      .then((r) => r.json())
+      .then((d) => setSpotsOccupied(d.spotsOccupied ?? {}))
+      .catch(() => {});
+  }, []);
+
+  const editions = EDITIONS.map((ed) => ({
+    ...ed,
+    spotsUsed: spotsOccupied[ed.dates] ?? 0,
+  }));
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError("");
+    try {
+      const res = await fetch("/api/registrations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, participanti: Number(form.participanti) }),
+      });
+      if (!res.ok) throw new Error("Eroare la server.");
+      setSubmitted(true);
+      // Refresh spots
+      fetch("/api/spots").then((r) => r.json()).then((d) => setSpotsOccupied(d.spotsOccupied ?? {})).catch(() => {});
+    } catch {
+      setSubmitError("A apărut o eroare. Te rugăm încearcă din nou sau contactă-ne direct.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -76,10 +132,10 @@ export default function BusolaInterioarePage() {
             Claritate și direcție atunci când lucrurile par neclare.
           </p>
           <p className="text-lg leading-relaxed max-w-2xl mb-4" style={{ color: "var(--charcoal-soft)" }}>
-            Un weekend pentru oamenii care simt nevoia să se oprească, să respire și să privească lucrurile cu mai multă claritate.
+            Program experiențial de dezvoltare umană și profesională adresat persoanelor, echipelor, organizațiilor, instituțiilor publice, unităților de învățământ, unităților sanitare și companiilor.
           </p>
           <p className="text-lg leading-relaxed max-w-2xl mb-14" style={{ color: "var(--charcoal-soft)" }}>
-            Trei zile de conversații cu sens, reflecție, natură și experiențe care te ajută să te reconectezi cu ceea ce contează cu adevărat.
+            Trei zile de activități experiențiale, conversații cu sens, reflecție și natură — într-un cadru care oferă spațiu pentru oameni, idei și experiențe care contează.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-lg transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#9B7EBD" }}>
@@ -154,15 +210,15 @@ export default function BusolaInterioarePage() {
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Despre experiență</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Despre program</p>
               <h2 className="text-4xl sm:text-5xl font-semibold mb-10 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
                 De ce <span className="italic" style={{ color: "#9B7EBD" }}>BUSOLA INTERIOARĂ?</span>
               </h2>
               <div className="space-y-6 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                <p>Uneori avem nevoie să ieșim din ritmul obișnuit al vieții pentru a vedea mai clar direcția în care mergem.</p>
-                <p>BUSOLA INTERIOARĂ este o experiență creată pentru oamenii care se află într-un moment de schimbare, alegere sau restart și care simt nevoia unui spațiu în care să gândească, să reflecteze și să exploreze noi perspective.</p>
+                <p>BUSOLA INTERIOARĂ este un program experiențial de dezvoltare umană și profesională, construit în jurul unor competențe esențiale pentru viața personală și profesională.</p>
+                <p>Experiența este adresată persoanelor care se află într-un moment de schimbare, alegere sau restart, dar poate fi organizată și pentru echipe, organizații sau instituții care doresc să investească în dezvoltarea oamenilor lor.</p>
                 <p className="font-medium" style={{ color: "var(--charcoal)" }}>Nu oferim rețete și nici soluții universale.</p>
-                <p>Construim contexte, conversații și experiențe care pot genera claritate, energie și direcție.</p>
+                <p>Construim contexte, conversații și experiențe care pot genera claritate, energie și direcție — atât la nivel personal, cât și profesional.</p>
               </div>
             </div>
             <div className="rounded-2xl p-10" style={{ backgroundColor: "#F5F0E8" }}>
@@ -183,8 +239,53 @@ export default function BusolaInterioarePage() {
         </div>
       </section>
 
+      {/* CE COMPETENȚE DEZVOLTĂM */}
+      <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Competențe</p>
+              <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+                Ce competențe dezvoltăm?
+              </h2>
+              <p className="text-base leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
+                BUSOLA INTERIOARĂ este construită în jurul unor competențe esențiale pentru dezvoltarea profesională și personală.
+              </p>
+              <p className="text-base leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
+                În cadrul experienței sunt abordate și exersate competențe precum:
+              </p>
+              <ul className="space-y-3">
+                {competencies.map((c) => (
+                  <li key={c} className="flex items-center gap-3">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs" style={{ backgroundColor: "#9B7EBD" }}>✓</span>
+                    <span className="text-base" style={{ color: "var(--charcoal)" }}>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-5">
+              <div className="rounded-2xl p-8 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
+                <div className="text-3xl mb-4">📜</div>
+                <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Certificat de Participare</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>La finalul experienței, participanții primesc Certificat de Participare pentru programul BUSOLA INTERIOARĂ.</p>
+              </div>
+              <div className="rounded-2xl p-8 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
+                <div className="text-3xl mb-4">📄</div>
+                <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Fișa competențelor dezvoltate</h3>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>La finalul experienței, participanții primesc o Fișă a competențelor dezvoltate pe parcursul programului, care poate fi utilizată în dosarul profesional sau în procesele de formare organizațională.</p>
+              </div>
+              <div className="rounded-2xl p-8" style={{ backgroundColor: "#9B7EBD15", border: "1px solid rgba(155,126,189,0.2)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                  Programul utilizează <strong style={{ color: "var(--charcoal)" }}>metode experiențiale</strong>, activități de grup, reflecție ghidată, dialog facilitat și contexte de învățare aplicată.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* INVESTIȚIA TA */}
-      <section className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -207,6 +308,52 @@ export default function BusolaInterioarePage() {
               <button onClick={() => setShowForm(true)} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90" style={{ backgroundColor: "#9B7EBD" }}>
                 Înscrie-mă
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PENTRU ORGANIZAȚII – versiune actualizată */}
+      <section className="py-28 bg-white">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Pentru organizații</p>
+              <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+                Pentru organizații și instituții
+              </h2>
+              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                <p>BUSOLA INTERIOARĂ poate fi organizată atât pentru participanți individuali, cât și pentru grupuri din aceeași organizație sau instituție.</p>
+                <p>Programul poate fi adaptat în funcție de obiectivele organizației și profilul participanților.</p>
+                <p>Tematicile pot sprijini inițiative de <strong style={{ color: "var(--charcoal)" }}>dezvoltare profesională, wellbeing organizațional, leadership, colaborare, adaptabilitate</strong> și dezvoltarea competențelor transversale.</p>
+              </div>
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                {orgTypes.map((item) => (
+                  <div key={item.label} className="flex items-center gap-3 p-3 rounded-xl border" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
+                    <span className="text-xl">{item.icon}</span>
+                    <span className="text-sm font-medium" style={{ color: "var(--charcoal)" }}>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="rounded-2xl p-8" style={{ backgroundColor: "#F5F0E8", border: "1px solid rgba(155,126,189,0.15)" }}>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Achiziții instituționale</p>
+                <h3 className="text-xl font-semibold mb-5" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Participare prin proceduri de achiziție</h3>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>
+                  Pentru grupuri organizate și participări instituționale, AnimaMinds poate furniza oferte personalizate și documentația necesară proceselor de achiziție.
+                </p>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
+                  Pentru colaborări cu instituții publice, unități sanitare, unități de învățământ, ONG-uri sau companii care doresc participarea prin proceduri SEAP/SICAP, vă rugăm să ne contactați.
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm transition-all hover:opacity-90 w-full"
+                  style={{ backgroundColor: "#9B7EBD" }}
+                >
+                  Solicită ofertă pentru organizația mea
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -266,9 +413,9 @@ export default function BusolaInterioarePage() {
               <div className="p-10 text-center">
                 <div className="text-5xl mb-6">✦</div>
                 <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Mulțumim!</h3>
-                <p className="text-base leading-relaxed mb-2" style={{ color: "var(--charcoal-soft)" }}>Cererea ta de înscriere a fost înregistrată.</p>
-                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Vom reveni cu toate informațiile privind plata, organizarea și detaliile experienței.</p>
-                <button onClick={() => { setShowForm(false); setSubmitted(false); }} className="px-8 py-3 rounded-xl font-semibold text-white" style={{ backgroundColor: "#9B7EBD" }}>Închide</button>
+                <p className="text-base leading-relaxed mb-2" style={{ color: "var(--charcoal-soft)" }}>Solicitarea dumneavoastră a fost înregistrată cu succes.</p>
+                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Vă mulțumim și vă așteptăm cu drag. În perioada următoare veți fi contactat(ă) de echipa AnimaMinds.</p>
+                <button onClick={() => { setShowForm(false); setSubmitted(false); setForm({ nume: "", email: "", telefon: "", editie: "", participanti: "1", observatii: "" }); }} className="px-8 py-3 rounded-xl font-semibold text-white" style={{ backgroundColor: "#9B7EBD" }}>Închide</button>
               </div>
             ) : (
               <div className="p-8">
@@ -308,8 +455,11 @@ export default function BusolaInterioarePage() {
                     <label className="block text-sm font-medium mb-2" style={{ color: "var(--charcoal)" }}>Observații</label>
                     <textarea name="observatii" value={form.observatii} onChange={handleChange} rows={3} className="w-full px-4 py-3 rounded-xl border text-sm outline-none focus:border-purple-400 transition-colors resize-none" style={{ borderColor: "rgba(0,0,0,0.15)" }} placeholder="Orice informație relevantă pentru noi..." />
                   </div>
-                  <button type="submit" className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90" style={{ backgroundColor: "#9B7EBD" }}>
-                    Trimite înscrierea
+                  {submitError && (
+                    <p className="text-sm text-red-600 text-center">{submitError}</p>
+                  )}
+                  <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 disabled:opacity-60" style={{ backgroundColor: "#9B7EBD" }}>
+                    {submitting ? "Se trimite..." : "Trimite înscrierea"}
                   </button>
                 </form>
               </div>
