@@ -1,15 +1,11 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Users, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 export default function HeroSection() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
-
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -18,87 +14,44 @@ export default function HeroSection() {
           fill
           className="object-cover object-center"
           priority
-          quality={85}
+          quality={80}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, rgba(245,240,232,0.93) 0%, rgba(245,240,232,0.80) 40%, rgba(124,154,126,0.15) 100%)",
+              "linear-gradient(135deg, rgba(245,240,232,0.95) 0%, rgba(245,240,232,0.85) 50%, rgba(124,154,126,0.10) 100%)",
           }}
         />
       </div>
 
-      {/* Decorative shapes */}
-      <div
-        className="absolute top-20 right-10 w-64 h-64 rounded-full opacity-10 blur-3xl"
-        style={{ backgroundColor: "var(--sage)" }}
-      />
-      <div
-        className="absolute bottom-20 left-10 w-48 h-48 rounded-full opacity-10 blur-3xl"
-        style={{ backgroundColor: "var(--terracotta)" }}
-      />
-
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 w-full">
-        <div className="max-w-3xl">
-          {/* Label */}
-          <div
-            className={`flex items-center gap-2 mb-6 transition-all duration-700 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <Sparkles
-              size={14}
-              style={{ color: "var(--terracotta)" }}
-            />
-            <span className="section-label">Comunitate de învățare</span>
-          </div>
-
-          {/* Headline */}
+        <div className="max-w-2xl">
           <h1
-            className={`text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6 transition-all duration-700 delay-100 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
+            className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-5"
             style={{
               fontFamily: "Playfair Display, serif",
               color: "var(--charcoal)",
             }}
           >
-            Locul unde{" "}
-            <span style={{ color: "var(--sage)" }}>oamenii</span> și{" "}
-            <span
-              className="italic"
-              style={{ color: "var(--terracotta)" }}
-            >
-              ideile
-            </span>{" "}
-            cresc împreună.
+            AnimaMinds — programe experiențiale pentru oameni și organizații care vor să crească.
           </h1>
 
-          {/* Subtitle */}
           <p
-            className={`text-lg sm:text-xl leading-relaxed mb-10 max-w-xl transition-all duration-700 delay-200 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-            style={{ color: "var(--charcoal-soft)", fontFamily: "Inter, sans-serif" }}
+            className="text-lg sm:text-xl leading-relaxed mb-8 max-w-xl"
+            style={{ color: "var(--charcoal-soft)" }}
           >
-            AnimaMinds nu este o academie de cursuri. Este o comunitate în care
-            profesori, formatori, lideri și organizații se întâlnesc să învețe,
-            să evolueze și să construiască împreună ceva mai bun.
+            Comunitate de învățare practică, unde profesioniști, lideri și instituții descoperă instrumente pentru evoluție continuă.
           </p>
 
-          {/* CTAs */}
-          <div
-            className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/retreats/busola-interioara"
               className="btn-primary group"
+              style={{ backgroundColor: "#9B7EBD" }}
             >
-              Înscrie-te la Busola Interioară
+              Sunt interesat(ă) de Busola Interioară
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
@@ -110,25 +63,6 @@ export default function HeroSection() {
             >
               Colaborează cu noi
             </Link>
-          </div>
-
-          {/* Social proof */}
-          <div
-            className={`flex flex-wrap items-center gap-4 mt-8 transition-all duration-700 delay-500 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>+7.000</span> oameni
-            </p>
-            <span style={{ color: "rgba(0,0,0,0.2)" }}>·</span>
-            <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>+20</span> programe
-            </p>
-            <span style={{ color: "rgba(0,0,0,0.2)" }}>·</span>
-            <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>100%</span> practică
-            </p>
           </div>
         </div>
       </div>
