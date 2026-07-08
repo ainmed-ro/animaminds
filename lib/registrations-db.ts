@@ -1,10 +1,11 @@
 import { supabase } from "@/lib/supabase";
 
-export type RegistrationStatus = "Nou" | "Confirmat" | "Achitat" | "Anulat";
+export type RegistrationStatus = "INTERESAT" | "ÎNSCRIS" | "CONFIRMAT" | "ANULAT";
+export type PaymentStatus = "NEACHITAT" | "AVANS PLĂTIT" | "ACHITAT INTEGRAL";
 
 export type Registration = {
   id: string;
-  experience: string;
+  experience: string; // Program
   editie: string;
   nume: string;
   email: string;
@@ -12,6 +13,7 @@ export type Registration = {
   participanti: number;
   observatii: string;
   status: RegistrationStatus;
+  paymentStatus: PaymentStatus;
   createdAt: string;
 };
 
@@ -25,6 +27,7 @@ type DbRow = {
   participanti: number;
   observatii: string;
   status: string;
+  payment_status: string;
   created_at: string;
 };
 
@@ -39,6 +42,7 @@ function toRegistration(row: DbRow): Registration {
     participanti: row.participanti,
     observatii: row.observatii ?? "",
     status: row.status as RegistrationStatus,
+    paymentStatus: (row.payment_status as PaymentStatus) ?? "NEACHITAT",
     createdAt: row.created_at,
   };
 }
@@ -53,12 +57,26 @@ export async function readAll(): Promise<Registration[]> {
 }
 
 export async function insert(
-  reg: Omit<Registration, "id" | "createdAt" | "status">
+  reg: Omit<Registration, "id" | "createdAt" | "status" | "paymentStatus"> & {
+    status?: RegistrationStatus;
+    paymentStatus?: PaymentStatus;
+  }
 ): Promise<Registration> {
   const id = `reg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const { data, error } = await supabase
     .from("registrations")
-    .insert([{ id, experience: reg.experience, editie: reg.editie, nume: reg.nume, email: reg.email, telefon: reg.telefon, participanti: reg.participanti, observatii: reg.observatii ?? "", status: "Nou" }])
+    .insert([{
+      id,
+      experience: reg.experience,
+      editie: reg.editie,
+      nume: reg.nume,
+      email: reg.email,
+      telefon: reg.telefon,
+      participanti: reg.participanti,
+      observatii: reg.observatii ?? "",
+      status: reg.status ?? "INTERESAT",
+      payment_status: reg.paymentStatus ?? "NEACHITAT",
+    }])
     .select()
     .single();
   if (error) throw new Error(error.message);
@@ -67,11 +85,16 @@ export async function insert(
 
 export async function updateStatus(
   id: string,
-  status: RegistrationStatus
+  updates: { status?: RegistrationStatus; paymentStatus?: PaymentStatus }
 ): Promise<Registration | null> {
+  const dbUpdates: Record<string, string> = {};
+  if (updates.status) dbUpdates.status = updates.status;
+  if (updates.paymentStatus) dbUpdates.payment_status = updates.paymentStatus;
+  if (Object.keys(dbUpdates).length === 0) return null;
+
   const { data, error } = await supabase
     .from("registrations")
-    .update({ status })
+    .update(dbUpdates)
     .eq("id", id)
     .select()
     .single();
@@ -83,7 +106,7 @@ export async function getSpotsByEdition(): Promise<Record<string, number>> {
   const { data, error } = await supabase
     .from("registrations")
     .select("editie, participanti, status")
-    .neq("status", "Anulat");
+    .neq("status", "ANULAT");
   if (error) throw new Error(error.message);
   const counts: Record<string, number> = {};
   for (const r of data as { editie: string; participanti: number }[]) {

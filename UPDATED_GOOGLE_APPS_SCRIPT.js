@@ -21,7 +21,7 @@ function doPost(e) {
       sheetName = "CONTACT";
       resultMessage = 'Mesaj de contact salvat cu succes';
     } else {
-      sheetName = "ÎNSCRIERI";
+      sheetName = data.sheetName || "INSCRIERI";
       resultMessage = 'Înscriere salvată cu succes';
     }
     
@@ -60,20 +60,22 @@ function doPost(e) {
       const newId = lastId + 1;
       
       newRow = [
-        newId,                                    // ID
-        new Date().toLocaleString("ro-RO", {      // Data
+        newId,                                    // ID (col 1)
+        new Date().toLocaleString("ro-RO", {      // Data (col 2)
           timeZone: "Europe/Bucharest",
           year: "numeric",
-          month: "2-digit", 
+          month: "2-digit",
           day: "2-digit"
         }),
-        data.nume || "",
-        data.email || "",
-        data.telefon || "",
-        data.editie || "",
-        data.participanti || "1",
-        data.observatii || "",
-        "Nou"
+        data.nume || "",                          // Nume (col 3)
+        data.email || "",                         // Email (col 4)
+        data.telefon || "",                       // Telefon (col 5)
+        data.editie || "",                        // Editie (col 6)
+        data.participanti || "1",                 // Participanti (col 7)
+        data.observatii || "",                    // Observatii (col 8)
+        data.status || "INTERESAT",               // Status (col 9)
+        data.experience || "",                    // Program (col 10)
+        data.paymentStatus || "NEACHITAT"         // Payment Status (col 11)
       ];
     }
 
@@ -87,6 +89,8 @@ function doPost(e) {
     } else {
       sheet.getRange(lastRow, 2).setNumberFormat("dd/mm/yyyy");
       sheet.getRange(lastRow, 9).setFontWeight("bold");
+      sheet.getRange(lastRow, 10).setFontWeight("bold");
+      sheet.getRange(lastRow, 11).setFontWeight("bold");
     }
     
     // Returnează răspuns de succes

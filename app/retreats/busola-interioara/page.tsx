@@ -100,7 +100,13 @@ export default function BusolaInterioarePage() {
       const res = await fetch("/api/registrations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, participanti: Number(form.participanti) }),
+        body: JSON.stringify({
+          ...form,
+          participanti: Number(form.participanti),
+          experience: "BUSOLA INTERIOARĂ",
+          status: "INTERESAT",
+          paymentStatus: "NEACHITAT",
+        }),
       });
       if (!res.ok) throw new Error("Eroare la server.");
       setSubmitted(true);
@@ -667,9 +673,11 @@ export default function BusolaInterioarePage() {
               <div className="p-10 text-center">
                 <div className="text-5xl mb-6">✦</div>
                 <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Vă mulțumim pentru interes!</h3>
-                <p className="text-base leading-relaxed mb-2" style={{ color: "var(--charcoal-soft)" }}>Solicitarea dumneavoastră a fost înregistrată cu succes.</p>
-                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Detaliile finale privind programul, calendarul și investiția vor fi publicate până la 15 iulie 2026.</p>
-                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Înscrierile oficiale vor fi deschise după publicarea detaliilor finale ale programului. Vă invităm să reveniți pe această pagină pentru actualizări.</p>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Solicitarea dumneavoastră a fost înregistrată cu succes.</p>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>În această perioadă centralizăm persoanele interesate de programul Busola Interioară.</p>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Detaliile finale ale programului vor fi publicate după 15 iulie 2026.</p>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Vă rugăm să reveniți pe această pagină pentru actualizări.</p>
+                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Echipa AnimaMinds</p>
                 <button onClick={() => { setShowForm(false); setSubmitted(false); setForm({ nume: "", email: "", telefon: "", editie: "", participanti: "1", observatii: "" }); }} className="px-8 py-3 rounded-xl font-semibold text-white" style={{ backgroundColor: "#9B7EBD" }}>Închide</button>
               </div>
             ) : (

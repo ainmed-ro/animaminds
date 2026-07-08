@@ -1,16 +1,23 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import type { Registration, RegistrationStatus } from "@/lib/registrations-db";
+import type { Registration, RegistrationStatus, PaymentStatus } from "@/lib/registrations-db";
 
 const STATUS_COLORS: Record<RegistrationStatus, { bg: string; color: string }> = {
-  Nou: { bg: "#EBF5FF", color: "#2563EB" },
-  Confirmat: { bg: "#ECFDF5", color: "#059669" },
-  Achitat: { bg: "#F0FDF4", color: "#16A34A" },
-  Anulat: { bg: "#FEF2F2", color: "#DC2626" },
+  INTERESAT: { bg: "#FEF3C7", color: "#B45309" },
+  ÎNSCRIS: { bg: "#EBF5FF", color: "#2563EB" },
+  CONFIRMAT: { bg: "#ECFDF5", color: "#059669" },
+  ANULAT: { bg: "#FEF2F2", color: "#DC2626" },
 };
 
-const STATUSES: RegistrationStatus[] = ["Nou", "Confirmat", "Achitat", "Anulat"];
+const PAYMENT_STATUS_COLORS: Record<PaymentStatus, { bg: string; color: string }> = {
+  NEACHITAT: { bg: "#FEF2F2", color: "#DC2626" },
+  "AVANS PLĂTIT": { bg: "#FEF3C7", color: "#B45309" },
+  "ACHITAT INTEGRAL": { bg: "#ECFDF5", color: "#059669" },
+};
+
+const STATUSES: RegistrationStatus[] = ["INTERESAT", "ÎNSCRIS", "CONFIRMAT", "ANULAT"];
+const PAYMENT_STATUSES: PaymentStatus[] = ["NEACHITAT", "AVANS PLĂTIT", "ACHITAT INTEGRAL"];
 
 const ADMIN_PASS = process.env.NEXT_PUBLIC_ADMIN_PASS ?? "animaminds2026";
 
@@ -19,7 +26,9 @@ export default function AdminRegistrationsPage() {
   const [passInput, setPassInput] = useState("");
   const [passError, setPassError] = useState(false);
   const [registrations, setRegistrations] = useState<Registration[]>([]);
-  const [filter, setFilter] = useState<RegistrationStatus | "Toate">("Toate");
+  const [statusFilter, setStatusFilter] = useState<RegistrationStatus | "Toate">("Toate");
+  const [paymentStatusFilter, setPaymentStatusFilter] = useState<PaymentStatus | "Toate">("Toate");
+  const [programFilter, setProgramFilter] = useState("Toate");
   const [editionFilter, setEditionFilter] = useState("Toate");
   const [loading, setLoading] = useState(false);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
@@ -46,12 +55,15 @@ export default function AdminRegistrationsPage() {
     }
   }
 
-  async function handleStatusChange(id: string, status: RegistrationStatus) {
+  async function handleUpdate(
+    id: string,
+    updates: { status?: RegistrationStatus; paymentStatus?: PaymentStatus }
+  ) {
     setUpdatingId(id);
     await fetch(`/api/registrations/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status }),
+      body: JSON.stringify(updates),
     });
     await load();
     setUpdatingId(null);
@@ -84,12 +96,15 @@ export default function AdminRegistrationsPage() {
     );
   }
 
+  const programs = ["Toate", ...Array.from(new Set(registrations.map((r) => r.experience)))];
   const editions = ["Toate", ...Array.from(new Set(registrations.map((r) => r.editie)))];
 
   const filtered = registrations.filter((r) => {
-    const statusOk = filter === "Toate" || r.status === filter;
+    const statusOk = statusFilter === "Toate" || r.status === statusFilter;
+    const paymentOk = paymentStatusFilter === "Toate" || r.paymentStatus === paymentStatusFilter;
+    const programOk = programFilter === "Toate" || r.experience === programFilter;
     const editionOk = editionFilter === "Toate" || r.editie === editionFilter;
-    return statusOk && editionOk;
+    return statusOk && paymentOk && programOk && editionOk;
   });
 
   const stats = STATUSES.reduce<Record<string, number>>((acc, s) => {
@@ -98,7 +113,7 @@ export default function AdminRegistrationsPage() {
   }, {});
 
   const totalParticipants = registrations
-    .filter((r) => r.status !== "Anulat")
+    .filter((r) => r.status !== "ANULAT")
     .reduce((sum, r) => sum + r.participanti, 0);
 
   return (
@@ -108,7 +123,7 @@ export default function AdminRegistrationsPage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-1" style={{ color: "#7C9A7E" }}>AnimaMinds Admin</p>
-            <h1 className="text-xl font-semibold text-white" style={{ fontFamily: "Playfair Display, serif" }}>Înscrieri BUSOLA INTERIOARĂ</h1>
+            <h1 className="text-xl font-semibold text-white" style={{ fontFamily: "Playfair Display, serif" }}>Dashboard CRM</h1>
           </div>
           <div className="flex items-center gap-4">
             <button onClick={load} className="text-xs px-4 py-2 rounded-lg text-white border border-white/20 hover:bg-white/10 transition-colors">
@@ -123,7 +138,7 @@ export default function AdminRegistrationsPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
           <div className="bg-white rounded-xl p-5 text-center shadow-sm">
             <p className="text-3xl font-bold" style={{ color: "#3D3530" }}>{registrations.length}</p>
             <p className="text-xs mt-1" style={{ color: "#9B8E88" }}>Total înscrieri</p>
@@ -141,40 +156,56 @@ export default function AdminRegistrationsPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-xl p-4 mb-6 flex flex-wrap gap-3 items-center shadow-sm">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold" style={{ color: "#9B8E88" }}>Status:</span>
-            {(["Toate", ...STATUSES] as (RegistrationStatus | "Toate")[]).map((s) => (
-              <button
-                key={s}
-                onClick={() => setFilter(s)}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors"
-                style={{
-                  backgroundColor: filter === s ? "#9B7EBD" : "rgba(0,0,0,0.05)",
-                  color: filter === s ? "#fff" : "#3D3530",
-                }}
-              >
-                {s}
-              </button>
-            ))}
+        <div className="bg-white rounded-xl p-4 mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end shadow-sm">
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-semibold" style={{ color: "#9B8E88" }}>Program</span>
+            <select
+              value={programFilter}
+              onChange={(e) => setProgramFilter(e.target.value)}
+              className="px-3 py-2 rounded-lg text-xs border outline-none"
+              style={{ borderColor: "rgba(0,0,0,0.15)", color: "#3D3530" }}
+            >
+              {programs.map((p) => <option key={p} value={p}>{p}</option>)}
+            </select>
           </div>
-          <div className="flex items-center gap-2 ml-4">
-            <span className="text-xs font-semibold" style={{ color: "#9B8E88" }}>Ediție:</span>
-            {editions.map((e) => (
-              <button
-                key={e}
-                onClick={() => setEditionFilter(e)}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors"
-                style={{
-                  backgroundColor: editionFilter === e ? "#7C9A7E" : "rgba(0,0,0,0.05)",
-                  color: editionFilter === e ? "#fff" : "#3D3530",
-                }}
-              >
-                {e}
-              </button>
-            ))}
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-semibold" style={{ color: "#9B8E88" }}>Status</span>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value as RegistrationStatus | "Toate")}
+              className="px-3 py-2 rounded-lg text-xs border outline-none"
+              style={{ borderColor: "rgba(0,0,0,0.15)", color: "#3D3530" }}
+            >
+              <option value="Toate">Toate</option>
+              {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
+            </select>
           </div>
-          <span className="ml-auto text-xs" style={{ color: "#9B8E88" }}>{filtered.length} rezultate</span>
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-semibold" style={{ color: "#9B8E88" }}>Status plată</span>
+            <select
+              value={paymentStatusFilter}
+              onChange={(e) => setPaymentStatusFilter(e.target.value as PaymentStatus | "Toate")}
+              className="px-3 py-2 rounded-lg text-xs border outline-none"
+              style={{ borderColor: "rgba(0,0,0,0.15)", color: "#3D3530" }}
+            >
+              <option value="Toate">Toate</option>
+              {PAYMENT_STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
+            </select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="text-xs font-semibold" style={{ color: "#9B8E88" }}>Ediție</span>
+            <select
+              value={editionFilter}
+              onChange={(e) => setEditionFilter(e.target.value)}
+              className="px-3 py-2 rounded-lg text-xs border outline-none"
+              style={{ borderColor: "rgba(0,0,0,0.15)", color: "#3D3530" }}
+            >
+              {editions.map((e) => <option key={e} value={e}>{e}</option>)}
+            </select>
+          </div>
+          <div className="text-right">
+            <span className="text-xs" style={{ color: "#9B8E88" }}>{filtered.length} rezultate</span>
+          </div>
         </div>
 
         {/* Table */}
@@ -183,14 +214,14 @@ export default function AdminRegistrationsPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ backgroundColor: "#F5F0E8" }}>
-                  {["Data", "Nume", "Email", "Telefon", "Ediție", "Part.", "Observații", "Status"].map((h) => (
+                  {["Data", "Program", "Nume", "Email", "Telefon", "Ediție", "Part.", "Observații", "Status", "Plată"].map((h) => (
                     <th key={h} className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest" style={{ color: "#9B8E88" }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {filtered.length === 0 && (
-                  <tr><td colSpan={8} className="px-4 py-12 text-center text-sm" style={{ color: "#9B8E88" }}>Nicio înscriere găsită.</td></tr>
+                  <tr><td colSpan={10} className="px-4 py-12 text-center text-sm" style={{ color: "#9B8E88" }}>Nicio înscriere găsită.</td></tr>
                 )}
                 {filtered.map((reg) => (
                   <tr key={reg.id} className="border-t hover:bg-gray-50 transition-colors" style={{ borderColor: "rgba(0,0,0,0.05)" }}>
@@ -199,6 +230,7 @@ export default function AdminRegistrationsPage() {
                       <br />
                       <span>{new Date(reg.createdAt).toLocaleTimeString("ro-RO", { hour: "2-digit", minute: "2-digit" })}</span>
                     </td>
+                    <td className="px-4 py-3 text-xs whitespace-nowrap" style={{ color: "#6B5E58" }}>{reg.experience}</td>
                     <td className="px-4 py-3 font-medium" style={{ color: "#3D3530" }}>{reg.nume}</td>
                     <td className="px-4 py-3 text-xs" style={{ color: "#6B5E58" }}>
                       <a href={`mailto:${reg.email}`} className="hover:underline">{reg.email}</a>
@@ -215,7 +247,7 @@ export default function AdminRegistrationsPage() {
                       <select
                         value={reg.status}
                         disabled={updatingId === reg.id}
-                        onChange={(e) => handleStatusChange(reg.id, e.target.value as RegistrationStatus)}
+                        onChange={(e) => handleUpdate(reg.id, { status: e.target.value as RegistrationStatus })}
                         className="text-xs font-semibold px-2 py-1.5 rounded-lg border-0 outline-none cursor-pointer"
                         style={{
                           backgroundColor: STATUS_COLORS[reg.status].bg,
@@ -223,6 +255,22 @@ export default function AdminRegistrationsPage() {
                         }}
                       >
                         {STATUSES.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </select>
+                    </td>
+                    <td className="px-4 py-3">
+                      <select
+                        value={reg.paymentStatus}
+                        disabled={updatingId === reg.id}
+                        onChange={(e) => handleUpdate(reg.id, { paymentStatus: e.target.value as PaymentStatus })}
+                        className="text-xs font-semibold px-2 py-1.5 rounded-lg border-0 outline-none cursor-pointer"
+                        style={{
+                          backgroundColor: PAYMENT_STATUS_COLORS[reg.paymentStatus].bg,
+                          color: PAYMENT_STATUS_COLORS[reg.paymentStatus].color,
+                        }}
+                      >
+                        {PAYMENT_STATUSES.map((s) => (
                           <option key={s} value={s}>{s}</option>
                         ))}
                       </select>

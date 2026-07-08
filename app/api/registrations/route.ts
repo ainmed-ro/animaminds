@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { insert, readAll, getSpotsByEdition } from "@/lib/registrations-db";
+import { insert, readAll, getSpotsByEdition, type RegistrationStatus, type PaymentStatus } from "@/lib/registrations-db";
 import { participantEmailHtml, adminEmailHtml } from "@/lib/email-templates";
 import { Resend } from "resend";
 
@@ -16,10 +16,20 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { nume, email, telefon, editie, participanti, observatii, experience } = body;
+    const { nume, email, telefon, editie, participanti, observatii, experience, status, paymentStatus } = body;
 
     if (!nume || !email || !telefon || !editie) {
       return NextResponse.json({ error: "Câmpuri obligatorii lipsă." }, { status: 400 });
+    }
+
+    const VALID_STATUSES: RegistrationStatus[] = ["INTERESAT", "ÎNSCRIS", "CONFIRMAT", "ANULAT"];
+    const VALID_PAYMENTS: PaymentStatus[] = ["NEACHITAT", "AVANS PLĂTIT", "ACHITAT INTEGRAL"];
+
+    if (status && !VALID_STATUSES.includes(status)) {
+      return NextResponse.json({ error: "Status invalid." }, { status: 400 });
+    }
+    if (paymentStatus && !VALID_PAYMENTS.includes(paymentStatus)) {
+      return NextResponse.json({ error: "Status plată invalid." }, { status: 400 });
     }
 
     // Salvare în baza de date locală
@@ -31,12 +41,17 @@ export async function POST(req: NextRequest) {
       telefon,
       participanti: Number(participanti) || 1,
       observatii: observatii ?? "",
+      status: status ?? "INTERESAT",
+      paymentStatus: paymentStatus ?? "NEACHITAT",
     });
 
     // Trimitere date către Google Sheets
     try {
       const googleSheetsData = {
         formType: "ÎNSCRIERI",
+        experience: experience ?? "BUSOLA INTERIOARĂ",
+        status: status ?? "INTERESAT",
+        paymentStatus: paymentStatus ?? "NEACHITAT",
         nume,
         email,
         telefon,
