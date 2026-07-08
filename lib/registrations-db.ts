@@ -106,7 +106,7 @@ export async function getSpotsByEdition(): Promise<Record<string, number>> {
   const { data, error } = await supabase
     .from("registrations")
     .select("editie, participanti, status")
-    .neq("status", "ANULAT");
+    .in("status", ["CONFIRMAT"]);
   if (error) throw new Error(error.message);
   const counts: Record<string, number> = {};
   for (const r of data as { editie: string; participanti: number }[]) {
