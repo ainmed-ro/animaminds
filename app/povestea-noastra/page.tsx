@@ -14,7 +14,7 @@ export default function PovEsteaNoastra() {
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/ws-sala-atenta.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
+          <Image src="/images/workshop-sala.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.75) 50%, rgba(124,154,126,0.10) 100%)" }} />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">

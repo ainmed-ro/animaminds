@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const programs = [
   {
-    image: "/images/prog-rezilienta.jpg",
+    image: "/images/workshop-activity.jpg",
     badge: "Reziliență & Wellbeing",
     badgeColor: "var(--sage)",
     gradient: "linear-gradient(135deg, #4a7c59 0%, #7C9A7E 50%, #a8c5a0 100%)",
@@ -21,9 +21,11 @@ const programs = [
     description:
       "Un program pentru cei care simt că nu mai au timp să respire. Explorăm împreună ce te epuizează, ce te reîncarcă și cum îți construiești resurse interne care rezistă în timp — indiferent de presiunea din jur.",
     for: "Profesori · Echipe din companii · Manageri · Oricine se simte copleșit",
+    active: false,
+    status: "În curând"
   },
   {
-    image: "/images/prog-comunicare.jpg",
+    image: "/images/engaged-audience.jpg",
     badge: "Comunicare",
     badgeColor: "var(--terracotta)",
     gradient: "linear-gradient(135deg, #8B3A2A 0%, #C4785A 50%, #d9956e 100%)",
@@ -33,21 +35,25 @@ const programs = [
     description:
       "Nu este despre tehnici de convingere sau discursuri perfecte. Este despre claritate, curaj și conexiune reală. Învățăm să spunem ce avem de spus fără să rănim și fără să tăcem când contează.",
     for: "Profesioniști · Manageri · Profesori · Tineri la început de carieră",
+    active: false,
+    status: "În curând"
   },
   {
-    image: "/images/prog-ai.jpg",
+    image: "/images/digital-training.jpg",
     badge: "AI & Digital",
     badgeColor: "var(--sage)",
     gradient: "linear-gradient(135deg, #2D4A5C 0%, #3d6b8a 50%, #5d8fa8 100%)",
     symbol: "✦",
     slogan: "Folosește AI. Nu îl lăsa să te folosească pe tine.",
-    title: "Viitorul nu este pentru cei care știu mai mult. Este pentru cei care știu să întrebe mai bine.",
+    title: "Viitorul nu este pentru cei care știu mai mult. Este pentru cei care știu să întreabe mai bine.",
     description:
       "Inteligența artificială nu vine să îți ia locul. Vine să preia ce este plictisitor, repetitiv și consumator de timp — ca tu să te poți ocupa de ce contează cu adevărat. Fără jargon, fără frică, cu aplicații concrete.",
     for: "Profesori · Corporatiști · Antreprenori · Tineri care vor să rămână relevanți",
+    active: false,
+    status: "În curând"
   },
   {
-    image: "/images/prog-metacognitie.jpg",
+    image: "/images/workshop-indoor.jpg",
     badge: "Dezvoltare personală",
     badgeColor: "var(--terracotta)",
     gradient: "linear-gradient(135deg, #5C3D6B 0%, #8a5da8 50%, #a87dc5 100%)",
@@ -57,9 +63,11 @@ const programs = [
     description:
       "De ce unii oameni absorb și aplică rapid, iar alții simt că se învârt în cerc? Răspunsul este în cum gândim despre gândire. Acest program îți oferă instrumentele să înveți mai eficient — la orice vârstă, în orice domeniu.",
     for: "Studenți și tineri · Profesioniști în reconversie · Profesori · Oricine vrea să progreseze",
+    active: false,
+    status: "În curând"
   },
   {
-    image: "/images/prog-parenting.jpg",
+    image: "/images/workshop-group-raise.jpg",
     badge: "Familie & Comunitate",
     badgeColor: "var(--sage)",
     gradient: "linear-gradient(135deg, #7A5C3A 0%, #b08050 50%, #c9a070 100%)",
@@ -69,6 +77,8 @@ const programs = [
     description:
       "Nu există părinți perfecți — și nici nu trebuie să existe. Există părinți prezenți, care încearcă să înțeleagă. Acest program este un spațiu în care explorăm împreună ce au nevoie copiii noștri și cum construim relații care durează.",
     for: "Părinți · Cadre didactice · ONG-uri și școli · Companii cu programe de wellbeing familial",
+    active: false,
+    status: "În curând"
   },
 ];
 
@@ -130,7 +140,7 @@ export default function ProgramePage() {
                     className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border"
                     style={{ color: "var(--charcoal-soft)", borderColor: "var(--cream-dark)" }}
                   >
-                    În curând
+                    {program.status || "În curând"}
                   </span>
                 </div>
                 <h2
@@ -158,10 +168,10 @@ export default function ProgramePage() {
             className="text-4xl font-semibold text-white mb-5"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Vrei un program construit exact pentru tine?
+            Programele noastre vor fi disponibile curând
           </h2>
           <p className="text-lg mb-8" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Adaptăm orice program pentru echipa, organizația sau contextul tău. Hai să vorbim despre ce ai nevoie cu adevărat.
+            Momentan te poți înscrie la BUSOLA INTERIOARĂ. Pentru celelalte programe, hai să vorbim despre ce ai nevoie și când le-am lansa.
           </p>
           <Link
             href="/contact"

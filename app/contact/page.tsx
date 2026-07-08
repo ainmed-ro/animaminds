@@ -12,6 +12,7 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -22,9 +23,49 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setError("");
+
+    try {
+      // Trimiterea datelor către API-ul Supabase
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.nume,
+          email: form.email,
+          phone: "", // Contact form doesn't have phone field
+          organization: form.organizatie,
+          subject: form.subiect,
+          message: form.mesaj,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Eroare la server.");
+      }
+
+      // Succes
+      setLoading(false);
+      setSubmitted(true);
+      
+      // Reset form
+      setForm({
+        nume: "",
+        email: "",
+        organizatie: "",
+        subiect: "",
+        mesaj: "",
+      });
+      
+    } catch (err) {
+      setLoading(false);
+      setError("A apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou sau să ne contactezi direct la contact@animaminds.ro");
+      console.error("Eroare trimitere formular:", err);
+    }
   };
 
   return (
@@ -337,6 +378,15 @@ export default function ContactPage() {
                     </a>
                     .
                   </div>
+
+                  {error && (
+                    <div
+                      className="p-4 rounded-lg text-xs"
+                      style={{ backgroundColor: "#FEE2E2", color: "#DC2626", border: "1px solid #FECACA" }}
+                    >
+                      {error}
+                    </div>
+                  )}
 
                   <button
                     type="submit"

@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Câmpuri obligatorii lipsă." }, { status: 400 });
     }
 
+    // Salvare în baza de date locală
     const reg = await insert({
       experience: experience ?? "BUSOLA INTERIOARĂ",
       editie,
@@ -31,6 +32,35 @@ export async function POST(req: NextRequest) {
       participanti: Number(participanti) || 1,
       observatii: observatii ?? "",
     });
+
+    // Trimitere date către Google Sheets
+    try {
+      const googleSheetsData = {
+        formType: "ÎNSCRIERI",
+        nume,
+        email,
+        telefon,
+        editie,
+        participanti: String(participanti || "1"),
+        observatii: observatii ?? "",
+      };
+
+      const googleSheetsUrl = process.env.GOOGLE_SHEETS_URL || "https://script.google.com/macros/s/AKfycbxyU8hC9f8cVZzLqQhJkXmN3pL7wR6sT4vK2nY5fG8bH9cJdA/exec";
+      
+      await fetch(googleSheetsUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(googleSheetsData),
+        mode: "no-cors",
+      });
+      
+      console.log("Date trimise în Google Sheets pentru:", nume);
+    } catch (googleSheetsErr) {
+      console.error("Google Sheets error:", googleSheetsErr);
+      // Nu blocăm procesul dacă Google Sheets eșuează
+    }
 
     // Email towards participant
     try {

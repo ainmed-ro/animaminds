@@ -26,8 +26,10 @@ const retreats = [
     subtitle: "Claritate și direcție când lucrurile par neclare",
     duration: "3 zile · 2 nopți",
     accentColor: "#9B7EBD",
-    badge: "Înscrieri deschise",
+    badge: "🔥 LANSARE - Înscrieri deschise",
     link: "/retreats/busola-interioara",
+    active: true,
+    featured: true,
     description:
       "Program experiențial pentru oamenii care se află într-un moment de schimbare, alegere sau restart. Trei zile de conversații cu sens, reflecție și timp pentru a privi lucrurile cu mai multă claritate.",
     includes: [
@@ -44,7 +46,9 @@ const retreats = [
     subtitle: "Claritate mentală în liniștea naturii",
     duration: "3 zile · 2 nopți",
     accentColor: "#7C9A7E",
-    badge: null,
+    badge: "În curând",
+    link: null,
+    active: false,
     description:
       "Departe de agitația zilnică și de zgomotul digital, explorăm cum ne folosim atenția, cum luăm decizii și cum construim mai multă claritate în viața de zi cu zi.",
     includes: [
@@ -61,7 +65,9 @@ const retreats = [
     subtitle: "Oprește-te. Respiră. Privește lucrurile altfel.",
     duration: "2 zile · 1 noapte",
     accentColor: "#9B7EBD",
-    badge: null,
+    badge: "În curând",
+    link: null,
+    active: false,
     description:
       "Un weekend fără agendă încărcată și fără presiune. Spațiu, natură și oameni cu care poți vorbi deschis despre ce te obosește și ce îți dă energie.",
     includes: [
@@ -78,7 +84,9 @@ const retreats = [
     subtitle: "Ce rămâne esențial uman în era inteligenței artificiale",
     duration: "3 zile · 2 nopți",
     accentColor: "#C4714F",
-    badge: null,
+    badge: "În curând",
+    link: null,
+    active: false,
     description:
       "Explorăm împreună ce înseamnă să gândești critic, să te adaptezi și să rămâi tu însuți într-o lume care se schimbă rapid. O conversație sinceră despre prezent și viitor.",
     includes: [
@@ -95,7 +103,9 @@ const retreats = [
     subtitle: "Cum conduci oameni reali, nu organigrame",
     duration: "3 zile · 2 nopți",
     accentColor: "#4A6FA5",
-    badge: null,
+    badge: "În curând",
+    link: null,
+    active: false,
     description:
       "Program experiențial pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când renunți la măști și alegi autenticitatea.",
     includes: [
@@ -246,16 +256,32 @@ export default function RetreatsPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {retreats.map((retreat) => (
+          <div className="space-y-8">
+            {retreats.map((retreat, index) => (
               <div
                 key={retreat.id}
-                className="group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                style={{ borderColor: "rgba(0,0,0,0.07)", boxShadow: "0 2px 24px rgba(0,0,0,0.06)" }}
+                className={`group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
+                  retreat.featured ? 'ring-4 ring-purple-400 ring-offset-4 shadow-2xl z-10 my-12' : ''
+                }`}
+                style={{ 
+                  borderColor: retreat.featured ? "rgba(155, 126, 189, 0.4)" : "rgba(0,0,0,0.07)", 
+                  boxShadow: retreat.featured ? "0 12px 48px rgba(155, 126, 189, 0.35)" : "0 2px 24px rgba(0,0,0,0.06)",
+                  transform: retreat.featured ? "scale(1.06)" : "scale(1)",
+                  opacity: retreat.active ? 1 : 0.65,
+                  filter: retreat.active ? "none" : "grayscale(35%)"
+                }}
               >
-                <div className="h-2 w-full" style={{ backgroundColor: retreat.accentColor }} />
+                <div className={`h-2 w-full ${retreat.featured ? 'bg-gradient-to-r from-purple-400 to-purple-600' : ''}`} style={{ backgroundColor: retreat.featured ? '' : retreat.accentColor }} />
 
                 <div className="p-8">
+                  {retreat.featured && (
+                    <div className="flex justify-end mb-3">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full bg-purple-500 text-white shadow-md">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                        Recomandat
+                      </span>
+                    </div>
+                  )}
                   <div className="flex items-start justify-between mb-4">
                     {retreat.badge ? (
                       <span
@@ -309,9 +335,9 @@ export default function RetreatsPage() {
                   </div>
 
                   <div className="pt-5 border-t" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
-                    {(retreat as { link?: string }).link ? (
+                    {retreat.active ? (
                       <Link
-                        href={(retreat as { link?: string }).link!}
+                        href={retreat.link!}
                         className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
                         style={{ color: retreat.accentColor }}
                       >
@@ -319,10 +345,10 @@ export default function RetreatsPage() {
                       </Link>
                     ) : (
                       <span
-                        className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full"
+                        className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full cursor-not-allowed opacity-80"
                         style={{ backgroundColor: "rgba(0,0,0,0.04)", color: "var(--charcoal-soft)" }}
                       >
-                        În pregătire
+                        Înscrierile nu sunt deschise momentan
                       </span>
                     )}
                   </div>
@@ -363,11 +389,11 @@ export default function RetreatsPage() {
               Hai să discutăm
             </Link>
             <Link
-              href="/experiences"
+              href="/retreats/busola-interioara"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-medium transition-all border text-base"
-              style={{ color: "rgba(255,255,255,0.7)", borderColor: "rgba(255,255,255,0.15)" }}
+              style={{ color: "rgba(255,255,255,0.9)", borderColor: "rgba(255,255,255,0.25)" }}
             >
-              Vezi toate experiențele
+              Înscrie-te la Busola Interioară
             </Link>
           </div>
         </div>

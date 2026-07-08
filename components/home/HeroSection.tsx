@@ -95,10 +95,10 @@ export default function HeroSection() {
             }`}
           >
             <Link
-              href="/programe"
+              href="/retreats/busola-interioara"
               className="btn-primary group"
             >
-              Descoperă programele
+              Înscrie-te la Busola Interioară
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
