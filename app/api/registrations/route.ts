@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from: FROM_EMAIL,
         to: [reg.email],
-        subject: "Rezervarea dumneavoastră a fost înregistrată",
+        subject: "Manifestarea dumneavoastră de interes a fost înregistrată — BUSOLA INTERIOARĂ",
         html: participantEmailHtml(reg),
       });
     } catch (emailErr) {
