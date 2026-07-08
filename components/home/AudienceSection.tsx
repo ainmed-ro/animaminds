@@ -45,9 +45,9 @@ export default function AudienceSection() {
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-16 lg:py-20 bg-white" ref={ref}>
+    <section className="py-14 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Left: Image */}
           <div
             className={`relative transition-all duration-700 ${
@@ -72,8 +72,8 @@ export default function AudienceSection() {
             </div>
             {/* Floating card */}
             <div
-              className="absolute -bottom-6 -right-6 p-5 rounded-xl shadow-xl"
-              style={{ backgroundColor: "white", maxWidth: "200px" }}
+              className="absolute bottom-4 right-4 p-4 rounded-xl shadow-xl"
+              style={{ backgroundColor: "white", maxWidth: "180px" }}
             >
               <p
                 className="text-2xl font-bold"

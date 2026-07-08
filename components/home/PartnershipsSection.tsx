@@ -36,7 +36,7 @@ export default function PartnershipsSection() {
 
   return (
     <section
-      className="py-16 lg:py-20"
+      className="py-14"
       style={{ backgroundColor: "var(--cream)" }}
       ref={ref}
     >
@@ -126,7 +126,7 @@ export default function PartnershipsSection() {
         </div>
 
         {/* Photo strip */}
-        <div className="mt-10 grid grid-cols-3 md:grid-cols-6 gap-3">
+        <div className="mt-8 grid grid-cols-3 md:grid-cols-6 gap-3">
           {[
             { src: "/images/alina-prezentare.jpg", alt: "Prezentare Alina" },
             { src: "/images/diplome-zambet.jpg", alt: "Diplome" },

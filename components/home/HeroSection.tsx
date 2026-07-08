@@ -9,7 +9,7 @@ export default function HeroSection() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -40,7 +40,7 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 w-full">
         <div className="max-w-3xl">
           {/* Label */}
           <div
@@ -57,7 +57,7 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1
-            className={`text-5xl sm:text-6xl lg:text-7xl font-semibold leading-tight mb-6 transition-all duration-700 delay-100 ${
+            className={`text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6 transition-all duration-700 delay-100 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{
@@ -114,34 +114,23 @@ export default function HeroSection() {
 
           {/* Social proof */}
           <div
-            className={`flex flex-wrap items-center gap-6 mt-10 transition-all duration-700 delay-500 ${
+            className={`flex flex-wrap items-center gap-4 mt-8 transition-all duration-700 delay-500 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="text-center">
-              <p className="text-3xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--sage)" }}>+7.000</p>
-              <p className="text-xs mt-0.5" style={{ color: "var(--charcoal-soft)" }}>oameni care au crescut cu noi</p>
-            </div>
-            <div className="h-10 w-px bg-gray-200" />
-            <div className="text-center">
-              <p className="text-3xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--sage)" }}>+20</p>
-              <p className="text-xs mt-0.5" style={{ color: "var(--charcoal-soft)" }}>programe livrate în teren</p>
-            </div>
-            <div className="h-10 w-px bg-gray-200" />
-            <div className="text-center">
-              <p className="text-3xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--sage)" }}>100%</p>
-              <p className="text-xs mt-0.5" style={{ color: "var(--charcoal-soft)" }}>practică, zero teorie goală</p>
-            </div>
+            <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
+              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>+7.000</span> oameni
+            </p>
+            <span style={{ color: "rgba(0,0,0,0.2)" }}>·</span>
+            <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
+              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>+20</span> programe
+            </p>
+            <span style={{ color: "rgba(0,0,0,0.2)" }}>·</span>
+            <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
+              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>100%</span> practică
+            </p>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 opacity-50">
-        <div className="w-px h-8 bg-gray-400 animate-pulse" />
-        <span className="text-xs text-gray-500 tracking-widest uppercase">
-          scroll
-        </span>
       </div>
     </section>
   );

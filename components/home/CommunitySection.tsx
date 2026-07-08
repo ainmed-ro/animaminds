@@ -18,7 +18,7 @@ export default function CommunitySection() {
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-16 lg:py-20 bg-white" ref={ref}>
+    <section className="py-14 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
@@ -57,9 +57,7 @@ export default function CommunitySection() {
           {photos.map((photo, i) => (
             <div
               key={photo.src}
-              className={`relative overflow-hidden rounded-xl ${
-                i === 0 ? "aspect-[3/4]" : i === 3 ? "aspect-[3/4]" : "aspect-square"
-              }`}
+              className="relative overflow-hidden rounded-xl aspect-square"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <Image
@@ -86,7 +84,7 @@ export default function CommunitySection() {
           }`}
         >
           <div
-            className="p-8 rounded-2xl"
+            className="p-6 rounded-2xl"
             style={{ backgroundColor: "var(--cream)" }}
           >
             <Quote

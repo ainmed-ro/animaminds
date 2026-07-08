@@ -43,7 +43,7 @@ export default function ContributionSection() {
 
   return (
     <section
-      className="py-16 lg:py-20"
+      className="py-14"
       style={{ backgroundColor: "var(--cream)" }}
       ref={ref}
     >
