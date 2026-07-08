@@ -62,14 +62,14 @@ export default function Footer() {
               <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--sage-light)" }}>
                 Urmărește-ne și contactează-ne
               </p>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-3">
                 {/* Facebook */}
                 <a
                   href="https://www.facebook.com/profile.php?id=61591916964198"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="AnimaMinds pe Facebook"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl transition-all hover:opacity-90"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all hover:opacity-90 active:opacity-70"
                   style={{ backgroundColor: "#1877F215", border: "1px solid #1877F240" }}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
@@ -84,7 +84,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contactează AnimaMinds pe WhatsApp"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl transition-all hover:opacity-90"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all hover:opacity-90 active:opacity-70"
                   style={{ backgroundColor: "#25D36615", border: "1px solid #25D36640" }}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366">

@@ -133,23 +133,23 @@ export default function BusolaInterioarePage() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-8" style={{ backgroundColor: "#9B7EBD20", color: "#9B7EBD" }}>
             ✦ Înscrieri deschise
           </div>
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-6 leading-none" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-6 leading-none" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             BUSOLA<br /><span className="italic" style={{ color: "#9B7EBD" }}>INTERIOARĂ</span>
           </h1>
-          <p className="text-2xl font-medium mb-8 max-w-2xl" style={{ color: "var(--charcoal)", fontFamily: "Playfair Display, serif" }}>
+          <p className="text-xl sm:text-2xl font-medium mb-8 max-w-2xl" style={{ color: "var(--charcoal)", fontFamily: "Playfair Display, serif" }}>
             Claritate și direcție atunci când lucrurile par neclare.
           </p>
-          <p className="text-lg leading-relaxed max-w-2xl mb-4" style={{ color: "var(--charcoal-soft)" }}>
+          <p className="text-base sm:text-lg leading-relaxed max-w-2xl mb-4" style={{ color: "var(--charcoal-soft)" }}>
             Program experiențial de dezvoltare umană și profesională — adresat persoanelor, echipelor, companiilor, instituțiilor publice, unităților sanitare, unităților de învățământ și organizațiilor.
           </p>
-          <p className="text-lg leading-relaxed max-w-2xl mb-14" style={{ color: "var(--charcoal-soft)" }}>
+          <p className="text-base sm:text-lg leading-relaxed max-w-2xl mb-12" style={{ color: "var(--charcoal-soft)" }}>
             Trei zile de activități experiențiale, dialog, reflecție și natură — într-un cadru care creează spațiu pentru claritate, dezvoltare și perspective noi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-lg transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#9B7EBD" }}>
+            <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-base sm:text-lg transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#9B7EBD" }}>
               Înscrie-mă
             </button>
-            <a href="#despre" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-medium text-lg transition-all border hover:bg-white" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
+            <a href="#despre" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-base sm:text-lg transition-all border hover:bg-white active:scale-95" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
               Află mai multe
             </a>
           </div>
@@ -397,14 +397,14 @@ export default function BusolaInterioarePage() {
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Format</p>
           <h2 className="text-2xl sm:text-3xl font-semibold mb-8" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Durata programului</h2>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ backgroundColor: "#F5F0E8" }}>
-              <span className="text-2xl">📅</span>
-              <span className="text-base font-medium" style={{ color: "var(--charcoal)" }}>3 zile / 2 nopți</span>
+              <span className="text-2xl flex-shrink-0">📅</span>
+              <span className="text-sm sm:text-base font-medium" style={{ color: "var(--charcoal)" }}>3 zile / 2 nopți</span>
             </div>
             <div className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ backgroundColor: "#F5F0E8" }}>
-              <span className="text-2xl">🕒</span>
-              <span className="text-base font-medium" style={{ color: "var(--charcoal)" }}>Aproximativ 24 de ore de activități, conversații şi experiențe de grup</span>
+              <span className="text-2xl flex-shrink-0">🕒</span>
+              <span className="text-sm sm:text-base font-medium leading-snug" style={{ color: "var(--charcoal)" }}>Aproximativ 24 de ore de activități, conversații şi experiențe de grup</span>
             </div>
           </div>
         </div>
@@ -602,8 +602,8 @@ export default function BusolaInterioarePage() {
 
       {/* MODAL FORMULAR */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ backgroundColor: "rgba(0,0,0,0.6)" }}>
-          <div className="bg-white rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.2)" }}>
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" style={{ backgroundColor: "rgba(0,0,0,0.6)" }}>
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl w-full sm:max-w-lg max-h-[92vh] overflow-y-auto" style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.2)", overscrollBehavior: "contain" }}>
             {submitted ? (
               <div className="p-10 text-center">
                 <div className="text-5xl mb-6">✦</div>
