@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://animaminds.ro"),
   title: {
     default: "AnimaMinds — Locul unde oamenii și ideile cresc împreună",
     template: "%s | AnimaMinds",
