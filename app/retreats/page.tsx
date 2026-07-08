@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AnimaMinds Retreats — Experiențe de 2–3 zile în natură",
+  title: "AnimaMinds — Programe Experiențiale de Dezvoltare",
   description:
-    "Retreat-uri de 2–3 zile la Zărnești – Piatra Craiului. Conversații cu sens, reflecție și timp pentru a privi lucrurile cu mai multă claritate.",
+    "Programe experiențiale de dezvoltare umană și profesională, desfășurate pe parcursul a 2–3 zile la Zărnești – Piatra Craiului. Conversații cu sens, reflecție și perspective noi.",
   openGraph: {
-    title: "AnimaMinds Retreats",
-    description: "Experiențe umane în natură.",
+    title: "AnimaMinds — Programe Experiențiale de Dezvoltare Umană și Profesională",
+    description: "Programe experiențiale de dezvoltare umană și profesională — AnimaMinds.",
     url: "https://animaminds.ro/retreats",
   },
 };
@@ -29,7 +29,7 @@ const retreats = [
     badge: "Înscrieri deschise",
     link: "/retreats/busola-interioara",
     description:
-      "Un retreat pentru oamenii care se află într-un moment de schimbare, alegere sau restart. Trei zile de conversații cu sens, reflecție și timp pentru a privi lucrurile cu mai multă claritate.",
+      "Program experiențial pentru oamenii care se află într-un moment de schimbare, alegere sau restart. Trei zile de conversații cu sens, reflecție și timp pentru a privi lucrurile cu mai multă claritate.",
     includes: [
       "Activități experiențiale ghidate",
       "Exerciții individuale și de grup",
@@ -97,7 +97,7 @@ const retreats = [
     accentColor: "#4A6FA5",
     badge: null,
     description:
-      "Un retreat pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când renunți la măști și alegi autenticitatea.",
+      "Program experiențial pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când renunți la măști și alegi autenticitatea.",
     includes: [
       "Dialoguri despre leadership autentic",
       "Exerciții de încredere și colaborare",
@@ -184,7 +184,7 @@ export default function RetreatsPage() {
               <div className="space-y-5 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
                 <p>Programele experiențiale AnimaMinds sunt concepute ca procese de dezvoltare umană și profesională, desfășurate pe parcursul mai multor zile, într-un cadru care favorizează reflecția, colaborarea și învățarea aplicată.</p>
                 <p>Fiecare program este structurat în jurul unor competențe clare, relevante pentru viața profesională și pentru mediile organizaționale moderne.</p>
-                <p style={{ color: "var(--charcoal)", fontWeight: 500 }}>Participanții pleacă cu mai multă claritate, cu instrumente concrete și cu un certificat care atestă competențele dezvoltate.</p>
+                <p style={{ color: "var(--charcoal)", fontWeight: 500 }}>Participanții pleacă cu mai multă claritate, cu instrumente concrete și cu documente care reflectă ariile de dezvoltare abordate în cadrul programului.</p>
               </div>
             </div>
             <div className="space-y-4 pt-2">
@@ -192,7 +192,7 @@ export default function RetreatsPage() {
                 { icon: "🎯", label: "Relevanță profesională", sub: "Competențe aplicabile imediat în activitatea profesională și în relațiile de echipă." },
                 { icon: "🤝", label: "Format experiențial", sub: "Activități de grup, reflecție ghidată, dialog facilitat și contexte de învățare aplicată." },
                 { icon: "🏢", label: "Potrivit pentru organizații", sub: "Adaptat pentru companii, instituții publice, unități sanitare, unități de învățământ și ONG-uri." },
-                { icon: "📜", label: "Certificare inclusă", sub: "Certificat de Participare și Fișa competențelor dezvoltate, utilizabile în dosarul profesional." },
+                { icon: "📜", label: "Documente incluse", sub: "Certificat de Participare și Fișa competențelor dezvoltate, înmânate fiecărui participant la finalul programului." },
               ].map((item) => (
                 <div key={item.label} className="p-5 rounded-xl" style={{ backgroundColor: "#F5F0E8", border: "1px solid rgba(124,154,126,0.15)" }}>
                   <p className="font-semibold mb-1 flex items-center gap-2" style={{ color: "var(--charcoal)" }}>
@@ -224,7 +224,7 @@ export default function RetreatsPage() {
             <p>Înainte ca ritmul obișnuit să revină, înainte ca agenda să se umple din nou și responsabilitățile să preia controlul, îți oferim ocazia să faci o pauză.</p>
             <p>Nu pentru a fugi de viața de zi cu zi.</p>
             <p className="font-medium" style={{ color: "var(--charcoal)" }}>Ci pentru a te întoarce la ea cu mai multă claritate.</p>
-            <p>Un weekend la munte, cu aer curat, oameni deschiși, conversații care contează și experiențe care îți oferă spațiu pentru reflecție.</p>
+            <p>Trei zile dedicate reflecției, dialogului și perspectivelor noi — într-un cadru liniștit, departe de ritmul obișnuit.</p>
             <p>Pentru că uneori cele mai importante răspunsuri apar în liniște.</p>
             <p>Iar cele mai valoroase idei cresc atunci când sunt împărtășite cu oamenii potriviți.</p>
           </div>
