@@ -25,7 +25,7 @@ export default function NotFound() {
           style={{ color: "var(--charcoal-soft)" }}
         >
           Se pare că te-ai rătăcit. Nu te îngrijora — se întâmplă chiar și
-          celor mai experimentați exploratori. Hai înapoi acasă.
+          celor mai experimentați exploratori. Reveniți acasă.
         </p>
         <Link
           href="/"

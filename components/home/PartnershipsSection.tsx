@@ -36,7 +36,7 @@ export default function PartnershipsSection() {
 
   return (
     <section
-      className="py-14"
+      className="py-10"
       style={{ backgroundColor: "var(--cream)" }}
       ref={ref}
     >
@@ -51,7 +51,7 @@ export default function PartnershipsSection() {
             <span className="section-label">Parteneriate</span>
             <div className="line-accent my-4" />
             <h2
-              className="text-4xl sm:text-5xl font-semibold mb-5"
+              className="text-2xl sm:text-3xl font-semibold mb-4"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Creștem împreună cu organizațiile{" "}
@@ -60,7 +60,7 @@ export default function PartnershipsSection() {
               </span>
             </h2>
             <p
-              className="text-lg leading-relaxed mb-8"
+              className="text-base leading-relaxed mb-6"
               style={{ color: "var(--charcoal-soft)" }}
             >
               Colaborăm cu companii, instituții și organizații pentru a crea
@@ -71,7 +71,7 @@ export default function PartnershipsSection() {
               href="/colaboreaza"
               className="btn-primary group inline-flex"
             >
-              Vorbim despre parteneriat
+              Deschidem o discuție despre parteneriat
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
@@ -90,14 +90,14 @@ export default function PartnershipsSection() {
               return (
                 <div
                   key={type.title}
-                  className="p-6 rounded-2xl bg-white card-hover"
+                  className="p-5 rounded-2xl bg-white card-hover"
                   style={{
                     boxShadow: "0 2px 16px rgba(0,0,0,0.05)",
                     transitionDelay: `${i * 80}ms`,
                   }}
                 >
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
                     style={{
                       backgroundColor:
                         type.color === "var(--sage)"
@@ -126,20 +126,20 @@ export default function PartnershipsSection() {
         </div>
 
         {/* Photo strip */}
-        <div className="mt-8 grid grid-cols-3 md:grid-cols-6 gap-3">
+        <div className="mt-6 grid grid-cols-3 md:grid-cols-6 gap-3">
           {[
             { src: "/images/alina-prezentare.jpg", alt: "Prezentare Alina" },
             { src: "/images/diplome-zambet.jpg", alt: "Diplome" },
             { src: "/images/group-photo.jpg", alt: "Grup" },
-            { src: "/images/grup-masa.jpg", alt: "Grup la masă" },
-            { src: "/images/outdoor-group.jpg", alt: "Grup outdoor" },
-            { src: "/images/team-outdoor.jpg", alt: "Echipă outdoor" },
-            { src: "/images/team-work.jpg", alt: "Lucru în echipă" },
-            { src: "/images/workshop-activ.jpg", alt: "Workshop activ" },
-            { src: "/images/workshop-audience.jpg", alt: "Audiență" },
-            { src: "/images/workshop-group-raise.jpg", alt: "Grup ridicat" },
-            { src: "/images/workshop-small.jpg", alt: "Workshop mic" },
-            { src: "/images/workshop-table.jpg", alt: "Workshop la masă" },
+            { src: "/images/workshop-collab.jpg", alt: "Lucru în echipă" },
+            { src: "/images/eveniment-cina.jpg", alt: "Cină împreună" },
+            { src: "/images/deny-inn-arrival.jpg", alt: "Sosire la locație" },
+            { src: "/images/workshop-laptops.jpg", alt: "Training cu laptopuri" },
+            { src: "/images/workshop-prezentare-2.jpg", alt: "Prezentare workshop" },
+            { src: "/images/engaged-audience.jpg", alt: "Participanți activi" },
+            { src: "/images/summer-workshop.jpg", alt: "Workshop de vară" },
+            { src: "/images/hero-workshop.jpg", alt: "Sală workshop" },
+            { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare în sală" },
           ].map((photo, i) => (
             <div key={i} className="relative rounded-xl overflow-hidden aspect-square">
               <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" quality={70} />

@@ -8,10 +8,10 @@ export default function FeaturedBusolaSection() {
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-16 bg-white" ref={ref}>
+    <section className="py-12 bg-white" ref={ref}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center transition-all duration-700 ${
+          className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center transition-all duration-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -35,13 +35,13 @@ export default function FeaturedBusolaSection() {
               Program activ · Manifestare de interes
             </span>
             <h2
-              className="text-3xl sm:text-4xl font-semibold mb-4"
+              className="text-2xl sm:text-3xl font-semibold mb-3"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Busola Interioară
             </h2>
             <p
-              className="text-base leading-relaxed mb-6"
+              className="text-sm leading-relaxed mb-5"
               style={{ color: "var(--charcoal-soft)" }}
             >
               Un program experiențial de 3 zile pentru claritate, direcție și reconectare — 

@@ -4,32 +4,32 @@ import { useInView } from "@/hooks/useInView";
 import { Quote } from "lucide-react";
 
 const photos = [
-  { src: "/images/ws-participanti-ridica.jpg", alt: "Participanți activi" },
-  { src: "/images/ws-cartonas-afirmatie.jpg", alt: "Activitate practică" },
-  { src: "/images/ws-plicuri-nume.jpg", alt: "Activitate cu plicuri" },
+  { src: "/images/workshop-group-raise.jpg", alt: "Participanți activi" },
+  { src: "/images/workshop-seara.jpg", alt: "Seară de workshop" },
+  { src: "/images/workshop-activ.jpg", alt: "Workshop activ" },
   { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare workshop" },
-  { src: "/images/celebration.jpg", alt: "Celebrare" },
-  { src: "/images/sala-mare.jpg", alt: "Sală mare de formare" },
-  { src: "/images/summer-workshop.jpg", alt: "Workshop de vară" },
-  { src: "/images/group-outdoor.jpg", alt: "Grup în aer liber" },
+  { src: "/images/eveniment-cina.jpg", alt: "Cină împreună" },
+  { src: "/images/workshop-indoor.jpg", alt: "Sală de formare" },
+  { src: "/images/workshop-prezentare-2.jpg", alt: "Workshop prezentare" },
+  { src: "/images/deny-inn-arrival.jpg", alt: "Sosire la locație" },
 ];
 
 export default function CommunitySection() {
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-14 bg-white" ref={ref}>
+    <section className="py-10 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
-          className={`text-center max-w-2xl mx-auto mb-10 transition-all duration-700 ${
+          className={`text-center max-w-2xl mx-auto mb-6 transition-all duration-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           <span className="section-label">Comunitate</span>
           <div className="line-accent mx-auto my-4" />
           <h2
-            className="text-4xl sm:text-5xl font-semibold mb-5"
+            className="text-2xl sm:text-3xl font-semibold mb-4"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
             Construim ceva{" "}
@@ -39,7 +39,7 @@ export default function CommunitySection() {
             împreună
           </h2>
           <p
-            className="text-lg leading-relaxed"
+            className="text-base leading-relaxed"
             style={{ color: "var(--charcoal-soft)" }}
           >
             Nu suntem o platformă cu mii de utilizatori anonimi. Suntem o
@@ -50,7 +50,7 @@ export default function CommunitySection() {
 
         {/* Photo mosaic */}
         <div
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 transition-all duration-700 delay-200 grid-rows-2 ${
+          className={`grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 transition-all duration-700 delay-200 grid-rows-2 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -93,15 +93,14 @@ export default function CommunitySection() {
               style={{ color: "var(--terracotta)" }}
             />
             <blockquote
-              className="text-2xl sm:text-3xl font-medium italic mb-6"
+              className="text-xl sm:text-2xl font-medium italic mb-4"
               style={{
                 fontFamily: "Playfair Display, serif",
                 color: "var(--charcoal)",
                 lineHeight: 1.5,
               }}
             >
-              „Creșterea nu este un eveniment. Este un proces care se hrănește
-              din relații, curaj și continuitate."
+              „Oamenii cresc atunci când se simt văzuți, ascultați și provocați să devină mai mult."
             </blockquote>
             <p
               className="text-sm font-medium"

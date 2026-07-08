@@ -17,7 +17,7 @@ const experiences = [
     id: "busola-interioara",
     name: "BUSOLA INTERIOARĂ",
     subtitle: "Claritate și direcție într-o lume plină de opțiuni",
-    accentColor: "#9B7EBD",
+    accentColor: "#A0715A",
     active: true,
     link: "/retreats/busola-interioara",
     description:
@@ -97,7 +97,7 @@ const experiences = [
     id: "reset-mental",
     name: "RESET MENTAL",
     subtitle: "O pauză pentru claritate, energie și echilibru",
-    accentColor: "#9B7EBD",
+    accentColor: "#A0715A",
     active: false,
     link: null,
     description:
@@ -122,17 +122,17 @@ export default function ExperiencesPage() {
   return (
     <div className="pt-20 bg-white">
       {/* HERO */}
-      <section className="relative min-h-[55vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, #7C9A7E 0%, transparent 70%)", transform: "translate(30%, -30%)" }} />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, #C4714F 0%, transparent 70%)", transform: "translate(-30%, 30%)" }} />
         </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16 w-full">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-8" style={{ color: "var(--sage)" }}>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-10 w-full">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "var(--sage)" }}>
             AnimaMinds Experiences
           </p>
           <h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-semibold mb-8 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4 leading-tight"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
             Experiențe care{" "}
@@ -140,20 +140,20 @@ export default function ExperiencesPage() {
               schimbă perspective.
             </span>
           </h1>
-          <p className="text-xl leading-relaxed max-w-2xl mb-12" style={{ color: "var(--charcoal-soft)" }}>
+          <p className="text-base sm:text-lg leading-relaxed max-w-2xl mb-6" style={{ color: "var(--charcoal-soft)" }}>
             AnimaMinds reunește experiențe de învățare create pentru oameni, echipe și organizații care aleg să evolueze conștient într-o lume aflată în continuă schimbare.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="#experiences"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-white transition-all hover:opacity-90 hover:shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-lg"
               style={{ backgroundColor: "var(--sage)" }}
             >
               Descoperă experiențele
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium transition-all hover:bg-white border"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-sm sm:text-base transition-all hover:bg-white border"
               style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}
             >
               Programează o discuție
@@ -163,14 +163,14 @@ export default function ExperiencesPage() {
       </section>
 
       {/* EXPERIENCE HERO - BUSOLA INTERIOARĂ */}
-      <section id="experiences" className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
+      <section id="experiences" className="py-10" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "var(--sage)" }}>
+          <div className="text-center mb-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-3" style={{ color: "var(--sage)" }}>
               Experiențele noastre
             </p>
             <h2
-              className="text-4xl sm:text-5xl font-semibold"
+              className="text-2xl sm:text-3xl font-semibold"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Alege experiența potrivită
@@ -179,46 +179,46 @@ export default function ExperiencesPage() {
 
           {busolaExperience && (
             <div
-              className="relative rounded-3xl p-8 lg:p-10 mb-16 overflow-hidden"
-              style={{ backgroundColor: "white", boxShadow: "0 8px 40px rgba(155, 126, 189, 0.18)" }}
+              className="relative rounded-3xl p-6 lg:p-8 mb-10 overflow-hidden"
+              style={{ backgroundColor: "white", boxShadow: "0 8px 40px rgba(160, 113, 90, 0.18)" }}
             >
-              <div className="absolute top-0 left-0 right-0 h-2" style={{ backgroundColor: "#9B7EBD" }} />
+              <div className="absolute top-0 left-0 right-0 h-2" style={{ backgroundColor: "#A0715A" }} />
               <div className="flex flex-col lg:flex-row gap-10 items-start">
                 <div className="flex-1">
                   <span
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full text-white mb-6"
-                    style={{ backgroundColor: "#9B7EBD" }}
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full text-white mb-4"
+                    style={{ backgroundColor: "#A0715A" }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                    ÎNSCRIERI DESCHISE
+                    EDIȚII DISPONIBILE
                   </span>
                   <h3
-                    className="text-3xl sm:text-4xl font-bold mb-4 leading-tight"
+                    className="text-2xl sm:text-3xl font-bold mb-3 leading-tight"
                     style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
                   >
                     {busolaExperience.name}
                   </h3>
-                  <p className="text-lg font-medium italic mb-6" style={{ color: "#9B7EBD" }}>
+                  <p className="text-base font-medium italic mb-4" style={{ color: "#A0715A" }}>
                     {busolaExperience.subtitle}
                   </p>
-                  <p className="text-base leading-relaxed mb-8 max-w-2xl" style={{ color: "var(--charcoal-soft)" }}>
+                  <p className="text-sm sm:text-base leading-relaxed mb-5 max-w-2xl" style={{ color: "var(--charcoal-soft)" }}>
                     {busolaExperience.description}
                   </p>
                   <Link
                     href="/retreats/busola-interioara"
-                    className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:opacity-90 text-lg"
-                    style={{ backgroundColor: "#9B7EBD" }}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white transition-all hover:opacity-90 text-sm sm:text-base"
+                    style={{ backgroundColor: "#A0715A" }}
                   >
-                    ÎNSCRIE-TE ACUM
+                    Află mai multe
                     <span>→</span>
                   </Link>
                 </div>
                 <div className="lg:w-1/3 w-full">
                   <div
-                    className="rounded-2xl p-8 text-center"
-                    style={{ backgroundColor: "rgba(155, 126, 189, 0.08)" }}
+                    className="rounded-2xl p-5 text-center"
+                    style={{ backgroundColor: "rgba(160, 113, 90, 0.08)" }}
                   >
-                    <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#9B7EBD" }}>
+                    <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#A0715A" }}>
                       Disponibil acum
                     </p>
                     <p className="text-2xl font-bold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
@@ -233,14 +233,14 @@ export default function ExperiencesPage() {
             </div>
           )}
 
-          <div className="mb-10">
+          <div className="mb-6">
             <h3
-              className="text-2xl sm:text-3xl font-semibold"
+              className="text-xl sm:text-2xl font-semibold"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Alte experiențe în pregătire
             </h3>
-            <p className="mt-2 text-base" style={{ color: "var(--charcoal-soft)" }}>
+            <p className="mt-1 text-sm sm:text-base" style={{ color: "var(--charcoal-soft)" }}>
               Vor deveni disponibile în curând. Te anunțăm când deschidem înscrierile.
             </p>
           </div>
@@ -249,17 +249,17 @@ export default function ExperiencesPage() {
             {otherExperiences.map((exp) => (
               <div
                 key={exp.id}
-                className="rounded-2xl p-6 transition-all duration-300"
+                className="rounded-2xl p-5 transition-all duration-300"
                 style={{ backgroundColor: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}
               >
                 <span
-                  className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4"
+                  className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-3"
                   style={{ backgroundColor: `${exp.accentColor}15`, color: exp.accentColor }}
                 >
                   În curând
                 </span>
                 <h4
-                  className="text-lg font-bold mb-2 leading-tight"
+                  className="text-base font-bold mb-2 leading-tight"
                   style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
                 >
                   {exp.name}
@@ -277,13 +277,13 @@ export default function ExperiencesPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "var(--sage)" }}>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-3" style={{ color: "var(--sage)" }}>
             Începe conversația
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-semibold mb-8 leading-tight"
+            className="text-2xl sm:text-3xl font-semibold mb-5 leading-tight"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
             Nu știi care experiență{" "}
@@ -291,15 +291,15 @@ export default function ExperiencesPage() {
               ți se potrivește?
             </span>
           </h2>
-          <p className="text-lg leading-relaxed mb-12" style={{ color: "var(--charcoal-soft)" }}>
-            Hai să discutăm despre obiectivele, provocările și contextul tău. Împreună alegem experiența potrivită pentru tine, echipa sau organizația ta.
+          <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>
+            Discutăm despre obiectivele, provocările și contextul tău. Împreună alegem experiența potrivită pentru tine, echipa sau organizația ta.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-medium text-white transition-all hover:opacity-90 hover:shadow-lg text-lg"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-medium text-white transition-all hover:opacity-90 hover:shadow-lg text-sm sm:text-base"
             style={{ backgroundColor: "var(--sage)" }}
           >
-            Hai să discutăm
+            Să vedem cum te putem sprijini
           </Link>
         </div>
       </section>

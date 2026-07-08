@@ -75,7 +75,7 @@ export default function ContactPage() {
     <div className="pt-20">
       {/* Hero */}
       <section
-        className="py-20"
+        className="py-12"
         style={{ backgroundColor: "var(--cream)" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,30 +83,30 @@ export default function ContactPage() {
             <span className="section-label">Contact</span>
             <div className="line-accent my-4" />
             <h1
-              className="text-5xl sm:text-6xl font-semibold mb-5"
+              className="text-3xl sm:text-4xl font-semibold mb-4"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
-              Hai să vorbim
+              Să purtăm o conversație
             </h1>
             <p
-              className="text-xl leading-relaxed"
+              className="text-base sm:text-lg leading-relaxed"
               style={{ color: "var(--charcoal-soft)" }}
             >
-              Fie că ai o întrebare, vrei să colaborăm sau pur și simplu vrei
-              să ne cunoști — suntem bucuroși să auzim de la tine.
+              Fie că ai o întrebare, o idee de colaborare sau pur și simplu vrei
+              să ne cunoști — ne bucurăm să fii în legătură cu noi.
             </p>
           </div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-14">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
             {/* Contact info */}
             <div className="lg:col-span-2">
               <h2
-                className="text-2xl font-semibold mb-6"
+                className="text-xl font-semibold mb-4"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
                 Informații de contact

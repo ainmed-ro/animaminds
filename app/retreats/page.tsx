@@ -386,14 +386,14 @@ export default function RetreatsPage() {
               className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-medium text-white transition-all hover:opacity-90 text-base"
               style={{ backgroundColor: "#7C9A7E" }}
             >
-              Hai să discutăm
+              Să vedem cum te putem sprijini
             </Link>
             <Link
               href="/retreats/busola-interioara"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-medium transition-all border text-base"
               style={{ color: "rgba(255,255,255,0.9)", borderColor: "rgba(255,255,255,0.25)" }}
             >
-              Înscrie-te la Busola Interioară
+              Descoperă Busola Interioară
             </Link>
           </div>
         </div>

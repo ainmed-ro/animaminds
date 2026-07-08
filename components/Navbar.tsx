@@ -81,7 +81,7 @@ export default function Navbar() {
               className="btn-primary text-sm py-2.5 px-5"
               style={{ backgroundColor: "var(--sage)", color: "white", borderRadius: "0.5rem", padding: "0.625rem 1.25rem", fontWeight: 500, fontSize: "0.875rem", display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
-              Hai în comunitate
+              Alătură-te comunității
             </Link>
           </div>
 
@@ -128,7 +128,7 @@ export default function Navbar() {
               className="block w-full text-center py-3 px-4 rounded-lg text-sm font-medium text-white"
               style={{ backgroundColor: "var(--sage)" }}
             >
-              Hai în comunitate
+              Alătură-te comunității
             </Link>
           </div>
         </div>

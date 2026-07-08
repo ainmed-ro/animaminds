@@ -14,15 +14,15 @@ export default function PovEsteaNoastra() {
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/workshop-sala.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
+          <Image src="/images/workshop-indoor.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.75) 50%, rgba(124,154,126,0.10) 100%)" }} />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 w-full">
           <div className="max-w-3xl">
             <span className="section-label">Povestea noastră</span>
             <div className="line-accent my-4" />
             <h1
-              className="text-5xl sm:text-6xl font-semibold mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               O comunitate construită cu{" "}
@@ -31,7 +31,7 @@ export default function PovEsteaNoastra() {
               </span>
             </h1>
             <p
-              className="text-xl leading-relaxed"
+              className="text-base sm:text-lg leading-relaxed"
               style={{ color: "var(--charcoal-soft)" }}
             >
               AnimaMinds s-a născut din convingerea că cei mai buni profesori,
@@ -43,33 +43,33 @@ export default function PovEsteaNoastra() {
       </section>
 
       {/* Story */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
               <h2
-                className="text-3xl sm:text-4xl font-semibold mb-6"
+                className="text-2xl sm:text-3xl font-semibold mb-4"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
                 De unde am pornit
               </h2>
-              <div className="space-y-5" style={{ color: "var(--charcoal-soft)" }}>
-                <p className="text-lg leading-relaxed">
+              <div className="space-y-4" style={{ color: "var(--charcoal-soft)" }}>
+                <p className="text-base leading-relaxed">
                   AnimaMinds a luat naștere dintr-o nevoie reală: aceea de a
                   crea un spațiu în care profesioniștii din educație și formare
                   să se poată întâlni, să schimbe perspective și să crească unii
                   din experiența celorlalți.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-base leading-relaxed">
                   Am observat că există o mulțime de cursuri, platforme și
                   „academii" — dar puține comunități autentice. Locuri unde
                   oamenii nu sunt simple cifre în statistici, ci participanți
                   activi la un proces de creștere colectivă.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-base leading-relaxed">
                   Așa s-a născut AnimaMinds: cu credința că{" "}
                   <strong style={{ color: "var(--sage)" }}>
-                    oamenii se ridică unii pe alții
+                    oamenii se ridică unii pe ceilalți
                   </strong>
                   , că împreună mergem mai departe și mai sus, și că{" "}
                   <strong style={{ color: "var(--sage)" }}>
@@ -96,7 +96,7 @@ export default function PovEsteaNoastra() {
 
       {/* Values */}
       <section
-        className="py-20"
+        className="py-12"
         style={{ backgroundColor: "var(--gray-warm)" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +104,7 @@ export default function PovEsteaNoastra() {
             <span className="section-label">Valorile noastre</span>
             <div className="line-accent mx-auto my-4" />
             <h2
-              className="text-4xl font-semibold"
+              className="text-2xl sm:text-3xl font-semibold"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Ce ne ghidează în tot ceea ce facem
@@ -146,12 +146,12 @@ export default function PovEsteaNoastra() {
             ].map((v) => (
               <div
                 key={v.title}
-                className="p-6 rounded-2xl bg-white card-hover"
+                className="p-5 rounded-2xl bg-white card-hover"
                 style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}
               >
-                <span className="text-3xl mb-4 block">{v.emoji}</span>
+                <span className="text-2xl mb-3 block">{v.emoji}</span>
                 <h3
-                  className="text-lg font-semibold mb-2"
+                  className="text-base font-semibold mb-1"
                   style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
                 >
                   {v.title}
@@ -166,22 +166,22 @@ export default function PovEsteaNoastra() {
       </section>
 
       {/* Photo Gallery */}
-      <section className="py-20" style={{ backgroundColor: "var(--cream)" }}>
+      <section className="py-12" style={{ backgroundColor: "var(--cream)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-8">
             <span className="section-label">Din teren</span>
             <div className="line-accent mx-auto my-4" />
-            <h2 className="text-4xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+            <h2 className="text-2xl sm:text-3xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Oameni reali. Momente reale.
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { src: "/images/ws-sala-atenta.jpg", alt: "Sală de formare" },
-              { src: "/images/ws-participanti-ridica.jpg", alt: "Participanți activi" },
+              { src: "/images/workshop-audience.jpg", alt: "Sală de formare" },
+              { src: "/images/workshop-group-raise.jpg", alt: "Participanți activi" },
               { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare workshop" },
-              { src: "/images/ws-cartonas-afirmatie.jpg", alt: "Activitate practică" },
-              { src: "/images/ws-plicuri-nume.jpg", alt: "Activitate cu plicuri" },
+              { src: "/images/carti-afirmatii-color.jpg", alt: "Cărți afirmații" },
+              { src: "/images/postit-echipa.jpg", alt: "Activitate cu plicuri" },
             ].map((photo, i) => (
               <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
                 <Image
@@ -198,11 +198,11 @@ export default function PovEsteaNoastra() {
       </section>
 
       {/* In action band */}
-      <section className="py-16 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-              <Image src="/images/ws-grup-zambete.jpg" alt="Echipa AnimaMinds cu participanții" fill className="object-cover" quality={85} />
+              <Image src="/images/group-photo.jpg" alt="Echipa AnimaMinds cu participanții" fill className="object-cover" quality={85} />
               <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
                 <p className="text-white text-sm font-medium">La final, totul se vede pe fețe.</p>
               </div>
@@ -218,13 +218,13 @@ export default function PovEsteaNoastra() {
       </section>
 
       {/* Team / Founder */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="section-label">Echipa</span>
             <div className="line-accent mx-auto my-4" />
             <h2
-              className="text-4xl font-semibold"
+              className="text-2xl sm:text-3xl font-semibold"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Oamenii din spatele AnimaMinds
@@ -234,10 +234,10 @@ export default function PovEsteaNoastra() {
           <div className="flex flex-col sm:flex-row justify-center gap-8">
             {/* Alina */}
             <div
-              className="max-w-sm text-center p-8 rounded-2xl"
+              className="max-w-sm text-center p-6 rounded-2xl"
               style={{ backgroundColor: "var(--cream)" }}
             >
-              <div className="relative w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-white shadow-lg">
+              <div className="relative w-28 h-28 rounded-full overflow-hidden mx-auto mb-4 border-4 border-white shadow-lg">
                 <Image
                   src="/images/alina-niculae.jpg"
                   alt="Alina Niculae-Ionela"
@@ -247,7 +247,7 @@ export default function PovEsteaNoastra() {
                 />
               </div>
               <h3
-                className="text-xl font-semibold mb-1"
+                className="text-lg font-semibold mb-1"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
                 Alina-Ionela Niculae
@@ -262,7 +262,7 @@ export default function PovEsteaNoastra() {
                 className="text-sm leading-relaxed italic"
                 style={{ color: "var(--charcoal-soft)", fontFamily: "Playfair Display, serif" }}
               >
-                „Predau de ani buni și am învățat mai mult de la oamenii din
+                „Predau de mulți ani și am învățat mai mult de la oamenii din
                 față decât din orice manual. Am creat AnimaMinds pentru că
                 știu că cea mai bună versiune a ta nu apare în izolare — apare
                 când ești înconjurat de oameni care te văd și te provoacă să
@@ -272,10 +272,10 @@ export default function PovEsteaNoastra() {
 
             {/* Mariana */}
             <div
-              className="max-w-sm text-center p-8 rounded-2xl"
+              className="max-w-sm text-center p-6 rounded-2xl"
               style={{ backgroundColor: "var(--cream)" }}
             >
-              <div className="relative w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-white shadow-lg">
+              <div className="relative w-28 h-28 rounded-full overflow-hidden mx-auto mb-4 border-4 border-white shadow-lg">
                 <Image
                   src="/images/mariana-spia.jpg"
                   alt="Mariana Mihaela Spina"
@@ -285,7 +285,7 @@ export default function PovEsteaNoastra() {
                 />
               </div>
               <h3
-                className="text-xl font-semibold mb-1"
+                className="text-lg font-semibold mb-1"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
                 Mihaela Spina
@@ -300,10 +300,8 @@ export default function PovEsteaNoastra() {
                 className="text-sm leading-relaxed italic"
                 style={{ color: "var(--charcoal-soft)", fontFamily: "Playfair Display, serif" }}
               >
-                „Am intrat în educație prin fizică și am rămas pentru oameni.
-                Am văzut în 20 de ani ce face diferența: nu programa, nu sala,
-                nu metodele — ci momentul în care cineva simte că e în regulă
-                să fie vulnerabil. Asta construiesc în fiecare formare."
+                „După 20 de ani în educație, am învățat că adevărata transformare nu vine din programă sau din sală,
+                ci din momentul în care cineva se simte în siguranță să fie vulnerabil. Asta îmi doresc să ofer în fiecare formare."
               </p>
             </div>
           </div>
@@ -312,17 +310,17 @@ export default function PovEsteaNoastra() {
 
       {/* CTA */}
       <section
-        className="py-20"
+        className="py-12"
         style={{ backgroundColor: "var(--sage)" }}
       >
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2
-            className="text-4xl font-semibold text-white mb-5"
+            className="text-2xl sm:text-3xl font-semibold text-white mb-4"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
             Vrei să faci parte din poveste?
           </h2>
-          <p className="text-lg mb-8" style={{ color: "rgba(255,255,255,0.8)" }}>
+          <p className="text-base mb-6" style={{ color: "rgba(255,255,255,0.8)" }}>
             AnimaMinds crește cu fiecare om care alege să fie parte din ea.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

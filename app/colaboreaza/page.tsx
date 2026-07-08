@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle, Building2, GraduationCap, Users2, Briefcase } 
 export const metadata: Metadata = {
   title: "Colaborează cu noi",
   description:
-    "Parteneriate AnimaMinds: programe personalizate pentru companii, instituții, ONG-uri și formatori independenți. Hai să construim împreună.",
+    "Parteneriate AnimaMinds: programe personalizate pentru companii, instituții, ONG-uri și formatori independenți. Construim împreună.",
 };
 
 const reasons = [
@@ -73,9 +73,9 @@ export default function ColaboreazaPage() {
               className="text-5xl sm:text-6xl font-semibold mb-5"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
-              Hai să construim{" "}
+              Construim parteneriate{" "}
               <span className="italic" style={{ color: "var(--sage)" }}>
-                împreună
+                autentice
               </span>
             </h1>
             <p

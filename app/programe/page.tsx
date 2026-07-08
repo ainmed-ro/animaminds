@@ -11,6 +11,22 @@ export const metadata: Metadata = {
 
 const programs = [
   {
+    image: "/images/workshop-indoor.jpg",
+    badge: "Dezvoltare umană & profesională",
+    badgeColor: "#A0715A",
+    gradient: "linear-gradient(135deg, #7A5C3A 0%, #A0715A 50%, #C9A070 100%)",
+    symbol: "✦",
+    slogan: "Claritate și direcție atunci când lucrurile par neclare.",
+    title: "BUSOLA INTERIOARĂ",
+    description:
+      "Un program experiențial de trei zile pentru persoane, echipe și organizații care vor să-și facă ordine în gânduri, să-și regăsească direcția și să construiască perspective noi împreună.",
+    for: "Persoane · Echipe · Companii · Instituții publice · Organizații",
+    active: true,
+    status: "Disponibil acum",
+    href: "/retreats/busola-interioara",
+    cta: "Descoperă programul",
+  },
+  {
     image: "/images/workshop-activity.jpg",
     badge: "Reziliență & Wellbeing",
     badgeColor: "var(--sage)",
@@ -86,13 +102,13 @@ export default function ProgramePage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <section className="py-24 lg:py-28" style={{ backgroundColor: "var(--cream)" }}>
+      <section className="py-12" style={{ backgroundColor: "var(--cream)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="section-label">Programe</span>
             <div className="line-accent my-4" />
             <h1
-              className="text-5xl sm:text-6xl font-semibold mb-5"
+              className="text-3xl sm:text-4xl font-semibold mb-4"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Experiențe care{" "}
@@ -100,7 +116,7 @@ export default function ProgramePage() {
                 schimbă ceva
               </span>
             </h1>
-            <p className="text-xl leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
+            <p className="text-base sm:text-lg leading-relaxed mb-5" style={{ color: "var(--charcoal-soft)" }}>
               Programele noastre sunt pentru profesori, echipe din companii, tineri și părinți. Nu livrăm teorie — livrăm experiențe practice care se văd în comportamentul de zi cu zi.
             </p>
           </div>
@@ -108,7 +124,7 @@ export default function ProgramePage() {
       </section>
 
       {/* Programs */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {programs.map((program, i) => (
             <div
@@ -152,9 +168,19 @@ export default function ProgramePage() {
                 <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>
                   {program.description}
                 </p>
-                <p className="text-xs" style={{ color: "var(--charcoal-soft)" }}>
+                <p className="text-xs mb-5" style={{ color: "var(--charcoal-soft)" }}>
                   <span className="font-semibold">Pentru: </span>{program.for}
                 </p>
+                {program.active && program.href && (
+                  <Link
+                    href={program.href}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm transition-all hover:opacity-90"
+                    style={{ backgroundColor: "#A0715A" }}
+                  >
+                    {program.cta || "Află mai multe"}
+                    <ArrowRight size={15} />
+                  </Link>
+                )}
               </div>
             </div>
           ))}
@@ -162,16 +188,16 @@ export default function ProgramePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: "var(--sage)" }}>
+      <section className="py-12" style={{ backgroundColor: "var(--sage)" }}>
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2
             className="text-4xl font-semibold text-white mb-5"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Programele noastre vor fi disponibile curând
+            Busola Interioară este disponibilă acum
           </h2>
-          <p className="text-lg mb-8" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Momentan te poți înscrie la BUSOLA INTERIOARĂ. Pentru celelalte programe, hai să vorbim despre ce ai nevoie și când le-am lansa.
+          <p className="text-base sm:text-lg mb-8" style={{ color: "rgba(255,255,255,0.85)" }}>
+            Pentru celelalte programe, să purtăm o conversație despre ce ai nevoie și când le-am putea lansa.
           </p>
           <Link
             href="/contact"

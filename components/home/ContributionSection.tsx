@@ -43,21 +43,21 @@ export default function ContributionSection() {
 
   return (
     <section
-      className="py-14"
+      className="py-10"
       style={{ backgroundColor: "var(--cream)" }}
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
-          className={`max-w-2xl mb-10 transition-all duration-700 ${
+          className={`max-w-2xl mb-6 transition-all duration-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           <span className="section-label">Cum contribuim</span>
           <div className="line-accent my-4" />
           <h2
-            className="text-4xl sm:text-5xl font-semibold mt-4 mb-5"
+            className="text-2xl sm:text-3xl font-semibold mt-3 mb-4"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
             Învățăm. Evoluăm.{" "}
@@ -66,7 +66,7 @@ export default function ContributionSection() {
             </span>
           </h2>
           <p
-            className="text-lg leading-relaxed"
+            className="text-base leading-relaxed"
             style={{ color: "var(--charcoal-soft)" }}
           >
             AnimaMinds nu este un furnizor de cursuri. Suntem partenerii tăi de
@@ -82,7 +82,7 @@ export default function ContributionSection() {
             return (
               <div
                 key={pillar.title}
-                className={`card-hover p-8 rounded-2xl transition-all duration-700 ${
+                className={`card-hover p-6 rounded-2xl transition-all duration-700 ${
                   inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
                 style={{
@@ -92,13 +92,13 @@ export default function ContributionSection() {
                 }}
               >
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                   style={{ backgroundColor: pillar.bg }}
                 >
                   <Icon size={22} style={{ color: pillar.color }} />
                 </div>
                 <h3
-                  className="text-lg font-semibold mb-3"
+                  className="text-base font-semibold mb-2"
                   style={{
                     fontFamily: "Playfair Display, serif",
                     color: "var(--charcoal)",
@@ -118,11 +118,11 @@ export default function ContributionSection() {
         </div>
 
         {/* Photo strip */}
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { src: "/images/postit-echipa.jpg", alt: "Echipă" },
-            { src: "/images/biletet-personal.jpg", alt: "Bilet personal" },
-            { src: "/images/workshop-sala.jpg", alt: "Sală workshop" },
+            { src: "/images/workshop-laptops.jpg", alt: "Training cu laptopuri" },
+            { src: "/images/hero-workshop.jpg", alt: "Sală workshop" },
             { src: "/images/workshop-activity.jpg", alt: "Activitate workshop" },
           ].map((photo, i) => (
             <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
