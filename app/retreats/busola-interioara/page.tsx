@@ -260,7 +260,7 @@ export default function BusolaInterioarePage() {
                 Cui se adresează?
               </h2>
               <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>
-                BUSOLA INTERIOARĂ este pentru oamenii care íşi doresc să íşi ofere timp pentru reflecție, dezvoltare şi clarificarea următorilor paşi.
+                BUSOLA INTERIOARĂ este pentru oamenii care îşi doresc să îşi ofere timp pentru reflecție, dezvoltare şi clarificarea următorilor paşi.
               </p>
               <p className="text-sm font-semibold uppercase tracking-widest mb-5" style={{ color: "var(--charcoal-soft)" }}>Programul este relevant pentru:</p>
               <ul className="space-y-3">
@@ -362,12 +362,12 @@ export default function BusolaInterioarePage() {
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Pachet complet</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Ce este inclus</p>
               <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
                 Ce include participarea?
               </h2>
               <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>
-                Prețul include participarea la program, activitățile experiențiale, materialele de lucru, cazarea, mesele incluse conform pachetului și accesul la facilitățile locației.
+                Prețul acoperă participarea la toate activitățile programului, materialele de lucru, cazarea, mesele incluse și accesul la facilitățile locației.
               </p>
               <ul className="space-y-3 mb-8">
                 {includes.map((item) => (
@@ -665,7 +665,7 @@ export default function BusolaInterioarePage() {
                 <div className="text-5xl mb-6">✦</div>
                 <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Mulțumim!</h3>
                 <p className="text-base leading-relaxed mb-2" style={{ color: "var(--charcoal-soft)" }}>Solicitarea dumneavoastră a fost înregistrată cu succes.</p>
-                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Vă mulțumim și vă așteptăm cu drag. În perioada următoare veți fi contactat(ă) de echipa AnimaMinds.</p>
+                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>În perioada următoare, echipa AnimaMinds vă va contacta pentru confirmarea participării și transmiterea informațiilor administrative necesare.</p>
                 <button onClick={() => { setShowForm(false); setSubmitted(false); setForm({ nume: "", email: "", telefon: "", editie: "", participanti: "1", observatii: "" }); }} className="px-8 py-3 rounded-xl font-semibold text-white" style={{ backgroundColor: "#9B7EBD" }}>Închide</button>
               </div>
             ) : (

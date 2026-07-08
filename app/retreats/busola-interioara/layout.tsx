@@ -8,6 +8,23 @@ export const metadata: Metadata = {
     title: "BUSOLA INTERIOARĂ – Program Experiențial de Dezvoltare Umană și Profesională",
     description: "Claritate și direcție atunci când lucrurile par neclare. 3 zile de activități experiențiale, dialog și reflecție — AnimaMinds.",
     url: "https://animaminds.ro/retreats/busola-interioara",
+    type: "website",
+    locale: "ro_RO",
+    siteName: "AnimaMinds",
+    images: [
+      {
+        url: "https://animaminds.ro/retreats/busola-interioara/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "BUSOLA INTERIOARĂ – Program Experiențial de Dezvoltare Umană și Profesională",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BUSOLA INTERIOARĂ – Program Experiențial de Dezvoltare | AnimaMinds",
+    description: "Claritate și direcție atunci când lucrurile par neclare. 3 zile de activități experiențiale, dialog și reflecție — AnimaMinds.",
+    images: ["https://animaminds.ro/retreats/busola-interioara/opengraph-image"],
   },
 };
 
