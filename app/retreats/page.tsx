@@ -124,7 +124,7 @@ export default function RetreatsPage() {
 
       {/* HERO */}
       <section
-        className="relative min-h-[90vh] flex items-center overflow-hidden"
+        className="relative min-h-[60vh] flex items-center overflow-hidden"
         style={{ backgroundColor: "#1C2B1E" }}
       >
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -133,7 +133,7 @@ export default function RetreatsPage() {
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-32 w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-20 w-full">
           <div className="flex items-center gap-3 mb-8">
             <span className="text-xs font-semibold uppercase tracking-[0.25em]" style={{ color: "#7C9A7E" }}>
               AnimaMinds
@@ -178,7 +178,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* CE ESTE PROGRAMUL */}
-      <section className="py-28 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <div>
@@ -217,7 +217,7 @@ export default function RetreatsPage() {
       </section>
 
       {/* EDITORIAL */}
-      <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-8" style={{ color: "#7C9A7E" }}>
             De ce acum?
@@ -242,9 +242,9 @@ export default function RetreatsPage() {
       </section>
 
       {/* RETREATS GRID */}
-      <section id="retreats" className="py-32 bg-white">
+      <section id="retreats" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#7C9A7E" }}>
               Experiențe imersive
             </p>
@@ -261,7 +261,7 @@ export default function RetreatsPage() {
               <div
                 key={retreat.id}
                 className={`group rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
-                  retreat.featured ? 'ring-4 ring-purple-400 ring-offset-4 shadow-2xl z-10 my-12' : ''
+                  retreat.featured ? 'ring-4 ring-purple-400 ring-offset-4 shadow-2xl z-10 my-8' : ''
                 }`}
                 style={{ 
                   borderColor: retreat.featured ? "rgba(155, 126, 189, 0.4)" : "rgba(0,0,0,0.07)", 
@@ -273,7 +273,7 @@ export default function RetreatsPage() {
               >
                 <div className={`h-2 w-full ${retreat.featured ? 'bg-gradient-to-r from-purple-400 to-purple-600' : ''}`} style={{ backgroundColor: retreat.featured ? '' : retreat.accentColor }} />
 
-                <div className="p-8">
+                <div className="p-6">
                   {retreat.featured && (
                     <div className="flex justify-end mb-3">
                       <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full bg-purple-500 text-white shadow-md">
@@ -361,7 +361,7 @@ export default function RetreatsPage() {
 
       {/* CTA FINAL */}
       <section
-        className="py-32"
+        className="py-20"
         style={{ backgroundColor: "#1C2B1E" }}
       >
         <div className="max-w-3xl mx-auto px-6 sm:px-8 text-center">

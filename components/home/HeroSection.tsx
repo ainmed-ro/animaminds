@@ -9,7 +9,7 @@ export default function HeroSection() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -40,7 +40,7 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 w-full">
         <div className="max-w-3xl">
           {/* Label */}
           <div
@@ -114,7 +114,7 @@ export default function HeroSection() {
 
           {/* Social proof */}
           <div
-            className={`flex flex-wrap items-center gap-6 mt-14 transition-all duration-700 delay-500 ${
+            className={`flex flex-wrap items-center gap-6 mt-10 transition-all duration-700 delay-500 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >

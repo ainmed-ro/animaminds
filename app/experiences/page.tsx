@@ -122,12 +122,12 @@ export default function ExperiencesPage() {
   return (
     <div className="pt-20 bg-white">
       {/* HERO */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="relative min-h-[55vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, #7C9A7E 0%, transparent 70%)", transform: "translate(30%, -30%)" }} />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, #C4714F 0%, transparent 70%)", transform: "translate(-30%, 30%)" }} />
         </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-20 w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16 w-full">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-8" style={{ color: "var(--sage)" }}>
             AnimaMinds Experiences
           </p>
@@ -163,9 +163,9 @@ export default function ExperiencesPage() {
       </section>
 
       {/* EXPERIENCE HERO - BUSOLA INTERIOARĂ */}
-      <section id="experiences" className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
+      <section id="experiences" className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "var(--sage)" }}>
               Experiențele noastre
             </p>
@@ -179,7 +179,7 @@ export default function ExperiencesPage() {
 
           {busolaExperience && (
             <div
-              className="relative rounded-3xl p-10 lg:p-14 mb-20 overflow-hidden"
+              className="relative rounded-3xl p-8 lg:p-10 mb-16 overflow-hidden"
               style={{ backgroundColor: "white", boxShadow: "0 8px 40px rgba(155, 126, 189, 0.18)" }}
             >
               <div className="absolute top-0 left-0 right-0 h-2" style={{ backgroundColor: "#9B7EBD" }} />
@@ -245,7 +245,7 @@ export default function ExperiencesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherExperiences.map((exp) => (
               <div
                 key={exp.id}
@@ -277,7 +277,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-32 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "var(--sage)" }}>
             Începe conversația

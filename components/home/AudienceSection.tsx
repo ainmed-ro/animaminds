@@ -45,7 +45,7 @@ export default function AudienceSection() {
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-24 lg:py-32 bg-white" ref={ref}>
+    <section className="py-16 lg:py-20 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image */}
@@ -102,7 +102,7 @@ export default function AudienceSection() {
               Ești unul dintre noi?
             </h2>
             <p
-              className="text-lg leading-relaxed mb-10"
+              className="text-lg leading-relaxed mb-6"
               style={{ color: "var(--charcoal-soft)" }}
             >
               AnimaMinds se adresează tuturor celor care cred că învățarea nu

@@ -8,7 +8,7 @@ export default function CtaBanner() {
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-20 relative overflow-hidden" ref={ref}>
+    <section className="py-16 relative overflow-hidden" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -38,7 +38,7 @@ export default function CtaBanner() {
           Gata să crești?
         </span>
         <h2
-          className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-6"
+          className="text-3xl sm:text-4xl font-semibold text-white mb-6"
           style={{ fontFamily: "Playfair Display, serif", lineHeight: 1.2 }}
         >
           Hai cu noi.{" "}

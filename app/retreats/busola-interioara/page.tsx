@@ -117,12 +117,12 @@ export default function BusolaInterioarePage() {
     <div className="pt-20 bg-white">
 
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="relative min-h-[65vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, #9B7EBD 0%, transparent 70%)", transform: "translate(25%, -25%)" }} />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, #7C9A7E 0%, transparent 70%)", transform: "translate(-25%, 25%)" }} />
         </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-28 w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-16 w-full">
           <div className="flex items-center gap-3 mb-8">
             <Link href="/retreats" className="text-xs font-semibold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity" style={{ color: "#9B7EBD" }}>
               AnimaMinds Programe
@@ -157,7 +157,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* EDIȚII + LOCURI */}
-      <section className="py-16 bg-white border-b" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+      <section className="py-12 bg-white border-b" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-8 text-center" style={{ color: "#9B7EBD" }}>Ediții disponibile</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -214,7 +214,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* DE CE LA FINALUL VERII */}
-      <section className="py-20 bg-white border-b" style={{ borderColor: "rgba(0,0,0,0.05)" }}>
+      <section className="py-16 bg-white border-b" style={{ borderColor: "rgba(0,0,0,0.05)" }}>
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Context</p>
           <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
@@ -230,7 +230,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* EDITORIAL */}
-      <section id="despre" className="py-28 bg-white">
+      <section id="despre" className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Despre program</p>
           <h2 className="text-4xl sm:text-5xl font-semibold mb-10 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
@@ -251,7 +251,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* CUI SE ADRESEAZA */}
-      <section className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -314,7 +314,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* CE VEȚI CÂȘTIGA */}
-      <section className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Beneficii</p>
@@ -334,7 +334,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* FACILITAT DE */}
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Echipa</p>
@@ -358,7 +358,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* CE INCLUDE */}
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -393,7 +393,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* DURATA */}
-      <section className="py-16 bg-white border-y" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+      <section className="py-12 bg-white border-y" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Format</p>
           <h2 className="text-2xl sm:text-3xl font-semibold mb-8" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Durata programului</h2>
@@ -411,7 +411,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* COMPETENȚE DEZVOLTATE */}
-      <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Arii de dezvoltare</p>
@@ -446,7 +446,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* CE PRIMIȚI LA FINAL */}
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Documente</p>
@@ -502,7 +502,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-28 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Clarificări</p>
@@ -543,7 +543,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* PENTRU ORGANIZAȚII */}
-      <section className="py-28 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -591,7 +591,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* CAZARE */}
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
@@ -616,7 +616,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* LOCATIE */}
-      <section className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="py-16" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Locație</p>
           <h2 className="text-3xl sm:text-4xl font-semibold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
@@ -638,7 +638,7 @@ export default function BusolaInterioarePage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-32 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-2xl mx-auto px-6 sm:px-8 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Manifestă-ți interesul</p>
           <h2 className="text-4xl sm:text-5xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>

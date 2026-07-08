@@ -18,11 +18,11 @@ export default function CommunitySection() {
   const { ref, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section className="py-24 lg:py-32 bg-white" ref={ref}>
+    <section className="py-16 lg:py-20 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
-          className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-700 ${
+          className={`text-center max-w-2xl mx-auto mb-10 transition-all duration-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
@@ -50,7 +50,7 @@ export default function CommunitySection() {
 
         {/* Photo mosaic */}
         <div
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 transition-all duration-700 delay-200 grid-rows-2 ${
+          className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 transition-all duration-700 delay-200 grid-rows-2 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -86,7 +86,7 @@ export default function CommunitySection() {
           }`}
         >
           <div
-            className="p-10 rounded-2xl"
+            className="p-8 rounded-2xl"
             style={{ backgroundColor: "var(--cream)" }}
           >
             <Quote

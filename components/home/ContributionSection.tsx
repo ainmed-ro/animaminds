@@ -43,14 +43,14 @@ export default function ContributionSection() {
 
   return (
     <section
-      className="py-24 lg:py-32"
+      className="py-16 lg:py-20"
       style={{ backgroundColor: "var(--cream)" }}
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
-          className={`max-w-2xl mb-16 transition-all duration-700 ${
+          className={`max-w-2xl mb-10 transition-all duration-700 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
@@ -118,7 +118,7 @@ export default function ContributionSection() {
         </div>
 
         {/* Photo strip */}
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { src: "/images/postit-echipa.jpg", alt: "Echipă" },
             { src: "/images/biletet-personal.jpg", alt: "Bilet personal" },
