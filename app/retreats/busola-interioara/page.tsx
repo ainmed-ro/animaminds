@@ -117,7 +117,7 @@ export default function BusolaInterioarePage() {
         <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-28 w-full">
           <div className="flex items-center gap-3 mb-8">
             <Link href="/retreats" className="text-xs font-semibold uppercase tracking-[0.2em] hover:opacity-70 transition-opacity" style={{ color: "#9B7EBD" }}>
-              AnimaMinds Retreats
+              AnimaMinds Programe
             </Link>
             <span className="text-xs" style={{ color: "rgba(0,0,0,0.25)" }}>→</span>
             <span className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: "rgba(0,0,0,0.4)" }}>Busola Interioară</span>

@@ -130,7 +130,7 @@ export default function RetreatsPage() {
             </span>
             <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>×</span>
             <span className="text-xs font-semibold uppercase tracking-[0.25em]" style={{ color: "#C4714F" }}>
-              Retreats
+              Programe Experiențiale
             </span>
           </div>
 
@@ -145,7 +145,7 @@ export default function RetreatsPage() {
           </h1>
 
           <p className="text-xl leading-relaxed max-w-2xl mb-14" style={{ color: "rgba(255,255,255,0.7)" }}>
-            AnimaMinds Retreats sunt experiențe desfășurate pe parcursul mai multor zile, în locuri liniștite, unde oamenii și ideile au timp să crească împreună.
+            Programele experiențiale AnimaMinds sunt desfășurate pe parcursul mai multor zile, în locuri liniștite, unde oamenii și ideile au timp să crească împreună.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -154,7 +154,7 @@ export default function RetreatsPage() {
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-white transition-all hover:opacity-90 hover:shadow-lg"
               style={{ backgroundColor: "#7C9A7E" }}
             >
-              Descoperă retreat-urile
+              Descoperă programele
             </a>
             <Link
               href="/retreats/busola-interioara"
@@ -173,16 +173,16 @@ export default function RetreatsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#7C9A7E" }}>
-                Despre retreat
+                Despre program
               </p>
               <h2
                 className="text-4xl font-semibold mb-10 leading-tight"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
-                Ce este un retreat?
+                Ce este un program experiențial?
               </h2>
               <div className="space-y-5 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                <p>Un retreat este o experiență desfășurată pe parcursul mai multor zile, într-un cadru liniștit, departe de ritmul obișnuit al vieții de zi cu zi.</p>
+                <p>Un program experiențial este o experiență desfășurată pe parcursul mai multor zile, într-un cadru liniștit, departe de ritmul obișnuit al vieții de zi cu zi.</p>
                 <p>Combină învățarea, conversațiile autentice, activitățile de grup, timpul petrecut în natură și momentele de reflecție într-un context care oferă mai mult spațiu pentru oameni, idei și experiențe care contează.</p>
               </div>
             </div>
@@ -239,7 +239,7 @@ export default function RetreatsPage() {
               className="text-4xl sm:text-5xl font-semibold"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
-              Retreat-urile AnimaMinds
+              Programele experiențiale AnimaMinds
             </h2>
           </div>
 
@@ -343,13 +343,13 @@ export default function RetreatsPage() {
             className="text-4xl sm:text-5xl font-semibold mb-8 leading-tight text-white"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Fiecare retreat este{" "}
+            Fiecare program este{" "}
             <span className="italic" style={{ color: "#7C9A7E" }}>
               o experiență unică.
             </span>
           </h2>
           <p className="text-lg leading-relaxed mb-12" style={{ color: "rgba(255,255,255,0.6)" }}>
-            Fie că reprezentați o instituție, o companie sau căutați o transformare personală profundă, vă invităm să descoperim împreună retreat-ul potrivit pentru dumneavoastră.
+            Fie că reprezentați o instituție, o companie sau căutați o experiență personală profundă, vă invităm să descoperim împreună programul potrivit pentru dumneavoastră.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

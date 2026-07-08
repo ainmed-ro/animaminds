@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/", label: "Acasă" },
   { href: "/povestea-noastra", label: "Povestea noastră" },
   { href: "/experiences", label: "Experiences" },
-  { href: "/retreats", label: "Retreats" },
   { href: "/colaboreaza", label: "Colaborează cu noi" },
   { href: "/contact", label: "Contact" },
 ];
