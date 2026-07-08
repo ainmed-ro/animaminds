@@ -213,6 +213,22 @@ export default function BusolaInterioarePage() {
         </div>
       </section>
 
+      {/* DE CE LA FINALUL VERII */}
+      <section className="py-20 bg-white border-b" style={{ borderColor: "rgba(0,0,0,0.05)" }}>
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Context</p>
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+            De ce la finalul verii?
+          </h2>
+          <div className="space-y-5 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+            <p>Sfârşitul verii este, pentru mulți dintre noi, un moment de bilanț, reaşezare şi noi începuturi.</p>
+            <p>Înainte ca ritmul obişnuit să revină, înainte ca agenda să se umple din nou şi responsabilitățile să preia controlul, BUSOLA INTERIOARĂ oferă ocazia de a face o pauză.</p>
+            <p>Un weekend la munte, cu aer curat, oameni deschişi, conversații care contează şi experiențe care creează perspective noi.</p>
+            <p className="font-medium" style={{ color: "var(--charcoal)" }}>In spiritul AnimaMinds – locul unde oamenii şi ideile cresc împreună.</p>
+          </div>
+        </div>
+      </section>
+
       {/* EDITORIAL */}
       <section id="despre" className="py-28 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -230,6 +246,69 @@ export default function BusolaInterioarePage() {
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-lg" style={{ backgroundColor: "#9B7EBD" }}>
               Înscrie-mă
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* CUI SE ADRESEAZA */}
+      <section className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Participanți</p>
+              <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+                Cui se adresează?
+              </h2>
+              <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>
+                BUSOLA INTERIOARĂ este pentru oamenii care íşi doresc să íşi ofere timp pentru reflecție, dezvoltare şi clarificarea următorilor paşi.
+              </p>
+              <p className="text-sm font-semibold uppercase tracking-widest mb-5" style={{ color: "var(--charcoal-soft)" }}>Programul este relevant pentru:</p>
+              <ul className="space-y-3">
+                {[
+                  "Profesionişti aflați într-o perioadă de schimbare",
+                  "Coordonatori şi lideri de echipe",
+                  "Cadre didactice",
+                  "Personal medical",
+                  "Antreprenori",
+                  "Specialişti din sectorul public şi privat",
+                  "Persoane care investesc în dezvoltarea lor personală şi profesională",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs mt-0.5" style={{ backgroundColor: "#9B7EBD" }}>✓</span>
+                    <span className="text-base" style={{ color: "var(--charcoal)" }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <div className="rounded-2xl p-7 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Ce veți găsi aici?</p>
+                <ul className="space-y-4">
+                  {[
+                    { icon: "🌲", text: "Natură şi timp pentru reflecție" },
+                    { icon: "💬", text: "Conversații autentice" },
+                    { icon: "🤝", text: "Oameni cu experiențe şi perspective diferite" },
+                    { icon: "📖", text: "Activități experiențiale" },
+                    { icon: "🔥", text: "Seri petrecute împreună" },
+                    { icon: "🧭", text: "Perspective noi asupra provocărilor actuale" },
+                  ].map((item) => (
+                    <li key={item.text} className="flex items-center gap-4">
+                      <span className="text-xl w-8 text-center flex-shrink-0">{item.icon}</span>
+                      <span className="text-sm leading-relaxed" style={{ color: "var(--charcoal)" }}>{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl p-5" style={{ backgroundColor: "#9B7EBD15", border: "1px solid rgba(155,126,189,0.2)" }}>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">👥</span>
+                  <div>
+                    <p className="text-sm font-semibold mb-1" style={{ color: "var(--charcoal)" }}>Număr limitat de participanți</p>
+                    <p className="text-xs leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Pentru a păstra caracterul experiențial al programului, fiecare ediție este limitată la maximum 25 participanți.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -254,6 +333,30 @@ export default function BusolaInterioarePage() {
         </div>
       </section>
 
+      {/* FACILITAT DE */}
+      <section className="py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Echipa</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Facilitat de
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="rounded-2xl p-8" style={{ backgroundColor: "#F5F0E8" }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mb-5" style={{ backgroundColor: "#9B7EBD" }}>AN</div>
+              <h3 className="text-xl font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Alina Niculae</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Formator cu experiență în dezvoltarea adulților, facilitarea învățării şi proiectarea programelor educaționale şi experiențiale.</p>
+            </div>
+            <div className="rounded-2xl p-8" style={{ backgroundColor: "#F5F0E8" }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mb-5" style={{ backgroundColor: "#7C9A7E" }}>MS</div>
+              <h3 className="text-xl font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Mihaela Spina</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Co-fondator AnimaMinds şi partener în dezvoltarea programelor experiențiale dedicate adulților.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CE INCLUDE */}
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -261,7 +364,7 @@ export default function BusolaInterioarePage() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Pachet complet</p>
               <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-                Investiția dumneavoastră
+                Ce include participarea?
               </h2>
               <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>
                 Prețul include participarea la program, activitățile experiențiale, materialele de lucru, cazarea, mesele incluse conform pachetului și accesul la facilitățile locației.
@@ -284,6 +387,24 @@ export default function BusolaInterioarePage() {
               <button onClick={() => setShowForm(true)} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90" style={{ backgroundColor: "#9B7EBD" }}>
                 Înscrie-mă
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DURATA */}
+      <section className="py-16 bg-white border-y" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Format</p>
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-8" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Durata programului</h2>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ backgroundColor: "#F5F0E8" }}>
+              <span className="text-2xl">📅</span>
+              <span className="text-base font-medium" style={{ color: "var(--charcoal)" }}>3 zile / 2 nopți</span>
+            </div>
+            <div className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ backgroundColor: "#F5F0E8" }}>
+              <span className="text-2xl">🕒</span>
+              <span className="text-base font-medium" style={{ color: "var(--charcoal)" }}>Aproximativ 24 de ore de activități, conversații şi experiențe de grup</span>
             </div>
           </div>
         </div>
@@ -320,6 +441,47 @@ export default function BusolaInterioarePage() {
               <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Fișa competențelor dezvoltate</h3>
               <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>La finalul programului, participanții primesc Fișa competențelor dezvoltate, utilizabilă în dosarul profesional sau în procesele de formare organizațională.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-28 bg-white">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Clarificări</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Întrebări frecvente
+            </h2>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                q: "Este necesară experiență anterioară pentru participare?",
+                a: "Nu. Programul este deschis tuturor persoanelor interesate de dezvoltare personală şi profesională.",
+              },
+              {
+                q: "Pot participa singur(ă)?",
+                a: "Da. Mulți participanți aleg să participe individual.",
+              },
+              {
+                q: "Cum sunt repartizați participanții în camere?",
+                a: "Participanții înscrişi individual sunt repartizați în camere duble, alături de participanți de acelaşi sex, în funcție de disponibilitate. Pentru un plus de confort şi intimitate, există posibilitatea rezervării unei camere single, contra unui cost suplimentar şi în limita disponibilității locației.",
+              },
+              {
+                q: "Pot participa prin intermediul organizației în care lucrez?",
+                a: "Da. Programul poate fi accesat atât individual, cât şi prin participarea unor grupuri provenite din companii, instituții publice, unități sanitare, unități de învățământ şi ONG-uri.",
+              },
+              {
+                q: "Ce documente primesc la final?",
+                a: "Participanții primesc Certificat de Participare şi Fişa competențelor dezvoltate pe parcursul programului.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="rounded-2xl p-7" style={{ backgroundColor: "#F5F0E8", border: "1px solid rgba(0,0,0,0.05)" }}>
+                <p className="font-semibold text-base mb-3" style={{ color: "var(--charcoal)" }}>{item.q}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>{item.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -494,6 +656,9 @@ export default function BusolaInterioarePage() {
                   <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 disabled:opacity-60" style={{ backgroundColor: "#9B7EBD" }}>
                     {submitting ? "Se trimite..." : "Trimite înscrierea"}
                   </button>
+                  <p className="text-xs text-center leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                    👥 Număr limitat de participanți. Fiecare ediție este limitată la maximum 25 participanți.
+                  </p>
                 </form>
               </div>
             )}
