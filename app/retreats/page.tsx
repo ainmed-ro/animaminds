@@ -167,7 +167,7 @@ export default function RetreatsPage() {
         </div>
       </section>
 
-      {/* CE ESTE UN RETREAT */}
+      {/* CE ESTE PROGRAMUL */}
       <section className="py-28 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
@@ -176,26 +176,29 @@ export default function RetreatsPage() {
                 Despre program
               </p>
               <h2
-                className="text-4xl font-semibold mb-10 leading-tight"
+                className="text-4xl font-semibold mb-8 leading-tight"
                 style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
               >
-                Ce este un program experiențial?
+                Programe construite în jurul oamenilor și competențelor lor.
               </h2>
               <div className="space-y-5 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                <p>Un program experiențial este o experiență desfășurată pe parcursul mai multor zile, într-un cadru liniștit, departe de ritmul obișnuit al vieții de zi cu zi.</p>
-                <p>Combină învățarea, conversațiile autentice, activitățile de grup, timpul petrecut în natură și momentele de reflecție într-un context care oferă mai mult spațiu pentru oameni, idei și experiențe care contează.</p>
+                <p>Programele experiențiale AnimaMinds sunt concepute ca procese de dezvoltare umană și profesională, desfășurate pe parcursul mai multor zile, într-un cadru care favorizează reflecția, colaborarea și învățarea aplicată.</p>
+                <p>Fiecare program este structurat în jurul unor competențe clare, relevante pentru viața profesională și pentru mediile organizaționale moderne.</p>
+                <p style={{ color: "var(--charcoal)", fontWeight: 500 }}>Participanții pleacă cu mai multă claritate, cu instrumente concrete și cu un certificat care atestă competențele dezvoltate.</p>
               </div>
             </div>
             <div className="space-y-4 pt-2">
               {[
-                { label: "Nu este un curs.", sub: "Nu există teste, note sau materie de parcurs." },
-                { label: "Nu este o conferință.", sub: "Nu stai în sală să asculți prelegeri." },
-                { label: "Nu este o vacanță.", sub: "Există intenție, structură și experiențe cu sens." },
-                { label: "Este un timp pe care alegi să ți-l oferi ție.", sub: "" },
+                { icon: "🎯", label: "Relevanță profesională", sub: "Competențe aplicabile imediat în activitatea profesională și în relațiile de echipă." },
+                { icon: "🤝", label: "Format experiențial", sub: "Activități de grup, reflecție ghidată, dialog facilitat și contexte de învățare aplicată." },
+                { icon: "🏢", label: "Potrivit pentru organizații", sub: "Adaptat pentru companii, instituții publice, unități sanitare, unități de învățământ și ONG-uri." },
+                { icon: "📜", label: "Certificare inclusă", sub: "Certificat de Participare și Fișa competențelor dezvoltate, utilizabile în dosarul profesional." },
               ].map((item) => (
-                <div key={item.label} className="p-5 rounded-xl border-l-4" style={{ borderColor: "#7C9A7E", backgroundColor: "#F5F0E8" }}>
-                  <p className="font-semibold" style={{ color: "var(--charcoal)" }}>{item.label}</p>
-                  {item.sub && <p className="text-sm mt-1" style={{ color: "var(--charcoal-soft)" }}>{item.sub}</p>}
+                <div key={item.label} className="p-5 rounded-xl" style={{ backgroundColor: "#F5F0E8", border: "1px solid rgba(124,154,126,0.15)" }}>
+                  <p className="font-semibold mb-1 flex items-center gap-2" style={{ color: "var(--charcoal)" }}>
+                    <span>{item.icon}</span> {item.label}
+                  </p>
+                  <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>{item.sub}</p>
                 </div>
               ))}
             </div>
