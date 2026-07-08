@@ -6,7 +6,7 @@ const MAX_SPOTS = 25;
 const MIN_CONFIRM = 15;
 
 const EDITIONS = [
-  { id: "ed1", label: "Ediția I", dates: "28–31 august 2026" },
+  { id: "ed1", label: "Ediția I", dates: "28–30 august 2026" },
   { id: "ed2", label: "Ediția II", dates: "4–6 septembrie 2026" },
 ];
 
@@ -19,8 +19,7 @@ function getStatus(used: number) {
 }
 
 const includes = [
-  "Participarea la toate activitățile experiențiale",
-  "Activitățile AnimaMinds",
+  "Participarea la toate activitățile programului",
   "Materialele de lucru",
   "2 nopți de cazare",
   "Mesele incluse conform pachetului",
@@ -28,6 +27,15 @@ const includes = [
   "Comunitatea participanților",
   "📜 Certificat de Participare",
   "📄 Fișa competențelor dezvoltate",
+];
+
+const gains = [
+  "Mai multă claritate în luarea deciziilor",
+  "Perspective noi asupra provocărilor actuale",
+  "Conexiuni autentice cu alți participanți",
+  "Timp dedicat reflecției și dezvoltării",
+  "Energie pentru următoarea etapă profesională și personală",
+  "Instrumente utile pentru adaptare și schimbare",
 ];
 
 const competencies = [
@@ -132,10 +140,10 @@ export default function BusolaInterioarePage() {
             Claritate și direcție atunci când lucrurile par neclare.
           </p>
           <p className="text-lg leading-relaxed max-w-2xl mb-4" style={{ color: "var(--charcoal-soft)" }}>
-            Program experiențial de dezvoltare umană și profesională adresat persoanelor, echipelor, organizațiilor, instituțiilor publice, unităților de învățământ, unităților sanitare și companiilor.
+            Program experiențial de dezvoltare umană și profesională — adresat persoanelor, echipelor, companiilor, instituțiilor publice, unităților sanitare, unităților de învățământ și organizațiilor.
           </p>
           <p className="text-lg leading-relaxed max-w-2xl mb-14" style={{ color: "var(--charcoal-soft)" }}>
-            Trei zile de activități experiențiale, conversații cu sens, reflecție și natură — într-un cadru care oferă spațiu pentru oameni, idei și experiențe care contează.
+            Trei zile de activități experiențiale, dialog, reflecție și natură — într-un cadru care creează spațiu pentru claritate, dezvoltare și perspective noi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-lg transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#9B7EBD" }}>
@@ -205,95 +213,60 @@ export default function BusolaInterioarePage() {
         </div>
       </section>
 
-      {/* DESPRE */}
-      <section id="despre" className="py-32 bg-white">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Despre program</p>
-              <h2 className="text-4xl sm:text-5xl font-semibold mb-10 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-                De ce <span className="italic" style={{ color: "#9B7EBD" }}>BUSOLA INTERIOARĂ?</span>
-              </h2>
-              <div className="space-y-6 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                <p>BUSOLA INTERIOARĂ este un program experiențial de dezvoltare umană și profesională, construit în jurul unor competențe esențiale pentru viața personală și profesională.</p>
-                <p>Experiența este adresată persoanelor care se află într-un moment de schimbare, alegere sau restart, dar poate fi organizată și pentru echipe, organizații sau instituții care doresc să investească în dezvoltarea oamenilor lor.</p>
-                <p className="font-medium" style={{ color: "var(--charcoal)" }}>Nu oferim rețete și nici soluții universale.</p>
-                <p>Construim contexte, conversații și experiențe care pot genera claritate, energie și direcție — atât la nivel personal, cât și profesional.</p>
-              </div>
-            </div>
-            <div className="rounded-2xl p-10" style={{ backgroundColor: "#F5F0E8" }}>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-8" style={{ color: "#9B7EBD" }}>Ce include</p>
-              <ul className="space-y-4 mb-10">
-                {includes.map((item) => (
-                  <li key={item} className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5" style={{ backgroundColor: "#9B7EBD" }}>✓</span>
-                    <span className="text-base" style={{ color: "var(--charcoal)" }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button onClick={() => setShowForm(true)} className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg" style={{ backgroundColor: "#9B7EBD" }}>
-                Înscrie-mă
-              </button>
-            </div>
+      {/* EDITORIAL */}
+      <section id="despre" className="py-28 bg-white">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Despre program</p>
+          <h2 className="text-4xl sm:text-5xl font-semibold mb-10 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+            Uneori, cel mai important pas este să vă opriți.
+          </h2>
+          <div className="space-y-6 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+            <p>La finalul verii, înainte ca ritmul să accelereze din nou, înainte ca agenda să se umple și responsabilitățile să preia controlul, vă invităm să vă oferiți câteva zile pentru claritate, reflecție și perspective noi.</p>
+            <p>BUSOLA INTERIOARĂ este un program experiențial de dezvoltare umană și profesională desfășurat într-un cadru care oferă spațiu pentru dialog, învățare, conectare și dezvoltare.</p>
+            <p>Un weekend la munte, cu aer curat, oameni deschiși, conversații care contează și experiențe care creează perspective noi.</p>
+            <p className="font-medium" style={{ color: "var(--charcoal)" }}>Pentru că uneori cele mai valoroase idei apar atunci când ne oferim timp să ne oprim.</p>
+          </div>
+          <div className="mt-10">
+            <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-lg" style={{ backgroundColor: "#9B7EBD" }}>
+              Înscrie-mă
+            </button>
           </div>
         </div>
       </section>
 
-      {/* CE COMPETENȚE DEZVOLTĂM */}
-      <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
+      {/* CE VEȚI CÂȘTIGA */}
+      <section className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Competențe</p>
-              <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-                Ce competențe dezvoltăm?
-              </h2>
-              <p className="text-base leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
-                BUSOLA INTERIOARĂ este construită în jurul unor competențe esențiale pentru dezvoltarea profesională și personală.
-              </p>
-              <p className="text-base leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
-                În cadrul experienței sunt abordate și exersate competențe precum:
-              </p>
-              <ul className="space-y-3">
-                {competencies.map((c) => (
-                  <li key={c} className="flex items-center gap-3">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs" style={{ backgroundColor: "#9B7EBD" }}>✓</span>
-                    <span className="text-base" style={{ color: "var(--charcoal)" }}>{c}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="space-y-5">
-              <div className="rounded-2xl p-8 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
-                <div className="text-3xl mb-4">📜</div>
-                <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Certificat de Participare</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>La finalul experienței, participanții primesc Certificat de Participare pentru programul BUSOLA INTERIOARĂ.</p>
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Beneficii</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Ce veți câștiga din această experiență?
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {gains.map((g) => (
+              <div key={g} className="flex items-start gap-3 p-5 rounded-2xl bg-white" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+                <span className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5" style={{ backgroundColor: "#9B7EBD" }}>✓</span>
+                <span className="text-sm leading-relaxed" style={{ color: "var(--charcoal)" }}>{g}</span>
               </div>
-              <div className="rounded-2xl p-8 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
-                <div className="text-3xl mb-4">📄</div>
-                <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Fișa competențelor dezvoltate</h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>La finalul experienței, participanții primesc o Fișă a competențelor dezvoltate pe parcursul programului, care poate fi utilizată în dosarul profesional sau în procesele de formare organizațională.</p>
-              </div>
-              <div className="rounded-2xl p-8" style={{ backgroundColor: "#9B7EBD15", border: "1px solid rgba(155,126,189,0.2)" }}>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                  Programul utilizează <strong style={{ color: "var(--charcoal)" }}>metode experiențiale</strong>, activități de grup, reflecție ghidată, dialog facilitat și contexte de învățare aplicată.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* INVESTIȚIA TA */}
+      {/* CE INCLUDE */}
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Investiția ta</p>
-              <h2 className="text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-                Prețul include tot ce ai nevoie.
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Pachet complet</p>
+              <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+                Investiția dumneavoastră
               </h2>
-              <ul className="space-y-3">
+              <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>
+                Prețul include participarea la program, activitățile experiențiale, materialele de lucru, cazarea, mesele incluse conform pachetului și accesul la facilitățile locației.
+              </p>
+              <ul className="space-y-3 mb-8">
                 {includes.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-base" style={{ color: "var(--charcoal-soft)" }}>
                     <span style={{ color: "#9B7EBD" }}>✓</span> {item}
@@ -301,10 +274,13 @@ export default function BusolaInterioarePage() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl bg-white p-10 text-center" style={{ boxShadow: "0 4px 32px rgba(0,0,0,0.07)" }}>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Preț</p>
+            <div className="rounded-2xl bg-white p-10 text-center" style={{ boxShadow: "0 4px 32px rgba(0,0,0,0.07)", border: "1px solid rgba(0,0,0,0.06)" }}>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Investiție</p>
               <p className="text-5xl font-bold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>TBA</p>
-              <p className="text-sm mb-8" style={{ color: "var(--charcoal-soft)" }}>Valoarea va fi comunicată în curând.</p>
+              <p className="text-sm mb-4" style={{ color: "var(--charcoal-soft)" }}>Prețul va fi comunicat în curând.</p>
+              <div className="rounded-xl p-4 mb-8 text-left" style={{ backgroundColor: "#F5F0E8" }}>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>📜 Certificat de Participare și 📄 Fișa competențelor dezvoltate sunt incluse la finalul programului.</p>
+              </div>
               <button onClick={() => setShowForm(true)} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90" style={{ backgroundColor: "#9B7EBD" }}>
                 Înscrie-mă
               </button>
@@ -313,19 +289,53 @@ export default function BusolaInterioarePage() {
         </div>
       </section>
 
-      {/* PENTRU ORGANIZAȚII – versiune actualizată */}
+      {/* COMPETENȚE DEZVOLTATE */}
+      <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Competențe profesionale</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Competențe dezvoltate
+            </h2>
+            <p className="text-base mt-6 max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+              Programul este construit în jurul unor competențe clare, relevante pentru activitatea profesională și pentru mediile organizaționale moderne.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {competencies.map((c) => (
+              <div key={c} className="flex items-center gap-3 p-4 rounded-xl bg-white" style={{ boxShadow: "0 1px 8px rgba(0,0,0,0.05)" }}>
+                <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs" style={{ backgroundColor: "#9B7EBD" }}>✓</span>
+                <span className="text-sm font-medium" style={{ color: "var(--charcoal)" }}>{c}</span>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="rounded-2xl p-7 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
+              <div className="text-3xl mb-4">📜</div>
+              <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Certificat de Participare</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>La finalul programului, participanții primesc Certificat de Participare pentru programul BUSOLA INTERIOARĂ, utilizabil în dosarul profesional.</p>
+            </div>
+            <div className="rounded-2xl p-7 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
+              <div className="text-3xl mb-4">📄</div>
+              <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Fișa competențelor dezvoltate</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>La finalul programului, participanții primesc Fișa competențelor dezvoltate, utilizabilă în dosarul profesional sau în procesele de formare organizațională.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PENTRU ORGANIZAȚII */}
       <section className="py-28 bg-white">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Pentru organizații</p>
               <h2 className="text-3xl sm:text-4xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-                Pentru organizații și instituții
+                Relevant și pentru organizații și instituții
               </h2>
               <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-                <p>BUSOLA INTERIOARĂ poate fi organizată atât pentru participanți individuali, cât și pentru grupuri din aceeași organizație sau instituție.</p>
-                <p>Programul poate fi adaptat în funcție de obiectivele organizației și profilul participanților.</p>
-                <p>Tematicile pot sprijini inițiative de <strong style={{ color: "var(--charcoal)" }}>dezvoltare profesională, wellbeing organizațional, leadership, colaborare, adaptabilitate</strong> și dezvoltarea competențelor transversale.</p>
+                <p>BUSOLA INTERIOARĂ poate fi accesată atât individual, cât și prin participarea unor grupuri provenite din companii, spitale, școli, instituții publice, ONG-uri și alte organizații.</p>
+                <p>Programul poate susține inițiative de <strong style={{ color: "var(--charcoal)" }}>dezvoltare profesională, wellbeing organizațional, leadership, colaborare, adaptabilitate, prevenirea epuizării profesionale</strong> și dezvoltarea competențelor transversale.</p>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-3">
                 {orgTypes.map((item) => (
@@ -359,17 +369,27 @@ export default function BusolaInterioarePage() {
         </div>
       </section>
 
-      {/* TRANSPORT */}
+      {/* CAZARE */}
       <section className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Transport</p>
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-8" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-            Drumul spre Zărnești
-          </h2>
-          <div className="space-y-4 text-lg leading-relaxed text-left" style={{ color: "var(--charcoal-soft)" }}>
-            <p>Transportul poate fi organizat în funcție de localitatea de plecare și numărul participanților.</p>
-            <p>Detaliile logistice vor fi comunicate după înscriere.</p>
-            <p>Pentru grupuri organizate și participanți din aceeași zonă pot fi identificate soluții comune de transport.</p>
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Transport</p>
+              <h2 className="text-2xl sm:text-3xl font-semibold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Informații logistice</h2>
+              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                <p>Transportul poate fi organizat în funcție de localitatea de plecare și de numărul participanților.</p>
+                <p>După înscriere, participanții vor primi toate informațiile logistice necesare.</p>
+                <p>Pentru grupuri organizate sau participanți din aceeași zonă pot fi identificate soluții comune de transport.</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Cazare</p>
+              <h2 className="text-2xl sm:text-3xl font-semibold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Repartizare camere</h2>
+              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                <p>Participanții care se înscriu individual vor fi repartizați în camere duble împreună cu alți participanți de același sex, în funcție de disponibilitate.</p>
+                <p>Pentru un plus de confort, se poate opta pentru cameră single, contra unui cost suplimentar și în limita disponibilității locației.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -381,9 +401,18 @@ export default function BusolaInterioarePage() {
           <h2 className="text-3xl sm:text-4xl font-semibold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Deny Inn Resort & Spa<br />Zărnești – Piatra Craiului
           </h2>
-          <p className="text-lg leading-relaxed max-w-xl mx-auto" style={{ color: "var(--charcoal-soft)" }}>
-            Un loc ales cu grijă — liniștit, frumos și propice pentru reflecție, înconjurat de munți și natură, departe de ritmul obișnuit al zilelor noastre.
+          <p className="text-lg leading-relaxed max-w-xl mx-auto mb-8" style={{ color: "var(--charcoal-soft)" }}>
+            Un loc ales cu grijă — liniștit, propice pentru reflecție și dialog, înconjurat de munți și natură, departe de ritmul obișnuit al vieții profesionale.
           </p>
+          <a
+            href="https://denyinn.ro/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 border"
+            style={{ color: "#9B7EBD", borderColor: "#9B7EBD" }}
+          >
+            Vezi locația
+          </a>
         </div>
       </section>
 
@@ -392,16 +421,20 @@ export default function BusolaInterioarePage() {
         <div className="max-w-2xl mx-auto px-6 sm:px-8 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Locuri limitate</p>
           <h2 className="text-4xl sm:text-5xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-            Dacă simți că ai nevoie{" "}
-            <span className="italic" style={{ color: "#9B7EBD" }}>de acest spațiu,</span>{" "}
-            poate că ai dreptate.
+            Rezervați-vă locul{" "}
+            <span className="italic" style={{ color: "#9B7EBD" }}>la BUSOLA INTERIOARĂ.</span>
           </h2>
           <p className="text-lg leading-relaxed mb-12" style={{ color: "var(--charcoal-soft)" }}>
-            Scrie-ne și îți vom oferi toate detaliile despre program, costuri și disponibilitate.
+            Locurile sunt limitate. Contactați-ne pentru detalii despre program, costuri și disponibilitate.
           </p>
-          <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-xl font-semibold text-white text-lg transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#9B7EBD" }}>
-            Înscrie-mă
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-xl font-semibold text-white text-lg transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#9B7EBD" }}>
+              Înscrie-mă
+            </button>
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-xl font-semibold text-lg transition-all border hover:bg-gray-50" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
+              Contactați-ne
+            </Link>
+          </div>
         </div>
       </section>
 
