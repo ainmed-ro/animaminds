@@ -70,7 +70,7 @@ function doPost(e) {
           lastId = lastRowNum - 1;
         }
       }
-      const newId = lastId + 1;
+      const newId = "ID" + (lastId + 1);
       
       newRow = [
         newId,                                    // ID (col 1)
