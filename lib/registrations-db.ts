@@ -1,5 +1,4 @@
-import fs from "fs";
-import path from "path";
+import { supabase } from "@/lib/supabase";
 
 export type RegistrationStatus = "Nou" | "Confirmat" | "Achitat" | "Anulat";
 
@@ -16,53 +15,79 @@ export type Registration = {
   createdAt: string;
 };
 
-const DB_PATH = path.join(process.cwd(), "data", "registrations.json");
+type DbRow = {
+  id: string;
+  experience: string;
+  editie: string;
+  nume: string;
+  email: string;
+  telefon: string;
+  participanti: number;
+  observatii: string;
+  status: string;
+  created_at: string;
+};
 
-function ensureDb() {
-  const dir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (!fs.existsSync(DB_PATH)) fs.writeFileSync(DB_PATH, JSON.stringify([], null, 2), "utf-8");
-}
-
-export function readAll(): Registration[] {
-  ensureDb();
-  const raw = fs.readFileSync(DB_PATH, "utf-8");
-  return JSON.parse(raw) as Registration[];
-}
-
-export function writeAll(data: Registration[]) {
-  ensureDb();
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), "utf-8");
-}
-
-export function insert(reg: Omit<Registration, "id" | "createdAt" | "status">): Registration {
-  const all = readAll();
-  const newReg: Registration = {
-    ...reg,
-    id: `reg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
-    status: "Nou",
-    createdAt: new Date().toISOString(),
+function toRegistration(row: DbRow): Registration {
+  return {
+    id: row.id,
+    experience: row.experience,
+    editie: row.editie,
+    nume: row.nume,
+    email: row.email,
+    telefon: row.telefon,
+    participanti: row.participanti,
+    observatii: row.observatii ?? "",
+    status: row.status as RegistrationStatus,
+    createdAt: row.created_at,
   };
-  all.unshift(newReg);
-  writeAll(all);
-  return newReg;
 }
 
-export function updateStatus(id: string, status: RegistrationStatus): Registration | null {
-  const all = readAll();
-  const idx = all.findIndex((r) => r.id === id);
-  if (idx === -1) return null;
-  all[idx].status = status;
-  writeAll(all);
-  return all[idx];
+export async function readAll(): Promise<Registration[]> {
+  const { data, error } = await supabase
+    .from("registrations")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error) throw new Error(error.message);
+  return (data as DbRow[]).map(toRegistration);
 }
 
-export function getSpotsByEdition(): Record<string, number> {
-  const all = readAll().filter((r) => r.status !== "Anulat");
+export async function insert(
+  reg: Omit<Registration, "id" | "createdAt" | "status">
+): Promise<Registration> {
+  const id = `reg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const { data, error } = await supabase
+    .from("registrations")
+    .insert([{ id, experience: reg.experience, editie: reg.editie, nume: reg.nume, email: reg.email, telefon: reg.telefon, participanti: reg.participanti, observatii: reg.observatii ?? "", status: "Nou" }])
+    .select()
+    .single();
+  if (error) throw new Error(error.message);
+  return toRegistration(data as DbRow);
+}
+
+export async function updateStatus(
+  id: string,
+  status: RegistrationStatus
+): Promise<Registration | null> {
+  const { data, error } = await supabase
+    .from("registrations")
+    .update({ status })
+    .eq("id", id)
+    .select()
+    .single();
+  if (error) return null;
+  return toRegistration(data as DbRow);
+}
+
+export async function getSpotsByEdition(): Promise<Record<string, number>> {
+  const { data, error } = await supabase
+    .from("registrations")
+    .select("editie, participanti, status")
+    .neq("status", "Anulat");
+  if (error) throw new Error(error.message);
   const counts: Record<string, number> = {};
-  for (const r of all) {
-    const key = r.editie;
-    counts[key] = (counts[key] ?? 0) + r.participanti;
+  for (const r of data as { editie: string; participanti: number }[]) {
+    counts[r.editie] = (counts[r.editie] ?? 0) + r.participanti;
   }
   return counts;
 }

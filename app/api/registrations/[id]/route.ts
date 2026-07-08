@@ -12,7 +12,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     return NextResponse.json({ error: "Status invalid." }, { status: 400 });
   }
 
-  const updated = updateStatus(id, status as RegistrationStatus);
+  const updated = await updateStatus(id, status as RegistrationStatus);
   if (!updated) {
     return NextResponse.json({ error: "Înscrierea nu a fost găsită." }, { status: 404 });
   }

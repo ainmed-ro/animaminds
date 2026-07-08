@@ -8,8 +8,8 @@ const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "contact@animaminds.ro";
 const FROM_EMAIL = process.env.FROM_EMAIL ?? "AnimaMinds <noreply@animaminds.ro>";
 
 export async function GET() {
-  const all = readAll();
-  const spots = getSpotsByEdition();
+  const all = await readAll();
+  const spots = await getSpotsByEdition();
   return NextResponse.json({ registrations: all, spotsOccupied: spots });
 }
 
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Câmpuri obligatorii lipsă." }, { status: 400 });
     }
 
-    const reg = insert({
+    const reg = await insert({
       experience: experience ?? "BUSOLA INTERIOARĂ",
       editie,
       nume,
