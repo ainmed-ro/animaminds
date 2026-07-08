@@ -434,13 +434,69 @@ export default function BusolaInterioarePage() {
             <div className="rounded-2xl p-7 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
               <div className="text-3xl mb-4">📜</div>
               <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Certificat de Participare</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>La finalul programului, participanții primesc Certificat de Participare pentru programul BUSOLA INTERIOARĂ, utilizabil în dosarul profesional.</p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Document care atestă participarea la programul BUSOLA INTERIOARĂ şi prezența la activitățile desfăşurate pe parcursul experienței.</p>
             </div>
             <div className="rounded-2xl p-7 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
               <div className="text-3xl mb-4">📄</div>
               <h3 className="text-lg font-semibold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Fișa competențelor dezvoltate</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>La finalul programului, participanții primesc Fișa competențelor dezvoltate, utilizabilă în dosarul profesional sau în procesele de formare organizațională.</p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Document care evidențiază principalele arii de dezvoltare și tematicile abordate în cadrul programului.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CE PRIMIȚI LA FINAL */}
+      <section className="py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Documente</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Ce primiți la finalul programului?
+            </h2>
+            <p className="text-base mt-6 max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+              La finalul programului BUSOLA INTERIOARĂ, fiecare participant primeşte:
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+            <div className="rounded-2xl p-8 border" style={{ borderColor: "rgba(155,126,189,0.25)", backgroundColor: "#9B7EBD08" }}>
+              <div className="text-4xl mb-5">📜</div>
+              <h3 className="text-xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Certificat de Participare</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                Document care atestă participarea la programul BUSOLA INTERIOARĂ şi prezența la activitățile desfăşurate pe parcursul experienței.
+              </p>
+            </div>
+            <div className="rounded-2xl p-8 border" style={{ borderColor: "rgba(124,154,126,0.25)", backgroundColor: "#7C9A7E08" }}>
+              <div className="text-4xl mb-5">📄</div>
+              <h3 className="text-xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Fişa competențelor dezvoltate</h3>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--charcoal-soft)" }}>
+                Document care evidențiază principalele arii de dezvoltare şi tematicile abordate în cadrul programului.
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--charcoal-soft)" }}>Fişa poate include, fără a se limita la:</p>
+              <ul className="space-y-2">
+                {[
+                  "Comunicare interpersonală",
+                  "Colaborare şi lucru în echipă",
+                  "Adaptabilitate şi gestionarea schimbării",
+                  "Inteligență emoțională",
+                  "Leadership personal",
+                  "Reziliență profesională",
+                  "Gestionarea stresului",
+                  "Wellbeing şi prevenirea epuzării profesionale",
+                  "Luarea deciziilor",
+                  "Competențe transversale",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="flex-shrink-0 text-xs mt-0.5" style={{ color: "#7C9A7E" }}>✓</span>
+                    <span className="text-xs leading-relaxed" style={{ color: "var(--charcoal)" }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="rounded-2xl p-6 text-center" style={{ backgroundColor: "#F5F0E8" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+              Ambele documente sunt incluse în prețul participării şi sunt înĉmânate fiecărui participant la finalul programului.
+            </p>
           </div>
         </div>
       </section>
@@ -474,7 +530,7 @@ export default function BusolaInterioarePage() {
               },
               {
                 q: "Ce documente primesc la final?",
-                a: "Participanții primesc Certificat de Participare şi Fişa competențelor dezvoltate pe parcursul programului.",
+                a: "Participanții primesc: 📜 Certificat de Participare şi 📄 Fişa competențelor dezvoltate pe parcursul programului. Aceste documente sintetizează participarea şi principalele teme abordate în cadrul experienței.",
               },
             ].map((item, i) => (
               <div key={i} className="rounded-2xl p-7" style={{ backgroundColor: "#F5F0E8", border: "1px solid rgba(0,0,0,0.05)" }}>
