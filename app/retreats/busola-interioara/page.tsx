@@ -481,7 +481,7 @@ export default function BusolaInterioarePage() {
                   "Leadership personal",
                   "Reziliență profesională",
                   "Gestionarea stresului",
-                  "Wellbeing şi prevenirea epuzării profesionale",
+                  "Wellbeing şi prevenirea epuizării profesionale",
                   "Luarea deciziilor",
                   "Competențe transversale",
                 ].map((item) => (
