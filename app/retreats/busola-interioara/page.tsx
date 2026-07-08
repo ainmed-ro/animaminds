@@ -147,7 +147,7 @@ export default function BusolaInterioarePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-base sm:text-lg transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#9B7EBD" }}>
-              Înscrie-mă
+              Sunt interesat(ă)
             </button>
             <a href="#despre" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-base sm:text-lg transition-all border hover:bg-white active:scale-95" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
               Află mai multe
@@ -190,7 +190,7 @@ export default function BusolaInterioarePage() {
                     className="w-full py-3 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
                     style={{ backgroundColor: remaining === 0 ? "#aaa" : "#9B7EBD" }}
                   >
-                    {remaining === 0 ? "Grupă completă" : "Înscrie-mă"}
+                    {remaining === 0 ? "Grupă completă" : "Sunt interesat(ă)"}
                   </button>
                 </div>
               );
@@ -244,7 +244,7 @@ export default function BusolaInterioarePage() {
           </div>
           <div className="mt-10">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-lg" style={{ backgroundColor: "#9B7EBD" }}>
-              Înscrie-mă
+              Sunt interesat(ă)
             </button>
           </div>
         </div>
@@ -385,7 +385,7 @@ export default function BusolaInterioarePage() {
                 <p className="text-xs leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>📜 Certificat de Participare și 📄 Fișa competențelor dezvoltate sunt incluse la finalul programului.</p>
               </div>
               <button onClick={() => setShowForm(true)} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90" style={{ backgroundColor: "#9B7EBD" }}>
-                Înscrie-mă
+                Sunt interesat(ă)
               </button>
             </div>
           </div>
@@ -637,17 +637,17 @@ export default function BusolaInterioarePage() {
       {/* CTA FINAL */}
       <section className="py-32 bg-white">
         <div className="max-w-2xl mx-auto px-6 sm:px-8 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Locuri limitate</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#9B7EBD" }}>Manifestă-ți interesul</p>
           <h2 className="text-4xl sm:text-5xl font-semibold mb-8 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-            Rezervați-vă locul{" "}
-            <span className="italic" style={{ color: "#9B7EBD" }}>la BUSOLA INTERIOARĂ.</span>
+            Interesat de{" "}
+            <span className="italic" style={{ color: "#9B7EBD" }}>BUSOLA INTERIOARĂ?</span>
           </h2>
           <p className="text-lg leading-relaxed mb-12" style={{ color: "var(--charcoal-soft)" }}>
-            Locurile sunt limitate. Contactați-ne pentru detalii despre program, costuri și disponibilitate.
+            Înscrierile oficiale se vor deschide după confirmarea detaliilor finale. Până atunci, vă puteți înregistra interesul — veți fi printre primii care află toate detaliile.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-xl font-semibold text-white text-lg transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#9B7EBD" }}>
-              Înscrie-mă
+              Sunt interesat(ă)
             </button>
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-xl font-semibold text-lg transition-all border hover:bg-gray-50" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
               Contactați-ne
@@ -663,18 +663,24 @@ export default function BusolaInterioarePage() {
             {submitted ? (
               <div className="p-10 text-center">
                 <div className="text-5xl mb-6">✦</div>
-                <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Mulțumim!</h3>
+                <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Vă mulțumim pentru interes!</h3>
                 <p className="text-base leading-relaxed mb-2" style={{ color: "var(--charcoal-soft)" }}>Solicitarea dumneavoastră a fost înregistrată cu succes.</p>
-                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>În perioada următoare, echipa AnimaMinds vă va contacta pentru confirmarea participării și transmiterea informațiilor administrative necesare.</p>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Detaliile finale privind programul, calendarul și investiția vor fi publicate după 15 iunie.</p>
+                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Vă invităm să reveniți pe această pagină pentru actualizări.</p>
                 <button onClick={() => { setShowForm(false); setSubmitted(false); setForm({ nume: "", email: "", telefon: "", editie: "", participanti: "1", observatii: "" }); }} className="px-8 py-3 rounded-xl font-semibold text-white" style={{ backgroundColor: "#9B7EBD" }}>Închide</button>
               </div>
             ) : (
               <div className="p-8">
                 <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Înscrie-mă la BUSOLA INTERIOARĂ</h3>
+                  <h3 className="text-xl font-semibold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Manifestare de interes — BUSOLA INTERIOARĂ</h3>
                   <button onClick={() => setShowForm(false)} className="text-2xl leading-none hover:opacity-60 transition-opacity" style={{ color: "var(--charcoal-soft)" }}>×</button>
                 </div>
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="rounded-xl p-4 mb-2" style={{ backgroundColor: "#9B7EBD12", border: "1px solid rgba(155,126,189,0.25)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Înscrierile oficiale pentru <strong style={{ color: "var(--charcoal)" }}>BUSOLA INTERIOARĂ</strong> se vor deschide după confirmarea detaliilor logistice și a calendarului final.</p>
+                    <p className="text-sm leading-relaxed mt-2" style={{ color: "var(--charcoal-soft)" }}>Dacă doriți să fiți printre primii care află toate detaliile programului, vă puteți înregistra interesul folosind formularul de mai jos.</p>
+                    <p className="text-xs mt-2 font-medium" style={{ color: "#9B7EBD" }}>Vă invităm să reveniți după 15 iunie pentru calendarul final, investiția și deschiderea oficială a înscrierilor.</p>
+                  </div>
+                <form onSubmit={handleSubmit} className="space-y-5 mt-4">
                   <div>
                     <label className="block text-sm font-medium mb-2" style={{ color: "var(--charcoal)" }}>Nume și prenume *</label>
                     <input required name="nume" value={form.nume} onChange={handleChange} type="text" className="w-full px-4 py-3 rounded-xl border text-sm outline-none focus:border-purple-400 transition-colors" style={{ borderColor: "rgba(0,0,0,0.15)" }} placeholder="Ex: Ana Ionescu" />
@@ -710,7 +716,7 @@ export default function BusolaInterioarePage() {
                     <p className="text-sm text-red-600 text-center">{submitError}</p>
                   )}
                   <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 disabled:opacity-60" style={{ backgroundColor: "#9B7EBD" }}>
-                    {submitting ? "Se trimite..." : "Trimite înscrierea"}
+                    {submitting ? "Se trimite..." : "Înregistrează interesul meu"}
                   </button>
                   <p className="text-xs text-center leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
                     👥 Număr limitat de participanți. Fiecare ediție este limitată la maximum 25 participanți.

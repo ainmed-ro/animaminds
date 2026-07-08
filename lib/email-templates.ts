@@ -19,24 +19,24 @@ export function participantEmailHtml(reg: Registration): string {
           <td style="padding:40px;">
             <p style="margin:0 0 16px;font-size:16px;color:#3D3530;font-family:Arial,sans-serif;">Bună ziua, <strong>${reg.nume}</strong>,</p>
             <p style="margin:0 0 24px;font-size:15px;color:#6B5E58;line-height:1.7;font-family:Arial,sans-serif;">
-              Vă mulțumim pentru interesul acordat experienței <strong>BUSOLA INTERIOARĂ</strong>.
+              Vă mulțumim pentru interesul acordat programului <strong>BUSOLA INTERIOARĂ</strong>.
             </p>
             <p style="margin:0 0 24px;font-size:15px;color:#6B5E58;line-height:1.7;font-family:Arial,sans-serif;">
-              Solicitarea dumneavoastră a fost înregistrată cu succes.
+              Solicitarea dumneavoastră a fost înregistrată.
             </p>
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F0E8;border-radius:12px;padding:24px;margin-bottom:24px;">
               <tr><td>
-                <p style="margin:0 0 8px;font-size:11px;color:#9B7EBD;letter-spacing:3px;text-transform:uppercase;font-family:Arial,sans-serif;">Detalii rezervare</p>
-                <p style="margin:0 0 6px;font-size:14px;color:#3D3530;font-family:Arial,sans-serif;"><strong>Ediția:</strong> ${reg.editie}</p>
+                <p style="margin:0 0 8px;font-size:11px;color:#9B7EBD;letter-spacing:3px;text-transform:uppercase;font-family:Arial,sans-serif;">Detalii manifestare de interes</p>
+                <p style="margin:0 0 6px;font-size:14px;color:#3D3530;font-family:Arial,sans-serif;"><strong>Ediția preferată:</strong> ${reg.editie}</p>
                 <p style="margin:0 0 6px;font-size:14px;color:#3D3530;font-family:Arial,sans-serif;"><strong>Participanți:</strong> ${reg.participanti}</p>
-                <p style="margin:0;font-size:14px;color:#3D3530;font-family:Arial,sans-serif;"><strong>Data înscrierii:</strong> ${new Date(reg.createdAt).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric" })}</p>
+                <p style="margin:0;font-size:14px;color:#3D3530;font-family:Arial,sans-serif;"><strong>Data înregistrării:</strong> ${new Date(reg.createdAt).toLocaleDateString("ro-RO", { day: "numeric", month: "long", year: "numeric" })}</p>
               </td></tr>
             </table>
             <p style="margin:0 0 16px;font-size:15px;color:#6B5E58;line-height:1.7;font-family:Arial,sans-serif;">
-              În perioada următoare veți fi contactat(ă) de echipa AnimaMinds pentru confirmarea participării și transmiterea informațiilor administrative necesare.
+              Detaliile finale privind calendarul, locația și investiția vor fi publicate după 15 iunie.
             </p>
             <p style="margin:0 0 32px;font-size:15px;color:#6B5E58;line-height:1.7;font-family:Arial,sans-serif;">
-              Vă mulțumim și vă așteptăm cu drag.
+              Vă invităm să reveniți pe website-ul AnimaMinds pentru actualizări.
             </p>
             <p style="margin:0;font-size:14px;color:#3D3530;font-family:Arial,sans-serif;font-weight:bold;">Echipa AnimaMinds</p>
           </td>
@@ -63,7 +63,7 @@ export function adminEmailHtml(reg: Registration): string {
     <tr><td align="center">
       <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
         <tr><td style="background:#9B7EBD;padding:20px 32px;">
-          <p style="margin:0;color:#fff;font-size:14px;font-weight:bold;">🔔 Înscriere nouă — BUSOLA INTERIOARĂ</p>
+          <p style="margin:0;color:#fff;font-size:14px;font-weight:bold;">🔔 Manifestare de interes nouă — BUSOLA INTERIOARĂ</p>
         </td></tr>
         <tr><td style="padding:32px;">
           <table width="100%" cellpadding="6" cellspacing="0">
