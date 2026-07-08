@@ -122,12 +122,12 @@ export default function ExperiencesPage() {
   return (
     <div className="pt-20 bg-white">
       {/* HERO */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, #7C9A7E 0%, transparent 70%)", transform: "translate(30%, -30%)" }} />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, #C4714F 0%, transparent 70%)", transform: "translate(-30%, 30%)" }} />
         </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-32 w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-20 w-full">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-8" style={{ color: "var(--sage)" }}>
             AnimaMinds Experiences
           </p>
@@ -158,32 +158,6 @@ export default function ExperiencesPage() {
             >
               Programează o discuție
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* INTRO */}
-      <section className="py-32 bg-white">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h2
-            className="text-4xl sm:text-5xl font-semibold mb-10"
-            style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
-          >
-            Nu vindem informație.{" "}
-            <span className="italic" style={{ color: "var(--sage)" }}>
-              Creăm experiențe.
-            </span>
-          </h2>
-          <div className="space-y-6 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-            <p>
-              Într-o lume în care informația este disponibilă peste tot, adevărata provocare este transformarea ei în claritate, acțiune și rezultate reale.
-            </p>
-            <p>
-              Experiențele AnimaMinds sunt construite pentru a provoca reflecție, conversații autentice și dezvoltare personală și profesională cu impact pe termen lung.
-            </p>
-            <p>
-              Fiecare experiență pornește de la o provocare reală a lumii moderne: atenția, relațiile, leadershipul, adaptarea la inteligența artificială, echilibrul personal și performanța sustenabilă.
-            </p>
           </div>
         </div>
       </section>
