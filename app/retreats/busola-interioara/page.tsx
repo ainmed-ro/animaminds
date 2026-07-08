@@ -668,8 +668,8 @@ export default function BusolaInterioarePage() {
                 <div className="text-5xl mb-6">✦</div>
                 <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Vă mulțumim pentru interes!</h3>
                 <p className="text-base leading-relaxed mb-2" style={{ color: "var(--charcoal-soft)" }}>Solicitarea dumneavoastră a fost înregistrată cu succes.</p>
-                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Detaliile finale privind programul, calendarul și investiția vor fi publicate după 15 iunie.</p>
-                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Vă invităm să reveniți pe această pagină pentru actualizări.</p>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Detaliile finale privind programul, calendarul și investiția vor fi publicate până la 15 iulie 2026.</p>
+                <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>Înscrierile oficiale vor fi deschise după publicarea detaliilor finale ale programului. Vă invităm să reveniți pe această pagină pentru actualizări.</p>
                 <button onClick={() => { setShowForm(false); setSubmitted(false); setForm({ nume: "", email: "", telefon: "", editie: "", participanti: "1", observatii: "" }); }} className="px-8 py-3 rounded-xl font-semibold text-white" style={{ backgroundColor: "#9B7EBD" }}>Închide</button>
               </div>
             ) : (
@@ -681,7 +681,7 @@ export default function BusolaInterioarePage() {
                 <div className="rounded-xl p-4 mb-2" style={{ backgroundColor: "#9B7EBD12", border: "1px solid rgba(155,126,189,0.25)" }}>
                     <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Înscrierile oficiale pentru <strong style={{ color: "var(--charcoal)" }}>BUSOLA INTERIOARĂ</strong> se vor deschide după confirmarea detaliilor logistice și a calendarului final.</p>
                     <p className="text-sm leading-relaxed mt-2" style={{ color: "var(--charcoal-soft)" }}>Dacă doriți să fiți printre primii care află toate detaliile programului, vă puteți înregistra interesul folosind formularul de mai jos.</p>
-                    <p className="text-xs mt-2 font-medium" style={{ color: "#9B7EBD" }}>Vă invităm să reveniți după 15 iunie pentru calendarul final, investiția și deschiderea oficială a înscrierilor.</p>
+                    <p className="text-xs mt-2 font-medium" style={{ color: "#9B7EBD" }}>Detaliile finale privind programul, calendarul și investiția vor fi publicate până la 15 iulie 2026. Înscrierile oficiale vor fi deschise după publicarea detaliilor finale ale programului.</p>
                   </div>
                 <form onSubmit={handleSubmit} className="space-y-5 mt-4">
                   <div>

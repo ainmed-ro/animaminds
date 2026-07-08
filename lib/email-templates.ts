@@ -33,10 +33,10 @@ export function participantEmailHtml(reg: Registration): string {
               </td></tr>
             </table>
             <p style="margin:0 0 16px;font-size:15px;color:#6B5E58;line-height:1.7;font-family:Arial,sans-serif;">
-              Detaliile finale privind calendarul, locația și investiția vor fi publicate după 15 iunie.
+              Detaliile finale privind programul, calendarul și investiția vor fi publicate până la 15 iulie 2026.
             </p>
             <p style="margin:0 0 32px;font-size:15px;color:#6B5E58;line-height:1.7;font-family:Arial,sans-serif;">
-              Vă invităm să reveniți pe website-ul AnimaMinds pentru actualizări.
+              Înscrierile oficiale vor fi deschise după publicarea detaliilor finale ale programului. Vă invităm să reveniți pe website-ul AnimaMinds pentru actualizări.
             </p>
             <p style="margin:0;font-size:14px;color:#3D3530;font-family:Arial,sans-serif;font-weight:bold;">Echipa AnimaMinds</p>
           </td>
