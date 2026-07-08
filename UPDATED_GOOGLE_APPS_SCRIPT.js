@@ -52,7 +52,8 @@ function doPost(e) {
         data.email || "",
         data.organizatie || "Nespecificat",
         data.subiect || "",
-        data.mesaj || ""
+        data.mesaj || "",
+        data.programInteres || "Nu a fost selectat"
       ];
     } else {
       // Formular înscrieri - generează ID și adaugă rând

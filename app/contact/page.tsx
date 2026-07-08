@@ -7,6 +7,7 @@ export default function ContactPage() {
     nume: "",
     email: "",
     organizatie: "",
+    programInteres: "",
     subiect: "",
     mesaj: "",
   });
@@ -37,6 +38,7 @@ export default function ContactPage() {
           email: form.email,
           phone: "", // Contact form doesn't have phone field
           organization: form.organizatie,
+          programInteres: form.programInteres,
           subject: form.subiect,
           message: form.mesaj,
         }),
@@ -57,6 +59,7 @@ export default function ContactPage() {
         nume: "",
         email: "",
         organizatie: "",
+        programInteres: "",
         subiect: "",
         mesaj: "",
       });
@@ -323,6 +326,28 @@ export default function ContactPage() {
                       className="w-full px-4 py-3 rounded-lg border text-sm transition-all"
                       style={{ borderColor: "#E0D9CE", backgroundColor: "var(--gray-warm)", color: "var(--charcoal)" }}
                     />
+                  </div>
+
+                  <div>
+                    <label
+                      className="block text-xs font-medium mb-1.5"
+                      style={{ color: "var(--charcoal)" }}
+                    >
+                      Program de interes (opțional)
+                    </label>
+                    <select
+                      name="programInteres"
+                      value={form.programInteres}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border text-sm transition-all"
+                      style={{ borderColor: "#E0D9CE", backgroundColor: "var(--gray-warm)", color: "var(--charcoal)" }}
+                    >
+                      <option value="">Alege un program</option>
+                      <option value="Busola Interioară">Busola Interioară</option>
+                      <option value="Program pentru organizații / instituții">Program pentru organizații / instituții</option>
+                      <option value="Alt program viitor">Alt program viitor</option>
+                      <option value="Nu știu încă">Nu știu încă</option>
+                    </select>
                   </div>
 
                   <div>

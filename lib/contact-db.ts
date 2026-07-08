@@ -5,6 +5,8 @@ export type ContactMessage = {
   name: string;
   email: string;
   phone: string;
+  organization: string;
+  programInteres: string;
   subject: string;
   message: string;
   created_at: string;
@@ -15,6 +17,8 @@ type DbRow = {
   name: string;
   email: string;
   phone: string;
+  organization: string;
+  program_interes: string;
   subject: string;
   message: string;
   created_at: string;
@@ -26,6 +30,8 @@ function toContactMessage(row: DbRow): ContactMessage {
     name: row.name,
     email: row.email,
     phone: row.phone,
+    organization: row.organization ?? "",
+    programInteres: row.program_interes ?? "",
     subject: row.subject,
     message: row.message,
     created_at: row.created_at,
@@ -43,6 +49,8 @@ export async function insertContactMessage(
       name: message.name, 
       email: message.email, 
       phone: message.phone, 
+      organization: message.organization ?? "",
+      program_interes: message.programInteres ?? "",
       subject: message.subject, 
       message: message.message
     }])

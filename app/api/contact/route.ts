@@ -4,7 +4,7 @@ import { insertContactMessage, getAllContactMessages } from "@/lib/contact-db";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, organization, subject, message } = body;
+    const { name, email, phone, organization, programInteres, subject, message } = body;
 
     if (!name || !email || !subject || !message) {
       return NextResponse.json({ error: "Câmpuri obligatorii lipsă." }, { status: 400 });
@@ -15,6 +15,8 @@ export async function POST(req: NextRequest) {
       name,
       email,
       phone: phone || "",
+      organization: organization || "",
+      programInteres: programInteres || "",
       subject,
       message,
     });
@@ -26,6 +28,7 @@ export async function POST(req: NextRequest) {
         nume: name,
         email,
         organizatie: organization || "Nespecificat",
+        programInteres: programInteres || "Nu a fost selectat",
         subiect: subject,
         mesaj: message,
       };
