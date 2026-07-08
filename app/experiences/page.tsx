@@ -14,10 +14,22 @@ export const metadata: Metadata = {
 
 const experiences = [
   {
+    id: "busola-interioara",
+    name: "BUSOLA INTERIOARĂ",
+    subtitle: "Claritate și direcție într-o lume plină de opțiuni",
+    accentColor: "#9B7EBD",
+    active: true,
+    link: "/retreats/busola-interioara",
+    description:
+      "O experiență pentru oamenii care se află într-un moment de schimbare, alegere sau restart și au nevoie de mai multă claritate înainte de următorul pas.",
+  },
+  {
     id: "ai-fara-haos",
     name: "AI FĂRĂ HAOS",
     subtitle: "Cum folosim inteligența artificială fără să ne pierdem judecata",
     accentColor: "#C4714F",
+    active: false,
+    link: null,
     description:
       "O experiență practică despre integrarea responsabilă a inteligenței artificiale în activitatea profesională.",
   },
@@ -26,22 +38,18 @@ const experiences = [
     name: "OAMENI GREI, CONVERSAȚII GRELE",
     subtitle: "Cum gestionezi conflictele și personalitățile dificile",
     accentColor: "#8B6F5E",
+    active: false,
+    link: null,
     description:
       "O experiență despre gestionarea tensiunilor și menținerea profesionalismului în relațiile dificile.",
-  },
-  {
-    id: "busola-interioara",
-    name: "BUSOLA INTERIOARĂ",
-    subtitle: "Claritate și direcție într-o lume plină de opțiuni",
-    accentColor: "#9B7EBD",
-    description:
-      "O experiență pentru oamenii care se află într-un moment de schimbare, alegere sau restart și au nevoie de mai multă claritate înainte de următorul pas.",
   },
   {
     id: "mintea-2-0",
     name: "MINTEA 2.0",
     subtitle: "Cum să gândești clar într-o lume care îți fură atenția",
     accentColor: "#7C9A7E",
+    active: false,
+    link: null,
     description:
       "Experiență dedicată clarității mentale, atenției și luării deciziilor într-un mediu dominat de suprastimulare și zgomot informațional.",
   },
@@ -50,6 +58,8 @@ const experiences = [
     name: "HUMAN UPGRADE",
     subtitle: "Abilități umane pentru era inteligenței artificiale",
     accentColor: "#C4714F",
+    active: false,
+    link: null,
     description:
       "O explorare a competențelor care rămân esențial umane: gândire critică, adaptabilitate, creativitate și discernământ.",
   },
@@ -58,6 +68,8 @@ const experiences = [
     name: "CONVERSAȚII CARE SCHIMBĂ TOT",
     subtitle: "Puterea dialogului în relații, echipe și organizații",
     accentColor: "#8B6F5E",
+    active: false,
+    link: null,
     description:
       "Despre feedback, limite, ascultare activă și conversații care produc schimbare.",
   },
@@ -66,6 +78,8 @@ const experiences = [
     name: "EMOȚII SUB CONTROL",
     subtitle: "Cum reacționezi inteligent când ești sub presiune",
     accentColor: "#8B6F5E",
+    active: false,
+    link: null,
     description:
       "Instrumente practice pentru autoreglare emoțională și gestionarea situațiilor dificile.",
   },
@@ -74,6 +88,8 @@ const experiences = [
     name: "LEADERSHIP FĂRĂ MASCĂ",
     subtitle: "Cum conduci oameni reali, nu organigrame",
     accentColor: "#4A6FA5",
+    active: false,
+    link: null,
     description:
       "Leadership autentic bazat pe încredere, comunicare și influență pozitivă.",
   },
@@ -82,6 +98,8 @@ const experiences = [
     name: "RESET MENTAL",
     subtitle: "O pauză pentru claritate, energie și echilibru",
     accentColor: "#9B7EBD",
+    active: false,
+    link: null,
     description:
       "O experiență dedicată regăsirii echilibrului și reconectării cu ceea ce contează cu adevărat.",
   },
@@ -90,10 +108,15 @@ const experiences = [
     name: "THE ATTENTION LAB",
     subtitle: "Reconstruirea atenției într-o lume a distragerilor",
     accentColor: "#7C9A7E",
+    active: false,
+    link: null,
     description:
       "Un proces de conștientizare și dezvoltare a capacității de concentrare și focus profund.",
   },
 ];
+
+const busolaExperience = experiences.find((e) => e.id === "busola-interioara")!;
+const otherExperiences = experiences.filter((e) => e.id !== "busola-interioara");
 
 export default function ExperiencesPage() {
   return (
@@ -165,15 +188,10 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      {/* DIVIDER */}
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="h-px" style={{ backgroundColor: "rgba(0,0,0,0.07)" }} />
-      </div>
-
-      {/* EXPERIENCES GRID */}
-      <section id="experiences" className="py-32" style={{ backgroundColor: "#F5F0E8" }}>
+      {/* EXPERIENCE HERO - BUSOLA INTERIOARĂ */}
+      <section id="experiences" className="py-24" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "var(--sage)" }}>
               Experiențele noastre
             </p>
@@ -185,36 +203,99 @@ export default function ExperiencesPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {experiences.map((exp) => (
+          {busolaExperience && (
+            <div
+              className="relative rounded-3xl p-10 lg:p-14 mb-20 overflow-hidden"
+              style={{ backgroundColor: "white", boxShadow: "0 8px 40px rgba(155, 126, 189, 0.18)" }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-2" style={{ backgroundColor: "#9B7EBD" }} />
+              <div className="flex flex-col lg:flex-row gap-10 items-start">
+                <div className="flex-1">
+                  <span
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full text-white mb-6"
+                    style={{ backgroundColor: "#9B7EBD" }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                    ÎNSCRIERI DESCHISE
+                  </span>
+                  <h3
+                    className="text-3xl sm:text-4xl font-bold mb-4 leading-tight"
+                    style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+                  >
+                    {busolaExperience.name}
+                  </h3>
+                  <p className="text-lg font-medium italic mb-6" style={{ color: "#9B7EBD" }}>
+                    {busolaExperience.subtitle}
+                  </p>
+                  <p className="text-base leading-relaxed mb-8 max-w-2xl" style={{ color: "var(--charcoal-soft)" }}>
+                    {busolaExperience.description}
+                  </p>
+                  <Link
+                    href="/retreats/busola-interioara"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all hover:opacity-90 text-lg"
+                    style={{ backgroundColor: "#9B7EBD" }}
+                  >
+                    ÎNSCRIE-TE ACUM
+                    <span>→</span>
+                  </Link>
+                </div>
+                <div className="lg:w-1/3 w-full">
+                  <div
+                    className="rounded-2xl p-8 text-center"
+                    style={{ backgroundColor: "rgba(155, 126, 189, 0.08)" }}
+                  >
+                    <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: "#9B7EBD" }}>
+                      Disponibil acum
+                    </p>
+                    <p className="text-2xl font-bold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+                      Busola Interioară
+                    </p>
+                    <p className="text-sm mt-2" style={{ color: "var(--charcoal-soft)" }}>
+                      Claritate și direcție într-un weekend experiențial.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="mb-10">
+            <h3
+              className="text-2xl sm:text-3xl font-semibold"
+              style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+            >
+              Alte experiențe în pregătire
+            </h3>
+            <p className="mt-2 text-base" style={{ color: "var(--charcoal-soft)" }}>
+              Vor deveni disponibile în curând. Te anunțăm când deschidem înscrierile.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {otherExperiences.map((exp) => (
               <div
                 key={exp.id}
-                className="group bg-white rounded-2xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                style={{ boxShadow: "0 2px 20px rgba(0,0,0,0.06)", borderTop: `3px solid ${exp.accentColor}` }}
+                className="rounded-2xl p-6 transition-all duration-300"
+                style={{ backgroundColor: "white", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}
               >
-                <h3
-                  className="text-xl font-bold mb-3 leading-tight"
-                  style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)", letterSpacing: "-0.01em" }}
+                <span
+                  className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4"
+                  style={{ backgroundColor: `${exp.accentColor}15`, color: exp.accentColor }}
+                >
+                  În curând
+                </span>
+                <h4
+                  className="text-lg font-bold mb-2 leading-tight"
+                  style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
                 >
                   {exp.name}
-                </h3>
-
-                <p className="text-sm font-medium mb-5 italic" style={{ color: exp.accentColor }}>
+                </h4>
+                <p className="text-sm font-medium mb-3 italic" style={{ color: exp.accentColor }}>
                   {exp.subtitle}
                 </p>
-
-                <p className="text-sm leading-relaxed flex-1 mb-8" style={{ color: "var(--charcoal-soft)" }}>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
                   {exp.description}
                 </p>
-
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
-                  style={{ color: exp.accentColor }}
-                >
-                  Explorează experiența
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </Link>
               </div>
             ))}
           </div>
