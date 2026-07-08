@@ -169,6 +169,20 @@ export default function Footer() {
             <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
               © {new Date().getFullYear()} AnimaMinds. Toate drepturile rezervate.
             </p>
+            <a
+              href="https://thecpdregister.com/providers/cpd-group-providers--790577"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Listed on The CPD Register"
+            >
+              <img
+                src="/images/TheCPDRegister_Listed_On_white.webp"
+                alt="Listed on The CPD Register"
+                width="120"
+                height="40"
+                className="rounded opacity-90 hover:opacity-100 transition-opacity"
+              />
+            </a>
             <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
               Construit cu grijă în România 🇷🇴
             </p>
