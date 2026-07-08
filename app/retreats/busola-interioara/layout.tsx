@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BUSOLA INTERIOARĂ – Weekend Retreat | AnimaMinds",
+  title: "BUSOLA INTERIOARĂ – Program Experiențial de Dezvoltare | AnimaMinds",
   description:
-    "Claritate și direcție la Zărnești – Piatra Craiului. Ediția I: 28–31 august 2026. Ediția II: 4–6 septembrie 2026. Maxim 25 participanți.",
+    "Program experiențial de dezvoltare umană și profesională. 3 zile de activități, dialog și reflecție la Zărnești – Piatra Craiului. Ediția I: 28–30 august 2026. Maxim 25 participanți.",
   openGraph: {
-    title: "BUSOLA INTERIOARĂ – Weekend Retreat",
-    description: "Claritate și direcție atunci când lucrurile par neclare.",
+    title: "BUSOLA INTERIOARĂ – Program Experiențial de Dezvoltare Umană și Profesională",
+    description: "Claritate și direcție atunci când lucrurile par neclare. 3 zile de activități experiențiale, dialog și reflecție — AnimaMinds.",
     url: "https://animaminds.ro/retreats/busola-interioara",
   },
 };

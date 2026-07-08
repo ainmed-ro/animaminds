@@ -223,8 +223,8 @@ export default function BusolaInterioarePage() {
           <div className="space-y-5 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
             <p>Sfârşitul verii este, pentru mulți dintre noi, un moment de bilanț, reaşezare şi noi începuturi.</p>
             <p>Înainte ca ritmul obişnuit să revină, înainte ca agenda să se umple din nou şi responsabilitățile să preia controlul, BUSOLA INTERIOARĂ oferă ocazia de a face o pauză.</p>
-            <p>Un weekend la munte, cu aer curat, oameni deschişi, conversații care contează şi experiențe care creează perspective noi.</p>
-            <p className="font-medium" style={{ color: "var(--charcoal)" }}>In spiritul AnimaMinds – locul unde oamenii şi ideile cresc împreună.</p>
+            <p>Trei zile în mijlocul naturii, cu aer curat, oameni deschişi, conversații care contează şi activități care creează perspective noi.</p>
+            <p className="font-medium" style={{ color: "var(--charcoal)" }}>În spiritul AnimaMinds – locul unde oamenii şi ideile cresc împreună.</p>
           </div>
         </div>
       </section>
@@ -239,7 +239,7 @@ export default function BusolaInterioarePage() {
           <div className="space-y-6 text-lg leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
             <p>La finalul verii, înainte ca ritmul să accelereze din nou, înainte ca agenda să se umple și responsabilitățile să preia controlul, vă invităm să vă oferiți câteva zile pentru claritate, reflecție și perspective noi.</p>
             <p>BUSOLA INTERIOARĂ este un program experiențial de dezvoltare umană și profesională desfășurat într-un cadru care oferă spațiu pentru dialog, învățare, conectare și dezvoltare.</p>
-            <p>Un weekend la munte, cu aer curat, oameni deschiși, conversații care contează și experiențe care creează perspective noi.</p>
+            <p>Trei zile în mijlocul naturii, cu aer curat, oameni deschiși, conversații care contează și activități care creează perspective noi.</p>
             <p className="font-medium" style={{ color: "var(--charcoal)" }}>Pentru că uneori cele mai valoroase idei apar atunci când ne oferim timp să ne oprim.</p>
           </div>
           <div className="mt-10">
@@ -414,7 +414,7 @@ export default function BusolaInterioarePage() {
       <section className="py-28" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Competențe profesionale</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Arii de dezvoltare</p>
             <h2 className="text-3xl sm:text-4xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Competențe dezvoltate
             </h2>
@@ -495,7 +495,7 @@ export default function BusolaInterioarePage() {
           </div>
           <div className="rounded-2xl p-6 text-center" style={{ backgroundColor: "#F5F0E8" }}>
             <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-              Ambele documente sunt incluse în prețul participării şi sunt înĉmânate fiecărui participant la finalul programului.
+              Ambele documente sunt incluse în prețul participării și sunt înmânate fiecărui participant la finalul programului.
             </p>
           </div>
         </div>
