@@ -566,13 +566,16 @@ export default function BusolaInterioarePage() {
             </div>
             <div>
               <div className="rounded-2xl p-8" style={{ backgroundColor: "#F5F0E8", border: "1px solid rgba(155,126,189,0.15)" }}>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Achiziții instituționale</p>
-                <h3 className="text-xl font-semibold mb-5" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Participare prin proceduri de achiziție</h3>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#9B7EBD" }}>Colaborare instituțională</p>
+                <h3 className="text-xl font-semibold mb-5" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Pentru organizații și instituții</h3>
                 <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>
-                  Pentru grupuri organizate și participări instituționale, AnimaMinds poate furniza oferte personalizate și documentația necesară proceselor de achiziție.
+                  Pentru grupuri organizate și participări instituționale, AnimaMinds poate furniza oferte personalizate și documentația necesară pentru analizarea oportunităților de colaborare.
+                </p>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>
+                  Programul poate fi adaptat în funcție de obiectivele organizației și de profilul participanților.
                 </p>
                 <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
-                  Pentru colaborări cu instituții publice, unități sanitare, unități de învățământ, ONG-uri sau companii care doresc participarea prin proceduri SEAP/SICAP, vă rugăm să ne contactați.
+                  Pentru informații privind colaborările cu instituții publice, unități de învățământ, unități sanitare, ONG-uri sau companii, vă rugăm să ne contactați.
                 </p>
                 <Link
                   href="/contact"
