@@ -21,7 +21,7 @@ function doPost(e) {
       sheetName = "CONTACT";
       resultMessage = 'Mesaj de contact salvat cu succes';
     } else {
-      sheetName = data.sheetName || "INSCRIERI";
+      sheetName = data.sheetName || "înscrieri";
       resultMessage = 'Înscriere salvată cu succes';
     }
     
@@ -57,7 +57,19 @@ function doPost(e) {
       ];
     } else {
       // Formular înscrieri - generează ID și adaugă rând
-      const lastId = sheet.getRange(sheet.getLastRow(), 1).getValue() || 0;
+      const lastRowNum = sheet.getLastRow();
+      let lastId = 0;
+      if (lastRowNum > 1) {
+        const rawId = sheet.getRange(lastRowNum, 1).getValue();
+        if (typeof rawId === "number") {
+          lastId = rawId;
+        } else if (typeof rawId === "string") {
+          const match = rawId.match(/\d+/);
+          lastId = match ? parseInt(match[0], 10) : lastRowNum - 1;
+        } else {
+          lastId = lastRowNum - 1;
+        }
+      }
       const newId = lastId + 1;
       
       newRow = [
