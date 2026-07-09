@@ -82,8 +82,8 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <Navbar />
         <TrustBanner />
+        <Navbar />
         <main>{children}</main>
         <Footer />
       </body>

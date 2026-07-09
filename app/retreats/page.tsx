@@ -120,7 +120,7 @@ const retreats = [
 
 export default function RetreatsPage() {
   return (
-    <div className="pt-20 bg-white">
+    <div className="bg-white">
 
       {/* HERO */}
       <section

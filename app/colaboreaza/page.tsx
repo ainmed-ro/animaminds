@@ -47,7 +47,7 @@ const partnerTypes = [
 
 export default function ColaboreazaPage() {
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero */}
       <section className="py-24 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 z-0">

@@ -120,7 +120,7 @@ const otherExperiences = experiences.filter((e) => e.id !== "busola-interioara")
 
 export default function ExperiencesPage() {
   return (
-    <div className="pt-20 bg-white">
+    <div className="bg-white">
       {/* HERO */}
       <section className="relative min-h-[40vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>
         <div className="absolute inset-0 pointer-events-none">

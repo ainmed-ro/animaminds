@@ -120,7 +120,7 @@ export default function BusolaInterioarePage() {
   }
 
   return (
-    <div className="pt-20 bg-white">
+    <div className="bg-white">
 
       {/* HERO */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden" style={{ backgroundColor: "#F5F0E8" }}>

@@ -72,7 +72,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero */}
       <section
         className="py-12"

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function PoliticaConfidentialitate() {
   return (
-    <div className="pt-20">
+    <div>
       <section className="py-20" style={{ backgroundColor: "var(--cream)" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="section-label">Legal</span>

@@ -100,7 +100,7 @@ const programs = [
 
 export default function ProgramePage() {
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero */}
       <section className="py-12" style={{ backgroundColor: "var(--cream)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

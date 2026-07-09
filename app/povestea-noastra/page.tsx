@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PovEsteaNoastra() {
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
