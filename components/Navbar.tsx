@@ -27,35 +27,36 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between min-h-[112px] py-4">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center group p-2 rounded-2xl transition-all duration-300 ease-out hover:scale-[1.03]"
-            style={{
-              background: "linear-gradient(145deg, #ffffff 0%, #f5f0e8 100%)",
-              boxShadow: "inset 0 2px 3px rgba(255,255,255,0.95), inset 0 -2px 4px rgba(28,43,30,0.04), 0 10px 28px rgba(28,43,30,0.10), 0 4px 10px rgba(28,43,30,0.06)",
-            }}
-          >
-            <div
-              className="relative overflow-hidden rounded-xl transition-shadow duration-300 group-hover:shadow-lg"
+          {/* Logo + Desktop Nav group */}
+          <div className="flex items-center gap-3 lg:gap-5">
+            <Link
+              href="/"
+              className="flex items-center group p-1.5 rounded-2xl transition-all duration-300 ease-out hover:scale-[1.03]"
               style={{
-                boxShadow: "inset 0 1px 2px rgba(255,255,255,0.7), 0 3px 8px rgba(28,43,30,0.06)",
+                background: "linear-gradient(145deg, #ffffff 0%, #f5f0e8 100%)",
+                boxShadow: "inset 0 2px 3px rgba(255,255,255,0.95), inset 0 -2px 4px rgba(28,43,30,0.04), 0 10px 28px rgba(28,43,30,0.10), 0 4px 10px rgba(28,43,30,0.06)",
               }}
             >
-              <Image
-                src="/images/loggo.jpg"
-                alt="AnimaMinds"
-                width={260}
-                height={96}
-                className="object-contain w-auto"
-                style={{ height: "96px", filter: "contrast(1.06) saturate(1.04)" }}
-                priority
-              />
-            </div>
-          </Link>
+              <div
+                className="relative overflow-hidden rounded-xl transition-shadow duration-300 group-hover:shadow-lg"
+                style={{
+                  boxShadow: "inset 0 1px 2px rgba(255,255,255,0.7), 0 3px 8px rgba(28,43,30,0.06)",
+                }}
+              >
+                <Image
+                  src="/images/loggo.jpg"
+                  alt="AnimaMinds"
+                  width={280}
+                  height={104}
+                  className="object-contain w-auto"
+                  style={{ height: "104px", filter: "contrast(1.06) saturate(1.04)" }}
+                  priority
+                />
+              </div>
+            </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-5 lg:gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -76,6 +77,7 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
+          </div>
 
           {/* CTA Desktop */}
           <div className="hidden md:flex items-center gap-3">
