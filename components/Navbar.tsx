@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 
 const navLinks = [
   { href: "/", label: "Acasă" },
@@ -26,26 +26,15 @@ export default function Navbar() {
       className="sticky top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between min-h-[130px] py-4">
+        <div className="flex items-center justify-between min-h-[100px] py-4">
           {/* Logo + Desktop Nav group */}
           <div className="flex items-center gap-3 lg:gap-5">
             <Link
               href="/"
               className="flex items-center group transition-transform duration-300 ease-out hover:scale-[1.03]"
+              aria-label="AnimaMinds"
             >
-              <Image
-                src="/images/loggo.jpg"
-                alt="AnimaMinds"
-                width={300}
-                height={116}
-                className="object-contain w-auto rounded-2xl"
-                style={{
-                  height: "116px",
-                  filter: "contrast(1.12) brightness(1.03) saturate(1.06)",
-                  boxShadow: "0 8px 22px rgba(28,43,30,0.10), 0 3px 8px rgba(28,43,30,0.06)",
-                }}
-                priority
-              />
+              <Logo layout="horizontal" />
             </Link>
 
             {/* Desktop Nav */}
