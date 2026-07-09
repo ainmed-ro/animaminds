@@ -36,15 +36,15 @@ export default function Navbar() {
               <img
                 src="/images/logo-horizontal.png"
                 alt="AnimaMinds"
-                className="h-11 md:h-12 lg:h-14 w-auto max-w-[170px] md:max-w-[190px] lg:max-w-[210px] rounded-xl"
+                className="h-10 md:h-11 lg:h-12 w-auto max-w-[150px] md:max-w-[170px] lg:max-w-[190px] rounded-lg"
                 style={{
-                  boxShadow: "0 4px 14px rgba(28,43,30,0.08)",
+                  boxShadow: "0 3px 10px rgba(28,43,30,0.08)",
                 }}
               />
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-2 lg:gap-4">
+            <nav className="hidden md:flex items-center gap-1.5 lg:gap-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -71,7 +71,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <Link
               href="/contact"
-              className="btn-primary text-xs lg:text-sm py-2 px-3 lg:px-4 whitespace-nowrap"
+              className="btn-primary text-[11px] lg:text-xs py-1.5 px-2.5 lg:py-2 lg:px-3 whitespace-nowrap"
               style={{ backgroundColor: "var(--sage)", color: "white", borderRadius: "0.5rem", fontWeight: 500, display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
               Alătură-te comunității
