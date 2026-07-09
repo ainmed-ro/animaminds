@@ -14,15 +14,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -30,11 +23,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
