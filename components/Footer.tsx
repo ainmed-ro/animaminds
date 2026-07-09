@@ -57,28 +57,6 @@ export default function Footer() {
               „Creșterea se construiește împreună."
             </p>
 
-            {/* CPD accreditation */}
-            <div className="mt-6">
-              <a
-                href="https://thecpdregister.com/providers/cpd-group-providers--790577"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex flex-col items-start gap-2 group"
-                aria-label="Ne puteți verifica pe The CPD Register"
-              >
-                <span className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
-                  Ne puteți verifica pe
-                </span>
-                <img
-                  src="/images/TheCPDRegister_Listed_On_white.webp"
-                  alt="Listed on The CPD Register"
-                  width="140"
-                  height="46"
-                  className="rounded opacity-90 group-hover:opacity-100 transition-opacity"
-                />
-              </a>
-            </div>
-
             {/* Social media */}
             <div className="mt-8">
               <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--sage-light)" }}>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import TrustBanner from "@/components/TrustBanner";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -82,6 +83,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <Navbar />
+        <TrustBanner />
         <main>{children}</main>
         <Footer />
       </body>
