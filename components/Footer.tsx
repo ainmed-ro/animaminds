@@ -23,18 +23,12 @@ export default function Footer() {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-5">
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "var(--sage)" }}
-              >
-                <span
-                  className="text-white font-bold text-base"
-                  style={{ fontFamily: "Playfair Display, serif" }}
-                >
-                  A
-                </span>
-              </div>
+            <div className="flex items-center gap-3 mb-5">
+              <img
+                src="/images/seal-monogram.png"
+                alt="AnimaMinds AM monogram"
+                className="w-10 h-10 rounded-full object-cover"
+              />
               <span
                 className="text-xl font-semibold"
                 style={{ fontFamily: "Playfair Display, serif" }}
