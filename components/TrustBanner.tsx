@@ -17,20 +17,19 @@ export default function TrustBanner() {
             <strong style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>
               Standarde Internaționale în Educație
             </strong>{" "}
-            | Prin{" "}
+            | Comunitatea AnimaMinds este reprezentată de un{" "}
             <strong style={{ color: "var(--charcoal)" }}>
-              NICULAE ALINA-IONELA PFA
+              Furnizor Acreditat Internațional în{" "}
+              <a
+                href={cpdUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:no-underline"
+                style={{ color: "var(--terracotta)" }}
+              >
+                The CPD Register (#790577)
+              </a>
             </strong>
-            , comunitatea AnimaMinds este reprezentată de un Furnizor Acreditat Internațional în{" "}
-            <a
-              href={cpdUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:no-underline"
-              style={{ color: "var(--terracotta)" }}
-            >
-              <strong>The CPD Register (#790577)</strong>
-            </a>
             , confirmând angajamentul nostru pentru excelență, calitate și dezvoltare profesională continuă la standarde internaționale.{" "}
             <a
               href={cpdUrl}
