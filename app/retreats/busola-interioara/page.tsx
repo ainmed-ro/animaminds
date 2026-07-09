@@ -204,10 +204,10 @@ export default function BusolaInterioarePage() {
           </div>
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             {[
-              { icon: "📍", label: "Locație", value: "Deny Inn Resort & Spa, Zărnești" },
+              { icon: "📍", label: "Locație", value: "La munte sau la mare" },
               { icon: "👥", label: "Grup", value: "Maxim 25 participanți / ediție" },
               { icon: "🛏️", label: "Cazare", value: "Inclusă" },
-              { icon: "🌲", label: "Cadru", value: "Piatra Craiului" },
+              { icon: "🌲", label: "Cadru", value: "Natură liniștită" },
             ].map((d) => (
               <div key={d.label} className="p-4 rounded-xl" style={{ backgroundColor: "#F5F0E8" }}>
                 <div className="text-xl mb-1">{d.icon}</div>
@@ -626,20 +626,14 @@ export default function BusolaInterioarePage() {
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#A0715A" }}>Locație</p>
           <h2 className="text-2xl sm:text-3xl font-semibold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-            Deny Inn Resort & Spa<br />Zărnești – Piatra Craiului
+            La munte sau la mare
           </h2>
           <p className="text-base leading-relaxed max-w-xl mx-auto mb-6" style={{ color: "var(--charcoal-soft)" }}>
-            Un loc ales cu grijă — liniștit, propice pentru reflecție și dialog, înconjurat de munți și natură, departe de ritmul obișnuit al vieții profesionale.
+            Locația exactă a programului este în curs de confirmare. Experiența va avea loc într-un cadru liniștit, propice pentru reflecție și dialog, înconjurat de natură, departe de ritmul obișnuit al vieții profesionale.
           </p>
-          <a
-            href="https://denyinn.ro/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 border"
-            style={{ color: "#A0715A", borderColor: "#A0715A" }}
-          >
-            Vezi locația
-          </a>
+          <p className="text-sm font-semibold" style={{ color: "#A0715A" }}>
+            Detaliile vor fi anunțate în curând.
+          </p>
         </div>
       </section>
 

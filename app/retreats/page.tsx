@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "AnimaMinds — Programe Experiențiale de Dezvoltare",
   description:
-    "Programe experiențiale de dezvoltare umană și profesională, desfășurate pe parcursul a 2–3 zile la Zărnești – Piatra Craiului. Conversații cu sens, reflecție și perspective noi.",
+    "Programe experiențiale de dezvoltare umană și profesională, desfășurate pe parcursul a 2–3 zile. Conversații cu sens, reflecție și perspective noi.",
   openGraph: {
     title: "AnimaMinds — Programe Experiențiale de Dezvoltare Umană și Profesională",
     description: "Programe experiențiale de dezvoltare umană și profesională — AnimaMinds.",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const commonInfo = [
-  { icon: "📍", label: "Locație", value: "Zărnești – Deny Inn Resort & Spa" },
+  { icon: "📍", label: "Locație", value: "La munte sau la mare" },
   { icon: "🛏️", label: "Cazare", value: "Inclusă" },
   { icon: "👥", label: "Grup", value: "20–25 participanți" },
   { icon: "📅", label: "Perioadă", value: "În curs de stabilire" },

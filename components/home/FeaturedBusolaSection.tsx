@@ -45,7 +45,7 @@ export default function FeaturedBusolaSection() {
               style={{ color: "var(--charcoal-soft)" }}
             >
               Un program experiențial de 3 zile pentru claritate, direcție și reconectare — 
-              la poalele Pietrei Craiului.
+              într-un cadru natural liniștit.
             </p>
 
             <div className="space-y-3 mb-8">
@@ -55,7 +55,7 @@ export default function FeaturedBusolaSection() {
               </div>
               <div className="flex items-center gap-3 text-sm" style={{ color: "var(--charcoal-soft)" }}>
                 <MapPin size={16} style={{ color: "#9B7EBD" }} />
-                <span>Deny Inn Resort & Spa, Zărnești</span>
+                <span>La munte sau la mare</span>
               </div>
               <div className="flex items-center gap-3 text-sm" style={{ color: "var(--charcoal-soft)" }}>
                 <Users size={16} style={{ color: "#9B7EBD" }} />
