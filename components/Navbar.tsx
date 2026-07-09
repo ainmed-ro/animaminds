@@ -28,16 +28,30 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <Image
-              src="/images/loggo.jpg"
-              alt="AnimaMinds"
-              width={200}
-              height={75}
-              className="object-contain w-auto"
-              style={{ height: "60px" }}
-              priority
-            />
+          <Link
+            href="/"
+            className="flex items-center group p-1.5 rounded-2xl transition-all duration-300 ease-out hover:scale-[1.03]"
+            style={{
+              background: "linear-gradient(145deg, #ffffff 0%, #f5f0e8 100%)",
+              boxShadow: "inset 0 1px 1px rgba(255,255,255,0.9), 0 6px 18px rgba(28,43,30,0.08), 0 1px 3px rgba(28,43,30,0.06)",
+            }}
+          >
+            <div
+              className="relative overflow-hidden rounded-xl transition-shadow duration-300 group-hover:shadow-lg"
+              style={{
+                boxShadow: "inset 0 1px 2px rgba(255,255,255,0.6), 0 2px 6px rgba(28,43,30,0.05)",
+              }}
+            >
+              <Image
+                src="/images/loggo.jpg"
+                alt="AnimaMinds"
+                width={220}
+                height={82}
+                className="object-contain w-auto"
+                style={{ height: "72px" }}
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Nav */}
