@@ -24,10 +24,10 @@ export default function Navbar() {
     <header
       className="sticky top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between min-h-[72px] py-2">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between min-h-[68px] py-2">
           {/* Logo + Desktop Nav group */}
-          <div className="flex items-center gap-2 lg:gap-4">
+          <div className="flex items-center gap-1 lg:gap-3">
             <Link
               href="/"
               className="flex items-center group transition-transform duration-300 ease-out hover:scale-[1.02] shrink-0"
@@ -36,8 +36,12 @@ export default function Navbar() {
               <img
                 src="/images/logo-horizontal.png"
                 alt="AnimaMinds"
-                className="h-10 md:h-11 lg:h-12 w-auto max-w-[150px] md:max-w-[170px] lg:max-w-[190px] rounded-lg"
+                className="h-9 md:h-10 lg:h-12 w-auto rounded-lg"
                 style={{
+                  maxHeight: "72px",
+                  height: "48px",
+                  width: "auto",
+                  maxWidth: "190px",
                   boxShadow: "0 3px 10px rgba(28,43,30,0.08)",
                 }}
               />
@@ -49,7 +53,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-xs lg:text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap ${
+                className={`text-[11px] lg:text-xs font-medium transition-colors duration-200 relative group whitespace-nowrap ${
                   pathname === link.href
                     ? "text-sage"
                     : "text-charcoal hover:text-sage"
@@ -71,7 +75,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <Link
               href="/contact"
-              className="btn-primary text-[11px] lg:text-xs py-1.5 px-2.5 lg:py-2 lg:px-3 whitespace-nowrap"
+              className="btn-primary text-[10px] lg:text-[11px] py-1.5 px-2 lg:px-2.5 whitespace-nowrap"
               style={{ backgroundColor: "var(--sage)", color: "white", borderRadius: "0.5rem", fontWeight: 500, display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
               Alătură-te comunității
