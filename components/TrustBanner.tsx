@@ -58,14 +58,18 @@ export default function TrustBanner() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Listed on The CPD Register"
-              className="flex-shrink-0"
+              className="flex-shrink-0 p-2.5 rounded-xl bg-white border transition-all duration-300 hover:shadow-md"
+              style={{
+                borderColor: "rgba(28,43,30,0.08)",
+                boxShadow: "0 4px 14px rgba(28,43,30,0.04), 0 1px 3px rgba(28,43,30,0.03)",
+              }}
             >
               <img
                 src="/images/TheCPDRegister_Listed_On_black.webp"
                 alt="Listed on The CPD Register"
-                width="120"
-                height="40"
-                className="rounded-sm opacity-90 hover:opacity-100 transition-opacity"
+                width="150"
+                height="50"
+                className="block opacity-95 hover:opacity-100 transition-opacity"
               />
             </a>
           </div>
