@@ -13,7 +13,7 @@ const reasons = [
   "Programe proiectate specific pentru nevoile voastre",
   "Formatori cu experiență practică, nu doar academică",
   "Abordare orientată spre impact real, măsurabil",
-  "Flexibilitate: on-site, online sau hibrid",
+  "Ne deplasăm la sediul companiilor și instituțiilor care ne invită — on-site, online sau hibrid",
   "Suport continuu după finalizarea programului",
   "Integrare în comunitatea AnimaMinds",
 ];
@@ -197,6 +197,12 @@ export default function ColaboreazaPage() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="mt-10 p-6 rounded-2xl text-center" style={{ backgroundColor: "rgba(124,154,126,0.08)", border: "1px solid rgba(124,154,126,0.2)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+              <strong style={{ color: "var(--charcoal)" }}>Nu puteți veni la noi?</strong> Pentru companii, instituții și organizații care doresc, ne deplasăm noi la sediul dumneavoastră — oriunde în țară — și livrăm programul direct în contextul echipei voastre.
+            </p>
           </div>
         </div>
       </section>
