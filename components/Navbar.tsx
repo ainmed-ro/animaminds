@@ -25,18 +25,18 @@ export default function Navbar() {
       className="sticky top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between min-h-[84px] py-3">
+        <div className="flex items-center justify-between min-h-[72px] py-2">
           {/* Logo + Desktop Nav group */}
-          <div className="flex items-center gap-3 lg:gap-5">
+          <div className="flex items-center gap-2 lg:gap-4">
             <Link
               href="/"
-              className="flex items-center group transition-transform duration-300 ease-out hover:scale-[1.03]"
+              className="flex items-center group transition-transform duration-300 ease-out hover:scale-[1.02] shrink-0"
               aria-label="AnimaMinds"
             >
               <img
                 src="/images/logo-horizontal.png"
                 alt="AnimaMinds"
-                className="h-14 sm:h-16 w-auto rounded-xl"
+                className="h-11 md:h-12 lg:h-14 w-auto max-w-[170px] md:max-w-[190px] lg:max-w-[210px] rounded-xl"
                 style={{
                   boxShadow: "0 4px 14px rgba(28,43,30,0.08)",
                 }}
@@ -44,12 +44,12 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-5 lg:gap-6">
+            <nav className="hidden md:flex items-center gap-2 lg:gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 relative group ${
+                className={`text-xs lg:text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap ${
                   pathname === link.href
                     ? "text-sage"
                     : "text-charcoal hover:text-sage"
@@ -68,11 +68,11 @@ export default function Navbar() {
           </div>
 
           {/* CTA Desktop */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3 shrink-0">
             <Link
               href="/contact"
-              className="btn-primary text-sm py-2.5 px-5"
-              style={{ backgroundColor: "var(--sage)", color: "white", borderRadius: "0.5rem", padding: "0.625rem 1.25rem", fontWeight: 500, fontSize: "0.875rem", display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
+              className="btn-primary text-xs lg:text-sm py-2 px-3 lg:px-4 whitespace-nowrap"
+              style={{ backgroundColor: "var(--sage)", color: "white", borderRadius: "0.5rem", fontWeight: 500, display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
               Alătură-te comunității
             </Link>
