@@ -240,13 +240,13 @@ export default function BusolaInterioarePage() {
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-6" style={{ color: "#A0715A" }}>Despre program</p>
           <h2 className="text-2xl sm:text-3xl font-semibold mb-6 leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-            Uneori, cel mai important pas este să vă opriți.
+            Uneori, cel mai important pas este pauza.
           </h2>
           <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-            <p>La finalul verii, înainte ca ritmul să accelereze din nou, înainte ca agenda să se umple și responsabilitățile să preia controlul, vă invităm să vă oferiți câteva zile pentru claritate, reflecție și perspective noi.</p>
+            <p>La finalul verii, înainte ca ritmul să accelereze din nou, înainte ca agenda să se umple și responsabilitățile să preia controlul, BUSOLA INTERIOARĂ oferă spațiu pentru câteva zile de claritate, reflecție și perspective noi.</p>
             <p>BUSOLA INTERIOARĂ este un program experiențial de dezvoltare umană și profesională desfășurat într-un cadru care oferă spațiu pentru dialog, învățare, conectare și dezvoltare.</p>
             <p>Trei zile în mijlocul naturii, cu aer curat, oameni deschiși, conversații care contează și activități care creează perspective noi.</p>
-            <p className="font-medium" style={{ color: "var(--charcoal)" }}>Pentru că uneori cele mai valoroase idei apar atunci când ne oferim timp să ne oprim.</p>
+            <p className="font-medium" style={{ color: "var(--charcoal)" }}>Pentru că uneori cele mai valoroase idei apar atunci când se acordă timp pentru oprire.</p>
           </div>
           <div className="mt-8">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-semibold text-white text-sm transition-all hover:opacity-90 hover:shadow-lg" style={{ backgroundColor: "#A0715A" }}>
@@ -288,7 +288,7 @@ export default function BusolaInterioarePage() {
             </div>
             <div className="space-y-4">
               <div className="rounded-2xl p-5 bg-white" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#A0715A" }}>Ce veți găsi aici?</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#A0715A" }}>Ce include experiența?</p>
                 <ul className="space-y-4">
                   {[
                     { icon: "🌲", text: "Natură şi timp pentru reflecție" },
@@ -325,7 +325,7 @@ export default function BusolaInterioarePage() {
           <div className="text-center mb-6">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#A0715A" }}>Beneficii</p>
             <h2 className="text-2xl sm:text-3xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-              Ce veți câștiga din această experiență?
+              Ce se câștigă din această experiență?
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -457,7 +457,7 @@ export default function BusolaInterioarePage() {
           <div className="text-center mb-6">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#A0715A" }}>Documente</p>
             <h2 className="text-2xl sm:text-3xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-              Ce primiți la finalul programului?
+              Ce se primește la finalul programului?
             </h2>
             <p className="text-base mt-6 max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
               La finalul programului BUSOLA INTERIOARĂ, fiecare participant primeşte:
@@ -523,7 +523,7 @@ export default function BusolaInterioarePage() {
                 a: "Nu. Programul este deschis tuturor persoanelor interesate de dezvoltare personală şi profesională.",
               },
               {
-                q: "Pot participa singur(ă)?",
+                q: "Este posibilă participarea individuală?",
                 a: "Da. Mulți participanți aleg să participe individual.",
               },
               {
@@ -531,11 +531,11 @@ export default function BusolaInterioarePage() {
                 a: "Participanții înscrişi individual sunt repartizați în camere duble, alături de participanți de acelaşi sex, în funcție de disponibilitate. Pentru un plus de confort şi intimitate, există posibilitatea rezervării unei camere single, contra unui cost suplimentar şi în limita disponibilității locației.",
               },
               {
-                q: "Pot participa prin intermediul organizației în care lucrez?",
+                q: "Este posibilă participarea prin intermediul organizației?",
                 a: "Da. Programul poate fi accesat atât individual, cât şi prin participarea unor grupuri provenite din companii, instituții publice, unități sanitare, unități de învățământ şi ONG-uri.",
               },
               {
-                q: "Ce documente primesc la final?",
+                q: "Ce documente se primesc la final?",
                 a: "Participanții primesc: 📜 Certificat de Participare şi 📄 Fişa competențelor dezvoltate pe parcursul programului. Aceste documente sintetizează participarea şi principalele teme abordate în cadrul experienței.",
               },
             ].map((item, i) => (
@@ -581,14 +581,14 @@ export default function BusolaInterioarePage() {
                   Programul poate fi adaptat în funcție de obiectivele organizației și de profilul participanților.
                 </p>
                 <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
-                  Pentru informații privind colaborările cu instituții publice, unități de învățământ, unități sanitare, ONG-uri sau companii, vă rugăm să ne contactați.
+                  Pentru informații privind colaborările cu instituții publice, unități de învățământ, unități sanitare, ONG-uri sau companii, contactați echipa AnimaMinds.
                 </p>
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm transition-all hover:opacity-90 w-full"
                   style={{ backgroundColor: "#A0715A" }}
                 >
-                  Solicită ofertă pentru organizația mea
+                  Solicită ofertă pentru organizație
                 </Link>
               </div>
             </div>
@@ -646,7 +646,7 @@ export default function BusolaInterioarePage() {
             <span className="italic" style={{ color: "#A0715A" }}>BUSOLA INTERIOARĂ?</span>
           </h2>
           <p className="text-base leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
-            Înscrierile oficiale se vor deschide după confirmarea detaliilor finale. Până atunci, vă puteți înregistra interesul — veți fi printre primii care află toate detaliile.
+            Înscrierile oficiale se vor deschide după confirmarea detaliilor finale. Până atunci, se poate înregistra interesul — cei înscriși vor fi printre primii care află toate detaliile.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#A0715A" }}>
@@ -666,11 +666,11 @@ export default function BusolaInterioarePage() {
             {submitted ? (
               <div className="p-6 text-center">
                 <div className="text-5xl mb-6">✦</div>
-                <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Vă mulțumim pentru interes!</h3>
-                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Solicitarea dumneavoastră a fost înregistrată cu succes.</p>
+                <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>Mulțumim pentru interes!</h3>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Solicitarea a fost înregistrată cu succes.</p>
                 <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>În această perioadă centralizăm persoanele interesate de programul Busola Interioară.</p>
                 <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Detaliile finale ale programului vor fi publicate după 15 iulie 2026.</p>
-                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Vă rugăm să reveniți pe această pagină pentru actualizări.</p>
+                <p className="text-base leading-relaxed mb-4" style={{ color: "var(--charcoal-soft)" }}>Reveniți pe această pagină pentru actualizări.</p>
                 <p className="text-base leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>Echipa AnimaMinds</p>
                 <button onClick={() => { setShowForm(false); setSubmitted(false); setForm({ nume: "", email: "", telefon: "", editie: "", participanti: "1", observatii: "" }); }} className="px-8 py-3 rounded-xl font-semibold text-white" style={{ backgroundColor: "#A0715A" }}>Închide</button>
               </div>
@@ -682,7 +682,7 @@ export default function BusolaInterioarePage() {
                 </div>
                 <div className="rounded-xl p-4 mb-2" style={{ backgroundColor: "#A0715A12", border: "1px solid rgba(160,113,90,0.25)" }}>
                     <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>Înscrierile oficiale pentru <strong style={{ color: "var(--charcoal)" }}>BUSOLA INTERIOARĂ</strong> se vor deschide după confirmarea detaliilor logistice și a calendarului final.</p>
-                    <p className="text-sm leading-relaxed mt-2" style={{ color: "var(--charcoal-soft)" }}>Dacă doriți să fiți printre primii care află toate detaliile programului, vă puteți înregistra interesul folosind formularul de mai jos.</p>
+                    <p className="text-sm leading-relaxed mt-2" style={{ color: "var(--charcoal-soft)" }}>Pentru a fi printre primii care află toate detaliile programului, se poate înregistra interesul folosind formularul de mai jos.</p>
                     <p className="text-xs mt-2 font-medium" style={{ color: "#A0715A" }}>Detaliile finale privind programul, calendarul și investiția vor fi publicate până la 15 iulie 2026. Înscrierile oficiale vor fi deschise după publicarea detaliilor finale ale programului.</p>
                   </div>
                 <form onSubmit={handleSubmit} className="space-y-4 mt-4">
@@ -699,9 +699,9 @@ export default function BusolaInterioarePage() {
                     <input required name="telefon" value={form.telefon} onChange={handleChange} type="tel" className="w-full px-4 py-3 rounded-xl border text-sm outline-none focus:border-[#A0715A] transition-colors" style={{ borderColor: "rgba(0,0,0,0.15)" }} placeholder="07XX XXX XXX" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2" style={{ color: "var(--charcoal)" }}>Selectează ediția *</label>
+                    <label className="block text-sm font-medium mb-2" style={{ color: "var(--charcoal)" }}>Ediție *</label>
                     <select required name="editie" value={form.editie} onChange={handleChange} className="w-full px-4 py-3 rounded-xl border text-sm outline-none focus:border-[#A0715A] transition-colors bg-white" style={{ borderColor: "rgba(0,0,0,0.15)" }}>
-                      <option value="">Alege ediția</option>
+                      <option value="">Selectare ediție</option>
                       {editions.map((ed) => (
                         <option key={ed.id} value={ed.dates}>{ed.label} — {ed.dates}</option>
                       ))}
@@ -721,7 +721,7 @@ export default function BusolaInterioarePage() {
                     <p className="text-sm text-red-600 text-center">{submitError}</p>
                   )}
                   <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 disabled:opacity-60" style={{ backgroundColor: "#A0715A" }}>
-                    {submitting ? "Se trimite..." : "Înregistrează interesul meu"}
+                    {submitting ? "Se trimite..." : "Înregistrează interesul"}
                   </button>
                   <p className="text-xs text-center leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
                     👥 Număr limitat de participanți. Fiecare ediție este limitată la maximum 25 participanți.

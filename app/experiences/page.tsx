@@ -36,7 +36,7 @@ const experiences = [
   {
     id: "oameni-grei",
     name: "OAMENI GREI, CONVERSAȚII GRELE",
-    subtitle: "Cum gestionezi conflictele și personalitățile dificile",
+    subtitle: "Gestionarea conflictelor și personalităților dificile",
     accentColor: "#8B6F5E",
     active: false,
     link: null,
@@ -46,7 +46,7 @@ const experiences = [
   {
     id: "mintea-2-0",
     name: "MINTEA 2.0",
-    subtitle: "Cum să gândești clar într-o lume care îți fură atenția",
+    subtitle: "Claritate mentală într-o lume plină de distrageri",
     accentColor: "#7C9A7E",
     active: false,
     link: null,
@@ -76,7 +76,7 @@ const experiences = [
   {
     id: "emotii-sub-control",
     name: "EMOȚII SUB CONTROL",
-    subtitle: "Cum reacționezi inteligent când ești sub presiune",
+    subtitle: "Reacții inteligente sub presiune",
     accentColor: "#8B6F5E",
     active: false,
     link: null,
@@ -86,7 +86,7 @@ const experiences = [
   {
     id: "leadership-fara-masca",
     name: "LEADERSHIP FĂRĂ MASCĂ",
-    subtitle: "Cum conduci oameni reali, nu organigrame",
+    subtitle: "Leadership autentic pentru oameni reali, nu organigrame",
     accentColor: "#4A6FA5",
     active: false,
     link: null,
@@ -173,7 +173,7 @@ export default function ExperiencesPage() {
               className="text-2xl sm:text-3xl font-semibold"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
-              Alege experiența potrivită
+              Experiențe disponibile
             </h2>
           </div>
 
@@ -241,7 +241,7 @@ export default function ExperiencesPage() {
               Alte experiențe în pregătire
             </h3>
             <p className="mt-1 text-sm sm:text-base" style={{ color: "var(--charcoal-soft)" }}>
-              Vor deveni disponibile în curând. Te anunțăm când deschidem înscrierile.
+              Vor deveni disponibile în curând. Vom anunța deschiderea înscrierilor.
             </p>
           </div>
 
@@ -286,20 +286,20 @@ export default function ExperiencesPage() {
             className="text-2xl sm:text-3xl font-semibold mb-5 leading-tight"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
-            Nu știi care experiență{" "}
+            Indecis în privința experienței{" "}
             <span className="italic" style={{ color: "var(--terracotta)" }}>
-              ți se potrivește?
+              potrivite?
             </span>
           </h2>
           <p className="text-base leading-relaxed mb-8" style={{ color: "var(--charcoal-soft)" }}>
-            Discutăm despre obiectivele, provocările și contextul tău. Împreună alegem experiența potrivită pentru tine, echipa sau organizația ta.
+            Discutăm despre obiectivele, provocările și contextul. Împreună alegem experiența potrivită pentru persoane, echipe sau organizații.
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-medium text-white transition-all hover:opacity-90 hover:shadow-lg text-sm sm:text-base"
             style={{ backgroundColor: "var(--sage)" }}
           >
-            Să vedem cum te putem sprijini
+            Să vedem cum putem colabora
           </Link>
         </div>
       </section>

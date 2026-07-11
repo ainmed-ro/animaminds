@@ -35,13 +35,13 @@ export default function CtaBanner() {
           className="text-xs font-semibold uppercase tracking-widest mb-4 block"
           style={{ color: "rgba(168,196,170,0.9)" }}
         >
-          Pregătit pentru o nouă etapă?
+          O nouă etapă?
         </span>
         <h2
           className="text-2xl sm:text-3xl font-semibold text-white mb-4"
           style={{ fontFamily: "Playfair Display, serif", lineHeight: 1.2 }}
         >
-          Vino alături de noi.{" "}
+          Alături de noi.{" "}
           <span
             className="italic"
             style={{ color: "var(--sage-light)" }}
@@ -54,9 +54,9 @@ export default function CtaBanner() {
           className="text-base mb-8 max-w-2xl mx-auto"
           style={{ color: "rgba(255,255,255,0.75)" }}
         >
-          Fie că ești un profesionist în căutare de creștere, o organizație
-          care vrea să investească în oamenii săi sau un formator cu o idee
-          — locul tău este în AnimaMinds.
+          Fie că este vorba despre un profesionist în căutare de creștere, o organizație
+          care investește în oameni sau un formator cu o idee
+          — AnimaMinds este locul potrivit.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

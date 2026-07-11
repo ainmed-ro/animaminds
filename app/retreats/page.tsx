@@ -62,14 +62,14 @@ const retreats = [
   {
     id: "reset-mental-retreat",
     name: "RESET MENTAL",
-    subtitle: "Oprește-te. Respiră. Privește lucrurile altfel.",
+    subtitle: "Pauză. Claritate. Echilibru.",
     duration: "2 zile · 1 noapte",
     accentColor: "#9B7EBD",
     badge: "În curând",
     link: null,
     active: false,
     description:
-      "Un weekend fără agendă încărcată și fără presiune. Spațiu, natură și oameni cu care poți vorbi deschis despre ce te obosește și ce îți dă energie.",
+      "Un weekend fără agendă încărcată și fără presiune. Spațiu, natură și oameni cu care se poate vorbi deschis despre epuizare, energie și resurse interioare.",
     includes: [
       "Activități de mișcare și prezență",
       "Timp liber în natură",
@@ -88,7 +88,7 @@ const retreats = [
     link: null,
     active: false,
     description:
-      "Explorăm împreună ce înseamnă să gândești critic, să te adaptezi și să rămâi tu însuți într-o lume care se schimbă rapid. O conversație sinceră despre prezent și viitor.",
+      "Explorăm împreună ce înseamnă gândire critică, adaptabilitate și autenticitate într-o lume care se schimbă rapid. O conversație sinceră despre prezent și viitor.",
     includes: [
       "Activități de gândire critică",
       "Exerciții de creativitate aplicată",
@@ -100,14 +100,14 @@ const retreats = [
   {
     id: "leadership-fara-masca-retreat",
     name: "LEADERSHIP FĂRĂ MASCĂ",
-    subtitle: "Cum conduci oameni reali, nu organigrame",
+    subtitle: "Leadership autentic pentru oameni reali, nu organigrame",
     duration: "3 zile · 2 nopți",
     accentColor: "#4A6FA5",
     badge: "În curând",
     link: null,
     active: false,
     description:
-      "Program experiențial pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când renunți la măști și alegi autenticitatea.",
+      "Program experiențial pentru oameni care conduc echipe și vor să o facă mai autentic. Vorbim despre încredere, comunicare și cum arată leadershipul atunci când se renunță la măști și se alege autenticitatea.",
     includes: [
       "Dialoguri despre leadership autentic",
       "Exerciții de încredere și colaborare",
@@ -150,7 +150,7 @@ export default function RetreatsPage() {
           >
             Loc pentru gânduri mai clare.{" "}
             <span className="italic" style={{ color: "#7C9A7E" }}>
-              Oameni mai apropiați. Timp pentru tine.
+              Oameni mai apropiați. Timp pentru sine.
             </span>
           </h1>
 
@@ -378,7 +378,7 @@ export default function RetreatsPage() {
             </span>
           </h2>
           <p className="text-lg leading-relaxed mb-12" style={{ color: "rgba(255,255,255,0.6)" }}>
-            Fie că reprezentați o instituție, o companie sau căutați o experiență personală profundă, vă invităm să descoperim împreună programul potrivit pentru dumneavoastră.
+            Fie că este vorba despre o instituție, o companie sau o experiență personală profundă, invităm la o conversație pentru a descoperi împreună programul potrivit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -386,7 +386,7 @@ export default function RetreatsPage() {
               className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-medium text-white transition-all hover:opacity-90 text-base"
               style={{ backgroundColor: "#7C9A7E" }}
             >
-              Să vedem cum te putem sprijini
+              Să vedem cum putem colabora
             </Link>
             <Link
               href="/retreats/busola-interioara"

@@ -73,7 +73,7 @@ export default function PovEsteaNoastra() {
                   </strong>
                   , că împreună mergem mai departe și mai sus, și că{" "}
                   <strong style={{ color: "var(--sage)" }}>
-                    cea mai bună versiune a ta apare în prezența celor potriviți.
+                    cea mai bună versiune a fiecăruia apare în prezența celor potriviți.
                   </strong>
                 </p>
               </div>
@@ -264,9 +264,8 @@ export default function PovEsteaNoastra() {
               >
                 „Predau de mulți ani și am învățat mai mult de la oamenii din
                 față decât din orice manual. Am creat AnimaMinds pentru că
-                știu că cea mai bună versiune a ta nu apare în izolare — apare
-                când ești înconjurat de oameni care te văd și te provoacă să
-                crești."
+                știu că cea mai bună versiune a omului nu apare în izolare — apare
+                în prezența celor care îl văd și îl provoacă să crească."
               </p>
             </div>
 
@@ -318,7 +317,7 @@ export default function PovEsteaNoastra() {
             className="text-2xl sm:text-3xl font-semibold text-white mb-4"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Vrei să faci parte din poveste?
+            Alături de noi în poveste?
           </h2>
           <p className="text-base mb-6" style={{ color: "rgba(255,255,255,0.8)" }}>
             AnimaMinds crește cu fiecare om care alege să fie parte din ea.

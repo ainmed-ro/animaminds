@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const reasons = [
-  "Programe proiectate specific pentru nevoile voastre",
+  "Programe proiectate specific pentru nevoile reale ale fiecărui partener",
   "Formatori cu experiență practică, nu doar academică",
   "Abordare orientată spre impact real, măsurabil",
   "Ne deplasăm la sediul companiilor și instituțiilor care ne invită — on-site, online sau hibrid",
@@ -40,7 +40,7 @@ const partnerTypes = [
   {
     icon: Briefcase,
     title: "Formatori și traineri independenți",
-    desc: "Alătură-te rețelei noastre de formatori. Colaborăm, co-livrăm și creștem împreună.",
+    desc: "Intră în rețeaua noastră de formatori. Colaborăm, co-livrăm și creștem împreună.",
     cta: "Rețea de formatori, proiecte comune",
   },
 ];
@@ -82,9 +82,9 @@ export default function ColaboreazaPage() {
               className="text-xl leading-relaxed mb-8"
               style={{ color: "var(--charcoal-soft)" }}
             >
-              Indiferent dacă ești o companie care vrea să investească în
-              oamenii săi, o instituție cu nevoie de formare sau un formator
-              independent — avem un model de colaborare potrivit pentru tine.
+              Indiferent de profil — companie, instituție cu nevoie de formare
+              sau formator independent — avem un model de colaborare adaptat
+              contextului.
             </p>
             <Link href="/contact" className="btn-primary group">
               Începe conversația
@@ -112,8 +112,8 @@ export default function ColaboreazaPage() {
                 style={{ color: "var(--charcoal-soft)" }}
               >
                 Fiecare colaborare AnimaMinds pornește de la o analiză de nevoi
-                reale, nu de la un catalog fix. Construim programe cu voi, nu
-                pentru voi.
+                reale, nu de la un catalog fix. Construim programe împreună cu
+                partenerii, nu în locul lor.
               </p>
               <ul className="space-y-3">
                 {reasons.map((reason) => (
@@ -201,7 +201,7 @@ export default function ColaboreazaPage() {
 
           <div className="mt-10 p-6 rounded-2xl text-center" style={{ backgroundColor: "rgba(124,154,126,0.08)", border: "1px solid rgba(124,154,126,0.2)" }}>
             <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-              <strong style={{ color: "var(--charcoal)" }}>Nu puteți veni la noi?</strong> Pentru companii, instituții și organizații care doresc, ne deplasăm noi la sediul dumneavoastră — oriunde în țară — și livrăm programul direct în contextul echipei voastre.
+              <strong style={{ color: "var(--charcoal)" }}>Locația nu este o barieră.</strong> Pentru companii, instituții și organizații care doresc, ne deplasăm la sediul lor — oriunde în țară — și livrăm programul direct în contextul echipei.
             </p>
           </div>
         </div>
@@ -223,9 +223,9 @@ export default function ColaboreazaPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Conversație inițială", desc: "Discutăm nevoile, contextul și obiectivele voastre." },
+              { step: "01", title: "Conversație inițială", desc: "Discutăm nevoile, contextul și obiectivele organizației." },
               { step: "02", title: "Analiză de nevoi", desc: "Înțelegem cultura organizației și specificul grupului țintă." },
-              { step: "03", title: "Design personalizat", desc: "Proiectăm programul împreună, adaptat realității voastre." },
+              { step: "03", title: "Design personalizat", desc: "Proiectăm programul împreună, adaptat realității organizaționale." },
               { step: "04", title: "Livrare și impact", desc: "Implementăm, monitorizăm și măsurăm rezultatele." },
             ].map((item) => (
               <div key={item.step} className="text-center">
@@ -266,7 +266,7 @@ export default function ColaboreazaPage() {
             className="text-lg mb-8"
             style={{ color: "rgba(255,255,255,0.85)" }}
           >
-            Trimite-ne un mesaj și cineva din echipa AnimaMinds te va contacta
+            Trimite-ne un mesaj și cineva din echipa AnimaMinds va răspunde
             în maximum 24 de ore.
           </p>
           <Link

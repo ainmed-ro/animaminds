@@ -7,37 +7,37 @@ const audiences = [
     emoji: "👩‍🏫",
     title: "Profesori & Formatori",
     description:
-      "Vrei să predai mai eficient, să-ți actualizezi metodele și să faci parte dintr-o comunitate care înțelege provocările tale.",
+      "Predare mai eficientă, metode actualizate și acces la o comunitate care înțelege provocările profesionale.",
   },
   {
     emoji: "🧭",
     title: "Lideri & Manageri",
     description:
-      "Cauți instrumente practice de leadership, comunicare și construire de echipă — nu teorie, ci soluții aplicabile imediat.",
+      "Instrumente practice de leadership, comunicare și construire de echipă — nu teorie, ci soluții aplicabile imediat.",
   },
   {
     emoji: "🏢",
     title: "Organizații & Companii",
     description:
-      "Dorești programe de formare personalizate pentru echipa ta, adaptate culturii și obiectivelor organizației.",
+      "Programe de formare personalizate pentru echipă, adaptate culturii și obiectivelor organizației.",
   },
   {
     emoji: "🤝",
     title: "ONG-uri & Instituții",
     description:
-      "Ești implicat în educație, comunitate sau impact social și cauți parteneri care să înțeleagă misiunea ta.",
+      "Implicare în educație, comunitate sau impact social și căutare de parteneri care înțeleg misiunea organizației.",
   },
   {
     emoji: "🌱",
     title: "Profesioniști în creștere",
     description:
-      "Indiferent de domeniu, crezi că evoluția continuă este o responsabilitate, nu o opțiune.",
+      "Pentru cei care consideră că evoluția continuă este o responsabilitate, nu o opțiune.",
   },
   {
     emoji: "🔬",
     title: "Echipe de proiect",
     description:
-      "Lucrezi în proiecte complexe și ai nevoie de programe care să îmbunătățească colaborarea, comunicarea și performanța.",
+      "Lucrul în proiecte complexe și nevoia de programe care îmbunătățesc colaborarea, comunicarea și performanța.",
   },
 ];
 
@@ -99,7 +99,7 @@ export default function AudienceSection() {
               className="text-2xl sm:text-3xl font-semibold mb-4"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
-              Ești unul dintre noi?
+              Cine se alătură?
             </h2>
             <p
               className="text-base leading-relaxed mb-5"

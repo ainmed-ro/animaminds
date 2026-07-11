@@ -66,7 +66,7 @@ export default function ContactPage() {
       
     } catch (err) {
       setLoading(false);
-      setError("A apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou sau să ne contactezi direct la contact@animaminds.ro");
+      setError("A apărut o eroare la trimiterea mesajului. Reîncercați sau contactați echipa AnimaMinds direct la contact@animaminds.ro");
       console.error("Eroare trimitere formular:", err);
     }
   };
@@ -92,8 +92,8 @@ export default function ContactPage() {
               className="text-base sm:text-lg leading-relaxed"
               style={{ color: "var(--charcoal-soft)" }}
             >
-              Fie că ai o întrebare, o idee de colaborare sau pur și simplu vrei
-              să ne cunoști — ne bucurăm să fii în legătură cu noi.
+              Fie că este vorba despre o întrebare, o idee de colaborare sau o
+              primă conversație — suntem bucuroși să rămânem în legătură.
             </p>
           </div>
         </div>
@@ -266,7 +266,7 @@ export default function ContactPage() {
                     Mesaj trimis!
                   </h3>
                   <p style={{ color: "var(--charcoal-soft)" }}>
-                    Mulțumim că ne-ai contactat. Îți vom răspunde în curând.
+                    Mulțumim pentru mesaj. Răspunsul va veni în curând.
                   </p>
                 </div>
               ) : (
@@ -285,7 +285,7 @@ export default function ContactPage() {
                         required
                         value={form.nume}
                         onChange={handleChange}
-                        placeholder="Numele tău"
+                        placeholder="Nume complet"
                         className="w-full px-4 py-3 rounded-lg border text-sm transition-all"
                         style={{ borderColor: "#E0D9CE", backgroundColor: "var(--gray-warm)", color: "var(--charcoal)" }}
                       />
@@ -322,7 +322,7 @@ export default function ContactPage() {
                       name="organizatie"
                       value={form.organizatie}
                       onChange={handleChange}
-                      placeholder="Compania sau organizația ta"
+                      placeholder="Compania sau organizația"
                       className="w-full px-4 py-3 rounded-lg border text-sm transition-all"
                       style={{ borderColor: "#E0D9CE", backgroundColor: "var(--gray-warm)", color: "var(--charcoal)" }}
                     />
@@ -387,7 +387,7 @@ export default function ContactPage() {
                       rows={5}
                       value={form.mesaj}
                       onChange={handleChange}
-                      placeholder="Spune-ne cu ce te putem ajuta..."
+                      placeholder="Descrieți subiectul mesajului..."
                       className="w-full px-4 py-3 rounded-lg border text-sm transition-all resize-none"
                       style={{ borderColor: "#E0D9CE", backgroundColor: "var(--gray-warm)", color: "var(--charcoal)" }}
                     />
@@ -397,7 +397,7 @@ export default function ContactPage() {
                     className="p-4 rounded-lg text-xs"
                     style={{ backgroundColor: "var(--gray-warm)", color: "var(--charcoal-soft)" }}
                   >
-                    Prin trimiterea acestui formular, ești de acord cu{" "}
+                    Prin trimiterea acestui formular se acceptă{" "}
                     <a href="/politica-de-confidentialitate" className="underline" style={{ color: "var(--sage)" }}>
                       politica noastră de confidențialitate
                     </a>

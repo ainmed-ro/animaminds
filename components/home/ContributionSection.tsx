@@ -24,7 +24,7 @@ const pillars = [
     icon: Lightbulb,
     title: "Livrăm practică",
     description:
-      "Nu teorie de dragul teoriei. Fiecare program, workshop sau sesiune de mentorat are aplicabilitate directă în activitatea ta.",
+      "Nu teorie de dragul teoriei. Fiecare program, workshop sau sesiune de mentorat are aplicabilitate directă în activitatea profesională.",
     color: "var(--terracotta)",
     bg: "rgba(196,120,90,0.08)",
   },
@@ -69,7 +69,7 @@ export default function ContributionSection() {
             className="text-base leading-relaxed"
             style={{ color: "var(--charcoal-soft)" }}
           >
-            AnimaMinds nu este un furnizor de cursuri. Suntem partenerii tăi de
+            AnimaMinds nu este un furnizor de cursuri. Suntem parteneri de
             creștere — o comunitate construită pe patru piloni care fac
             diferența dintre a participa și a evolua cu adevărat.
           </p>

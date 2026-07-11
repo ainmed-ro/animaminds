@@ -26,7 +26,7 @@ const partnerTypes = [
   {
     icon: Briefcase,
     title: "Formatori independenți",
-    description: "Alătură-te rețelei noastre și colaborează cu o echipă de profesioniști.",
+    description: "Intră în rețeaua noastră de formatori și colaborează cu o echipă de profesioniști.",
     color: "var(--terracotta)",
   },
 ];

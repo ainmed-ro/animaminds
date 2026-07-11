@@ -32,10 +32,10 @@ const programs = [
     badgeColor: "var(--sage)",
     gradient: "linear-gradient(135deg, #4a7c59 0%, #7C9A7E 50%, #a8c5a0 100%)",
     symbol: "◎",
-    slogan: "Oprește-te. Respiră. Reconstruiește.",
-    title: "Cum rămâi ancorat când totul în jur se mișcă prea repede",
+    slogan: "Pauză. Respirație. Reconstrucție.",
+    title: "Ancorare când totul în jur se mișcă prea repede",
     description:
-      "Un program pentru cei care simt că nu mai au timp să respire. Explorăm împreună ce te epuizează, ce te reîncarcă și cum îți construiești resurse interne care rezistă în timp — indiferent de presiunea din jur.",
+      "Un program pentru cei care simt că nu mai au timp să respire. Explorăm împreună ce epuizează, ce reîncarcă și cum se construiesc resurse interne care rezistă în timp — indiferent de presiunea din jur.",
     for: "Profesori · Echipe din companii · Manageri · Oricine se simte copleșit",
     active: false,
     status: "În curând"
@@ -47,9 +47,9 @@ const programs = [
     gradient: "linear-gradient(135deg, #8B3A2A 0%, #C4785A 50%, #d9956e 100%)",
     symbol: "◇",
     slogan: "Cuvintele potrivite schimbă totul.",
-    title: "Ai ceva important de spus. Asigură-te că se aude.",
+    title: "Cum să fie auzite mesajele importante",
     description:
-      "Nu este despre tehnici de convingere sau discursuri perfecte. Este despre claritate, curaj și conexiune reală. Învățăm să spunem ce avem de spus fără să rănim și fără să tăcem când contează.",
+      "Nu este despre tehnici de convingere sau discursuri perfecte. Este despre claritate, curaj și conexiune reală — despre a spune ce contează fără a răni și fără a tăcea.",
     for: "Profesioniști · Manageri · Profesori · Tineri la început de carieră",
     active: false,
     status: "În curând"
@@ -60,10 +60,10 @@ const programs = [
     badgeColor: "var(--sage)",
     gradient: "linear-gradient(135deg, #2D4A5C 0%, #3d6b8a 50%, #5d8fa8 100%)",
     symbol: "✦",
-    slogan: "Folosește AI. Nu îl lăsa să te folosească pe tine.",
+    slogan: "Folosește AI. Păstrează controlul.",
     title: "Viitorul nu este pentru cei care știu mai mult. Este pentru cei care știu să întreabe mai bine.",
     description:
-      "Inteligența artificială nu vine să îți ia locul. Vine să preia ce este plictisitor, repetitiv și consumator de timp — ca tu să te poți ocupa de ce contează cu adevărat. Fără jargon, fără frică, cu aplicații concrete.",
+      "Inteligența artificială nu vine să ia locul omului, ci să preia ce este plictisitor, repetitiv și consumator de timp — eliberând spațiu pentru ceea ce contează cu adevărat. Fără jargon, fără frică, cu aplicații concrete.",
     for: "Profesori · Corporatiști · Antreprenori · Tineri care vor să rămână relevanți",
     active: false,
     status: "În curând"
@@ -74,10 +74,10 @@ const programs = [
     badgeColor: "var(--terracotta)",
     gradient: "linear-gradient(135deg, #5C3D6B 0%, #8a5da8 50%, #a87dc5 100%)",
     symbol: "△",
-    slogan: "Mintea ta este cel mai puternic instrument pe care îl ai.",
-    title: "Nu este despre cât știi. Este despre cum gândești.",
+    slogan: "Mintea este cel mai puternic instrument pe care îl avem la dispoziție.",
+    title: "Nu este despre cât se știe. Este despre cum se gândește.",
     description:
-      "De ce unii oameni absorb și aplică rapid, iar alții simt că se învârt în cerc? Răspunsul este în cum gândim despre gândire. Acest program îți oferă instrumentele să înveți mai eficient — la orice vârstă, în orice domeniu.",
+      "De ce unii oameni absorb și aplică rapid, iar alții simt că se învârt în cerc? Răspunsul este în cum gândim despre gândire. Acest program oferă instrumentele necesare pentru a învăța mai eficient — la orice vârstă, în orice domeniu.",
     for: "Studenți și tineri · Profesioniști în reconversie · Profesori · Oricine vrea să progreseze",
     active: false,
     status: "În curând"
@@ -88,7 +88,7 @@ const programs = [
     badgeColor: "var(--sage)",
     gradient: "linear-gradient(135deg, #7A5C3A 0%, #b08050 50%, #c9a070 100%)",
     symbol: "♡",
-    slogan: "Prezența ta contează mai mult decât perfecțiunea ta.",
+    slogan: "Prezența contează mai mult decât perfecțiunea.",
     title: "Copiii nu vin cu instrucțiuni. Dar putem învăța împreună.",
     description:
       "Nu există părinți perfecți — și nici nu trebuie să existe. Există părinți prezenți, care încearcă să înțeleagă. Acest program este un spațiu în care explorăm împreună ce au nevoie copiii noștri și cum construim relații care durează.",
@@ -197,7 +197,7 @@ export default function ProgramePage() {
             Busola Interioară este disponibilă acum
           </h2>
           <p className="text-base sm:text-lg mb-8" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Pentru celelalte programe, să purtăm o conversație despre ce ai nevoie și când le-am putea lansa.
+            Pentru celelalte programe, să purtăm o conversație despre nevoile și calendarul de lansare.
           </p>
           <Link
             href="/contact"
