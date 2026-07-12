@@ -95,20 +95,20 @@ export default function HeroSection() {
             }`}
           >
             <Link
-              href="/programe"
+              href="/inscriere"
               className="btn-primary group"
             >
-              Particip individual
+              Înscrie-te
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
               />
             </Link>
             <Link
-              href="/colaboreaza"
+              href="/contact"
               className="btn-secondary"
             >
-              Pentru organizații
+              Contactează-ne
             </Link>
           </div>
 

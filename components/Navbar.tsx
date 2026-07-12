@@ -72,11 +72,11 @@ export default function Navbar() {
           {/* CTA Desktop */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <Link
-              href="/programe"
+              href="/inscriere"
               className="btn-primary text-xs lg:text-sm font-semibold py-2 px-3 lg:px-4 rounded-lg whitespace-nowrap"
               style={{ backgroundColor: "var(--sage)", color: "white", display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
-              Particip individual
+              Înscrie-te
             </Link>
           </div>
 
@@ -119,11 +119,11 @@ export default function Navbar() {
           ))}
           <div className="pt-3 border-t border-gray-100 mt-3">
             <Link
-              href="/programe"
+              href="/inscriere"
               className="block w-full text-center py-3 px-4 rounded-lg text-sm font-medium text-white"
               style={{ backgroundColor: "var(--sage)" }}
             >
-              Particip individual
+              Înscrie-te
             </Link>
           </div>
         </div>

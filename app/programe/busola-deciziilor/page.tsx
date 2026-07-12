@@ -46,8 +46,8 @@ const formats = [
     icon: Monitor,
     title: "Online",
     description: "Sesiuni interactive, exerciții în breakout rooms și dialog ghidat — fără deplasare.",
-    cta: "Solicită detalii",
-    href: "/contact",
+    cta: "Înscrie-te",
+    href: "/inscriere",
   },
   {
     icon: MapPin,
@@ -98,12 +98,12 @@ export default function BusolaDeciziilorPage() {
             Program de dezvoltare umană și profesională pentru persoane, echipe și organizații care vor să aducă ordine în gânduri, să-și regăsească direcția și să ia decizii mai bune — într-un cadru sigur de reflecție și dialog.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#formate" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#A0715A" }}>
-              Vezi formatele disponibile
-            </a>
-            <Link href="/programe/busola-deciziilor/experience-edition" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-sm sm:text-base transition-all border hover:bg-white active:scale-95" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
-              Experience Edition
+            <Link href="/inscriere" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#A0715A" }}>
+              Înscrie-te
               <ArrowRight size={16} />
+            </Link>
+            <Link href="/colaboreaza" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-sm sm:text-base transition-all border hover:bg-white active:scale-95" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
+              Pentru organizații
             </Link>
           </div>
         </div>
@@ -362,8 +362,8 @@ export default function BusolaDeciziilorPage() {
             Alege formatul care ți se potrivește sau contactează echipa AnimaMinds pentru o ofertă personalizată.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/programe/busola-deciziilor/experience-edition" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#A0715A" }}>
-              Experience Edition
+            <Link href="/inscriere" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#A0715A" }}>
+              Înscrie-te
               <ArrowRight size={16} />
             </Link>
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-base transition-all border hover:bg-gray-50" style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>

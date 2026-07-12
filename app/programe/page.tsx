@@ -26,8 +26,8 @@ const programs = [
     formats: "Online · La sediul organizației · Open cohort · Experience Edition",
     active: true,
     status: "Disponibil acum",
-    href: "/programe/busola-deciziilor",
-    cta: "Descoperă programul",
+    href: "/inscriere",
+    cta: "Înscrie-te",
     tags: ["open", "organization", "experience"],
   },
   {
@@ -44,8 +44,8 @@ const programs = [
     formats: "Online · La sediul organizației · Open cohort · Experience Edition",
     active: false,
     status: "În curând",
-    href: "/programe/ai-fara-haos",
-    cta: "Află mai multe",
+    href: "/contact",
+    cta: "Contactează-ne",
     tags: ["upcoming", "organization"],
   },
   {
@@ -139,11 +139,11 @@ export default function ProgramePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/programe/busola-deciziilor"
+              href="/inscriere"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg font-medium bg-white transition-all hover:shadow-lg"
               style={{ color: "var(--sage)" }}
             >
-              Vezi Busola Deciziilor
+              Înscrie-te acum
               <ArrowRight size={15} />
             </Link>
             <Link
