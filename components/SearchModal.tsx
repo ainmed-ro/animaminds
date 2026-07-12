@@ -1,26 +1,49 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { Search, X } from "lucide-react";
 
-const searchableItems = [
-  { title: "Busola Deciziilor", href: "/programe/busola-deciziilor", description: "Claritate și direcție" },
-  { title: "AI Fără Haos", href: "/programe/ai-fara-haos", description: "Folosește AI. Păstrează controlul." },
-  { title: "Conversații care Contează", href: "/programe", description: "Comunicare și colaborare" },
-  { title: "Calm sub Presiune", href: "/programe", description: "Conflict și reziliență" },
-  { title: "Avantajul Uman", href: "/programe", description: "Competențe umane pentru viitor" },
-  { title: "Calendar Ediții", href: "/calendar", description: "Vezi edițiile deschise" },
-  { title: "Înscrie-te", href: "/inscriere", description: "Formular de înscriere" },
-  { title: "Contact", href: "/contact", description: "Trimite un mesaj" },
-  { title: "Pentru organizații", href: "/colaboreaza", description: "Colaborare personalizată" },
-  { title: "Povestea noastră", href: "/povestea-noastra", description: "Cine suntem" },
-];
+type SearchResult = {
+  title: string;
+  href: string;
+  description: string;
+};
 
 export default function SearchModal() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState<SearchResult[]>([]);
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+
+  const search = useCallback(async (term: string) => {
+    if (!term.trim()) {
+      setResults([]);
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(term)}`);
+      const data = await res.json();
+      setResults(data.results || []);
+    } catch {
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      search(query);
+    }, 200);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [query, search]);
 
   useEffect(() => {
     if (open && inputRef.current) {
@@ -39,13 +62,6 @@ export default function SearchModal() {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
-
-  const results = query.trim()
-    ? searchableItems.filter((item) =>
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.description.toLowerCase().includes(query.toLowerCase())
-      )
-    : [];
 
   return (
     <>
@@ -74,10 +90,15 @@ export default function SearchModal() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Caută programe, pagini, înscriere..."
+                placeholder="Caută pe site..."
                 className="flex-1 outline-none text-base bg-transparent"
                 style={{ color: "var(--charcoal)" }}
               />
+              {loading && (
+                <span className="text-xs" style={{ color: "var(--charcoal-soft)" }}>
+                  Se caută...
+                </span>
+              )}
               <button onClick={() => setOpen(false)} aria-label="Închide" className="p-1 hover:opacity-70">
                 <X size={20} style={{ color: "var(--charcoal-soft)" }} />
               </button>
@@ -85,7 +106,7 @@ export default function SearchModal() {
             <div className="max-h-[60vh] overflow-y-auto p-2">
               {query.trim() === "" ? (
                 <p className="px-4 py-6 text-sm text-center" style={{ color: "var(--charcoal-soft)" }}>
-                  Începe să tastezi pentru a căuta programe sau pagini.
+                  Începe să tastezi pentru a căuta programe, ediții sau pagini.
                 </p>
               ) : results.length === 0 ? (
                 <p className="px-4 py-6 text-sm text-center" style={{ color: "var(--charcoal-soft)" }}>
