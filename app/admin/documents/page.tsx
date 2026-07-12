@@ -1,11 +1,15 @@
 import { getDocuments, createDocument, deleteDocument } from '@/app/admin/actions/cms'
+import DownloadAllButton from './download-all-button'
 
 export default async function DocumentsPage() {
   const documents = await getDocuments()
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Documents</h2>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">Documents</h2>
+        <DownloadAllButton documents={documents} />
+      </div>
       <form action={createDocument} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 space-y-4 mb-8">
         <div>
           <label className="block text-sm font-medium text-gray-700">Title</label>
@@ -34,9 +38,21 @@ export default async function DocumentsPage() {
           <tbody className="bg-white divide-y divide-gray-200">
             {documents.map((doc) => (
               <tr key={doc.id}>
-                <td className="px-6 py-4 text-sm text-gray-900">{doc.title}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">
+                  <div>{doc.title}</div>
+                  {doc.description && <div className="text-xs text-gray-500 mt-1">{doc.description}</div>}
+                </td>
                 <td className="px-6 py-4 text-sm text-gray-600">{doc.fileType || '—'}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
+                  <a
+                    href={doc.fileUrl}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-900"
+                  >
+                    Download
+                  </a>
                   <form action={deleteDocument.bind(null, doc.id)} className="inline">
                     <button type="submit" className="text-red-600 hover:text-red-900">Delete</button>
                   </form>
