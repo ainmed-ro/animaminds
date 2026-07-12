@@ -94,6 +94,7 @@ First draft based on the approved portfolio strategy (July 2026).
 | 82 | [Commercial_System/LEAD_ACQUISITION_EXECUTION_PLAN.md](./Commercial_System/LEAD_ACQUISITION_EXECUTION_PLAN.md) | Lead acquisition execution plan |
 | 83 | [../DEPLOYMENT_READINESS_REPORT.md](../DEPLOYMENT_READINESS_REPORT.md) | Deployment readiness report |
 | 84 | [../POST_DEPLOY_VERIFICATION_REPORT.md](../POST_DEPLOY_VERIFICATION_REPORT.md) | Post-deploy verification report |
+| 85 | [../DEPLOYMENT_EXECUTION_REPORT.md](../DEPLOYMENT_EXECUTION_REPORT.md) | Deployment execution report |
 
 ## Core portfolio categories
 
