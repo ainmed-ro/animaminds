@@ -107,21 +107,20 @@ export default function BusolaDeciziilorExperienceEditionPage() {
     setSubmitting(true);
     setSubmitError("");
     try {
-      const res = await fetch("/api/registrations", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...form,
-          participanti: Number(form.participanti),
-          experience: "BUSOLA DECIZIILOR",
-          status: "INTERESAT",
-          paymentStatus: "NEACHITAT",
+          name: form.nume,
+          email: form.email,
+          phone: form.telefon,
+          programInteres: "Busola Deciziilor — Experience Edition",
+          subject: `Rezervare Experience Edition — ${form.editie}`,
+          message: `Solicitare rezervare loc pentru Experience Edition Busola Deciziilor. Ediție: ${form.editie}. Număr participanți: ${form.participanti}.${form.observatii ? `\n\nObservații: ${form.observatii}` : ""}`,
         }),
       });
       if (!res.ok) throw new Error("Eroare la server.");
       setSubmitted(true);
-      // Refresh spots
-      fetch("/api/spots").then((r) => r.json()).then((d) => setSpotsOccupied(d.spotsOccupied ?? {})).catch(() => {});
     } catch {
       setSubmitError("A apărut o eroare. Te rugăm încearcă din nou sau contactă-ne direct.");
     } finally {

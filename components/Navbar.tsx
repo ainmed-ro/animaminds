@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import SearchModal from "./SearchModal";
 
 const navLinks = [
   { href: "/", label: "Acasă" },
@@ -70,7 +71,8 @@ export default function Navbar() {
           </div>
 
           {/* CTA Desktop */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
+          <div className="hidden md:flex items-center gap-2 lg:gap-3 shrink-0">
+            <SearchModal />
             <Link
               href="/inscriere"
               className="btn-primary text-xs lg:text-sm font-semibold py-2 px-3 lg:px-4 rounded-lg whitespace-nowrap"
@@ -80,14 +82,17 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-charcoal hover:bg-gray-100 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile controls */}
+          <div className="flex items-center gap-2 md:hidden">
+            <SearchModal />
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 rounded-lg text-charcoal hover:bg-gray-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </div>
 
