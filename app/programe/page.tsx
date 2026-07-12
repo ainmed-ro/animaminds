@@ -26,7 +26,7 @@ const programs = [
     formats: "Online · La sediul organizației · Open cohort · Experience Edition",
     active: true,
     status: "Disponibil acum",
-    href: "/inscriere",
+    href: "/inscriere?programme=busola-deciziilor",
     cta: "Înscrie-te",
     tags: ["open", "organization", "experience"],
   },
@@ -139,7 +139,7 @@ export default function ProgramePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/inscriere"
+              href="/inscriere?programme=busola-deciziilor"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg font-medium bg-white transition-all hover:shadow-lg"
               style={{ color: "var(--sage)" }}
             >

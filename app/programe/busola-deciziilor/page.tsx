@@ -47,7 +47,7 @@ const formats = [
     title: "Online",
     description: "Sesiuni interactive, exerciții în breakout rooms și dialog ghidat — fără deplasare.",
     cta: "Înscrie-te",
-    href: "/inscriere",
+    href: "/inscriere?programme=busola-deciziilor",
   },
   {
     icon: MapPin,
@@ -98,7 +98,7 @@ export default function BusolaDeciziilorPage() {
             Program de dezvoltare umană și profesională pentru persoane, echipe și organizații care vor să aducă ordine în gânduri, să-și regăsească direcția și să ia decizii mai bune — într-un cadru sigur de reflecție și dialog.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/inscriere" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#A0715A" }}>
+            <Link href="/inscriere?programme=busola-deciziilor" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#A0715A" }}>
               Înscrie-te
               <ArrowRight size={16} />
             </Link>
@@ -362,7 +362,7 @@ export default function BusolaDeciziilorPage() {
             Alege formatul care ți se potrivește sau contactează echipa AnimaMinds pentru o ofertă personalizată.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/inscriere" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#A0715A" }}>
+            <Link href="/inscriere?programme=busola-deciziilor" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#A0715A" }}>
               Înscrie-te
               <ArrowRight size={16} />
             </Link>

@@ -479,7 +479,7 @@ export async function getOpenEditionsForRegistration() {
         { registrationDeadline: null },
       ],
     },
-    include: { programme: { select: { name: true } }, displayPrice: true },
+    include: { programme: { select: { name: true, slug: true } }, displayPrice: true },
     orderBy: { startDate: 'asc' },
   })
 }
