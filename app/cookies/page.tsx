@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   description: "Politica de utilizare a cookie-urilor pe website-ul AnimaMinds.",
 };
 
+export const dynamic = 'force-dynamic'
+
 export default function CookiesPage() {
   return (
     <div>

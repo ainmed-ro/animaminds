@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Claritate și direcție atunci când lucrurile par neclare. Program pentru persoane, echipe și organizații, disponibil în 4 formate de livrare.",
 };
 
+export const dynamic = 'force-dynamic'
+
 const gains = [
   "Mai multă claritate în luarea deciziilor",
   "Perspective noi asupra provocărilor actuale",

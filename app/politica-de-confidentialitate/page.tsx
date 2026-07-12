@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   description: "Politica de confidențialitate AnimaMinds — cum colectăm, folosim și protejăm datele tale personale.",
 };
 
+export const dynamic = 'force-dynamic'
+
 export default function PoliticaConfidentialitate() {
   return (
     <div>

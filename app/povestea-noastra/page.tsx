@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Descoperă cine suntem, de unde venim și ce ne animă la AnimaMinds — o comunitate construită cu suflet pentru oamenii care cresc.",
 };
 
+export const dynamic = 'force-dynamic'
+
 export default function PovEsteaNoastra() {
   return (
     <div>

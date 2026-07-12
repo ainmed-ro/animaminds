@@ -6,6 +6,8 @@ import CommunitySection from "@/components/home/CommunitySection";
 import PartnershipsSection from "@/components/home/PartnershipsSection";
 import CtaBanner from "@/components/home/CtaBanner";
 
+export const dynamic = 'force-dynamic'
+
 export default function Home() {
   return (
     <>

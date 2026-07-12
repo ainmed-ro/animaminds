@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     "Cele 5 programe fundamentale AnimaMinds: AI Fără Haos, Conversații care Contează, Calm sub Presiune, Busola Deciziilor, Avantajul Uman.",
 };
 
+export const dynamic = 'force-dynamic'
+
 const programs = [
   {
     image: "/images/workshop-group-raise.jpg",

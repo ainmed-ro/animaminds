@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     "Parteneriate AnimaMinds: programe personalizate pentru companii, instituții, ONG-uri și formatori independenți. Construim împreună.",
 };
 
+export const dynamic = 'force-dynamic'
+
 const reasons = [
   "Programe proiectate specific pentru nevoile reale ale fiecărui partener",
   "Formatori cu experiență practică, nu doar academică",
