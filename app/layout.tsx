@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       "Comunitate de învățare și dezvoltare profesională pentru profesori, formatori, lideri și organizații.",
     images: [
       {
-        url: "/images/hero-workshop.jpg",
+        url: "/images/group-photo.jpg",
         width: 1200,
         height: 630,
         alt: "AnimaMinds — Locul unde oamenii și ideile cresc împreună",

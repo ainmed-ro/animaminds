@@ -52,7 +52,7 @@ export default function ColaboreazaPage() {
       <section className="py-24 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/workshop-group-raise.jpg"
+            src="/images/group-outdoor.jpg"
             alt="Colaborare AnimaMinds"
             fill
             className="object-cover object-center"
@@ -133,7 +133,7 @@ export default function ColaboreazaPage() {
 
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
               <Image
-                src="/images/celebration.jpg"
+                src="/images/deny-inn-arrival.jpg"
                 alt="Parteneriat AnimaMinds"
                 fill
                 className="object-cover"
@@ -201,7 +201,7 @@ export default function ColaboreazaPage() {
 
           <div className="mt-10 p-6 rounded-2xl text-center" style={{ backgroundColor: "rgba(124,154,126,0.08)", border: "1px solid rgba(124,154,126,0.2)" }}>
             <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-              <strong style={{ color: "var(--charcoal)" }}>Locația nu este o barieră.</strong> Pentru companii, instituții și organizații care doresc, ne deplasăm la sediul lor — oriunde în țară — și livrăm programul direct în contextul echipei.
+              <strong style={{ color: "var(--charcoal)" }}>Locația nu este o barieră.</strong> Livrăm programe în contextul echipei — la sediu, online sau în locații de inspirație dedicate, inclusiv la munte sau la mare, pentru o experiență de învățare și transformare mai profundă.
             </p>
           </div>
         </div>

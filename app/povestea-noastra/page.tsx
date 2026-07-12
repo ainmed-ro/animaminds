@@ -14,7 +14,7 @@ export default function PovEsteaNoastra() {
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/workshop-indoor.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
+          <Image src="/images/poveste-hero.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.75) 50%, rgba(124,154,126,0.10) 100%)" }} />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 w-full">
@@ -82,8 +82,8 @@ export default function PovEsteaNoastra() {
             <div>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                 <Image
-                  src="/images/ws-sala-prezentare.jpg"
-                  alt="Comunitate AnimaMinds"
+                  src="/images/alina-prezentare.jpg"
+                  alt="Alina în prima formare AnimaMinds"
                   fill
                   className="object-cover"
                   quality={80}
@@ -177,11 +177,11 @@ export default function PovEsteaNoastra() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { src: "/images/workshop-audience.jpg", alt: "Sală de formare" },
-              { src: "/images/workshop-group-raise.jpg", alt: "Participanți activi" },
-              { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare workshop" },
-              { src: "/images/carti-afirmatii-color.jpg", alt: "Cărți afirmații" },
-              { src: "/images/postit-echipa.jpg", alt: "Activitate cu plicuri" },
+              { src: "/images/workshop-activ.jpg", alt: "Activitate în sală" },
+              { src: "/images/ai-training-4.jpg", alt: "Training digital" },
+              { src: "/images/laptop-training.jpg", alt: "Training cu laptopuri" },
+              { src: "/images/workshop-audience.jpg", alt: "Audiență la workshop" },
+              { src: "/images/workshop-prezentare-2.jpg", alt: "Prezentare workshop" },
             ].map((photo, i) => (
               <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
                 <Image
@@ -202,13 +202,13 @@ export default function PovEsteaNoastra() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-              <Image src="/images/group-photo.jpg" alt="Echipa AnimaMinds cu participanții" fill className="object-cover" quality={85} />
+              <Image src="/images/group-outdoor.jpg" alt="Echipa AnimaMinds cu participanții" fill className="object-cover" quality={85} />
               <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
                 <p className="text-white text-sm font-medium">La final, totul se vede pe fețe.</p>
               </div>
             </div>
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-              <Image src="/images/ws-formator-ecran.jpg" alt="Formare în acțiune" fill className="object-cover" quality={85} />
+              <Image src="/images/poveste-hero.jpg" alt="Formare în acțiune" fill className="object-cover" quality={85} />
               <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}>
                 <p className="text-white text-sm font-medium">Practică. Nu teorie.</p>
               </div>

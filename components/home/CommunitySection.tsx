@@ -4,14 +4,10 @@ import { useInView } from "@/hooks/useInView";
 import { Quote } from "lucide-react";
 
 const photos = [
-  { src: "/images/workshop-group-raise.jpg", alt: "Participanți activi" },
-  { src: "/images/workshop-seara.jpg", alt: "Seară de workshop" },
-  { src: "/images/workshop-activ.jpg", alt: "Workshop activ" },
-  { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare workshop" },
-  { src: "/images/eveniment-cina.jpg", alt: "Cină împreună" },
-  { src: "/images/workshop-indoor.jpg", alt: "Sală de formare" },
-  { src: "/images/workshop-prezentare-2.jpg", alt: "Workshop prezentare" },
-  { src: "/images/deny-inn-arrival.jpg", alt: "Sosire la locație" },
+  { src: "/images/workshop-activity.jpg", alt: "Activitate de grup" },
+  { src: "/images/ai-training-3.jpg", alt: "Workshop activ" },
+  { src: "/images/postit-echipa.jpg", alt: "Lucru cu post-it" },
+  { src: "/images/ws-cartonas-afirmatie.jpg", alt: "Cartonașe afirmații" },
 ];
 
 export default function CommunitySection() {

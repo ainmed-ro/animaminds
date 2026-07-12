@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertContactMessage, getAllContactMessages } from "@/lib/contact-db";
+import { sendAdminNewContactEmail } from "@/lib/notifications";
+import { syncContactToGoogleSheets } from "@/lib/google-sheets";
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,33 +23,39 @@ export async function POST(req: NextRequest) {
       message,
     });
 
+    const createdAt = new Date(contactMessage.created_at);
+
+    // Notificare admin
+    try {
+      await sendAdminNewContactEmail({
+        name,
+        email,
+        phone: phone || "",
+        organization: organization || "",
+        programInteres: programInteres || "",
+        subject,
+        message,
+        createdAt,
+      });
+    } catch (emailErr) {
+      console.error("Admin contact email error:", emailErr);
+    }
+
     // Trimitere date către Google Sheets
     try {
-      const googleSheetsData = {
+      await syncContactToGoogleSheets({
         formType: "CONTACT",
-        nume: name,
+        name,
         email,
-        organizatie: organization || "Nespecificat",
-        programInteres: programInteres || "Nu a fost selectat",
-        subiect: subject,
-        mesaj: message,
-      };
-
-      const googleSheetsUrl = process.env.GOOGLE_SHEETS_URL || "https://script.google.com/macros/s/AKfycbxyU8hC9f8cVZzLqQhJkXmN3pL7wR6sT4vK2nY5fG8bH9cJdA/exec";
-
-      await fetch(googleSheetsUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(googleSheetsData),
-        mode: "no-cors",
+        phone: phone || "",
+        organization: organization || "",
+        programInteres: programInteres || "",
+        subject,
+        message,
+        createdAt,
       });
-
-      console.log("Date contact trimise în Google Sheets pentru:", name);
     } catch (googleSheetsErr) {
       console.error("Google Sheets contact error:", googleSheetsErr);
-      // Nu blocăm procesul dacă Google Sheets eșuează; mesajul rămâne salvat în Supabase
     }
 
     return NextResponse.json({ 

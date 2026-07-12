@@ -23,13 +23,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/retreats`,
+      url: `${baseUrl}/programe/busola-deciziilor`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/programe/busola-deciziilor/experience-edition`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/retreats/busola-interioara`,
+      url: `${baseUrl}/programe/ai-fara-haos`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.95,

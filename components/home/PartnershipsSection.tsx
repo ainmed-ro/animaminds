@@ -128,18 +128,14 @@ export default function PartnershipsSection() {
         {/* Photo strip */}
         <div className="mt-6 grid grid-cols-3 md:grid-cols-6 gap-3">
           {[
-            { src: "/images/alina-prezentare.jpg", alt: "Prezentare Alina" },
-            { src: "/images/diplome-zambet.jpg", alt: "Diplome" },
-            { src: "/images/group-photo.jpg", alt: "Grup" },
-            { src: "/images/workshop-collab.jpg", alt: "Lucru în echipă" },
-            { src: "/images/eveniment-cina.jpg", alt: "Cină împreună" },
+            { src: "/images/workshop-activ.jpg", alt: "Activitate în sală" },
             { src: "/images/deny-inn-arrival.jpg", alt: "Sosire la locație" },
+            { src: "/images/summer-workshop.jpg", alt: "Training de vară" },
             { src: "/images/workshop-laptops.jpg", alt: "Training cu laptopuri" },
-            { src: "/images/workshop-prezentare-2.jpg", alt: "Prezentare workshop" },
-            { src: "/images/engaged-audience.jpg", alt: "Participanți activi" },
-            { src: "/images/summer-workshop.jpg", alt: "Workshop de vară" },
-            { src: "/images/hero-workshop.jpg", alt: "Sală workshop" },
             { src: "/images/ws-sala-prezentare.jpg", alt: "Prezentare în sală" },
+            { src: "/images/community-clapping.jpg", alt: "Comunitate aplaudând" },
+            { src: "/images/ai-training-1.jpg", alt: "Training digital" },
+            { src: "/images/hero-workshop.jpg", alt: "Sală de workshop" },
           ].map((photo, i) => (
             <div key={i} className="relative rounded-xl overflow-hidden aspect-square">
               <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" quality={70} />

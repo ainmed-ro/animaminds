@@ -1,0 +1,643 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ------------------------------------------------------------------
+// Enums
+// ------------------------------------------------------------------
+
+enum Role {
+  SUPER_ADMIN
+  CONTENT_MANAGER
+  COMMERCIAL_MANAGER
+  VIEWER
+  FACILITATOR
+}
+
+enum ProgrammeStatus {
+  DRAFT
+  PILOT
+  ACTIVE
+  UNDER_REVIEW
+  ARCHIVED
+}
+
+enum EditionStatus {
+  DRAFT
+  OPEN
+  FULL
+  CLOSED
+  CANCELLED
+}
+
+enum DeliveryFormat {
+  ONLINE
+  ONSITE
+  OPEN_COHORT
+  EXPERIENCE_EDITION
+}
+
+enum OnlinePlatform {
+  GOOGLE_MEET
+  GOOGLE_CLASSROOM
+  OTHER
+}
+
+enum PriceType {
+  STANDARD
+  LAUNCH
+  PROMOTIONAL
+  PER_PERSON
+  GROUP
+  B2B
+  B2G
+  EXPERIENCE
+}
+
+enum PriceStatus {
+  ACTIVE
+  INACTIVE
+  COMING_SOON
+  ON_REQUEST
+}
+
+enum PaymentStatus {
+  PENDING
+  AWAITING_INVOICE
+  PAID
+  CANCELLED
+  ON_HOLD
+}
+
+enum EntityType {
+  INDIVIDUAL
+  PFA
+  SRL
+  MEDICAL_PRACTICE
+  COMPANY
+  NGO
+  PUBLIC_INSTITUTION
+}
+
+enum FormType {
+  GENERAL_OFFER
+  PUBLIC_PROCUREMENT
+  INDIVIDUAL_REGISTRATION
+  GROUP_REGISTRATION
+  CONTACT
+}
+
+enum FormSubmissionStatus {
+  NEW
+  IN_PROGRESS
+  CLOSED
+  SPAM
+}
+
+// ------------------------------------------------------------------
+// Users and governance
+// ------------------------------------------------------------------
+
+model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String?
+  password String?
+  role     Role    @default(VIEWER)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ownedProgrammes    Programme[] @relation("ProgrammeOwner")
+  reviewedProgrammes Programme[] @relation("ProgrammeReviewer")
+}
+
+// ------------------------------------------------------------------
+// Taxonomies
+// ------------------------------------------------------------------
+
+model TargetAudience {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String  @unique
+  description String? @db.Text
+  sortOrder   Int     @default(0)
+  isPublic    Boolean @default(true)
+
+  programmes ProgrammeTargetAudience[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ApplicationArea {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String  @unique
+  description String? @db.Text
+  sortOrder   Int     @default(0)
+  isPublic    Boolean @default(true)
+
+  programmes ProgrammeApplicationArea[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProgrammeTargetAudience {
+  id               String         @id @default(cuid())
+  programmeId      String
+  programme        Programme      @relation(fields: [programmeId], references: [id], onDelete: Cascade)
+  targetAudienceId String
+  targetAudience   TargetAudience @relation(fields: [targetAudienceId], references: [id], onDelete: Cascade)
+
+  @@unique([programmeId, targetAudienceId])
+}
+
+model ProgrammeApplicationArea {
+  id                String          @id @default(cuid())
+  programmeId       String
+  programme         Programme       @relation(fields: [programmeId], references: [id], onDelete: Cascade)
+  applicationAreaId String
+  applicationArea   ApplicationArea @relation(fields: [applicationAreaId], references: [id], onDelete: Cascade)
+
+  @@unique([programmeId, applicationAreaId])
+}
+
+// ------------------------------------------------------------------
+// Programmes
+// ------------------------------------------------------------------
+
+model Programme {
+  id   String @id @default(cuid())
+  slug String @unique
+
+  // Stable internal code, e.g. PMD_001
+  programmeCode String @unique
+
+  // Commercial fields
+  name                     String
+  subtitle                 String?
+  shortDescription         String?          @db.Text
+  fullDescription          String?          @db.Text
+  problemSolved            String?          @db.Text
+  programmePromise         String?
+  mainBenefits             String[]         @default([])
+  whatParticipantsReceive  String[]         @default([])
+  whatParticipantsCanDoNextDay String[]    @default([])
+  availableDeliveryFormats DeliveryFormat[] @default([])
+  registrationCTA          String           @default("Înscrie-te")
+  offerRequestCTA          String           @default("Solicită ofertă")
+  featuredImageUrl         String?
+  status                   ProgrammeStatus  @default(DRAFT)
+
+  // Professional / CPD fields
+  duration                  String?
+  learningHours             Int?
+  cpdHours                  Int?
+  accreditationBody         String?
+  cpdProviderReference      String?
+  cpdApprovalDate           DateTime?
+  competenciesDeveloped       Json?
+  learningOutcomes          String[] @default([])
+  programmeObjectives       String?  @db.Text
+  learningMethods           String[] @default([])
+  assessmentMethods         String[] @default([])
+  resourcesOffered          String[] @default([])
+  certificationInfo         String?  @db.Text
+  followUpProcess           String?  @db.Text
+  industryAdaptations       Json?
+  emotionalSafetyProtocol   String?
+  dataRetentionPolicy       String?  @db.Text
+  pmdVersion                String?
+  displayProfessionalLevel  Boolean  @default(true)
+  displayGovernanceFields   Boolean  @default(false)
+
+  // Governance
+  lastUpdated      DateTime  @updatedAt
+  programmeOwnerId String?
+  programmeOwner   User?     @relation("ProgrammeOwner", fields: [programmeOwnerId], references: [id])
+  reviewerId       String?
+  reviewer         User?     @relation("ProgrammeReviewer", fields: [reviewerId], references: [id])
+  dateApproved     DateTime?
+  nextReviewDate   DateTime?
+
+  // Relationships
+  editions Edition[]
+
+  defaultStandardPriceId String?
+  defaultStandardPrice   Price?  @relation("ProgrammeStandardPrice", fields: [defaultStandardPriceId], references: [id])
+  defaultLaunchPriceId   String?
+  defaultLaunchPrice     Price?  @relation("ProgrammeLaunchPrice", fields: [defaultLaunchPriceId], references: [id])
+
+  additionalDefaultPrices Price[] @relation("ProgrammeAdditionalPrices")
+
+  targetAudiences  ProgrammeTargetAudience[]
+  applicationAreas ProgrammeApplicationArea[]
+  testimonials     ProgrammeTestimonial[]
+  faqs             FAQ[]
+  documents        ProgrammeDocument[]
+  galleries        ProgrammeGallery[]
+
+  seo ProgrammeSEO?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdById String?
+  updatedById String?
+}
+
+model ProgrammeSEO {
+  id              String    @id @default(cuid())
+  programmeId     String    @unique
+  programme       Programme @relation(fields: [programmeId], references: [id], onDelete: Cascade)
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  ogTitle         String?
+  ogDescription   String?
+  ogImageUrl      String?
+  noIndex         Boolean   @default(false)
+  structuredData  Json?
+}
+
+// ------------------------------------------------------------------
+// Editions
+// ------------------------------------------------------------------
+
+model Edition {
+  id String @id @default(cuid())
+
+  programmeId String
+  programme   Programme @relation(fields: [programmeId], references: [id], onDelete: Cascade)
+
+  editionTitle String
+  slug         String
+  deliveryFormat DeliveryFormat
+  status       EditionStatus @default(DRAFT)
+
+  startDate            DateTime?
+  endDate              DateTime?
+  durationText         String?
+  registrationDeadline DateTime?
+  maxSeats             Int?
+  availableSeats       Int?
+
+  displayPriceId String?
+  displayPrice   Price?  @relation("EditionDisplayPrice", fields: [displayPriceId], references: [id])
+
+  featuredImageUrl String?
+  notes            String? @db.Text
+
+  // Online-specific
+  platform        OnlinePlatform?
+  meetLink        String?
+  classroomLink   String?
+  sessionDates    DateTime[]
+  sessionCount    Int?
+  recordingPolicy String?
+
+  // On-site / open cohort
+  city             String?
+  locationName     String?
+  address          String?
+  startTime        String?
+  endTime          String?
+  includedServices String[] @default([])
+  excludedServices String[] @default([])
+  hasOwnRoom       Boolean  @default(false)
+  roomCostIncluded Boolean  @default(false)
+
+  // Experience Edition
+  destination             String?
+  hotelName               String?
+  hotelAddress            String?
+  period                  String?
+  minParticipants         Int?
+  maxParticipants         Int?
+  roomTypes               Json?
+  includedMeals           String[] @default([])
+  includedFacilities      String[] @default([])
+  complementaryActivities String[] @default([])
+  indicativeSchedule      String?  @db.Text
+  confirmationPolicy      String?  @db.Text
+  cancellationPolicy      String?  @db.Text
+  priceStatus             PriceStatus @default(ON_REQUEST)
+
+  registrations        Registration[]
+  additionalPrices     EditionAdditionalPrice[]
+  galleries            EditionGallery[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdById String?
+  updatedById String?
+
+  @@unique([programmeId, slug])
+}
+
+// ------------------------------------------------------------------
+// Pricing
+// ------------------------------------------------------------------
+
+model Price {
+  id         String @id @default(cuid())
+  priceCode  String @unique
+
+  // Optional parent programme for additional default prices
+  programmeId String?
+  programme   Programme? @relation("ProgrammeAdditionalPrices", fields: [programmeId], references: [id], onDelete: SetNull)
+
+  // Inverse relations for default programme prices
+  standardForProgramme Programme[] @relation("ProgrammeStandardPrice")
+  launchForProgramme   Programme[] @relation("ProgrammeLaunchPrice")
+
+  // Edition display price
+  editionDisplayFor Edition[] @relation("EditionDisplayPrice")
+
+  priceType PriceType
+  amount    Int? // in smallest currency unit (e.g. bani)
+  currency  String  @default("RON")
+  vatIncluded Boolean @default(true)
+  vatRate     Float?
+
+  maxParticipantsIncluded Int?
+  extraParticipantCost    Int?
+  includedServices        String[] @default([])
+  excludedServices        String[] @default([])
+  validFrom               DateTime?
+  validUntil              DateTime?
+  status                  PriceStatus @default(ON_REQUEST)
+  displayLabel            String?
+
+  editionAdditionalFor EditionAdditionalPrice[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdById String?
+  updatedById String?
+}
+
+model EditionAdditionalPrice {
+  id      String @id @default(cuid())
+  editionId String
+  edition   Edition @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  priceId   String
+  price     Price   @relation(fields: [priceId], references: [id], onDelete: Cascade)
+
+  @@unique([editionId, priceId])
+}
+
+// ------------------------------------------------------------------
+// Registrations
+// ------------------------------------------------------------------
+
+model Registration {
+  id String @id @default(cuid())
+
+  editionId String
+  edition   Edition @relation(fields: [editionId], references: [id], onDelete: Cascade)
+
+  contactName      String
+  contactEmail     String
+  contactPhone     String?
+  entityType       EntityType @default(INDIVIDUAL)
+  entityName       String?
+  cui              String?
+  participantsJson Json?
+
+  paymentStatus PaymentStatus @default(PENDING)
+  notes         String?       @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ------------------------------------------------------------------
+// Testimonials
+// ------------------------------------------------------------------
+
+model Testimonial {
+  id              String  @id @default(cuid())
+  quote           String  @db.Text
+  authorName      String?
+  authorRole      String?
+  authorSector    String?
+  consentRecord   String? @db.Text
+  approvedUses    String[] @default([])
+  isPublic        Boolean @default(true)
+
+  programmes ProgrammeTestimonial[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProgrammeTestimonial {
+  id            String      @id @default(cuid())
+  programmeId   String
+  programme     Programme   @relation(fields: [programmeId], references: [id], onDelete: Cascade)
+  testimonialId String
+  testimonial   Testimonial @relation(fields: [testimonialId], references: [id], onDelete: Cascade)
+
+  @@unique([programmeId, testimonialId])
+}
+
+// ------------------------------------------------------------------
+// FAQ
+// ------------------------------------------------------------------
+
+model FAQ {
+  id       String @id @default(cuid())
+  question String @db.Text
+  answer   String @db.Text
+  order    Int    @default(0)
+
+  programmeId String?
+  programme   Programme? @relation(fields: [programmeId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ------------------------------------------------------------------
+// Documents and Galleries
+// ------------------------------------------------------------------
+
+model Document {
+  id          String  @id @default(cuid())
+  title       String
+  fileUrl     String
+  fileType    String? // pdf, md, etc.
+  description String? @db.Text
+
+  programmes ProgrammeDocument[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProgrammeDocument {
+  id         String    @id @default(cuid())
+  programmeId String
+  programme  Programme @relation(fields: [programmeId], references: [id], onDelete: Cascade)
+  documentId String
+  document   Document  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([programmeId, documentId])
+}
+
+model Gallery {
+  id          String  @id @default(cuid())
+  name        String
+  description String? @db.Text
+
+  images GalleryImage[]
+
+  programmeGalleries ProgrammeGallery[]
+  editionGalleries   EditionGallery[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GalleryImage {
+  id        String  @id @default(cuid())
+  galleryId String
+  gallery   Gallery @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  imageUrl  String
+  altText   String?
+  caption   String?
+  order     Int     @default(0)
+}
+
+model ProgrammeGallery {
+  id        String    @id @default(cuid())
+  programmeId String
+  programme Programme @relation(fields: [programmeId], references: [id], onDelete: Cascade)
+  galleryId String
+  gallery   Gallery   @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+
+  @@unique([programmeId, galleryId])
+}
+
+model EditionGallery {
+  id        String  @id @default(cuid())
+  editionId String
+  edition   Edition @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  galleryId String
+  gallery   Gallery @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+
+  @@unique([editionId, galleryId])
+}
+
+// ------------------------------------------------------------------
+// Pages
+// ------------------------------------------------------------------
+
+model Page {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  title       String
+  content     String? @db.Text
+  isPublished Boolean @default(false)
+
+  seo PageSEO?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PageSEO {
+  id          String  @id @default(cuid())
+  pageId      String  @unique
+  page        Page    @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  ogTitle         String?
+  ogDescription   String?
+  ogImageUrl      String?
+  noIndex         Boolean @default(false)
+  structuredData  Json?
+}
+
+// ------------------------------------------------------------------
+// Forms
+// ------------------------------------------------------------------
+
+model Form {
+  id              String   @id @default(cuid())
+  formType        FormType @unique
+  title           String
+  description     String?  @db.Text
+  submitLabel     String   @default("Trimite")
+  successMessage  String?  @db.Text
+  notifyEmails    String[] @default([])
+  gdprText        String?  @db.Text
+
+  submissions FormSubmission[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FormSubmission {
+  id        String @id @default(cuid())
+  formId    String
+  form      Form   @relation(fields: [formId], references: [id], onDelete: Cascade)
+  payload   Json
+  status    FormSubmissionStatus @default(NEW)
+  notes     String? @db.Text
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ------------------------------------------------------------------
+// CMS Globals
+// ------------------------------------------------------------------
+
+model SiteSettings {
+  id              String  @id @default(cuid())
+  brandName       String  @default("AnimaMinds")
+  tagline         String  @default("Locul unde oamenii și ideile cresc împreună.")
+  contactEmail    String?
+  contactPhone    String?
+  paymentInstructions String? @db.Text
+  defaultMetaTitle    String?
+  defaultMetaDescription String?
+
+  updatedAt DateTime @updatedAt
+}
+
+model Navigation {
+  id     String @id @default(cuid())
+  header Json?
+  footer Json?
+
+  updatedAt DateTime @updatedAt
+}
+
+model PublicProcurement {
+  id          String  @id @default(cuid())
+  title       String  @default("Achiziții publice")
+  content     String? @db.Text
+  ctaLabel    String  @default("Solicită oferta pentru achiziție publică")
+  notifyEmails String[] @default([])
+
+  updatedAt DateTime @updatedAt
+}
+
+model TransportInfo {
+  id      String  @id @default(cuid())
+  content String? @db.Text
+
+  updatedAt DateTime @updatedAt
+}

@@ -7,8 +7,8 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { href: "/", label: "Acasă" },
   { href: "/povestea-noastra", label: "Povestea noastră" },
-  { href: "/experiences", label: "Programe" },
-  { href: "/colaboreaza", label: "Colaborează cu noi" },
+  { href: "/programe", label: "Programe" },
+  { href: "/colaboreaza", label: "Pentru organizații" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -72,11 +72,11 @@ export default function Navbar() {
           {/* CTA Desktop */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <Link
-              href="/contact"
+              href="/programe"
               className="btn-primary text-xs lg:text-sm font-semibold py-2 px-3 lg:px-4 rounded-lg whitespace-nowrap"
               style={{ backgroundColor: "var(--sage)", color: "white", display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
-              Alătură-te comunității
+              Particip individual
             </Link>
           </div>
 
@@ -119,11 +119,11 @@ export default function Navbar() {
           ))}
           <div className="pt-3 border-t border-gray-100 mt-3">
             <Link
-              href="/contact"
+              href="/programe"
               className="block w-full text-center py-3 px-4 rounded-lg text-sm font-medium text-white"
               style={{ backgroundColor: "var(--sage)" }}
             >
-              Alătură-te comunității
+              Particip individual
             </Link>
           </div>
         </div>

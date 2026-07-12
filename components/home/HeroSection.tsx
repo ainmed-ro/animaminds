@@ -95,10 +95,10 @@ export default function HeroSection() {
             }`}
           >
             <Link
-              href="/retreats/busola-interioara"
+              href="/programe"
               className="btn-primary group"
             >
-              Descoperă Busola Interioară
+              Particip individual
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
@@ -108,7 +108,7 @@ export default function HeroSection() {
               href="/colaboreaza"
               className="btn-secondary"
             >
-              Colaborează cu noi
+              Pentru organizații
             </Link>
           </div>
 
@@ -119,15 +119,15 @@ export default function HeroSection() {
             }`}
           >
             <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>+7.000</span> oameni
+              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>5</span> programe fundamentale
             </p>
             <span style={{ color: "rgba(0,0,0,0.2)" }}>·</span>
             <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>+20</span> programe
+              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>+7.000</span> participanți
             </p>
             <span style={{ color: "rgba(0,0,0,0.2)" }}>·</span>
             <p className="text-sm" style={{ color: "var(--charcoal-soft)" }}>
-              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>100%</span> practică
+              <span className="font-semibold" style={{ color: "var(--sage)", fontFamily: "Playfair Display, serif" }}>Standarde internaționale</span> CPD
             </p>
           </div>
         </div>

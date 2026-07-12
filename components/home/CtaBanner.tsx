@@ -12,7 +12,7 @@ export default function CtaBanner() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/engaged-audience.jpg"
+          src="/images/ai-training-bw.jpg"
           alt="Comunitate AnimaMinds"
           fill
           className="object-cover object-center"
@@ -61,7 +61,7 @@ export default function CtaBanner() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/retreats/busola-interioara"
+            href="/programe"
             className="btn-primary group"
             style={{ backgroundColor: "var(--sage)" }}
           >
@@ -69,14 +69,14 @@ export default function CtaBanner() {
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
-            href="/contact"
+            href="/colaboreaza"
             className="btn-outline-sage"
             style={{
               borderColor: "rgba(255,255,255,0.4)",
               color: "white",
             }}
           >
-            Contactează-ne
+            Pentru organizații
           </Link>
         </div>
       </div>

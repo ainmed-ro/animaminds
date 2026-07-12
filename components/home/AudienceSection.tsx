@@ -56,7 +56,7 @@ export default function AudienceSection() {
           >
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
               <Image
-                src="/images/workshop-audience.jpg"
+                src="/images/laptop-training.jpg"
                 alt="Comunitate AnimaMinds"
                 fill
                 className="object-cover"

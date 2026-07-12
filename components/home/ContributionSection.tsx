@@ -120,10 +120,10 @@ export default function ContributionSection() {
         {/* Photo strip */}
         <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
-            { src: "/images/postit-echipa.jpg", alt: "Echipă" },
-            { src: "/images/workshop-laptops.jpg", alt: "Training cu laptopuri" },
-            { src: "/images/hero-workshop.jpg", alt: "Sală workshop" },
-            { src: "/images/workshop-activity.jpg", alt: "Activitate workshop" },
+            { src: "/images/diploma-ceremony.jpg", alt: "Moment de certificare" },
+            { src: "/images/diplome-zambet.jpg", alt: "Diplome și zâmbete" },
+            { src: "/images/certificate-moment.jpg", alt: "Certificare workshop" },
+            { src: "/images/workshop-audience.jpg", alt: "Audiență la workshop" },
           ].map((photo, i) => (
             <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
               <Image src={photo.src} alt={photo.alt} fill className="object-cover hover:scale-105 transition-transform duration-500" quality={75} />
