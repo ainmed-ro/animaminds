@@ -19,12 +19,13 @@ for (const line of envFile.split('\n')) {
   if (value.startsWith('"') && value.endsWith('"')) {
     value = value.slice(1, -1).replace(/\\"/g, '"').replace(/\\n/g, '\n')
   }
-  if (['DATABASE_URL', 'DIRECT_URL', 'NEXTAUTH_SECRET', 'NEXTAUTH_URL', 'FROM_EMAIL', 'ADMIN_EMAIL', 'CRON_SECRET'].includes(key)) {
+  if (['DATABASE_URL', 'DIRECT_URL', 'NEXTAUTH_SECRET', 'NEXTAUTH_URL', 'AUTH_URL', 'FROM_EMAIL', 'ADMIN_EMAIL', 'CRON_SECRET'].includes(key)) {
     vars[key] = value
   }
 }
 
 if (!vars.NEXTAUTH_URL) vars.NEXTAUTH_URL = 'https://animaminds.vercel.app'
+if (!vars.AUTH_URL) vars.AUTH_URL = 'https://animaminds.vercel.app'
 if (!vars.NEXTAUTH_SECRET) vars.NEXTAUTH_SECRET = randomBytes(32).toString('base64')
 if (!vars.CRON_SECRET) vars.CRON_SECRET = randomBytes(32).toString('base64')
 if (!vars.FROM_EMAIL) vars.FROM_EMAIL = 'AnimaMinds <noreply@animaminds.ro>'
@@ -65,3 +66,4 @@ async function main() {
 }
 
 main().catch(console.error)
+export {} 

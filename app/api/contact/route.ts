@@ -12,18 +12,23 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Câmpuri obligatorii lipsă." }, { status: 400 });
     }
 
-    // Salvare în baza de date Supabase
-    const contactMessage = await insertContactMessage({
-      name,
-      email,
-      phone: phone || "",
-      organization: organization || "",
-      programInteres: programInteres || "",
-      subject,
-      message,
-    });
-
-    const createdAt = new Date(contactMessage.created_at);
+    // Salvare în baza de date Supabase (non-blocking pentru email/Sheets)
+    let createdAt = new Date();
+    try {
+      const contactMessage = await insertContactMessage({
+        name,
+        email,
+        phone: phone || "",
+        organization: organization || "",
+        programInteres: programInteres || "",
+        subject,
+        message,
+      });
+      createdAt = new Date(contactMessage.created_at);
+    } catch (dbErr) {
+      console.error("Contact Supabase storage error:", dbErr);
+      // Continuăm cu notificarea și sincronizarea chiar dacă stocarea eșuează
+    }
 
     // Notificare admin
     try {
@@ -61,7 +66,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ 
       success: true, 
       message: "Mesajul a fost trimis cu succes.",
-      data: contactMessage 
     });
 
   } catch (error) {
