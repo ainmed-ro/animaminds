@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getOpenEditionsForRegistration } from '@/app/admin/actions/cms'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CalendarPage() {
   const editions = await getOpenEditionsForRegistration()
 
