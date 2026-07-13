@@ -216,7 +216,8 @@ export default function ExperienceEditionForm() {
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
           >
             <option value="">Selectează perioada</option>
-            <option value="octombrie-2026">23–25 octombrie 2026</option>
+            <option value="septembrie-2026">8–22 septembrie 2026 (Online Live)</option>
+            <option value="octombrie-2026">23–25 octombrie 2026 (Experience Edition)</option>
             <option value="viitor">Edițiile viitoare</option>
           </select>
         </div>
