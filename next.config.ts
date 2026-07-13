@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 
+// Force deployment - make live site match code
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
