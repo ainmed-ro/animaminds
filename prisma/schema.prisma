@@ -38,6 +38,7 @@ enum EditionStatus {
 
 enum DeliveryFormat {
   ONLINE
+  ONLINE_DEDICATED
   ONSITE
   EXPERIENCE_EDITION
 }

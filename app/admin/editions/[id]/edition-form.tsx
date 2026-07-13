@@ -21,6 +21,7 @@ interface EditionFormProps {
 export function EditionForm({ edition, options, action }: EditionFormProps) {
   const [format, setFormat] = useState<DeliveryFormat>(edition?.deliveryFormat || DeliveryFormat.ONLINE)
   const isOnline = format === DeliveryFormat.ONLINE
+  const isOnlineDedicated = format === DeliveryFormat.ONLINE_DEDICATED
   const isOnsite = format === DeliveryFormat.ONSITE
   const isExperience = format === DeliveryFormat.EXPERIENCE_EDITION
 
@@ -102,6 +103,11 @@ export function EditionForm({ edition, options, action }: EditionFormProps) {
     }
     switch (format) {
       case DeliveryFormat.ONLINE:
+        return {
+          min: p.onlineMinParticipants ?? 15,
+          max: p.onlineMaxParticipants ?? 30,
+        }
+      case DeliveryFormat.ONLINE_DEDICATED:
         return {
           min: p.onlineMinParticipants ?? 15,
           max: p.onlineMaxParticipants ?? 30,
