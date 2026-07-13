@@ -1,7 +1,7 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
-import { DeliveryFormat, EditionStatus } from '@prisma/client'
+import { DeliveryFormat, EditionStatus, PriceType } from '@prisma/client'
 
 export async function addOnlineLiveEdition() {
   try {
@@ -33,7 +33,8 @@ export async function addOnlineLiveEdition() {
         amount: 199,
         currency: 'RON',
         description: 'Preț participant Online Live',
-        priceCode: 'ONLINE_LIVE_2026'
+        priceCode: 'ONLINE_LIVE_2026',
+        priceType: PriceType.STANDARD
       }
     })
 
