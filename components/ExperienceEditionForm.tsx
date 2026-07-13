@@ -183,9 +183,7 @@ export default function ExperienceEditionForm() {
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
         >
           <option value="">Selectează un program</option>
-          <option value="busola-deciziilor">Busola Deciziilor</option>
           <option value="conversatii-care-conteaza">Conversații care Contează</option>
-          <option value="calm-sub-presiune">Calm sub Presiune</option>
         </select>
       </div>
       
