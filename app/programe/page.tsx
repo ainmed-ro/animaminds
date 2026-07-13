@@ -87,6 +87,11 @@ function getAvailableFormats(programme: any) {
 
 // Helper function to get pricing information
 function getPricingInfo(programme: any) {
+  // Check if programme is COMING_SOON
+  if (programme.status === 'COMING_SOON') {
+    return { price: "", status: "În curând" }
+  }
+  
   const hasOnlineEdition = programme.editions.some((e: any) => e.deliveryFormat === 'ONLINE')
   const hasExperienceEdition = programme.editions.some((e: any) => e.deliveryFormat === 'EXPERIENCE_EDITION')
   
@@ -131,21 +136,22 @@ export default async function ProgramePage() {
   const programData = programmes
     .map(programme => {
       const config = PROGRAMME_CONFIG[programme.slug as keyof typeof PROGRAMME_CONFIG]
-      const isActive = hasActiveEditions(programme)
+      const isActive = hasActiveEditions(programme) && programme.status === 'ACTIVE'
       const pricingInfo = getPricingInfo(programme)
+      const isComingSoon = programme.status === 'COMING_SOON'
       
       return {
         ...config,
         title: programme.name,
         description: programme.shortDescription || programme.fullDescription || '',
         for: programme.targetAudiences.map(ta => ta.targetAudience.name).join(' · ') || 'Profesioniști · Manageri · Tineri',
-        formats: getAvailableFormats(programme),
+        formats: isComingSoon ? '' : getAvailableFormats(programme),
         price: pricingInfo.price,
         active: isActive,
         status: pricingInfo.status,
-        href: isActive ? `/inscriere?programmeSlug=${programme.slug}` : '/contact',
-        cta: isActive ? 'Înscrie-te' : 'Contactează-ne',
-        tags: isActive ? ['open'] : ['upcoming'],
+        href: isComingSoon ? '#' : (isActive ? `/inscriere?programmeSlug=${programme.slug}` : '/contact'),
+        cta: isComingSoon ? 'În curând' : (isActive ? 'Înscrie-te' : 'Contactează-ne'),
+        tags: isComingSoon ? ['coming-soon'] : (isActive ? ['open'] : ['upcoming']),
         // Additional data for enhanced display
         hours: programme.totalLearningHours || undefined,
         cpdCredits: programme.cpdCredits || undefined,

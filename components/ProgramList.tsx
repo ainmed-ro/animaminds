@@ -180,7 +180,17 @@ export default function ProgramList({ programs }: { programs: Program[] }) {
                   {program.price}
                 </p>
               )}
-              {program.active && program.href ? (
+              {program.tags.includes("coming-soon") ? (
+                <div className="flex flex-col items-start gap-3">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm border"
+                       style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.12)" }}>
+                    <span>În curând</span>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
+                    Acest program se află în etapa finală de dezvoltare și va fi disponibil în curând.
+                  </p>
+                </div>
+              ) : program.active && program.href ? (
                 <Link
                   href={program.href}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm transition-all hover:opacity-90"

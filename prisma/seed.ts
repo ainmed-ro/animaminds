@@ -510,7 +510,7 @@ async function main() {
       slug: p.slug,
       name: p.name,
       subtitle: p.subtitle,
-      status: ProgrammeStatus.DRAFT,
+      status: p.slug === 'conversatii-care-conteaza' ? ProgrammeStatus.ACTIVE : ProgrammeStatus.COMING_SOON,
       availableDeliveryFormats: p.availableDeliveryFormats,
       duration: p.duration,
       learningHours: p.learningHours,

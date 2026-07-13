@@ -1324,11 +1324,16 @@ const APPROVED_PROGRAM_ORDER = [
 
 export async function getPublicProgrammes() {
   return prisma.programme.findMany({
-    where: { status: ProgrammeStatus.ACTIVE },
+    where: { 
+      status: { 
+        in: [ProgrammeStatus.ACTIVE, ProgrammeStatus.COMING_SOON] 
+      } 
+    },
     select: {
       id: true,
       name: true,
       slug: true,
+      status: true,
       shortDescription: true,
       fullDescription: true,
       duration: true,
