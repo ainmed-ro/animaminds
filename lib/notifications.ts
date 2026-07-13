@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 import { prisma } from './prisma'
 import type { EmailType, EmailStatus } from '@prisma/client'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 const FROM_EMAIL = process.env.FROM_EMAIL ?? 'AnimaMinds <noreply@animaminds.ro>'
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? 'contact@animaminds.ro'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://animaminds.ro'
@@ -28,6 +28,11 @@ async function sendAndLogEmail({
   relatedId,
   metadata = {},
 }: SendAndLogOptions): Promise<{ success: boolean; resendId?: string; emailId?: string }> {
+  if (!resend) {
+    console.error('Resend not available - missing API key')
+    return { success: false }
+  }
+
   const recipients = Array.isArray(to) ? to : [to]
   const results: { success: boolean; resendId?: string; emailId?: string }[] = []
 

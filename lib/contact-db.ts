@@ -41,6 +41,9 @@ function toContactMessage(row: DbRow): ContactMessage {
 export async function insertContactMessage(
   message: Omit<ContactMessage, "id" | "created_at">
 ): Promise<ContactMessage> {
+  if (!supabase) {
+    throw new Error("Database not available");
+  }
   const id = `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const { data, error } = await supabase
     .from("contact_messages")
@@ -61,6 +64,9 @@ export async function insertContactMessage(
 }
 
 export async function getAllContactMessages(): Promise<ContactMessage[]> {
+  if (!supabase) {
+    throw new Error("Database not available");
+  }
   const { data, error } = await supabase
     .from("contact_messages")
     .select("*")

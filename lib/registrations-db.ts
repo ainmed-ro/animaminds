@@ -48,6 +48,9 @@ function toRegistration(row: DbRow): Registration {
 }
 
 export async function readAll(): Promise<Registration[]> {
+  if (!supabase) {
+    throw new Error("Database not available");
+  }
   const { data, error } = await supabase
     .from("registrations")
     .select("*")
@@ -62,6 +65,9 @@ export async function insert(
     paymentStatus?: PaymentStatus;
   }
 ): Promise<Registration> {
+  if (!supabase) {
+    throw new Error("Database not available");
+  }
   const id = `reg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const { data, error } = await supabase
     .from("registrations")
@@ -87,6 +93,9 @@ export async function updateStatus(
   id: string,
   updates: { status?: RegistrationStatus; paymentStatus?: PaymentStatus }
 ): Promise<Registration | null> {
+  if (!supabase) {
+    throw new Error("Database not available");
+  }
   const dbUpdates: Record<string, string> = {};
   if (updates.status) dbUpdates.status = updates.status;
   if (updates.paymentStatus) dbUpdates.payment_status = updates.paymentStatus;
@@ -103,6 +112,9 @@ export async function updateStatus(
 }
 
 export async function getSpotsByEdition(): Promise<Record<string, number>> {
+  if (!supabase) {
+    throw new Error("Database not available");
+  }
   const { data, error } = await supabase
     .from("registrations")
     .select("editie, participanti, status")
