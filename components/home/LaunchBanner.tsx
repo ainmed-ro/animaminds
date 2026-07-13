@@ -28,7 +28,7 @@ export default function LaunchBanner() {
           >
             <Star className="w-5 h-5 text-yellow-300 animate-pulse" />
             <span className="text-yellow-300 font-bold text-xl tracking-wide uppercase">
-              ✨ Program complet - 3 formate disponibile
+              ✨ Conversații care Contează - 3 formate disponibile
             </span>
             <Star className="w-5 h-5 text-yellow-300 animate-pulse" />
           </div>
@@ -59,7 +59,7 @@ export default function LaunchBanner() {
               }`}
             >
               <MapPin className="w-5 h-5 text-yellow-200" />
-              <span className="font-medium text-lg">București, Vălenii de Munte, Online</span>
+              <span className="font-medium text-lg">Vălenii de Munte, Online</span>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ export default function LaunchBanner() {
             </Link>
             
             <Link
-              href="/inscriere"
+              href="/programe"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-800 text-white rounded-xl font-bold text-lg hover:bg-emerald-700 transition-all transform hover:scale-105 shadow-xl border-2 border-emerald-600"
             >
               Află mai multe
