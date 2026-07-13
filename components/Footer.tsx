@@ -51,6 +51,35 @@ export default function Footer() {
               „Creșterea se construiește împreună."
             </p>
 
+            {/* Trust & Legal Block */}
+            <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-sm font-semibold">AnimaMinds</span>
+              </div>
+              <p className="text-xs mb-2" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Brand educațional operat de:
+              </p>
+              <p className="text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.8)" }}>
+                NICULAE ALINA-IONELA PFA
+              </p>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs" style={{ color: "var(--sage-light)" }}>
+                  CPD Approved Provider #790577
+                </span>
+              </div>
+              <a
+                href="https://thecpdregister.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-sage-light hover:text-white transition-colors"
+              >
+                Verifică furnizorul
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                </svg>
+              </a>
+            </div>
+
             {/* Social media */}
             <div className="mt-8">
               <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--sage-light)" }}>

@@ -132,3 +132,44 @@ export async function syncOrganizationRequestToGoogleSheets(data: {
     console.error('Google Sheets organization request sync error:', err)
   }
 }
+
+export async function syncExperienceEditionToGoogleSheets(data: {
+  formType: 'EXPERIENCE_EDITION_INTEREST'
+  name: string
+  email: string
+  phone: string
+  company?: string
+  programme: string
+  accommodation?: string
+  preferredPeriod?: string
+  message?: string
+  createdAt: Date
+}) {
+  if (!GOOGLE_SHEETS_URL) {
+    console.warn('GOOGLE_SHEETS_URL not configured, skipping Sheets sync')
+    return
+  }
+
+  try {
+    await fetch(GOOGLE_SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: data.formType,
+        nume: data.name,
+        email: data.email,
+        telefon: data.phone,
+        companie: data.company || '',
+        program: data.programme,
+        cazare: data.accommodation || '',
+        perioadaPreferata: data.preferredPeriod || '',
+        mesaj: data.message || '',
+        data: data.createdAt.toISOString(),
+      }),
+      mode: 'no-cors',
+    })
+    console.log('Experience Edition interest synced to Google Sheets:', data.email)
+  } catch (err) {
+    console.error('Google Sheets Experience Edition sync error:', err)
+  }
+}

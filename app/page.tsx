@@ -1,4 +1,8 @@
 import HeroSection from "@/components/home/HeroSection";
+import LaunchBanner from "@/components/home/LaunchBanner";
+import TrustSection from "@/components/home/TrustSection";
+import CPDExplanationSection from "@/components/home/CPDExplanationSection";
+import LaunchFeaturedSection from "@/components/home/LaunchFeaturedSection";
 import ContributionSection from "@/components/home/ContributionSection";
 import FeaturedProgramsSection from "@/components/home/FeaturedProgramsSection";
 import AudienceSection from "@/components/home/AudienceSection";
@@ -12,6 +16,10 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <LaunchBanner />
+      <TrustSection />
+      <CPDExplanationSection />
+      <LaunchFeaturedSection />
       <ContributionSection />
       <FeaturedProgramsSection />
       <AudienceSection />

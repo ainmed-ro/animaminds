@@ -380,3 +380,62 @@ export async function sendAdminOrganizationRequestEmail(data: {
     },
   })
 }
+
+export async function sendAdminExperienceEditionEmail(data: {
+  name: string
+  email: string
+  phone: string
+  company?: string
+  programme: string
+  accommodation?: string
+  preferredPeriod?: string
+  message?: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#1C2B1E;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:14px;font-weight:bold;">🏔️ Exprimare interes Experience Edition</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Nume:</strong> ${data.name}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Email:</strong> ${data.email}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Telefon:</strong> ${data.phone}</p>
+          ${data.company ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Companie:</strong> ${data.company}</p>` : ''}
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Program:</strong> ${data.programme}</p>
+          ${data.accommodation ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Cazare preferată:</strong> ${data.accommodation}</p>` : ''}
+          ${data.preferredPeriod ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Perioada preferată:</strong> ${data.preferredPeriod}</p>` : ''}
+          ${data.message ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Mesaj:</strong> ${data.message}</p>` : ''}
+          <p style="margin:16px 0 8px;font-size:12px;color:#888;">Data: ${data.createdAt.toLocaleString('ro-RO')}</p>
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}/admin" style="display:inline-block;padding:10px 20px;background:#1C2B1E;color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:bold;">Deschide admin</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: ADMIN_EMAIL,
+    subject: `[AnimaMinds] Experience Edition — ${data.name} — ${data.programme}`,
+    html,
+    type: 'ADMIN_EXPERIENCE_EDITION' as any,
+    recipientName: data.name,
+    relatedType: 'EXPERIENCE_EDITION',
+    metadata: {
+      programme: data.programme,
+      email: data.email,
+      phone: data.phone,
+      company: data.company,
+      accommodation: data.accommodation,
+    },
+  })
+}

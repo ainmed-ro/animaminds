@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Monitor, MapPin, Building2, TreePine } from "lucide-react";
+import CPDTrustBlock from "@/components/program/CPDTrustBlock";
 
 export const metadata: Metadata = {
   title: "Busola Deciziilor – Program de Dezvoltare | AnimaMinds",
@@ -366,6 +367,37 @@ export default function BusolaDeciziilorPage() {
               Contact
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Transport Support Notice */}
+      <section className="py-10">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
+            <div className="flex items-start gap-3">
+              <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-yellow-900 font-bold text-sm">!</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--charcoal)" }}>
+                  Transport Support Notice
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Transportul nu este inclus în tariful programului.
+                </p>
+                <p className="text-gray-700 leading-relaxed mt-2">
+                  La solicitarea beneficiarului sau a grupurilor organizate, AnimaMinds poate facilita contactul cu operatori autorizați de transport în vederea identificării unei soluții adecvate de deplasare.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CPD Trust Block */}
+      <section className="py-10">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+          <CPDTrustBlock duration="3 zile" credits={15} />
         </div>
       </section>
     </div>

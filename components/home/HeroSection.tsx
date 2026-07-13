@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Users, Sparkles } from "lucide-react";
+import { ArrowRight, Users, Sparkles, Award } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function HeroSection() {
@@ -42,22 +42,40 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10 w-full">
         <div className="max-w-3xl">
-          {/* Label */}
+          {/* Logo */}
+          <div
+            className={`mb-8 transition-all duration-700 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+          >
+            <Image
+              src="/logo-horizontal.png"
+              alt="AnimaMinds"
+              width={400}
+              height={80}
+              className="h-16 w-auto"
+              priority
+            />
+          </div>
+
+          {/* CPD Badge */}
           <div
             className={`flex items-center gap-2 mb-6 transition-all duration-700 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <Sparkles
-              size={14}
-              style={{ color: "var(--terracotta)" }}
+            <Award
+              size={16}
+              style={{ color: "var(--sage)" }}
             />
-            <span className="section-label">Comunitate de învățare</span>
+            <span className="text-sm font-medium" style={{ color: "var(--sage)" }}>
+              CPD Approved Provider #790577
+            </span>
           </div>
 
           {/* Headline */}
           <h1
-            className={`text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-4 transition-all duration-700 delay-100 ${
+            className={`text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6 transition-all duration-700 delay-100 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{
@@ -65,27 +83,17 @@ export default function HeroSection() {
               color: "var(--charcoal)",
             }}
           >
-            Locul unde{" "}
-            <span style={{ color: "var(--sage)" }}>oamenii</span> și{" "}
-            <span
-              className="italic"
-              style={{ color: "var(--terracotta)" }}
-            >
-              ideile
-            </span>{" "}
-            cresc împreună.
+            Locul unde oamenii și ideile cresc împreună.
           </h1>
 
           {/* Subtitle */}
           <p
-            className={`text-base sm:text-lg leading-relaxed mb-6 max-w-xl transition-all duration-700 delay-200 ${
+            className={`text-lg sm:text-xl leading-relaxed mb-8 max-w-3xl transition-all duration-700 delay-200 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{ color: "var(--charcoal-soft)", fontFamily: "Inter, sans-serif" }}
           >
-            AnimaMinds nu este o academie de cursuri. Este o comunitate în care
-            profesori, formatori, lideri și organizații se întâlnesc să învețe,
-            să evolueze și să construiască împreună ceva mai bun.
+            AnimaMinds este o comunitate de învățare și dezvoltare profesională, în care profesioniștii, educatorii, liderii și organizațiile se întâlnesc pentru a învăța, a reflecta și a transforma ideile în rezultate reale.
           </p>
 
           {/* CTAs */}
@@ -95,20 +103,20 @@ export default function HeroSection() {
             }`}
           >
             <Link
-              href="/inscriere"
+              href="/programe"
               className="btn-primary group"
             >
-              Înscrie-te
+              Vezi programele
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
               />
             </Link>
             <Link
-              href="/contact"
+              href="/colaboreaza"
               className="btn-secondary"
             >
-              Contactează-ne
+              Solicită ofertă
             </Link>
           </div>
 
