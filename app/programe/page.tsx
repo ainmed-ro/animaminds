@@ -141,8 +141,13 @@ export default async function ProgramePage() {
     'avantajul-uman'
   ]
   
+  // Remove duplicate programmes by name (keep the first one)
+  const uniqueProgrammes = programmes.filter((programme, index, self) => 
+    index === self.findIndex((p) => p.name === programme.name)
+  )
+
   // Transform CMS data to ProgramList format and sort by approved order
-  const programData = programmes
+  const programData = uniqueProgrammes
     .map(programme => {
       const config = PROGRAMME_CONFIG[programme.slug as keyof typeof PROGRAMME_CONFIG]
       const isActive = hasActiveEditions(programme) && programme.status === 'ACTIVE'

@@ -1352,7 +1352,11 @@ export async function getPublicProgrammes() {
         }
       },
       editions: {
-        where: { status: EditionStatus.OPEN },
+        where: { 
+          status: { 
+            in: [EditionStatus.OPEN, EditionStatus.DRAFT] 
+          } 
+        },
         select: {
           id: true,
           editionTitle: true,
@@ -1419,7 +1423,11 @@ export async function getPublicProgramme(slug: string) {
         }
       },
       editions: {
-        where: { status: EditionStatus.OPEN },
+        where: { 
+          status: { 
+            in: [EditionStatus.OPEN, EditionStatus.DRAFT] 
+          } 
+        },
         select: {
           id: true,
           editionTitle: true,
