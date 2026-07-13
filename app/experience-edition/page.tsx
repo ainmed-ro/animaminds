@@ -104,25 +104,25 @@ export default function ExperienceEditionPage() {
           
           <div className="space-y-8">
             {/* Edition 1 - Conversații care Contează - LAUNCH EDITION */}
-            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-8 rounded-xl shadow-lg border-2 border-orange-200 relative overflow-hidden">
+            <div className="bg-gradient-to-r from-green-50 to-green-100 p-8 rounded-xl shadow-lg border-2 border-green-200 relative overflow-hidden">
               {/* Launch Badge */}
-              <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+              <div className="absolute top-4 right-4 bg-green-700 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
                 EDIȚIE DE LANSARE
               </div>
               
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <Star className="w-6 h-6 text-orange-500" />
+                    <Star className="w-6 h-6 text-green-600" />
                     <h3 className="text-2xl font-bold" style={{ color: "var(--charcoal)" }}>
                       Conversații care Contează
                     </h3>
                   </div>
                   <p className="text-lg text-gray-600">23–25 octombrie 2026</p>
-                  <p className="text-sm text-orange-600 font-medium mt-1">Prima ediție Experience Edition</p>
+                  <p className="text-sm text-green-600 font-medium mt-1">Prima ediție Experience Edition</p>
                 </div>
                 <div className="flex items-center gap-2 mt-4 md:mt-0">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-red-600 text-white text-sm font-medium animate-pulse">
+                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-700 text-white text-sm font-medium animate-pulse">
                     <CheckCircle className="w-4 h-4 mr-2" />
                     LOCURI LIMITATE
                   </span>
@@ -133,7 +133,7 @@ export default function ExperienceEditionPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <h4 className="font-semibold" style={{ color: "var(--charcoal)" }}>Tarif special de lansare:</h4>
-                    <span className="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">-20%</span>
+                    <span className="bg-green-700 text-white px-2 py-1 rounded text-xs font-bold">-20%</span>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
@@ -151,14 +151,14 @@ export default function ExperienceEditionPage() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-orange-600 mt-2 font-medium">
+                  <p className="text-xs text-green-600 mt-2 font-medium">
                     ⚠️ Valabil exclusiv pentru prima ediție
                   </p>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link
                     href="/experience-edition/conversatii-care-conteaza#rezerva-loc"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-red-600 text-white rounded-lg font-bold text-lg hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg w-full"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-700 text-white rounded-lg font-bold text-lg hover:bg-green-800 transition-all transform hover:scale-105 shadow-lg w-full"
                   >
                     Rezervă un loc acum
                     <Calendar className="w-5 h-5" />
@@ -654,10 +654,10 @@ export default function ExperienceEditionPage() {
       {/* Transport Support Notice */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
+          <div className="bg-green-50 p-6 rounded-xl border border-green-200">
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-yellow-900 font-bold text-sm">!</span>
+              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-white font-bold text-sm">!</span>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--charcoal)" }}>
