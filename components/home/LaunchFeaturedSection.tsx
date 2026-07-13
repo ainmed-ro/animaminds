@@ -43,7 +43,7 @@ export default function LaunchFeaturedSection() {
             {
               icon: <Users className="w-8 h-8" />,
               title: "Experience Edition",
-              description: "Rezidențial la munte - 3 zile intensive - 1.200-1.690 lei"
+              description: "Rezidențial la munte - 3 zile intensive - 1.200-1.400 lei"
             },
             {
               icon: <Coffee className="w-8 h-8" />,

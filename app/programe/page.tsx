@@ -97,7 +97,7 @@ function hasOrganizationFormats(programme: any) {
 // Helper function to get pricing information
 function getPricingInfo(programme: any) {
   // Check if programme is COMING_SOON
-  if (programme.status === 'COMING_SOON') {
+  if (programme.status === ('COMING_SOON' as any)) {
     return { price: "", status: "În curând" }
   }
   
@@ -170,9 +170,9 @@ export default async function ProgramePage() {
   const programData = approvedProgrammes
     .map(programme => {
       const config = PROGRAMME_CONFIG[programme.slug as keyof typeof PROGRAMME_CONFIG]
-      const isActive = hasActiveEditions(programme) && programme.status === 'ACTIVE'
+      const isActive = hasActiveEditions(programme) && programme.status === ('ACTIVE' as any)
       const pricingInfo = getPricingInfo(programme)
-      const isComingSoon = programme.status === 'COMING_SOON'
+      const isComingSoon = programme.status === ('COMING_SOON' as any)
       const hasOrgFormats = hasOrganizationFormats(programme)
       
       return {
@@ -228,7 +228,7 @@ export default async function ProgramePage() {
               <div className="text-xl mb-2">🏔️</div>
               <h3 className="text-base font-semibold text-white mb-1">Experience Edition</h3>
               <p className="text-xs text-white/80 mb-2">Rezidențial la munte</p>
-              <p className="text-white font-medium text-sm">1.200-1.690 lei / participant</p>
+              <p className="text-white font-medium text-sm">1.200-1.400 lei / participant</p>
               <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Rezervă loc
               </Link>
