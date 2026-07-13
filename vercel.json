@@ -1,0 +1,29 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["fra1"],
+  "functions": {
+    "app/**/*.ts": {
+      "runtime": "nodejs18.x"
+    },
+    "app/**/*.tsx": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/experience-edition",
+      "destination": "/experience-edition"
+    },
+    {
+      "source": "/experience-edition/:path*",
+      "destination": "/experience-edition/:path*"
+    },
+    {
+      "source": "/cpd-provider",
+      "destination": "/cpd-provider"
+    }
+  ]
+}
