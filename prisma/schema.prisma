@@ -360,8 +360,6 @@ model Edition {
   hotelName               String?
   hotelAddress            String?
   period                  String?
-  minParticipants         Int?
-  maxParticipants         Int?
   roomTypes               Json?
   includedMeals           String[] @default([])
   includedFacilities      String[] @default([])
