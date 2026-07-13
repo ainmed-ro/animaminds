@@ -34,6 +34,8 @@ const DEFAULT_CAPACITY: Record<DeliveryFormat, { min: number | null; max: number
   [DeliveryFormat.ONLINE_DEDICATED]: { min: 15, max: 30 },
   [DeliveryFormat.ONSITE]: { min: 15, max: 30 },
   [DeliveryFormat.EXPERIENCE_EDITION]: { min: 20, max: 30 },
+  // Temporarily added for backward compatibility during migration
+  OPEN_COHORT: { min: 15, max: 30 } as any,
 }
 
 function getCapacityRules(edition: { deliveryFormat: DeliveryFormat; programme: { onlineMinParticipants: number | null; onlineMaxParticipants: number | null; onsiteMaxParticipants: number | null; experienceMinParticipants: number | null; experienceMaxParticipants: number | null } | null } | null) {
