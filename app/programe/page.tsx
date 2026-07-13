@@ -204,7 +204,7 @@ export default async function ProgramePage() {
     <div>
       
       {/* Conversații care Contează - 3 Formate Disponibile */}
-      <section className="py-12 px-4 bg-gradient-to-r from-green-700 via-green-600 to-green-500">
+      <section className="py-12 px-4 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
             Conversații care Contează - 3 Formate
@@ -219,7 +219,7 @@ export default async function ProgramePage() {
               <h3 className="text-base font-semibold text-white mb-1">Online Live</h3>
               <p className="text-xs text-white/80 mb-2">8, 15, 22 Septembrie + 1h individual</p>
               <p className="text-white font-medium text-sm">199 lei / participant</p>
-              <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-green-700 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
+              <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Înscrie-te
               </Link>
             </div>
@@ -229,7 +229,7 @@ export default async function ProgramePage() {
               <h3 className="text-base font-semibold text-white mb-1">Experience Edition</h3>
               <p className="text-xs text-white/80 mb-2">Rezidențial la munte</p>
               <p className="text-white font-medium text-sm">1.200-1.690 lei / participant</p>
-              <Link href="/experience-edition" className="inline-block mt-2 px-3 py-1 bg-white text-green-700 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
+              <Link href="/experience-edition" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Rezervă loc
               </Link>
             </div>
@@ -239,7 +239,7 @@ export default async function ProgramePage() {
               <h3 className="text-base font-semibold text-white mb-1">Pentru organizații</h3>
               <p className="text-xs text-white/80 mb-2">Online dedicat sau la sediu</p>
               <p className="text-white font-medium text-sm">3.500-5.000 lei / grup</p>
-              <Link href="/colaboreaza#solicita-oferta" className="inline-block mt-2 px-3 py-1 bg-white text-green-700 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
+              <Link href="/colaboreaza#solicita-oferta" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Solicită ofertă
               </Link>
             </div>
@@ -290,23 +290,54 @@ export default async function ProgramePage() {
         </div>
       </section>
 
-      {/* Experience Edition Banner */}
-      <section className="py-16 px-4 bg-gradient-to-r from-green-700 via-green-600 to-green-500">
-        <div className="max-w-6xl mx-auto text-center">
+      {/* Conversații care Contează - Lansare Program Complet */}
+      <section className="py-16 px-4 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600 relative overflow-hidden">
+        {/* Festive balloons */}
+        <div className="absolute top-4 left-8 text-4xl animate-bounce">🎈</div>
+        <div className="absolute top-8 right-12 text-3xl animate-bounce" style={{ animationDelay: "0.5s" }}>🎉</div>
+        <div className="absolute top-16 left-1/4 text-2xl animate-bounce" style={{ animationDelay: "1s" }}>🎊</div>
+        <div className="absolute top-12 right-1/3 text-3xl animate-bounce" style={{ animationDelay: "1.5s" }}>🎈</div>
+        <div className="absolute top-20 left-1/2 text-2xl animate-bounce" style={{ animationDelay: "2s" }}>🎉</div>
+        
+        <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-800 text-white text-sm font-bold animate-pulse">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-amber-600 text-white text-sm font-bold animate-pulse">
               <Star className="w-4 h-4 mr-2" />
-              EDIȚIE DE LANSARE
+              EDIȚIE DE LANSARE COMPLETĂ
             </span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
-            Experience Edition - Conversații care Contează
+            Conversații care Contează
           </h2>
           
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Program rezidențial premium de comunicare și colaborare
+            Program complet de formare profesională - 3 formate disponibile pentru nevoile tale
           </p>
+          
+          {/* All 3 formats showcase */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="text-3xl mb-3">🌐</div>
+              <h3 className="text-lg font-semibold text-white mb-2">Online Live</h3>
+              <p className="text-sm text-white/80 mb-3">8, 15, 22 Septembrie</p>
+              <p className="text-white font-medium">199 lei</p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="text-3xl mb-3">🏔️</div>
+              <h3 className="text-lg font-semibold text-white mb-2">Experience Edition</h3>
+              <p className="text-sm text-white/80 mb-3">Rezidențial la munte</p>
+              <p className="text-white font-medium">1.200-1.690 lei</p>
+            </div>
+            
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="text-3xl mb-3">🏢</div>
+              <h3 className="text-lg font-semibold text-white mb-2">Pentru organizații</h3>
+              <p className="text-sm text-white/80 mb-3">Online sau la sediu</p>
+              <p className="text-white font-medium">3.500-5.000 lei</p>
+            </div>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <div className="flex items-center gap-2 text-white">
@@ -328,7 +359,7 @@ export default async function ProgramePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="#experience-edition-form"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-green-700 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-800 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
             >
               Rezervă un loc
               <Calendar className="w-5 h-5" />
@@ -374,7 +405,7 @@ export default async function ProgramePage() {
               "Activități complementare de învățare contextualizată"
             ].map((item, index) => (
               <div key={index} className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700 text-sm">{item}</span>
               </div>
             ))}
@@ -413,7 +444,7 @@ export default async function ProgramePage() {
               </div>
 
               <div className="text-center">
-                <div className="bg-green-700 text-white rounded-xl p-6 mb-6">
+                <div className="bg-slate-800 text-white rounded-xl p-6 mb-6">
                   <div className="flex items-center justify-center gap-2 mb-3">
                     <Star className="w-6 h-6" />
                     <span className="font-bold text-lg">Locuri limitate!</span>
