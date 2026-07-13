@@ -383,11 +383,6 @@ export async function getEditions() {
       programme: { 
         select: { 
           name: true,
-          onlineMinParticipants: true,
-          onlineMaxParticipants: true,
-          onsiteMaxParticipants: true,
-          experienceMinParticipants: true,
-          experienceMaxParticipants: true,
         } 
       },
       displayPrice: true,
