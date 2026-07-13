@@ -265,6 +265,9 @@ export default async function ProgramePage() {
               <h3 className="font-semibold text-gray-900 mb-1">AI Fără Haos</h3>
               <p className="text-sm text-gray-600">Inteligență artificială aplicată eficient</p>
               <p className="text-xs text-gray-500 mt-2">În curând</p>
+              <Link href="/programe/ai-fara-haos" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Află mai multe
+              </Link>
             </div>
             
             <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
@@ -272,6 +275,9 @@ export default async function ProgramePage() {
               <h3 className="font-semibold text-gray-900 mb-1">Busola Deciziilor</h3>
               <p className="text-sm text-gray-600">Claritate în procesul decizional</p>
               <p className="text-xs text-gray-500 mt-2">În curând</p>
+              <Link href="/programe/busola-deciziilor" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Află mai multe
+              </Link>
             </div>
             
             <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
@@ -279,6 +285,9 @@ export default async function ProgramePage() {
               <h3 className="font-semibold text-gray-900 mb-1">Calm sub Presiune</h3>
               <p className="text-sm text-gray-600">Reziliență emoțională și mentală</p>
               <p className="text-xs text-gray-500 mt-2">În curând</p>
+              <Link href="/programe/calm-sub-pressiune" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Află mai multe
+              </Link>
             </div>
             
             <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
@@ -286,6 +295,9 @@ export default async function ProgramePage() {
               <h3 className="font-semibold text-gray-900 mb-1">Avantajul Uman</h3>
               <p className="text-sm text-gray-600">Competențe esențiale în era AI</p>
               <p className="text-xs text-gray-500 mt-2">În curând</p>
+              <Link href="/programe/avantajul-uman" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Află mai multe
+              </Link>
             </div>
           </div>
         </div>
