@@ -78,7 +78,7 @@ export default function Navbar() {
               className="btn-primary text-xs lg:text-sm font-semibold py-2 px-3 lg:px-4 rounded-lg whitespace-nowrap"
               style={{ backgroundColor: "var(--sage)", color: "white", display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
-              Înscrie-te
+              Rezervă un loc
             </Link>
           </div>
 
@@ -128,7 +128,7 @@ export default function Navbar() {
               className="block w-full text-center py-3 px-4 rounded-lg text-sm font-medium text-white"
               style={{ backgroundColor: "var(--sage)" }}
             >
-              Înscrie-te
+              Rezervă un loc
             </Link>
           </div>
         </div>

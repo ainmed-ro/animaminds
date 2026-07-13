@@ -171,7 +171,14 @@ export default function LaunchFeaturedSection() {
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-sage-600" />
-                  <span className="text-gray-700">Hotel Afrodita**** – Vălenii de Munte</span>
+                  <Link 
+                    href="https://hotelafrodita.ro/valeni/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-sage-600 transition-colors underline decoration-dotted"
+                  >
+                    Hotel Afrodita**** – Vălenii de Munte
+                  </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <Calendar className="w-5 h-5 text-sage-600" />
@@ -195,17 +202,19 @@ export default function LaunchFeaturedSection() {
             </div>
 
             <div className="text-center">
-              <div className="bg-red-600 text-white rounded-xl p-6 mb-6">
+              <div className="bg-emerald-800/90 backdrop-blur-sm text-white rounded-xl p-6 mb-6 border border-emerald-600/30">
                 <div className="flex items-center justify-center gap-2 mb-3">
-                  <Star className="w-6 h-6" />
-                  <span className="font-bold text-lg">Locuri limitate!</span>
+                  <Users className="w-6 h-6 text-yellow-200" />
+                  <span className="font-bold text-lg text-yellow-200">Participanți</span>
                 </div>
                 <div className="text-3xl font-bold mb-2">20–30</div>
-                <div className="text-sm opacity-90">participanți maxim</div>
+                <div className="text-sm opacity-90 mb-2">Grupa se formează la minimum 20 participanți</div>
+                <div className="text-sm text-yellow-200 font-medium">Număr maxim: 30 participanți</div>
+                <div className="text-sm text-yellow-200 mt-2">Plata se realizează doar după confirmarea formării grupei minime</div>
               </div>
               
               <Link
-                href="/experience-edition/conversatii-care-conteaza#rezerva-loc"
+                href="/programe/experience-edition/conversatii-care-conteaza#rezerva-loc"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-sage-600 text-white rounded-lg font-bold text-lg hover:bg-sage-700 transition-all transform hover:scale-105 shadow-lg w-full"
               >
                 Rezervă un loc acum

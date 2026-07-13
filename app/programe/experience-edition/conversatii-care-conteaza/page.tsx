@@ -12,12 +12,12 @@ export default function ConversatiiCareConteazaPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-terracotta-50 to-orange-50 py-20 px-4">
+      <section className="relative bg-gradient-to-br from-emerald-50 to-teal-50 py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-red-600 text-white text-sm font-bold animate-pulse">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600 text-white text-sm font-bold">
               <Star className="w-4 h-4 mr-2" />
-              EDIȚIE DE LANSARE
+              ✨ Ediție de lansare Experience Edition
             </span>
           </div>
           
@@ -43,7 +43,7 @@ export default function ConversatiiCareConteazaPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="#rezerva-loc"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-red-600 text-white rounded-lg font-bold text-lg hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-lg font-bold text-lg hover:bg-emerald-700 transition-all transform hover:scale-105 shadow-lg"
             >
               Rezervă un loc acum
               <Calendar className="w-5 h-5" />
