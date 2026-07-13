@@ -107,7 +107,7 @@ export default function LaunchBanner() {
             </Link>
             
             <Link
-              href="/programe/experience-edition/conversatii-care-conteaza"
+              href="/inscriere"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-800 text-white rounded-xl font-bold text-lg hover:bg-emerald-700 transition-all transform hover:scale-105 shadow-xl border-2 border-emerald-600"
             >
               Află mai multe

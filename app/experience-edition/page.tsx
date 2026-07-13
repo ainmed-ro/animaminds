@@ -157,7 +157,7 @@ export default function ExperienceEditionPage() {
                 </div>
                 <div className="flex items-center justify-center">
                   <Link
-                    href="/experience-edition/conversatii-care-conteaza#rezerva-loc"
+                    href="/inscriere"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-700 text-white rounded-lg font-bold text-lg hover:bg-green-800 transition-all transform hover:scale-105 shadow-lg w-full"
                   >
                     Rezervă un loc acum

@@ -214,7 +214,7 @@ export default function LaunchFeaturedSection() {
               </div>
               
               <Link
-                href="/programe/experience-edition/conversatii-care-conteaza#rezerva-loc"
+                href="/inscriere"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-sage-600 text-white rounded-lg font-bold text-lg hover:bg-sage-700 transition-all transform hover:scale-105 shadow-lg w-full"
               >
                 Rezervă un loc acum
