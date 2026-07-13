@@ -111,7 +111,7 @@ export default function CPDExplanationSection() {
                   mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                 }`}
               >
-                <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-amber-500 mr-3 flex-shrink-0" />
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}
@@ -144,7 +144,7 @@ export default function CPDExplanationSection() {
                   mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                 }`}
               >
-                <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-amber-500 mr-3 flex-shrink-0" />
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}

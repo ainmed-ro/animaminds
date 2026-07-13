@@ -18,7 +18,7 @@ export default function LaunchFeaturedSection() {
           >
             <Sparkles className="w-6 h-6 text-sage-600" />
             <span className="text-sage-600 font-bold text-xl tracking-wide uppercase">
-              Lansăm prima ediție Experience Edition
+              Lansăm programul complet - 3 formate disponibile
             </span>
             <Sparkles className="w-6 h-6 text-sage-600" />
           </div>
@@ -29,7 +29,7 @@ export default function LaunchFeaturedSection() {
             }`}
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
-            Trei zile dedicate învățării, reflecției, networkingului profesional și dezvoltării competențelor într-un cadru premium.
+            Conversații care Contează - Program complet cu 3 formate disponibile
           </h2>
         </div>
 
@@ -37,18 +37,18 @@ export default function LaunchFeaturedSection() {
           {[
             {
               icon: <BookOpen className="w-8 h-8" />,
-              title: "Program rezidențial de formare profesională",
-              description: "Workshop-uri aplicate și activități experiențiale pentru dezvoltare continuă."
+              title: "Online Live",
+              description: "3 întâlniri + 1h individual - 8, 15, 22 Septembrie - 199 lei"
             },
             {
               icon: <Users className="w-8 h-8" />,
-              title: "Networking profesional",
-              description: "Conexiuni autentice cu profesioniști din diverse domenii și schimb de experiență."
+              title: "Experience Edition",
+              description: "Rezidențial la munte - 3 zile intensive - 1.200-1.690 lei"
             },
             {
               icon: <Coffee className="w-8 h-8" />,
-              title: "Experiență completă",
-              description: "Cazare premium, mese incluse și activități complementare de învățare contextualizată."
+              title: "Pentru organizații",
+              description: "Online sau la sediu - 3.500-5.000 lei/grup - personalizat"
             }
           ].map((feature, index) => (
             <div
@@ -95,16 +95,16 @@ export default function LaunchFeaturedSection() {
 
             {/* Launch Price */}
             <div
-              className={`border-2 border-green-500 bg-green-50 rounded-xl p-6 relative transition-all duration-700 delay-500 ${
+              className={`border-2 border-amber-500 bg-amber-50 rounded-xl p-6 relative transition-all duration-700 delay-500 ${
                 mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
               <div className="absolute -top-3 -right-3 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
                 -20%
               </div>
-              <div className="text-green-600 text-sm font-medium mb-2">Tarif de lansare</div>
-              <div className="text-4xl font-bold text-green-700 mb-2">1.200 lei</div>
-              <div className="text-green-600 text-sm">per participant – cameră dublă</div>
+              <div className="text-amber-600 text-sm font-medium mb-2">Tarif de lansare</div>
+              <div className="text-4xl font-bold text-amber-700 mb-2">1.200 lei</div>
+              <div className="text-amber-600 text-sm">per participant – cameră dublă</div>
             </div>
           </div>
 
@@ -154,7 +154,7 @@ export default function LaunchFeaturedSection() {
                   mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                 }`}
               >
-                <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700 text-sm">{item}</span>
               </div>
             ))}
