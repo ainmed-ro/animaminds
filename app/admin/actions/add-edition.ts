@@ -32,7 +32,8 @@ export async function addOnlineLiveEdition() {
       data: {
         amount: 199,
         currency: 'RON',
-        description: 'Preț participant Online Live'
+        description: 'Preț participant Online Live',
+        priceCode: 'ONLINE_LIVE_2026'
       }
     })
 
