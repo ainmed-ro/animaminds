@@ -1318,7 +1318,7 @@ export async function getPublicProgrammes() {
   return prisma.programme.findMany({
     where: { 
       status: { 
-        in: [ProgrammeStatus.ACTIVE, ProgrammeStatus.COMING_SOON] 
+        in: [ProgrammeStatus.ACTIVE] 
       } 
     },
     select: {
