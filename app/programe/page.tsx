@@ -221,17 +221,17 @@ export default async function ProgramePage() {
         </div>
       </section>
 
-      {/* Conversații care Contează - 4 Formate Disponibile */}
+      {/* Conversații care Contează - 3 Formate Disponibile */}
       <section className="py-16 px-4 bg-gradient-to-r from-green-700 via-green-600 to-green-500">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
-            Conversații care Contează - 4 Formate Disponibile
+            Conversații care Contează - 3 Formate Disponibile
           </h2>
           <p className="text-xl text-white/90 mb-8">
             Alege formatul potrivit pentru tine - 8 CPD credite
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
               <div className="text-2xl mb-3">🌐</div>
               <h3 className="text-lg font-semibold text-white mb-2">Online Live</h3>
@@ -262,16 +262,7 @@ export default async function ProgramePage() {
               </Link>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <div className="text-2xl mb-3">👥</div>
-              <h3 className="text-lg font-semibold text-white mb-2">Grupuri private</h3>
-              <p className="text-sm text-white/80 mb-3">Comunități și echipe</p>
-              <p className="text-white font-medium">Pe bază de ofertă</p>
-              <Link href="/colaboreaza#solicita-oferta" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-                Solicită ofertă
-              </Link>
-            </div>
-          </div>
+                      </div>
         </div>
       </section>
 
