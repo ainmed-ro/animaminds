@@ -291,7 +291,7 @@ export default async function ProgramePage() {
       </section>
 
       {/* Conversații care Contează - Lansare Program Complet */}
-      <section className="py-12 px-4 bg-gradient-to-r from-blue-800 via-blue-700 to-indigo-600 relative overflow-hidden">
+      <section className="py-12 px-4 bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-100 relative overflow-hidden">
         {/* Festive balloons */}
         <div className="absolute top-4 left-8 text-4xl animate-bounce">🎈</div>
         <div className="absolute top-8 right-12 text-3xl animate-bounce" style={{ animationDelay: "0.5s" }}>🎉</div>
@@ -301,41 +301,41 @@ export default async function ProgramePage() {
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500 text-white text-sm font-bold animate-pulse">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-amber-600 text-white text-sm font-bold animate-pulse">
               <Star className="w-4 h-4 mr-2" />
               EDIȚIE DE LANSARE
             </span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "#8B4513" }}>
             Conversații care Contează
           </h2>
           
-          <p className="text-lg text-white/90 mb-6 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
             Program complet - 3 formate disponibile
           </p>
           
           {/* All 3 formats showcase */}
           <div className="grid md:grid-cols-3 gap-4 mb-6 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-amber-200 shadow-lg">
               <div className="text-2xl mb-2">🌐</div>
-              <h3 className="text-base font-semibold text-white mb-1">Online Live</h3>
-              <p className="text-xs text-white/80 mb-2">8, 15, 22 Septembrie</p>
-              <p className="text-white font-medium text-sm">199 lei</p>
+              <h3 className="text-base font-semibold text-gray-800 mb-1">Online Live</h3>
+              <p className="text-xs text-gray-600 mb-2">8, 15, 22 Septembrie</p>
+              <p className="text-gray-800 font-medium text-sm">199 lei</p>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-amber-200 shadow-lg">
               <div className="text-2xl mb-2">🏔️</div>
-              <h3 className="text-base font-semibold text-white mb-1">Experience Edition</h3>
-              <p className="text-xs text-white/80 mb-2">Rezidențial la munte</p>
-              <p className="text-white font-medium text-sm">1.200-1.690 lei</p>
+              <h3 className="text-base font-semibold text-gray-800 mb-1">Experience Edition</h3>
+              <p className="text-xs text-gray-600 mb-2">Rezidențial la munte</p>
+              <p className="text-gray-800 font-medium text-sm">1.200-1.690 lei</p>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-amber-200 shadow-lg">
               <div className="text-2xl mb-2">🏢</div>
-              <h3 className="text-base font-semibold text-white mb-1">Pentru organizații</h3>
-              <p className="text-xs text-white/80 mb-2">Online sau la sediu</p>
-              <p className="text-white font-medium text-sm">3.500-5.000 lei</p>
+              <h3 className="text-base font-semibold text-gray-800 mb-1">Pentru organizații</h3>
+              <p className="text-xs text-gray-600 mb-2">Online sau la sediu</p>
+              <p className="text-gray-800 font-medium text-sm">3.500-5.000 lei</p>
             </div>
           </div>
         </div>
