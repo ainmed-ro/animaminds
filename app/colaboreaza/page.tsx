@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import OrganizationRequestForm from "@/components/OrganizationRequestForm";
 
 export const metadata: Metadata = {
@@ -182,7 +183,7 @@ export default function ColaboreazaPage() {
                     className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                     style={{ backgroundColor: "rgba(124,154,126,0.1)" }}
                   >
-                    <Icon size={22} style={{ color: "var(--sage)" }} />
+                    <span style={{ fontSize: "22px" }}>{type.icon}</span>
                   </div>
                   <h3
                     className="text-xl font-semibold mb-3"
