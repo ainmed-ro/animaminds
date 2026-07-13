@@ -290,57 +290,7 @@ export default async function ProgramePage() {
         </div>
       </section>
 
-      {/* Conversații care Contează - Lansare Program Complet */}
-      <section className="py-12 px-4 bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-100 relative overflow-hidden">
-        {/* Festive balloons */}
-        <div className="absolute top-4 left-8 text-4xl animate-bounce">🎈</div>
-        <div className="absolute top-8 right-12 text-3xl animate-bounce" style={{ animationDelay: "0.5s" }}>🎉</div>
-        <div className="absolute top-16 left-1/4 text-2xl animate-bounce" style={{ animationDelay: "1s" }}>🎊</div>
-        <div className="absolute top-12 right-1/3 text-3xl animate-bounce" style={{ animationDelay: "1.5s" }}>🎈</div>
-        <div className="absolute top-20 left-1/2 text-2xl animate-bounce" style={{ animationDelay: "2s" }}>🎉</div>
-        
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-amber-600 text-white text-sm font-bold animate-pulse">
-              <Star className="w-4 h-4 mr-2" />
-              EDIȚIE DE LANSARE
-            </span>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "#8B4513" }}>
-            Conversații care Contează
-          </h2>
-          
-          <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
-            Program complet - 3 formate disponibile
-          </p>
-          
-          {/* All 3 formats showcase */}
-          <div className="grid md:grid-cols-3 gap-4 mb-6 max-w-4xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-amber-200 shadow-lg">
-              <div className="text-2xl mb-2">🌐</div>
-              <h3 className="text-base font-semibold text-gray-800 mb-1">Online Live</h3>
-              <p className="text-xs text-gray-600 mb-2">8, 15, 22 Septembrie</p>
-              <p className="text-gray-800 font-medium text-sm">199 lei</p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-amber-200 shadow-lg">
-              <div className="text-2xl mb-2">🏔️</div>
-              <h3 className="text-base font-semibold text-gray-800 mb-1">Experience Edition</h3>
-              <p className="text-xs text-gray-600 mb-2">Rezidențial la munte</p>
-              <p className="text-gray-800 font-medium text-sm">1.200-1.690 lei</p>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-amber-200 shadow-lg">
-              <div className="text-2xl mb-2">🏢</div>
-              <h3 className="text-base font-semibold text-gray-800 mb-1">Pentru organizații</h3>
-              <p className="text-xs text-gray-600 mb-2">Online sau la sediu</p>
-              <p className="text-gray-800 font-medium text-sm">3.500-5.000 lei</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <div className="flex items-center gap-2 text-white">
               <Calendar className="w-5 h-5" />
