@@ -85,6 +85,14 @@ function getAvailableFormats(programme: any) {
   return formats.length > 0 ? formats.join(' · ') : '🌐 Online Live (15–30) · 🏢 La sediul instituției / organizației (max 30) · 🏔️ Experience Edition (20–30)'
 }
 
+// Helper function to check if programme has organization-only formats
+function hasOrganizationFormats(programme: any) {
+  return programme.editions.some((e: any) => 
+    e.deliveryFormat === 'ONSITE' || 
+    (e.deliveryFormat === 'ONLINE' && e.editionTitle && e.editionTitle.toLowerCase().includes('dedicat'))
+  )
+}
+
 // Helper function to get pricing information
 function getPricingInfo(programme: any) {
   // Check if programme is COMING_SOON
@@ -139,6 +147,7 @@ export default async function ProgramePage() {
       const isActive = hasActiveEditions(programme) && programme.status === 'ACTIVE'
       const pricingInfo = getPricingInfo(programme)
       const isComingSoon = programme.status === 'COMING_SOON'
+      const hasOrgFormats = hasOrganizationFormats(programme)
       
       return {
         ...config,
@@ -149,9 +158,9 @@ export default async function ProgramePage() {
         price: pricingInfo.price,
         active: isActive,
         status: pricingInfo.status,
-        href: isComingSoon ? '#' : (isActive ? `/inscriere?programmeSlug=${programme.slug}` : '/contact'),
-        cta: isComingSoon ? 'În curând' : (isActive ? 'Înscrie-te' : 'Contactează-ne'),
-        tags: isComingSoon ? ['coming-soon'] : (isActive ? ['open'] : ['upcoming']),
+        href: isComingSoon ? '#' : (hasOrgFormats ? '/colaboreaza' : (isActive ? `/inscriere?programmeSlug=${programme.slug}` : '/contact')),
+        cta: isComingSoon ? 'În curând' : (hasOrgFormats ? 'Cere ofertă' : (isActive ? 'Înscrie-te' : 'Contactează-ne')),
+        tags: isComingSoon ? ['coming-soon'] : (hasOrgFormats ? ['organization'] : (isActive ? ['open'] : ['upcoming'])),
         // Additional data for enhanced display
         hours: programme.totalLearningHours || undefined,
         cpdCredits: programme.cpdCredits || undefined,

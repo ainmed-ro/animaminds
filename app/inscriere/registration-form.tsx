@@ -110,7 +110,7 @@ export function PublicRegistrationForm({ editions, defaultEditionId, programme }
     async (_prev: unknown, formData: FormData) => {
       try {
         await submitPublicRegistration(formData)
-        router.push('/calendar?success=1')
+        setMessage('Înscrierea ta a fost înregistrată cu succes.\n\nLocul tău va fi rezervat provizoriu până la confirmarea formării grupei minime.\n\nDupă confirmarea ediției vei primi prin e-mail toate informațiile necesare privind participarea și modalitatea de plată.')
         return { success: true }
       } catch (err: any) {
         setMessage(err.message || 'A apărut o eroare. Încercați din nou.')
@@ -123,9 +123,16 @@ export function PublicRegistrationForm({ editions, defaultEditionId, programme }
   return (
     <form action={formAction} className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-200 space-y-5">
       <h1 className="text-2xl font-bold text-gray-900">Înscriere</h1>
+      
+      <div className="p-4 rounded-lg bg-blue-50 text-blue-700 text-sm font-medium">
+        Înscrierea este gratuită.<br/>
+        Plata se efectuează după confirmarea formării grupei minime.
+      </div>
 
       {message && (
-        <div className="p-4 rounded-lg bg-red-50 text-red-700 text-sm">{message}</div>
+        <div className={`p-4 rounded-lg text-sm whitespace-pre-line ${
+          state?.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+        }`}>{message}</div>
       )}
 
       <div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, CheckCircle, Building2, GraduationCap, Users2, Briefcase } from "lucide-react";
+import OrganizationRequestForm from "@/components/OrganizationRequestForm";
 
 export const metadata: Metadata = {
   title: "Colaborează cu noi",
@@ -252,33 +253,21 @@ export default function ColaboreazaPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section
-        className="py-20"
-        style={{ backgroundColor: "var(--sage)" }}
-      >
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2
-            className="text-4xl font-semibold text-white mb-5"
-            style={{ fontFamily: "Playfair Display, serif" }}
-          >
-            Gata să începem?
-          </h2>
-          <p
-            className="text-lg mb-8"
-            style={{ color: "rgba(255,255,255,0.85)" }}
-          >
-            Trimite-ne un mesaj și cineva din echipa AnimaMinds va răspunde
-            în maximum 24 de ore.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg font-medium bg-white transition-all hover:shadow-lg"
-            style={{ color: "var(--sage)" }}
-          >
-            Contactează-ne acum
-            <ArrowRight size={15} />
-          </Link>
+      {/* Organization Request Form */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2
+              className="text-4xl font-semibold mb-5"
+              style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+            >
+              Cerere personalizată pentru organizații
+            </h2>
+            <p className="text-lg" style={{ color: "var(--charcoal-soft)" }}>
+              Completează formularul de mai jos și vom reveni cu o ofertă personalizată pentru nevoile organizației tale.
+            </p>
+          </div>
+          <OrganizationRequestForm />
         </div>
       </section>
     </div>

@@ -136,6 +136,14 @@ export default function ProgramList({ programs }: { programs: Program[] }) {
                     Experience Edition
                   </span>
                 )}
+                {program.tags.includes("organization") && (
+                  <span
+                    className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border"
+                    style={{ color: "#1C2B1E", borderColor: "rgba(28,43,30,0.3)" }}
+                  >
+                    Organizații
+                  </span>
+                )}
               </div>
               <h2
                 className="text-2xl sm:text-3xl font-semibold mb-3"
