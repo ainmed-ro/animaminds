@@ -237,7 +237,7 @@ export default async function ProgramePage() {
               <h3 className="text-lg font-semibold text-white mb-2">Online Live</h3>
               <p className="text-sm text-white/80 mb-3">3 întâlniri live + 1h individual</p>
               <p className="text-white font-medium">199 lei / participant</p>
-              <Link href="/inscriere?programmeSlug=conversatii-care-conteaza" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+              <Link href="/inscriere" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
                 Înscrie-te
               </Link>
             </div>
@@ -247,7 +247,7 @@ export default async function ProgramePage() {
               <h3 className="text-lg font-semibold text-white mb-2">Experience Edition</h3>
               <p className="text-sm text-white/80 mb-3">Rezidențial la munte</p>
               <p className="text-white font-medium">1.200-1.690 lei / participant</p>
-              <Link href="/programe/conversatii-care-conteaza/experience-edition" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+              <Link href="/experience-edition" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
                 Rezervă loc
               </Link>
             </div>
