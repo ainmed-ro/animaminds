@@ -222,10 +222,10 @@ export default async function ProgramePage() {
       </section>
 
       {/* Experience Edition Banner */}
-      <section className="py-16 px-4 bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400">
+      <section className="py-16 px-4 bg-gradient-to-r from-green-700 via-green-600 to-green-500">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-red-600 text-white text-sm font-bold animate-pulse">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-800 text-white text-sm font-bold animate-pulse">
               <Star className="w-4 h-4 mr-2" />
               EDIȚIE DE LANSARE
             </span>
@@ -259,7 +259,7 @@ export default async function ProgramePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="#experience-edition-form"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-green-700 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
             >
               Rezervă un loc
               <Calendar className="w-5 h-5" />
@@ -344,7 +344,7 @@ export default async function ProgramePage() {
               </div>
 
               <div className="text-center">
-                <div className="bg-red-600 text-white rounded-xl p-6 mb-6">
+                <div className="bg-green-700 text-white rounded-xl p-6 mb-6">
                   <div className="flex items-center justify-center gap-2 mb-3">
                     <Star className="w-6 h-6" />
                     <span className="font-bold text-lg">Locuri limitate!</span>
