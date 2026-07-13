@@ -26,32 +26,38 @@ export default function ColaboreazaPage() {
     {
       title: "Școli și licee",
       description: "Programe de dezvoltare pentru profesori și elevi",
-      icon: "🏫"
+      icon: "🏫",
+      cta: "Solicită ofertă"
     },
     {
       title: "Universități",
       description: "Formare pentru cadre didactice universitare",
-      icon: "🎓"
+      icon: "🎓",
+      cta: "Solicită ofertă"
     },
     {
       title: "Companii",
       description: "Dezvoltare profesională pentru echipe",
-      icon: "🏢"
+      icon: "🏢",
+      cta: "Solicită ofertă"
     },
     {
       title: "ONG-uri",
       description: "Programe adaptate pentru organizații non-profit",
-      icon: "🤝"
+      icon: "🤝",
+      cta: "Solicită ofertă"
     },
     {
       title: "Instituții publice",
       description: "Formare profesională pentru sectorul public",
-      icon: "🏛️"
+      icon: "🏛️",
+      cta: "Solicită ofertă"
     },
     {
       title: "Grupuri organizate",
       description: "Programe personalizate pentru grupuri specifice",
-      icon: "👥"
+      icon: "👥",
+      cta: "Solicită ofertă"
     }
   ];
 
@@ -195,7 +201,7 @@ export default function ColaboreazaPage() {
                     className="text-sm leading-relaxed mb-4"
                     style={{ color: "var(--charcoal-soft)" }}
                   >
-                    {type.desc}
+                    {type.description}
                   </p>
                   <p
                     className="text-xs italic"
