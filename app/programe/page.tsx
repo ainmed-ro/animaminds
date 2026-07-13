@@ -238,7 +238,8 @@ export default async function ProgramePage() {
               <div className="text-xl mb-2">🏢</div>
               <h3 className="text-base font-semibold text-white mb-1">Pentru organizații</h3>
               <p className="text-xs text-white/80 mb-2">Online dedicat sau la sediu</p>
-              <p className="text-white font-medium text-sm">3.500-5.000 lei / grup</p>
+              <p className="text-white font-medium text-sm mb-1">3.500 lei / grup (15-30 persoane)</p>
+              <p className="text-white/80 text-xs mb-2">5.000 lei / grup (customizat complet)</p>
               <Link href="/colaboreaza#solicita-oferta" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Solicită ofertă
               </Link>
