@@ -44,6 +44,7 @@ function getPricingText(edition: any) {
 }
 
 export default async function CalendarPage() {
+  // Force deployment - registration UX fixes
   const editions = await getPublicEditions()
 
   return (
