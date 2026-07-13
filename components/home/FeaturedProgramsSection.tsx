@@ -5,18 +5,18 @@ import { useInView } from "@/hooks/useInView";
 
 const programs = [
   {
-    symbol: "✦",
-    title: "AI Fără Haos",
-    description: "Folosește AI. Păstrează controlul. Fără jargon, cu aplicații concrete.",
-    color: "#2D4A5C",
-    bg: "rgba(45,74,92,0.08)",
-  },
-  {
     symbol: "◇",
     title: "Conversații care Contează",
     description: "Claritate, curaj și conexiune reală în mesajele care contează.",
     color: "#C4785A",
     bg: "rgba(196,120,90,0.08)",
+  },
+  {
+    symbol: "✦",
+    title: "AI Fără Haos",
+    description: "Folosește AI. Păstrează controlul. Fără jargon, cu aplicații concrete.",
+    color: "#2D4A5C",
+    bg: "rgba(45,74,92,0.08)",
   },
   {
     symbol: "◎",
@@ -64,7 +64,7 @@ export default function FeaturedProgramsSection() {
             </span>
           </h2>
           <p className="text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-            Fiecare program poate fi accesat online, în locații dedicate, la sediul organizației sau sub formă de Experience Edition.
+            Fiecare program poate fi accesat Online Live, La sediul instituției / organizații sau sub formă de Experience Edition.
           </p>
         </div>
 

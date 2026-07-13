@@ -35,7 +35,15 @@ export function ProgrammeForm({ programme, options, action }: ProgrammeFormProps
     featuredImageUrl: null,
     duration: null,
     learningHours: null,
-    cpdHours: null,
+    contactHours: null,
+    individualActivitiesHours: null,
+    totalLearningHours: null,
+    cpdCredits: null,
+    onlineMinParticipants: 15,
+    onlineMaxParticipants: 30,
+    onsiteMaxParticipants: 30,
+    experienceMinParticipants: 20,
+    experienceMaxParticipants: 30,
     accreditationBody: null,
     cpdProviderReference: null,
     cpdApprovalDate: null,
@@ -165,11 +173,23 @@ export function ProgrammeForm({ programme, options, action }: ProgrammeFormProps
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Learning Hours</label>
-            <input name="learningHours" type="number" defaultValue={p.learningHours || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+            <input name="learningHours" type="number" step="0.5" defaultValue={p.learningHours || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">CPD Hours</label>
-            <input name="cpdHours" type="number" defaultValue={p.cpdHours || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+            <label className="block text-sm font-medium text-gray-700">Contact Hours</label>
+            <input name="contactHours" type="number" step="0.5" defaultValue={p.contactHours || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Individual Activities Hours</label>
+            <input name="individualActivitiesHours" type="number" step="0.5" defaultValue={p.individualActivitiesHours || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Total Learning Hours</label>
+            <input name="totalLearningHours" type="number" step="0.5" defaultValue={p.totalLearningHours || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">CPD Credits</label>
+            <input name="cpdCredits" type="number" defaultValue={p.cpdCredits || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -214,6 +234,51 @@ export function ProgrammeForm({ programme, options, action }: ProgrammeFormProps
             <input type="checkbox" name="displayGovernanceFields" value="true" defaultChecked={p.displayGovernanceFields} />
             <span className="text-sm text-gray-700">Display Governance Fields</span>
           </label>
+        </div>
+      </section>
+
+      <section className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 space-y-4">
+        <h3 className="text-lg font-semibold text-gray-900">Group Size & Capacity</h3>
+        <p className="text-sm text-gray-600">
+          Approved default group sizes. Values shown in bold are the business-rule standards. You may adjust them only when a programme genuinely needs different limits.
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="p-4 rounded-md border border-blue-100 bg-blue-50">
+            <h4 className="text-sm font-semibold text-gray-900 mb-2">Online Live</h4>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-medium text-gray-600">Min Participants</label>
+                <input name="onlineMinParticipants" type="number" defaultValue={p.onlineMinParticipants ?? 15} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-600">Max Participants</label>
+                <input name="onlineMaxParticipants" type="number" defaultValue={p.onlineMaxParticipants ?? 30} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-2">Standard: <strong>15 – 30</strong></p>
+          </div>
+          <div className="p-4 rounded-md border border-green-100 bg-green-50">
+            <h4 className="text-sm font-semibold text-gray-900 mb-2">La sediul instituției / organizației</h4>
+            <div>
+              <label className="block text-xs font-medium text-gray-600">Max Participants</label>
+              <input name="onsiteMaxParticipants" type="number" defaultValue={p.onsiteMaxParticipants ?? 30} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+            </div>
+            <p className="text-xs text-gray-500 mt-2">Recommended: <strong>15 – 30</strong> | Maximum: <strong>30</strong></p>
+          </div>
+          <div className="p-4 rounded-md border border-purple-100 bg-purple-50">
+            <h4 className="text-sm font-semibold text-gray-900 mb-2">Experience Edition</h4>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-medium text-gray-600">Min Participants</label>
+                <input name="experienceMinParticipants" type="number" defaultValue={p.experienceMinParticipants ?? 20} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-600">Max Participants</label>
+                <input name="experienceMaxParticipants" type="number" defaultValue={p.experienceMaxParticipants ?? 30} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-2">Standard: <strong>20 – 30</strong></p>
+          </div>
         </div>
       </section>
 
@@ -312,7 +377,10 @@ export function ProgrammeForm({ programme, options, action }: ProgrammeFormProps
       </section>
 
       <section className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900">Delivery & CTAs</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Delivery Formats</h3>
+        <p className="text-sm text-gray-600">
+          Only the three approved delivery formats are supported. Group size defaults are defined in the <strong>Group Size & Capacity</strong> section above.
+        </p>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Available Delivery Formats</label>
           <div className="flex flex-wrap gap-4">
@@ -327,6 +395,23 @@ export function ProgrammeForm({ programme, options, action }: ProgrammeFormProps
                 <span className="text-sm text-gray-700">{df}</span>
               </label>
             ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-4 text-sm text-gray-600">
+          <div className="p-3 rounded border border-gray-200 bg-gray-50">
+            <strong className="block text-gray-900">ONLINE</strong>
+            Online Live
+            <span className="block text-xs mt-1">Standard: 15–30 participants</span>
+          </div>
+          <div className="p-3 rounded border border-gray-200 bg-gray-50">
+            <strong className="block text-gray-900">ONSITE</strong>
+            La sediul instituției / organizației
+            <span className="block text-xs mt-1">Recommended: 15–30 | Max: 30</span>
+          </div>
+          <div className="p-3 rounded border border-gray-200 bg-gray-50">
+            <strong className="block text-gray-900">EXPERIENCE_EDITION</strong>
+            Experience Edition
+            <span className="block text-xs mt-1">Standard: 20–30 participants</span>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">

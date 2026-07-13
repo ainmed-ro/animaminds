@@ -1,5 +1,5 @@
 import { createPrice, getProgrammesForSelect } from '@/app/admin/actions/cms'
-import { PriceType, PriceStatus } from '@prisma/client'
+import { PriceType, PriceStatus, DeliveryFormat } from '@prisma/client'
 
 export default async function NewPricePage() {
   const programmes = await getProgrammesForSelect()
@@ -26,6 +26,15 @@ export default async function NewPricePage() {
           <select name="priceType" defaultValue={PriceType.STANDARD} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm px-3 py-2 border">
             {Object.values(PriceType).map((t) => (
               <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Delivery Format</label>
+          <select name="deliveryFormat" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm px-3 py-2 border">
+            <option value="">Any / All formats</option>
+            {Object.values(DeliveryFormat).map((df) => (
+              <option key={df} value={df}>{df}</option>
             ))}
           </select>
         </div>

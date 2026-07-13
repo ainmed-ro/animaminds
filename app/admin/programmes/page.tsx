@@ -23,6 +23,12 @@ export default async function ProgrammesPage() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Learning Hrs</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact Hrs</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Indiv. Hrs</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Hrs</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CPD</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Formats</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Editions</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Target Audiences</th>
               <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
@@ -34,6 +40,16 @@ export default async function ProgrammesPage() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{programme.programmeCode}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{programme.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{programme.status}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{programme.learningHours ?? '—'}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{programme.contactHours ?? '—'}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{programme.individualActivitiesHours ?? '—'}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{programme.totalLearningHours ?? '—'}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{programme.cpdCredits ?? '—'}</td>
+                <td className="px-6 py-4 text-sm text-gray-600">
+                  {programme.availableDeliveryFormats.map((f) => (
+                    <span key={f} className="inline-block px-2 py-0.5 rounded-full bg-gray-100 text-xs text-gray-700 mr-1">{f}</span>
+                  ))}
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{programme.editions.length}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">
                   {programme.targetAudiences.map((ta) => ta.targetAudience.name).join(', ')}

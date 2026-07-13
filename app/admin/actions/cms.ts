@@ -28,6 +28,89 @@ function slugify(text: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
+// Final capacity business rules (also stored on Programme as defaults)
+const DEFAULT_CAPACITY: Record<DeliveryFormat, { min: number | null; max: number }> = {
+  [DeliveryFormat.ONLINE]: { min: 15, max: 30 },
+  [DeliveryFormat.ONSITE]: { min: 15, max: 30 },
+  [DeliveryFormat.EXPERIENCE_EDITION]: { min: 20, max: 30 },
+}
+
+function getCapacityRules(edition: { deliveryFormat: DeliveryFormat; programme: { onlineMinParticipants: number | null; onlineMaxParticipants: number | null; onsiteMaxParticipants: number | null; experienceMinParticipants: number | null; experienceMaxParticipants: number | null } | null } | null) {
+  const defaults = edition ? DEFAULT_CAPACITY[edition.deliveryFormat] : DEFAULT_CAPACITY[DeliveryFormat.ONLINE]
+  const p = edition?.programme
+  if (!p) return defaults
+  switch (edition?.deliveryFormat) {
+    case DeliveryFormat.ONLINE:
+      return {
+        min: p.onlineMinParticipants ?? defaults.min,
+        max: p.onlineMaxParticipants ?? defaults.max,
+      }
+    case DeliveryFormat.ONSITE:
+      return { min: defaults.min, max: p.onsiteMaxParticipants ?? defaults.max }
+    case DeliveryFormat.EXPERIENCE_EDITION:
+      return {
+        min: p.experienceMinParticipants ?? defaults.min,
+        max: p.experienceMaxParticipants ?? defaults.max,
+      }
+    default:
+      return defaults
+  }
+}
+
+function validateParticipantCount(edition: { deliveryFormat: DeliveryFormat; programme: { onlineMinParticipants: number | null; onlineMaxParticipants: number | null; onsiteMaxParticipants: number | null; experienceMinParticipants: number | null; experienceMaxParticipants: number | null } | null } | null, participantCount: number) {
+  if (!participantCount || participantCount < 1) throw new Error('Participant count must be at least 1')
+  const rules = getCapacityRules(edition)
+  if (rules.min !== null && participantCount < rules.min) {
+    throw new Error(`Minimum ${rules.min} participants required for this format`)
+  }
+  if (participantCount > rules.max) {
+    throw new Error(`Maximum ${rules.max} participants allowed for this format`)
+  }
+}
+
+function validateCapacityMinMax(min: number | undefined | null, max: number | undefined | null, label: string) {
+  if (min != null && max != null && min > max) {
+    throw new Error(`${label}: minimum cannot exceed maximum`)
+  }
+}
+
+function validateProgrammeCapacity(data: {
+  onlineMinParticipants?: number
+  onlineMaxParticipants?: number
+  onsiteMaxParticipants?: number
+  experienceMinParticipants?: number
+  experienceMaxParticipants?: number
+}) {
+  validateCapacityMinMax(data.onlineMinParticipants, data.onlineMaxParticipants, 'Online Live')
+  validateCapacityMinMax(data.experienceMinParticipants, data.experienceMaxParticipants, 'Experience Edition')
+}
+
+function validateEditionCapacity(data: { minParticipants?: number; maxParticipants?: number; deliveryFormat?: DeliveryFormat }) {
+  validateCapacityMinMax(data.minParticipants, data.maxParticipants, data.deliveryFormat || 'Edition')
+}
+
+function validateHourFields(data: {
+  contactHours?: number
+  individualActivitiesHours?: number
+  totalLearningHours?: number
+}) {
+  const { contactHours, individualActivitiesHours, totalLearningHours } = data
+  if (
+    contactHours != null &&
+    individualActivitiesHours != null &&
+    totalLearningHours != null &&
+    Math.abs(contactHours + individualActivitiesHours - totalLearningHours) > 0.001
+  ) {
+    throw new Error('Total Learning Hours should equal Contact Hours + Individual Activities Hours')
+  }
+}
+
+function validateCpdCredits(cpdCredits?: number) {
+  if (cpdCredits != null && cpdCredits < 0) {
+    throw new Error('CPD Credits cannot be negative')
+  }
+}
+
 // ------------------------------------------------------------------
 // Programmes
 // ------------------------------------------------------------------
@@ -127,7 +210,15 @@ function buildProgrammeData(formData: FormData) {
     featuredImageUrl: getOptional(formData, 'featuredImageUrl'),
     duration: getOptional(formData, 'duration'),
     learningHours: getNumber(formData, 'learningHours'),
-    cpdHours: getNumber(formData, 'cpdHours'),
+    contactHours: getNumber(formData, 'contactHours'),
+    individualActivitiesHours: getNumber(formData, 'individualActivitiesHours'),
+    totalLearningHours: getNumber(formData, 'totalLearningHours'),
+    cpdCredits: getNumber(formData, 'cpdCredits'),
+    onlineMinParticipants: getNumber(formData, 'onlineMinParticipants'),
+    onlineMaxParticipants: getNumber(formData, 'onlineMaxParticipants'),
+    onsiteMaxParticipants: getNumber(formData, 'onsiteMaxParticipants'),
+    experienceMinParticipants: getNumber(formData, 'experienceMinParticipants'),
+    experienceMaxParticipants: getNumber(formData, 'experienceMaxParticipants'),
     accreditationBody: getOptional(formData, 'accreditationBody'),
     cpdProviderReference: getOptional(formData, 'cpdProviderReference'),
     cpdApprovalDate: getDate(formData, 'cpdApprovalDate'),
@@ -165,9 +256,14 @@ export async function createProgramme(formData: FormData) {
   const galleryIds = getStrings(formData, 'galleryIds')
   const additionalDefaultPriceIds = getStrings(formData, 'additionalDefaultPriceIds')
 
+  const programmeData = buildProgrammeData(formData)
+  validateProgrammeCapacity(programmeData)
+  validateHourFields(programmeData)
+  validateCpdCredits(programmeData.cpdCredits)
+
   const programme = await prisma.programme.create({
     data: {
-      ...buildProgrammeData(formData),
+      ...programmeData,
       targetAudiences: {
         create: targetAudienceIds.map((tid) => ({ targetAudience: { connect: { id: tid } } })),
       },
@@ -226,10 +322,15 @@ export async function updateProgramme(id: string, formData: FormData) {
   const galleryIds = getStrings(formData, 'galleryIds')
   const additionalDefaultPriceIds = getStrings(formData, 'additionalDefaultPriceIds')
 
+  const programmeData = buildProgrammeData(formData)
+  validateProgrammeCapacity(programmeData)
+  validateHourFields(programmeData)
+  validateCpdCredits(programmeData.cpdCredits)
+
   await prisma.programme.update({
     where: { id },
     data: {
-      ...buildProgrammeData(formData),
+      ...programmeData,
       targetAudiences: {
         deleteMany: {},
         create: targetAudienceIds.map((tid) => ({
@@ -276,7 +377,16 @@ export async function deleteProgramme(id: string) {
 export async function getEditions() {
   return prisma.edition.findMany({
     include: {
-      programme: { select: { name: true } },
+      programme: { 
+        select: { 
+          name: true,
+          onlineMinParticipants: true,
+          onlineMaxParticipants: true,
+          onsiteMaxParticipants: true,
+          experienceMinParticipants: true,
+          experienceMaxParticipants: true,
+        } 
+      },
       displayPrice: true,
       additionalPrices: { include: { price: true } },
       galleries: { include: { gallery: true } },
@@ -354,6 +464,14 @@ function buildEditionData(formData: FormData) {
     displayPriceId: getOptional(formData, 'displayPriceId'),
     featuredImageUrl: getOptional(formData, 'featuredImageUrl'),
     notes: getOptional(formData, 'notes'),
+    // Learning & CPD overrides
+    contactHours: getNumber(formData, 'contactHours'),
+    individualActivitiesHours: getNumber(formData, 'individualActivitiesHours'),
+    totalLearningHours: getNumber(formData, 'totalLearningHours'),
+    cpdCredits: getNumber(formData, 'cpdCredits'),
+    // Group size overrides (available for every format)
+    minParticipants: getNumber(formData, 'minParticipants'),
+    maxParticipants: getNumber(formData, 'maxParticipants'),
     // Online
     platform: getOptional(formData, 'platform') as any,
     meetLink: getOptional(formData, 'meetLink'),
@@ -361,7 +479,7 @@ function buildEditionData(formData: FormData) {
     sessionDates,
     sessionCount: getNumber(formData, 'sessionCount'),
     recordingPolicy: getOptional(formData, 'recordingPolicy'),
-    // On-site / open cohort
+    // On-site
     city: getOptional(formData, 'city'),
     locationName: getOptional(formData, 'locationName'),
     address: getOptional(formData, 'address'),
@@ -376,8 +494,7 @@ function buildEditionData(formData: FormData) {
     hotelName: isExperience ? getOptional(formData, 'hotelName') : undefined,
     hotelAddress: isExperience ? getOptional(formData, 'hotelAddress') : undefined,
     period: isExperience ? getOptional(formData, 'period') : undefined,
-    minParticipants: isExperience ? getNumber(formData, 'minParticipants') : undefined,
-    maxParticipants: isExperience ? getNumber(formData, 'maxParticipants') : undefined,
+    // Experience Edition specific fields remain guarded
     roomTypes: isExperience ? getJson(formData, 'roomTypes') : undefined,
     includedMeals: isExperience ? getStrings(formData, 'includedMeals') : undefined,
     includedFacilities: isExperience ? getStrings(formData, 'includedFacilities') : undefined,
@@ -397,10 +514,15 @@ export async function createEdition(formData: FormData) {
   const additionalPriceIds = getStrings(formData, 'additionalPriceIds')
   const galleryIds = getStrings(formData, 'galleryIds')
 
+  const editionData = buildEditionData(formData)
+  validateEditionCapacity(editionData)
+  validateHourFields(editionData)
+  validateCpdCredits(editionData.cpdCredits)
+
   await prisma.edition.create({
     data: {
       programmeId,
-      ...buildEditionData(formData),
+      ...editionData,
       additionalPrices: {
         create: additionalPriceIds.map((pid) => ({ price: { connect: { id: pid } } })),
       },
@@ -421,10 +543,15 @@ export async function updateEdition(id: string, formData: FormData) {
   const additionalPriceIds = getStrings(formData, 'additionalPriceIds')
   const galleryIds = getStrings(formData, 'galleryIds')
 
+  const editionData = buildEditionData(formData)
+  validateEditionCapacity(editionData)
+  validateHourFields(editionData)
+  validateCpdCredits(editionData.cpdCredits)
+
   await prisma.edition.update({
     where: { id },
     data: {
-      ...buildEditionData(formData),
+      ...editionData,
       additionalPrices: {
         deleteMany: {},
         create: additionalPriceIds.map((pid) => ({ price: { connect: { id: pid } } })),
@@ -470,6 +597,12 @@ export async function getRegistration(id: string) {
   })
 }
 
+const EDITION_PROGRAMME_SELECT = {
+  name: true,
+  slug: true,
+  defaultLaunchPrice: { select: { amount: true, currency: true, displayLabel: true, priceType: true, deliveryFormat: true } },
+} as const
+
 export async function getOpenEditionsForRegistration() {
   return prisma.edition.findMany({
     where: {
@@ -479,7 +612,22 @@ export async function getOpenEditionsForRegistration() {
         { registrationDeadline: null },
       ],
     },
-    include: { programme: { select: { name: true, slug: true } }, displayPrice: true },
+    include: { programme: { select: EDITION_PROGRAMME_SELECT }, displayPrice: true },
+    orderBy: { startDate: 'asc' },
+  })
+}
+
+export async function getOpenEditionsForRegistrationByProgramme(programmeSlug: string) {
+  return prisma.edition.findMany({
+    where: {
+      programme: { slug: programmeSlug },
+      status: { in: ['DRAFT', 'OPEN'] },
+      OR: [
+        { registrationDeadline: { gte: new Date() } },
+        { registrationDeadline: null },
+      ],
+    },
+    include: { programme: { select: EDITION_PROGRAMME_SELECT }, displayPrice: true },
     orderBy: { startDate: 'asc' },
   })
 }
@@ -491,8 +639,22 @@ export async function createRegistration(formData: FormData) {
   const editionId = formData.get('editionId') as string
   const participantCount = getNumber(formData, 'participantCount') || 1
 
-  const edition = await prisma.edition.findUnique({ where: { id: editionId } })
+  const edition = await prisma.edition.findUnique({
+    where: { id: editionId },
+    include: {
+      programme: {
+        select: {
+          onlineMinParticipants: true,
+          onlineMaxParticipants: true,
+          onsiteMaxParticipants: true,
+          experienceMinParticipants: true,
+          experienceMaxParticipants: true,
+        } as any,
+      },
+    },
+  }) as any
   if (!edition) throw new Error('Edition not found')
+  validateParticipantCount(edition, participantCount)
   if (edition.availableSeats !== null && edition.availableSeats < participantCount) {
     throw new Error('Not enough available seats')
   }
@@ -532,6 +694,22 @@ export async function updateRegistration(id: string, formData: FormData) {
 
   const oldCount = getParticipantCount(existing.participantsJson)
   const newCount = getNumber(formData, 'participantCount') || oldCount
+
+  const edition = await prisma.edition.findUnique({
+    where: { id: existing.editionId },
+    include: {
+      programme: {
+        select: {
+          onlineMinParticipants: true,
+          onlineMaxParticipants: true,
+          onsiteMaxParticipants: true,
+          experienceMinParticipants: true,
+          experienceMaxParticipants: true,
+        } as any,
+      },
+    },
+  }) as any
+  if (edition) validateParticipantCount(edition, newCount)
 
   await prisma.$transaction([
     prisma.registration.update({
@@ -596,8 +774,20 @@ export async function submitPublicRegistration(formData: FormData) {
 
   const edition = await prisma.edition.findUnique({
     where: { id: editionId },
-    include: { programme: { select: { name: true, slug: true } } },
-  })
+    include: {
+      programme: {
+        select: {
+          name: true,
+          slug: true,
+          onlineMinParticipants: true,
+          onlineMaxParticipants: true,
+          onsiteMaxParticipants: true,
+          experienceMinParticipants: true,
+          experienceMaxParticipants: true,
+        } as any,
+      },
+    },
+  }) as any
   if (!edition) throw new Error('Edition not found')
   if (edition.status !== 'OPEN' && edition.status !== 'DRAFT') {
     throw new Error('Registration is closed for this edition')
@@ -605,6 +795,7 @@ export async function submitPublicRegistration(formData: FormData) {
   if (edition.registrationDeadline && new Date(edition.registrationDeadline) < new Date()) {
     throw new Error('Registration deadline has passed')
   }
+  validateParticipantCount(edition as any, participantCount)
   if (edition.availableSeats !== null && edition.availableSeats < participantCount) {
     throw new Error('Not enough available seats')
   }
@@ -643,6 +834,7 @@ export async function submitPublicRegistration(formData: FormData) {
       programmeName: edition.programme.name,
       participantCount,
       createdAt: registration.createdAt,
+      registrationId: registration.id,
     })
   } catch (err) {
     console.error('Failed to send registration notification:', err)
@@ -697,12 +889,13 @@ export async function createPrice(formData: FormData) {
       priceCode: formData.get('priceCode') as string,
       programmeId: (formData.get('programmeId') as string) || undefined,
       priceType: (formData.get('priceType') as PriceType) || PriceType.STANDARD,
+      deliveryFormat: (formData.get('deliveryFormat') as DeliveryFormat) || null,
       amount: Number(formData.get('amount')) || undefined,
       currency: (formData.get('currency') as string) || 'RON',
       vatIncluded: formData.get('vatIncluded') === 'true',
       status: (formData.get('status') as PriceStatus) || PriceStatus.ON_REQUEST,
       displayLabel: formData.get('displayLabel') as string,
-    },
+    } as any,
   })
 
   revalidatePath('/admin/prices')
@@ -719,12 +912,13 @@ export async function updatePrice(id: string, formData: FormData) {
       priceCode: formData.get('priceCode') as string,
       programmeId: (formData.get('programmeId') as string) || undefined,
       priceType: (formData.get('priceType') as PriceType) || PriceType.STANDARD,
+      deliveryFormat: (formData.get('deliveryFormat') as DeliveryFormat) || null,
       amount: Number(formData.get('amount')) || undefined,
       currency: (formData.get('currency') as string) || 'RON',
       vatIncluded: formData.get('vatIncluded') === 'true',
       status: (formData.get('status') as PriceStatus) || PriceStatus.ON_REQUEST,
       displayLabel: formData.get('displayLabel') as string,
-    },
+    } as any,
   })
 
   revalidatePath('/admin/prices')
@@ -1108,4 +1302,257 @@ export async function updateNavigation(formData: FormData) {
   })
   revalidatePath('/admin/globals')
   redirect('/admin/globals')
+}
+
+// ------------------------------------------------------------------
+// Public API Functions
+// ------------------------------------------------------------------
+
+const APPROVED_PROGRAM_ORDER = [
+  'conversatii-care-conteaza',
+  'ai-fara-haos', 
+  'calm-sub-pressiune',
+  'busola-deciziilor',
+  'avantajul-uman'
+]
+
+export async function getPublicProgrammes() {
+  return prisma.programme.findMany({
+    where: { status: ProgrammeStatus.ACTIVE },
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      shortDescription: true,
+      fullDescription: true,
+      duration: true,
+      learningHours: true,
+      contactHours: true,
+      individualActivitiesHours: true,
+      totalLearningHours: true,
+      cpdCredits: true,
+      onlineMinParticipants: true,
+      onlineMaxParticipants: true,
+      onsiteMaxParticipants: true,
+      experienceMinParticipants: true,
+      experienceMaxParticipants: true,
+      targetAudiences: {
+        select: {
+          targetAudience: {
+            select: { name: true }
+          }
+        }
+      },
+      editions: {
+        where: { status: EditionStatus.OPEN },
+        select: {
+          id: true,
+          editionTitle: true,
+          deliveryFormat: true,
+          startDate: true,
+          endDate: true,
+          registrationDeadline: true,
+          maxSeats: true,
+          availableSeats: true,
+          minParticipants: true,
+          maxParticipants: true,
+          contactHours: true,
+          individualActivitiesHours: true,
+          totalLearningHours: true,
+          cpdCredits: true,
+          displayPrice: {
+            select: { priceCode: true, amount: true }
+          }
+        },
+        orderBy: { startDate: 'asc' }
+      }
+    },
+    orderBy: [
+      // Custom order based on APPROVED_PROGRAM_ORDER
+      { name: 'asc' } // Fallback, will be reordered in code
+    ]
+  }).then(programmes => {
+    // Reorder according to approved order
+    return programmes.sort((a, b) => {
+      const aIndex = APPROVED_PROGRAM_ORDER.indexOf(a.slug)
+      const bIndex = APPROVED_PROGRAM_ORDER.indexOf(b.slug)
+      if (aIndex === -1 && bIndex === -1) return a.name.localeCompare(b.name)
+      if (aIndex === -1) return 1
+      if (bIndex === -1) return -1
+      return aIndex - bIndex
+    })
+  })
+}
+
+export async function getPublicProgramme(slug: string) {
+  return prisma.programme.findUnique({
+    where: { 
+      slug,
+      status: ProgrammeStatus.ACTIVE 
+    },
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      shortDescription: true,
+      fullDescription: true,
+      duration: true,
+      learningHours: true,
+      contactHours: true,
+      individualActivitiesHours: true,
+      totalLearningHours: true,
+      cpdCredits: true,
+      onlineMinParticipants: true,
+      onlineMaxParticipants: true,
+      onsiteMaxParticipants: true,
+      experienceMinParticipants: true,
+      experienceMaxParticipants: true,
+      targetAudiences: {
+        select: {
+          targetAudience: {
+            select: { name: true }
+          }
+        }
+      },
+      editions: {
+        where: { status: EditionStatus.OPEN },
+        select: {
+          id: true,
+          editionTitle: true,
+          deliveryFormat: true,
+          startDate: true,
+          endDate: true,
+          registrationDeadline: true,
+          maxSeats: true,
+          availableSeats: true,
+          minParticipants: true,
+          maxParticipants: true,
+          contactHours: true,
+          individualActivitiesHours: true,
+          totalLearningHours: true,
+          cpdCredits: true,
+          sessionDates: true,
+          sessionCount: true,
+          platform: true,
+          meetLink: true,
+          classroomLink: true,
+          city: true,
+          locationName: true,
+          address: true,
+          startTime: true,
+          endTime: true,
+          destination: true,
+          hotelName: true,
+          hotelAddress: true,
+          period: true,
+          displayPrice: {
+            select: { priceCode: true, amount: true }
+          }
+        },
+        orderBy: { startDate: 'asc' }
+      }
+    }
+  })
+}
+
+export async function getPublicEditions() {
+  return prisma.edition.findMany({
+    where: { 
+      status: EditionStatus.OPEN,
+      programme: { status: ProgrammeStatus.ACTIVE }
+    },
+    select: {
+      id: true,
+      editionTitle: true,
+      deliveryFormat: true,
+      startDate: true,
+      endDate: true,
+      registrationDeadline: true,
+      maxSeats: true,
+      availableSeats: true,
+      minParticipants: true,
+      maxParticipants: true,
+      contactHours: true,
+      individualActivitiesHours: true,
+      totalLearningHours: true,
+      cpdCredits: true,
+      city: true,
+      sessionDates: true,
+      startTime: true,
+      programme: {
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          onlineMinParticipants: true,
+          onlineMaxParticipants: true,
+          onsiteMaxParticipants: true,
+          experienceMinParticipants: true,
+          experienceMaxParticipants: true,
+        }
+      },
+      displayPrice: {
+        select: { priceCode: true, amount: true }
+      }
+    },
+    orderBy: { startDate: 'asc' }
+  })
+}
+
+export async function getPublicEditionsByProgramme(programmeSlug: string) {
+  return prisma.edition.findMany({
+    where: { 
+      status: EditionStatus.OPEN,
+      programme: { 
+        status: ProgrammeStatus.ACTIVE,
+        slug: programmeSlug 
+      }
+    },
+    select: {
+      id: true,
+      editionTitle: true,
+      deliveryFormat: true,
+      startDate: true,
+      endDate: true,
+      registrationDeadline: true,
+      maxSeats: true,
+      availableSeats: true,
+      minParticipants: true,
+      maxParticipants: true,
+      contactHours: true,
+      individualActivitiesHours: true,
+      totalLearningHours: true,
+      cpdCredits: true,
+      sessionDates: true,
+      sessionCount: true,
+      platform: true,
+      meetLink: true,
+      classroomLink: true,
+      city: true,
+      locationName: true,
+      address: true,
+      startTime: true,
+      endTime: true,
+      destination: true,
+      hotelName: true,
+      hotelAddress: true,
+      period: true,
+      programme: {
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          onlineMinParticipants: true,
+          onlineMaxParticipants: true,
+          onsiteMaxParticipants: true,
+          experienceMinParticipants: true,
+          experienceMaxParticipants: true,
+        }
+      },
+      displayPrice: {
+        select: { priceCode: true, amount: true }
+      }
+    },
+    orderBy: { startDate: 'asc' }
+  })
 }

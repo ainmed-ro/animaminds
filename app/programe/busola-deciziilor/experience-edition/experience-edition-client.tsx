@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const MAX_SPOTS = 25;
-const MIN_CONFIRM = 15;
+const MAX_SPOTS = 30;
+const MIN_CONFIRM = 20;
 
 const EDITIONS = [
-  { id: "ed1", label: "Ediția I", dates: "28–30 august 2026" },
-  { id: "ed2", label: "Ediția II", dates: "4–6 septembrie 2026" },
+  { id: "ed1", label: "Ediția I", dates: "28–29 august 2026" },
+  { id: "ed2", label: "Ediția II", dates: "4–5 septembrie 2026" },
 ];
 
 function getStatus(used: number) {
@@ -162,7 +162,7 @@ export default function BusolaDeciziilorExperienceEditionPage() {
             Program experiențial de dezvoltare umană și profesională — adresat persoanelor, echipelor, companiilor, instituțiilor publice, unităților sanitare, unităților de învățământ și organizațiilor.
           </p>
           <p className="text-sm sm:text-base leading-relaxed max-w-2xl mb-6" style={{ color: "var(--charcoal-soft)" }}>
-            Trei zile de activități experiențiale, dialog, reflecție și natură — într-un cadru care creează spațiu pentru claritate, dezvoltare și perspective noi.
+            Două zile de activități experiențiale, dialog, reflecție și natură — într-un cadru care creează spațiu pentru claritate, dezvoltare și perspective noi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button onClick={() => setShowForm(true)} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#A0715A" }}>
@@ -174,9 +174,9 @@ export default function BusolaDeciziilorExperienceEditionPage() {
           </div>
           <div className="flex flex-wrap gap-4 mt-6">
             {[
-              { icon: "📅", text: "28–30 aug. sau 4–6 sept. 2026" },
+              { icon: "📅", text: "28–29 aug. sau 4–5 sept. 2026" },
               { icon: "📍", text: "La munte sau la mare" },
-              { icon: "🕒", text: "3 zile / 2 nopți" },
+              { icon: "🕒", text: "2 zile / 2 nopți" },
               { icon: "💰", text: "Investiție: în curs de confirmare" },
             ].map((info) => (
               <div key={info.text} className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm" style={{ backgroundColor: "rgba(255,255,255,0.7)" }}>
@@ -255,7 +255,7 @@ export default function BusolaDeciziilorExperienceEditionPage() {
           <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
             <p>Sfârşitul verii este, pentru mulți dintre noi, un moment de bilanț, reaşezare şi noi începuturi.</p>
             <p>Înainte ca ritmul obişnuit să revină, înainte ca agenda să se umple din nou şi responsabilitățile să preia controlul, BUSOLA DECIZIILOR oferă ocazia de a face o pauză.</p>
-            <p>Trei zile în mijlocul naturii, cu aer curat, oameni deschişi, conversații care contează şi activități care creează perspective noi.</p>
+            <p>Două zile în mijlocul naturii, cu aer curat, oameni deschişi, conversații care contează şi activități care creează perspective noi.</p>
             <p className="font-medium" style={{ color: "var(--charcoal)" }}>În spiritul AnimaMinds – locul unde oamenii şi ideile cresc împreună.</p>
           </div>
         </div>
@@ -271,7 +271,7 @@ export default function BusolaDeciziilorExperienceEditionPage() {
           <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
             <p>La finalul verii, înainte ca ritmul să accelereze din nou, înainte ca agenda să se umple și responsabilitățile să preia controlul, BUSOLA DECIZIILOR oferă spațiu pentru câteva zile de claritate, reflecție și perspective noi.</p>
             <p>BUSOLA DECIZIILOR este un program experiențial de dezvoltare umană și profesională desfășurat într-un cadru care oferă spațiu pentru dialog, învățare, conectare și dezvoltare.</p>
-            <p>Trei zile în mijlocul naturii, cu aer curat, oameni deschiși, conversații care contează și activități care creează perspective noi.</p>
+            <p>Două zile în mijlocul naturii, cu aer curat, oameni deschiși, conversații care contează și activități care creează perspective noi.</p>
             <p className="font-medium" style={{ color: "var(--charcoal)" }}>Pentru că uneori cele mai valoroase idei apar atunci când se acordă timp pentru oprire.</p>
           </div>
           <div className="mt-8">
@@ -447,7 +447,7 @@ export default function BusolaDeciziilorExperienceEditionPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ backgroundColor: "#F5F0E8" }}>
               <span className="text-2xl flex-shrink-0">📅</span>
-              <span className="text-sm sm:text-base font-medium" style={{ color: "var(--charcoal)" }}>3 zile / 2 nopți</span>
+              <span className="text-sm sm:text-base font-medium" style={{ color: "var(--charcoal)" }}>2 zile / 2 nopți</span>
             </div>
             <div className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ backgroundColor: "#F5F0E8" }}>
               <span className="text-2xl flex-shrink-0">🕒</span>
@@ -463,7 +463,7 @@ export default function BusolaDeciziilorExperienceEditionPage() {
           <div className="text-center mb-6">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: "#A0715A" }}>Ritmul experienței</p>
             <h2 className="text-2xl sm:text-3xl font-semibold leading-tight" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-              Cum arată cele 3 zile
+              Cum arată cele 2 zile
             </h2>
             <p className="text-sm mt-4 max-w-2xl mx-auto" style={{ color: "var(--charcoal-soft)" }}>
               Programul urmează un ritm care alternează activități ghidate, timp personal de reflecție, dialog în grup și momente de reconectare în natură.
@@ -753,7 +753,7 @@ export default function BusolaDeciziilorExperienceEditionPage() {
           <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="hidden sm:block">
               <p className="text-sm font-semibold" style={{ color: "var(--charcoal)" }}>BUSOLA DECIZIILOR</p>
-              <p className="text-xs" style={{ color: "var(--charcoal-soft)" }}>28–30 august sau 4–6 septembrie 2026 · Locuri limitate</p>
+              <p className="text-xs" style={{ color: "var(--charcoal-soft)" }}>28–29 august sau 4–5 septembrie 2026 · Locuri limitate</p>
             </div>
             <button
               onClick={() => setShowForm(true)}

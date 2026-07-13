@@ -69,7 +69,7 @@ export async function runPhase04Validation() {
         programmePromise: 'Phase 04 promise',
         duration: '2 zile',
         learningHours: 16,
-        cpdHours: 12,
+        cpdCredits: 12,
         accreditationBody: 'CPD Test Body',
         cpdProviderReference: 'CPD-REF-04',
         cpdApprovalDate: new Date('2026-01-15'),
@@ -120,7 +120,7 @@ export async function runPhase04Validation() {
     console.log('✓ Create programme: OK')
 
     // Validate CPD fields
-    if (created.cpdHours !== 12) throw new Error(`Expected cpdHours 12, got ${created.cpdHours}`)
+    if (created.cpdCredits !== 12) throw new Error(`Expected cpdCredits 12, got ${created.cpdCredits}`)
     if (created.accreditationBody !== 'CPD Test Body') throw new Error('CPD accreditation body mismatch')
     if (created.cpdProviderReference !== 'CPD-REF-04') throw new Error('CPD provider reference mismatch')
     if (!created.cpdApprovalDate || new Date(created.cpdApprovalDate).toISOString().split('T')[0] !== '2026-01-15') {
@@ -152,11 +152,11 @@ export async function runPhase04Validation() {
     const updated = await prisma.programme.update({
       where: { id: created.id },
       data: {
-        cpdHours: 16,
+        cpdCredits: 16,
         learningOutcomes: ['Outcome A', 'Outcome B', 'Outcome C'],
       },
     })
-    if (updated.cpdHours !== 16) throw new Error('Update cpdHours failed')
+    if (updated.cpdCredits !== 16) throw new Error('Update cpdCredits failed')
     if (updated.learningOutcomes.length !== 3) throw new Error('Update learning outcomes failed')
     console.log('✓ Update programme: OK')
 

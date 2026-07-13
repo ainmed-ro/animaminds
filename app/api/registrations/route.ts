@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insert, readAll, getSpotsByEdition, type RegistrationStatus, type PaymentStatus } from "@/lib/registrations-db";
 import { participantEmailHtml, adminEmailHtml } from "@/lib/email-templates";
-import { Resend } from "resend";
+import { sendAndLogEmail } from "@/lib/notifications";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "contact@animaminds.ro";
-const FROM_EMAIL = process.env.FROM_EMAIL ?? "AnimaMinds <noreply@animaminds.ro>";
 
 export async function GET() {
   const all = await readAll();
@@ -79,11 +77,19 @@ export async function POST(req: NextRequest) {
 
     // Email towards participant
     try {
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: [reg.email],
+      await sendAndLogEmail({
+        to: reg.email,
         subject: "Manifestarea dumneavoastră de interes a fost înregistrată — BUSOLA INTERIOARĂ",
         html: participantEmailHtml(reg),
+        type: 'PARTICIPANT_CONFIRMATION',
+        recipientName: reg.nume,
+        relatedType: 'REGISTRATION',
+        relatedId: reg.id,
+        metadata: {
+          edition: reg.editie,
+          participants: reg.participanti,
+          registrationId: reg.id,
+        },
       });
     } catch (emailErr) {
       console.error("Participant email failed:", emailErr);
@@ -91,11 +97,21 @@ export async function POST(req: NextRequest) {
 
     // Notification email to admin
     try {
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: [ADMIN_EMAIL],
+      await sendAndLogEmail({
+        to: ADMIN_EMAIL,
         subject: `[AnimaMinds] Înscriere nouă — ${reg.nume} — ${reg.editie}`,
         html: adminEmailHtml(reg),
+        type: 'ADMIN_REGISTRATION',
+        recipientName: reg.nume,
+        relatedType: 'REGISTRATION',
+        relatedId: reg.id,
+        metadata: {
+          contactEmail: reg.email,
+          contactPhone: reg.telefon,
+          edition: reg.editie,
+          participants: reg.participanti,
+          registrationId: reg.id,
+        },
       });
     } catch (emailErr) {
       console.error("Admin email failed:", emailErr);

@@ -5,7 +5,7 @@ import { ArrowRight, Monitor, MapPin, Building2, TreePine } from "lucide-react";
 export const metadata: Metadata = {
   title: "Busola Deciziilor – Program de Dezvoltare | AnimaMinds",
   description:
-    "Claritate și direcție atunci când lucrurile par neclare. Program pentru persoane, echipe și organizații, disponibil în 4 formate de livrare.",
+    "Claritate și direcție atunci când lucrurile par neclare. Program pentru persoane, echipe și organizații, disponibil în 3 formate de livrare.",
 };
 
 export const dynamic = 'force-dynamic'
@@ -44,29 +44,22 @@ const orgTypes = [
 const formats = [
   {
     icon: Monitor,
-    title: "Online",
-    description: "Sesiuni interactive, exerciții în breakout rooms și dialog ghidat — fără deplasare.",
+    title: "🌐 Online Live",
+    description: "Sesiuni interactive, exerciții în breakout rooms și dialog ghidat — fără deplasare. Grup: 15–30 participanți.",
     cta: "Înscrie-te",
-    href: "/inscriere?programme=busola-deciziilor",
-  },
-  {
-    icon: MapPin,
-    title: "În locații dedicate",
-    description: "Training de 1–2 zile într-un spațiu de învățare selectat pentru claritate și conectare.",
-    cta: "Solicită detalii",
-    href: "/contact",
+    href: "/inscriere?programmeSlug=busola-deciziilor",
   },
   {
     icon: Building2,
-    title: "La sediul organizației",
-    description: "Program adaptat pentru echipa ta, cu exemple și scenarii din contextul organizațional.",
+    title: "🏢 La sediul instituției / organizației",
+    description: "Program adaptat pentru echipa ta, instituție sau organizație, cu exemple și scenarii din contextul tău. Recomandat: 15–30 participanți; maxim 30.",
     cta: "Solicită ofertă",
     href: "/colaboreaza",
   },
   {
     icon: TreePine,
-    title: "Experience Edition",
-    description: "3 zile în natură, cu cazare, reflecție și dialog intens — pentru schimbări profunde.",
+    title: "🏔️ Experience Edition",
+    description: "2 zile în natură, cu cazare, reflecție și dialog intens — pentru schimbări profunde. Grup: 20–30 participanți.",
     cta: "Vezi Experience Edition",
     href: "/programe/busola-deciziilor/experience-edition",
   },
@@ -98,7 +91,7 @@ export default function BusolaDeciziilorPage() {
             Program de dezvoltare umană și profesională pentru persoane, echipe și organizații care vor să aducă ordine în gânduri, să-și regăsească direcția și să ia decizii mai bune — într-un cadru sigur de reflecție și dialog.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/inscriere?programme=busola-deciziilor" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#A0715A" }}>
+            <Link href="/inscriere?programmeSlug=busola-deciziilor" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm sm:text-base transition-all hover:opacity-90 hover:shadow-xl active:scale-95" style={{ backgroundColor: "#A0715A" }}>
               Înscrie-te
               <ArrowRight size={16} />
             </Link>
@@ -240,7 +233,10 @@ export default function BusolaDeciziilorPage() {
               Cum poți accesa programul
             </h2>
             <p className="text-base mt-4 max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--charcoal-soft)" }}>
-              Busola Deciziilor este disponibil în patru formate, adaptate nevoilor tale sau ale organizației.
+              Busola Deciziilor este disponibil în trei formate, adaptate nevoilor tale sau ale organizației.
+            </p>
+            <p className="text-sm font-semibold mt-3" style={{ color: "#A0715A" }}>
+              Preț de lansare Online Live: 149 lei / participant
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -338,7 +334,7 @@ export default function BusolaDeciziilorPage() {
               },
               {
                 q: "În câte formate este disponibil programul?",
-                a: "Busola Deciziilor este disponibil în 4 formate: online, în locații dedicate, la sediul organizației și Experience Edition.",
+                a: "Busola Deciziilor este disponibil în 3 formate: 🌐 Online Live, 🏢 La sediul instituției / organizației și 🏔️ Experience Edition.",
               },
             ].map((item, i) => (
               <div key={i} className="rounded-2xl p-5 bg-white" style={{ boxShadow: "0 1px 8px rgba(0,0,0,0.05)" }}>
@@ -362,7 +358,7 @@ export default function BusolaDeciziilorPage() {
             Alege formatul care ți se potrivește sau contactează echipa AnimaMinds pentru o ofertă personalizată.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/inscriere?programme=busola-deciziilor" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#A0715A" }}>
+            <Link href="/inscriere?programmeSlug=busola-deciziilor" className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-semibold text-white text-base transition-all hover:opacity-90 hover:shadow-xl" style={{ backgroundColor: "#A0715A" }}>
               Înscrie-te
               <ArrowRight size={16} />
             </Link>

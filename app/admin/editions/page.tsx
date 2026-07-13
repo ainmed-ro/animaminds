@@ -22,6 +22,10 @@ export default async function EditionsPage() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Format</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Dates</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contact Hrs</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Indiv. Hrs</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Hrs</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">CPD</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Capacity</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Registrations</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Deadline</th>
@@ -40,8 +44,33 @@ export default async function EditionsPage() {
                   {edition.startDate && new Date(edition.startDate).toLocaleDateString('ro-RO')}
                   {edition.endDate && ` – ${new Date(edition.endDate).toLocaleDateString('ro-RO')}`}
                 </td>
+                <td className="px-6 py-4 text-sm text-gray-600">{edition.contactHours ?? '—'}</td>
+                <td className="px-6 py-4 text-sm text-gray-600">{edition.individualActivitiesHours ?? '—'}</td>
+                <td className="px-6 py-4 text-sm text-gray-600">{edition.totalLearningHours ?? '—'}</td>
+                <td className="px-6 py-4 text-sm text-gray-600">{edition.cpdCredits ?? '—'}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">
-                  {edition.maxSeats ?? '—'}
+                  {(() => {
+                    const min = edition.minParticipants ?? (() => {
+                      switch (edition.deliveryFormat) {
+                        case 'ONLINE': return edition.programme?.onlineMinParticipants ?? 15
+                        case 'ONSITE': return 15
+                        case 'EXPERIENCE_EDITION': return edition.programme?.experienceMinParticipants ?? 20
+                        default: return null
+                      }
+                    })()
+                    const max = edition.maxParticipants ?? (() => {
+                      switch (edition.deliveryFormat) {
+                        case 'ONLINE': return edition.programme?.onlineMaxParticipants ?? 30
+                        case 'ONSITE': return edition.programme?.onsiteMaxParticipants ?? 30
+                        case 'EXPERIENCE_EDITION': return edition.programme?.experienceMaxParticipants ?? 30
+                        default: return null
+                      }
+                    })()
+                    if (min != null && max != null) return `${min}–${max}`
+                    if (max != null) return `max ${max}`
+                    return '—'
+                  })()}
+                  {edition.maxSeats && ` / ${edition.maxSeats} seats`}
                   {edition.availableSeats !== null && edition.maxSeats !== null && ` (${edition.availableSeats} available)`}
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">{(edition as any)._count?.registrations || 0}</td>

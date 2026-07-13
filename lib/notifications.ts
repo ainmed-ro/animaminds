@@ -1,9 +1,89 @@
 import { Resend } from 'resend'
+import { prisma } from './prisma'
+import type { EmailType, EmailStatus } from '@prisma/client'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const FROM_EMAIL = process.env.FROM_EMAIL ?? 'AnimaMinds <noreply@animaminds.ro>'
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? 'contact@animaminds.ro'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://animaminds.ro'
+
+interface SendAndLogOptions {
+  to: string | string[]
+  subject: string
+  html: string
+  type: EmailType
+  recipientName?: string
+  relatedType?: string
+  relatedId?: string
+  metadata?: Record<string, any>
+}
+
+async function sendAndLogEmail({
+  to,
+  subject,
+  html,
+  type,
+  recipientName,
+  relatedType,
+  relatedId,
+  metadata = {},
+}: SendAndLogOptions): Promise<{ success: boolean; resendId?: string; emailId?: string }> {
+  const recipients = Array.isArray(to) ? to : [to]
+  const results: { success: boolean; resendId?: string; emailId?: string }[] = []
+
+  for (const recipient of recipients) {
+    try {
+      const response = await resend.emails.send({
+        from: FROM_EMAIL,
+        to: [recipient],
+        subject,
+        html,
+      })
+
+      const resendId = response.data?.id ?? null
+      const email = await prisma.email.create({
+        data: {
+          resendId,
+          recipient,
+          recipientName,
+          subject,
+          fromAddress: FROM_EMAIL,
+          type,
+          status: 'SENT' as EmailStatus,
+          relatedType,
+          relatedId,
+          metadata: metadata as any,
+        },
+      })
+
+      results.push({ success: true, resendId: resendId ?? undefined, emailId: email.id })
+    } catch (err) {
+      console.error('sendAndLogEmail error:', err)
+      try {
+        await prisma.email.create({
+          data: {
+            recipient,
+            recipientName,
+            subject,
+            fromAddress: FROM_EMAIL,
+            type,
+            status: 'FAILED' as EmailStatus,
+            relatedType,
+            relatedId,
+            metadata: { error: String(err), ...metadata } as any,
+          },
+        })
+      } catch (dbErr) {
+        console.error('Failed to log failed email:', dbErr)
+      }
+      results.push({ success: false })
+    }
+  }
+
+  return results[0] ?? { success: false }
+}
+
+export { sendAndLogEmail }
 
 export async function sendAdminNewRegistrationEmail(data: {
   contactName: string
@@ -13,6 +93,7 @@ export async function sendAdminNewRegistrationEmail(data: {
   programmeName: string
   participantCount: number
   createdAt: Date
+  registrationId?: string
 }) {
   const html = `
 <!DOCTYPE html>
@@ -47,11 +128,23 @@ export async function sendAdminNewRegistrationEmail(data: {
 </body>
 </html>`
 
-  await resend.emails.send({
-    from: FROM_EMAIL,
-    to: [ADMIN_EMAIL],
+  await sendAndLogEmail({
+    to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Înscriere nouă — ${data.contactName} — ${data.programmeName}`,
     html,
+    type: 'ADMIN_REGISTRATION',
+    recipientName: data.contactName,
+    relatedType: 'REGISTRATION',
+    relatedId: data.registrationId,
+    metadata: {
+      contactEmail: data.contactEmail,
+      contactPhone: data.contactPhone,
+      editionTitle: data.editionTitle,
+      programmeName: data.programmeName,
+      participantCount: data.participantCount,
+      createdAt: data.createdAt,
+      registrationId: data.registrationId,
+    },
   })
 }
 
@@ -94,11 +187,21 @@ export async function sendAdminNewContactEmail(data: {
 </body>
 </html>`
 
-  await resend.emails.send({
-    from: FROM_EMAIL,
-    to: [ADMIN_EMAIL],
+  await sendAndLogEmail({
+    to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Mesaj contact nou — ${data.name} — ${data.subject}`,
     html,
+    type: 'ADMIN_CONTACT',
+    recipientName: data.name,
+    relatedType: 'CONTACT',
+    metadata: {
+      contactEmail: data.email,
+      phone: data.phone,
+      organization: data.organization,
+      programInteres: data.programInteres,
+      subject: data.subject,
+      createdAt: data.createdAt,
+    },
   })
 }
 
@@ -138,11 +241,17 @@ export async function sendDailySummaryEmail(data: {
 </body>
 </html>`
 
-  await resend.emails.send({
-    from: FROM_EMAIL,
-    to: [ADMIN_EMAIL],
+  await sendAndLogEmail({
+    to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Rezumat zilnic — ${new Date().toLocaleDateString('ro-RO')}`,
     html,
+    type: 'DAILY_SUMMARY',
+    metadata: {
+      newRegistrations: data.newRegistrations,
+      newContacts: data.newContacts,
+      openEditionDeadlines: data.openEditionDeadlines,
+      upcomingEditions: data.upcomingEditions,
+    },
   })
 }
 
@@ -184,10 +293,17 @@ export async function sendWeeklySummaryEmail(data: {
 </body>
 </html>`
 
-  await resend.emails.send({
-    from: FROM_EMAIL,
-    to: [ADMIN_EMAIL],
+  await sendAndLogEmail({
+    to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Rezumat săptămânal — Săptămâna ${new Date().toLocaleDateString('ro-RO')}`,
     html,
+    type: 'WEEKLY_SUMMARY',
+    metadata: {
+      totalRegistrations: data.totalRegistrations,
+      totalContacts: data.totalContacts,
+      newRegistrationsThisWeek: data.newRegistrationsThisWeek,
+      newContactsThisWeek: data.newContactsThisWeek,
+      upcomingEditions: data.upcomingEditions,
+    },
   })
 }

@@ -16,11 +16,15 @@ type Program = {
   description: string;
   for: string;
   formats?: string;
+  price?: string;
   active: boolean;
   status: string;
   href?: string;
   cta?: string;
   tags: string[];
+  hours?: number;
+  cpdCredits?: number;
+  duration?: string;
 };
 
 export default function ProgramList({ programs }: { programs: Program[] }) {
@@ -147,9 +151,33 @@ export default function ProgramList({ programs }: { programs: Program[] }) {
                 {program.for}
               </p>
               {program.formats && (
-                <p className="text-xs mb-5" style={{ color: "var(--charcoal-soft)" }}>
+                <p className="text-xs mb-2" style={{ color: "var(--charcoal-soft)" }}>
                   <span className="font-semibold">Formate disponibile: </span>
                   {program.formats}
+                </p>
+              )}
+              {(program.hours || program.cpdCredits || program.duration) && (
+                <div className="flex flex-wrap gap-3 mb-3 text-xs" style={{ color: "var(--charcoal-soft)" }}>
+                  {program.duration && (
+                    <span>
+                      <span className="font-semibold">Durată:</span> {program.duration}
+                    </span>
+                  )}
+                  {program.hours && (
+                    <span>
+                      <span className="font-semibold">Ore:</span> {program.hours}h
+                    </span>
+                  )}
+                  {program.cpdCredits && (
+                    <span>
+                      <span className="font-semibold">CPD:</span> {program.cpdCredits} credite
+                    </span>
+                  )}
+                </div>
+              )}
+              {program.price && (
+                <p className="text-sm font-semibold mb-5" style={{ color: "#A0715A" }}>
+                  {program.price}
                 </p>
               )}
               {program.active && program.href ? (

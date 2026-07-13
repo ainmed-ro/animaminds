@@ -22,6 +22,7 @@ const navItems = [
   { href: '/admin/forms', label: 'Forms' },
   { href: '/admin/users', label: 'Users' },
   { href: '/admin/globals', label: 'Globals' },
+  { href: '/admin/emails', label: 'Email Analytics' },
 ]
 
 export default async function AdminLayout({

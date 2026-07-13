@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Busola Deciziilor – Experience Edition | AnimaMinds",
   description:
-    "Program experiențial de 3 zile pentru claritate și direcție. Cazare inclusă, natură, reflecție și dialog. Ediția I: 28–30 august 2026.",
+    "Program experiențial de 2 zile pentru claritate și direcție. Cazare inclusă, natură, reflecție și dialog. Ediția I: 28–29 august 2026.",
   openGraph: {
     title: "Busola Deciziilor – Experience Edition | AnimaMinds",
-    description: "3 zile de activități experiențiale, dialog și reflecție în natură. Claritate și direcție pentru persoane și echipe — AnimaMinds.",
+    description: "2 zile de activități experiențiale, dialog și reflecție în natură. Claritate și direcție pentru persoane și echipe — AnimaMinds.",
     url: "https://animaminds.ro/programe/busola-deciziilor/experience-edition",
     type: "website",
     locale: "ro_RO",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Busola Deciziilor – Experience Edition | AnimaMinds",
-    description: "3 zile de activități experiențiale, dialog și reflecție în natură. Claritate și direcție pentru persoane și echipe — AnimaMinds.",
+    description: "2 zile de activități experiențiale, dialog și reflecție în natură. Claritate și direcție pentru persoane și echipe — AnimaMinds.",
     images: ["https://animaminds.ro/programe/busola-deciziilor/opengraph-image"],
   },
 };

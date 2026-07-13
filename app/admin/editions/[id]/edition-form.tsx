@@ -21,7 +21,7 @@ interface EditionFormProps {
 export function EditionForm({ edition, options, action }: EditionFormProps) {
   const [format, setFormat] = useState<DeliveryFormat>(edition?.deliveryFormat || DeliveryFormat.ONLINE)
   const isOnline = format === DeliveryFormat.ONLINE
-  const isOnsiteOrOpen = format === DeliveryFormat.ONSITE || format === DeliveryFormat.OPEN_COHORT
+  const isOnsite = format === DeliveryFormat.ONSITE
   const isExperience = format === DeliveryFormat.EXPERIENCE_EDITION
 
   const e = edition || {
@@ -40,6 +40,10 @@ export function EditionForm({ edition, options, action }: EditionFormProps) {
     displayPriceId: null,
     featuredImageUrl: null,
     notes: null,
+    contactHours: null,
+    individualActivitiesHours: null,
+    totalLearningHours: null,
+    cpdCredits: null,
     platform: null,
     meetLink: null,
     classroomLink: null,
@@ -89,6 +93,43 @@ export function EditionForm({ edition, options, action }: EditionFormProps) {
     if (!date) return ''
     return new Date(date).toISOString().split('T')[0]
   }
+
+  const p = e.programme
+  const effectiveCapacity = (format: DeliveryFormat) => {
+    if (!p) {
+      if (format === DeliveryFormat.EXPERIENCE_EDITION) return { min: 20, max: 30 }
+      return { min: 15, max: 30 }
+    }
+    switch (format) {
+      case DeliveryFormat.ONLINE:
+        return {
+          min: p.onlineMinParticipants ?? 15,
+          max: p.onlineMaxParticipants ?? 30,
+        }
+      case DeliveryFormat.ONSITE:
+        return {
+          min: 15,
+          max: p.onsiteMaxParticipants ?? 30,
+        }
+      case DeliveryFormat.EXPERIENCE_EDITION:
+        return {
+          min: p.experienceMinParticipants ?? 20,
+          max: p.experienceMaxParticipants ?? 30,
+        }
+    }
+  }
+
+  const effectiveHours = () => {
+    return {
+      contactHours: e.contactHours ?? p?.contactHours ?? undefined,
+      individualActivitiesHours: e.individualActivitiesHours ?? p?.individualActivitiesHours ?? undefined,
+      totalLearningHours: e.totalLearningHours ?? p?.totalLearningHours ?? undefined,
+      cpdCredits: e.cpdCredits ?? p?.cpdCredits ?? undefined,
+    }
+  }
+
+  const capacity = effectiveCapacity(format)
+  const hours = effectiveHours()
 
   return (
     <form action={action} className="max-w-4xl space-y-8">
@@ -153,7 +194,35 @@ export function EditionForm({ edition, options, action }: EditionFormProps) {
       </section>
 
       <section className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 space-y-4">
+        <h3 className="text-lg font-semibold text-gray-900">Learning & CPD Overrides</h3>
+        <p className="text-sm text-gray-600">
+          Leave these fields blank to inherit values from the parent programme. Enter a value only when this edition genuinely differs from the programme defaults.
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Contact Hours</label>
+            <input name="contactHours" type="number" step="0.5" placeholder={hours.contactHours?.toString() || '—'} defaultValue={e.contactHours ?? ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Individual Activities Hours</label>
+            <input name="individualActivitiesHours" type="number" step="0.5" placeholder={hours.individualActivitiesHours?.toString() || '—'} defaultValue={e.individualActivitiesHours ?? ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Total Learning Hours</label>
+            <input name="totalLearningHours" type="number" step="0.5" placeholder={hours.totalLearningHours?.toString() || '—'} defaultValue={e.totalLearningHours ?? ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">CPD Credits</label>
+            <input name="cpdCredits" type="number" placeholder={hours.cpdCredits?.toString() || '—'} defaultValue={e.cpdCredits ?? ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 space-y-4">
         <h3 className="text-lg font-semibold text-gray-900">Schedule & Capacity</h3>
+        <p className="text-sm text-gray-600">
+          Default capacity for the selected format is shown in each field placeholder. Leave the override fields blank to keep the programme default. Use Max Seats / Available Seats for operational seat management.
+        </p>
         <div className="grid grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Start Date</label>
@@ -180,6 +249,16 @@ export function EditionForm({ edition, options, action }: EditionFormProps) {
           <div>
             <label className="block text-sm font-medium text-gray-700">Available Seats</label>
             <input name="availableSeats" type="number" defaultValue={e.availableSeats || ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Min Participants (override)</label>
+            <input name="minParticipants" type="number" placeholder={capacity.min.toString()} defaultValue={e.minParticipants ?? ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Max Participants (override)</label>
+            <input name="maxParticipants" type="number" placeholder={capacity.max.toString()} defaultValue={e.maxParticipants ?? ''} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
           </div>
         </div>
       </section>
@@ -237,9 +316,9 @@ export function EditionForm({ edition, options, action }: EditionFormProps) {
         </section>
       )}
 
-      {isOnsiteOrOpen && (
+      {isOnsite && (
         <section className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 space-y-4">
-          <h3 className="text-lg font-semibold text-gray-900">On-site / Open Cohort</h3>
+          <h3 className="text-lg font-semibold text-gray-900">On-site</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">City</label>

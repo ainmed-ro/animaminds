@@ -70,7 +70,10 @@ test.describe('Phase 04 Programme Management', () => {
 
     await page.fill('input[name="duration"]', '2 zile')
     await page.fill('input[name="learningHours"]', '16')
-    await page.fill('input[name="cpdHours"]', '12')
+    await page.fill('input[name="contactHours"]', '12')
+    await page.fill('input[name="individualActivitiesHours"]', '4')
+    await page.fill('input[name="totalLearningHours"]', '16')
+    await page.fill('input[name="cpdCredits"]', '8')
     await page.fill('input[name="accreditationBody"]', 'CPD Test Body')
     await page.fill('input[name="cpdProviderReference"]', 'CPD-REF-04')
     await page.fill('input[name="cpdApprovalDate"]', '2026-01-15')
@@ -101,12 +104,30 @@ test.describe('Phase 04 Programme Management', () => {
 
     await expect(page.locator(`text=${programmeName}`).first()).toBeVisible()
 
-    // Verify edit page loads with persisted CPD field
+    // Verify the programme appears in the list with new columns
+    await expect(page.locator(`text=${programmeName}`).first()).toBeVisible()
+    await expect(page.locator('text=16')).toBeVisible() // Learning Hours
+    await expect(page.locator('text=12')).toBeVisible() // Contact Hours
+    await expect(page.locator('text=4')).toBeVisible()  // Individual Activities Hours
+    await expect(page.locator('text=8')).toBeVisible()  // CPD Credits
+
+    // Verify edit page loads with persisted hour/CPD fields and capacity defaults
     await page.locator(`text=${programmeName}`).first().locator('xpath=ancestor::tr').locator('a:has-text("Edit")').click()
     await page.waitForURL(/\/admin\/programmes\/[^/]+$/, { timeout: 10000 })
-    await expect(page.locator('input[name="cpdHours"]')).toHaveValue('12')
+    await expect(page.locator('input[name="learningHours"]')).toHaveValue('16')
+    await expect(page.locator('input[name="contactHours"]')).toHaveValue('12')
+    await expect(page.locator('input[name="individualActivitiesHours"]')).toHaveValue('4')
+    await expect(page.locator('input[name="totalLearningHours"]')).toHaveValue('16')
+    await expect(page.locator('input[name="cpdCredits"]')).toHaveValue('8')
     await expect(page.locator('input[name="accreditationBody"]')).toHaveValue('CPD Test Body')
     await expect(page.locator('input[name="cpdProviderReference"]')).toHaveValue('CPD-REF-04')
     await expect(page.locator('input[name="cpdApprovalDate"]')).toHaveValue('2026-01-15')
+    
+    // Verify Group Size & Capacity defaults are present
+    await expect(page.locator('input[name="onlineMinParticipants"]')).toHaveValue('15')
+    await expect(page.locator('input[name="onlineMaxParticipants"]')).toHaveValue('30')
+    await expect(page.locator('input[name="onsiteMaxParticipants"]')).toHaveValue('30')
+    await expect(page.locator('input[name="experienceMinParticipants"]')).toHaveValue('20')
+    await expect(page.locator('input[name="experienceMaxParticipants"]')).toHaveValue('30')
   })
 })

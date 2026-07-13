@@ -48,23 +48,18 @@ const curriculum = [
 const formats = [
   {
     icon: Monitor,
-    title: "Online",
-    description: "Sesiuni interactive, exerciții în breakout rooms și dialog ghidat — fără deplasare.",
-  },
-  {
-    icon: MapPin,
-    title: "În locații dedicate",
-    description: "Training de 1–2 zile într-un spațiu de învățare selectat pentru focus și conectare.",
+    title: "🌐 Online Live",
+    description: "Sesiuni interactive, exerciții în breakout rooms și dialog ghidat — fără deplasare. Grup: 15–30 participanți.",
   },
   {
     icon: Building2,
-    title: "La sediul organizației",
-    description: "Program adaptat pentru echipa ta, cu exemple și scenarii din contextul organizațional.",
+    title: "🏢 La sediul instituției / organizației",
+    description: "Program adaptat pentru echipa ta, instituție sau organizație, cu exemple și scenarii din contextul tău. Recomandat: 15–30 participanți; maxim 30.",
   },
   {
     icon: TreePine,
-    title: "Experience Edition",
-    description: "Format intensiv în natură, pentru schimbări profunde. Disponibil în curând.",
+    title: "🏔️ Experience Edition",
+    description: "Format intensiv în natură, pentru schimbări profunde. Grup: 20–30 participanți.",
   },
 ];
 
@@ -96,7 +91,7 @@ const faq = [
   },
   {
     q: "Pot participa individual sau doar prin organizație?",
-    a: "Ambele variante sunt posibile. Programul este disponibil ca ediție deschisă și în variantă adaptată pentru organizații.",
+    a: "Ambele variante sunt posibile. Programul este disponibil în format 🌐 Online Live pentru participare individuală și în format 🏢 La sediul instituției / organizației pentru grupuri.",
   },
   {
     q: "Cât durează programul?",
@@ -184,7 +179,8 @@ export default function AIFaraHaosPage() {
               { icon: "🕒", text: "8 ore (1 zi sau 2 sesiuni)" },
               { icon: "💻", text: "Online, locație dedicată sau la sediu" },
               { icon: "🎯", text: "Fără cunoștințe tehnice necesare" },
-              { icon: "👥", text: "12–25 participanți" },
+              { icon: "👥", text: "15–30 participanți" },
+              { icon: "💰", text: "Preț de lansare: 149 lei / participant" },
             ].map((info) => (
               <div key={info.text} className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm" style={{ backgroundColor: "rgba(255,255,255,0.7)" }}>
                 <span>{info.icon}</span>

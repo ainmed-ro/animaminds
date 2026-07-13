@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPrice, updatePrice, getProgrammesForSelect } from '@/app/admin/actions/cms'
-import { PriceType, PriceStatus } from '@prisma/client'
+import { PriceType, PriceStatus, DeliveryFormat } from '@prisma/client'
 
 export default async function EditPricePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -31,6 +31,15 @@ export default async function EditPricePage({ params }: { params: Promise<{ id: 
           <select name="priceType" defaultValue={price.priceType} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm px-3 py-2 border">
             {Object.values(PriceType).map((t) => (
               <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Delivery Format</label>
+          <select name="deliveryFormat" defaultValue={(price as any).deliveryFormat || ''} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm px-3 py-2 border">
+            <option value="">Any / All formats</option>
+            {Object.values(DeliveryFormat).map((df) => (
+              <option key={df} value={df}>{df}</option>
             ))}
           </select>
         </div>

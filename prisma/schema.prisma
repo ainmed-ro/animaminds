@@ -39,7 +39,6 @@ enum EditionStatus {
 enum DeliveryFormat {
   ONLINE
   ONSITE
-  OPEN_COHORT
   EXPERIENCE_EDITION
 }
 
@@ -98,6 +97,28 @@ enum FormSubmissionStatus {
   IN_PROGRESS
   CLOSED
   SPAM
+}
+
+enum EmailType {
+  ADMIN_CONTACT
+  ADMIN_REGISTRATION
+  PARTICIPANT_CONFIRMATION
+  DAILY_SUMMARY
+  WEEKLY_SUMMARY
+}
+
+enum EmailStatus {
+  SENT
+  FAILED
+}
+
+enum EmailEventType {
+  DELIVERED
+  OPENED
+  CLICKED
+  BOUNCED
+  COMPLAINED
+  UNSUBSCRIBED
 }
 
 // ------------------------------------------------------------------
@@ -199,8 +220,18 @@ model Programme {
 
   // Professional / CPD fields
   duration                  String?
-  learningHours             Int?
-  cpdHours                  Int?
+  learningHours             Float?
+  contactHours              Float?
+  individualActivitiesHours Float?
+  totalLearningHours        Float?
+  cpdCredits                Int?
+
+  // Default capacity rules by delivery format
+  onlineMinParticipants    Int?
+  onlineMaxParticipants    Int?
+  onsiteMaxParticipants    Int?
+  experienceMinParticipants Int?
+  experienceMaxParticipants Int?
   accreditationBody         String?
   cpdProviderReference      String?
   cpdApprovalDate           DateTime?
@@ -292,6 +323,12 @@ model Edition {
   displayPriceId String?
   displayPrice   Price?  @relation("EditionDisplayPrice", fields: [displayPriceId], references: [id])
 
+  // Format-specific learning and CPD values
+  contactHours              Float?
+  individualActivitiesHours Float?
+  totalLearningHours        Float?
+  cpdCredits                Int?
+
   featuredImageUrl String?
   notes            String? @db.Text
 
@@ -303,7 +340,7 @@ model Edition {
   sessionCount    Int?
   recordingPolicy String?
 
-  // On-site / open cohort
+  // On-site
   city             String?
   locationName     String?
   address          String?
@@ -362,6 +399,7 @@ model Price {
   editionDisplayFor Edition[] @relation("EditionDisplayPrice")
 
   priceType PriceType
+  deliveryFormat DeliveryFormat?
   amount    Int? // in smallest currency unit (e.g. bani)
   currency  String  @default("RON")
   vatIncluded Boolean @default(true)
@@ -640,4 +678,45 @@ model TransportInfo {
   content String? @db.Text
 
   updatedAt DateTime @updatedAt
+}
+
+// ------------------------------------------------------------------
+// Email analytics
+// ------------------------------------------------------------------
+
+model Email {
+  id            String      @id @default(cuid())
+  resendId      String?     @unique
+  recipient     String
+  recipientName String?
+  subject       String
+  fromAddress   String
+  type          EmailType
+  status        EmailStatus @default(SENT)
+  relatedType   String? // CONTACT, REGISTRATION, etc.
+  relatedId     String?
+  metadata      Json?       @default("{}")
+  sentAt        DateTime    @default(now())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  events EmailEvent[]
+
+  @@index([recipient])
+  @@index([relatedType, relatedId])
+  @@index([type])
+  @@index([status])
+}
+
+model EmailEvent {
+  id         String         @id @default(cuid())
+  emailId    String
+  email      Email          @relation(fields: [emailId], references: [id], onDelete: Cascade)
+  type       EmailEventType
+  occurredAt DateTime       @default(now())
+  data       Json?          @default("{}")
+
+  @@index([emailId])
+  @@index([type])
+  @@index([occurredAt])
 }

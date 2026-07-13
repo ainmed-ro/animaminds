@@ -1,0 +1,25 @@
+RO: 51 files
+EN: 51 files
+---
+RO names:
+00_QA_REPORT.docx
+PMD_001_AI_Fără_Haos_Caiet_de_lucru.docx
+PMD_001_AI_Fără_Haos_Certificat_de_finalizare.docx
+PMD_001_AI_Fără_Haos_CPD_Package.docx
+PMD_001_AI_Fără_Haos_Ghidul_facilitatorului.docx
+PMD_001_AI_Fără_Haos_Pachet_pilot.docx
+PMD_001_AI_Fără_Haos_Pagina_unica.docx
+PMD_001_AI_Fără_Haos_Pagina_unica.pdf
+PMD_001_AI_Fără_Haos_Pagina_unica_comercial.docx
+PMD_001_AI_Fără_Haos_Prezentare.pptx
+EN names:
+00_QA_REPORT.docx
+PMD_001_AI_Fără_Haos_Certificate_of_Completion.docx
+PMD_001_AI_Fără_Haos_Competency_Achievement_Record.docx
+PMD_001_AI_Fără_Haos_CPD_Package.docx
+PMD_001_AI_Fără_Haos_Facilitator_Guide.docx
+PMD_001_AI_Fără_Haos_One_Pager.docx
+PMD_001_AI_Fără_Haos_One_Pager.pdf
+PMD_001_AI_Fără_Haos_One_Pager_comercial.docx
+PMD_001_AI_Fără_Haos_Pilot_Pack.docx
+PMD_001_AI_Fără_Haos_Presentation.pptx

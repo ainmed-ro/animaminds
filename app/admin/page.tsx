@@ -9,6 +9,9 @@ export default async function AdminDashboardPage() {
     redirect('/login')
   }
 
+  const since = new Date()
+  since.setDate(since.getDate() - 30)
+
   const [
     programmeCount,
     editionCount,
@@ -23,6 +26,10 @@ export default async function AdminDashboardPage() {
     formCount,
     userCount,
     registrationCount,
+    emailsSent,
+    emailsOpened,
+    emailsClicked,
+    emailsBounced,
   ] = await Promise.all([
     prisma.programme.count(),
     prisma.edition.count(),
@@ -37,6 +44,10 @@ export default async function AdminDashboardPage() {
     prisma.form.count(),
     prisma.user.count(),
     prisma.registration.count(),
+    prisma.email.count({ where: { createdAt: { gte: since } } }),
+    prisma.emailEvent.count({ where: { occurredAt: { gte: since }, type: 'OPENED' } }),
+    prisma.emailEvent.count({ where: { occurredAt: { gte: since }, type: 'CLICKED' } }),
+    prisma.emailEvent.count({ where: { occurredAt: { gte: since }, type: 'BOUNCED' } }),
   ])
 
   const cards = [
@@ -53,6 +64,10 @@ export default async function AdminDashboardPage() {
     { label: 'Forms', count: formCount, href: '/admin/forms' },
     { label: 'Users', count: userCount, href: '/admin/users' },
     { label: 'Registrations', count: registrationCount, href: '/admin' },
+    { label: 'Emails Sent (30d)', count: emailsSent, href: '/admin/emails' },
+    { label: 'Opened (30d)', count: emailsOpened, href: '/admin/emails' },
+    { label: 'Clicked (30d)', count: emailsClicked, href: '/admin/emails' },
+    { label: 'Bounced (30d)', count: emailsBounced, href: '/admin/emails' },
   ]
 
   return (
