@@ -1330,12 +1330,7 @@ export async function getPublicProgrammes() {
       fullDescription: true,
       duration: true,
       learningHours: true,
-            onlineMinParticipants: true,
-      onlineMaxParticipants: true,
-      onsiteMaxParticipants: true,
-      experienceMinParticipants: true,
-      experienceMaxParticipants: true,
-      targetAudiences: {
+                  targetAudiences: {
         select: {
           targetAudience: {
             select: { name: true }
@@ -1393,12 +1388,7 @@ export async function getPublicProgramme(slug: string) {
       fullDescription: true,
       duration: true,
       learningHours: true,
-            onlineMinParticipants: true,
-      onlineMaxParticipants: true,
-      onsiteMaxParticipants: true,
-      experienceMinParticipants: true,
-      experienceMaxParticipants: true,
-      targetAudiences: {
+                  targetAudiences: {
         select: {
           targetAudience: {
             select: { name: true }
