@@ -148,7 +148,7 @@ export default function ExperienceEditionPage() {
               </p>
               
               <Link
-                href="/programe/busola-deciziils"
+                href="/programe/busola-deciziilor"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-sage-600 text-white rounded-lg font-medium hover:bg-sage-700 transition-colors"
               >
                 Află mai multe

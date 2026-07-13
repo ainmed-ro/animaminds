@@ -43,7 +43,7 @@ export default function ProgramsSection() {
             </h2>
           </div>
           <Link
-            href="/experiences"
+            href="/programe"
             className="flex items-center gap-2 text-sm font-medium group flex-shrink-0"
             style={{ color: "var(--sage)" }}
           >
@@ -56,7 +56,7 @@ export default function ProgramsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {experiences.map((exp, i) => (
             <Link
-              href="/experiences"
+              href="/programe"
               key={exp.name}
               className={`group bg-white rounded-2xl p-6 flex flex-col transition-all duration-700 hover:-translate-y-1 hover:shadow-xl ${
                 inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -105,7 +105,7 @@ export default function ProgramsSection() {
           }`}
         >
           <Link
-            href="/retreats"
+            href="/programe"
             className="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-xl border transition-all hover:shadow-md"
             style={{ color: "var(--charcoal)", borderColor: "rgba(0,0,0,0.1)" }}
           >
