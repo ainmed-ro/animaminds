@@ -3,6 +3,7 @@ import { getPublicEditions, getPublicEditionsByProgramme, getPublicProgramme } f
 import { PublicRegistrationForm } from './registration-form'
 
 export default async function InscrierePage({ searchParams }: { searchParams: Promise<{ editionId?: string; programmeSlug?: string }> }) {
+  // Force deployment - make live site match code
   const { editionId, programmeSlug } = await searchParams
   
   // Get editions - filtered by programme if specified
