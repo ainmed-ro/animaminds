@@ -1359,10 +1359,6 @@ export async function getPublicProgrammes() {
           availableSeats: true,
           minParticipants: true,
           maxParticipants: true,
-          contactHours: true,
-          individualActivitiesHours: true,
-          totalLearningHours: true,
-          cpdCredits: true,
           displayPrice: {
             select: { priceCode: true, amount: true }
           }

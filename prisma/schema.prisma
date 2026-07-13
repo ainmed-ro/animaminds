@@ -323,15 +323,15 @@ model Edition {
   registrationDeadline DateTime?
   maxSeats             Int?
   availableSeats       Int?
+  minParticipants     Int?
+  maxParticipants     Int?
+  contactHours         Float?
+  individualActivitiesHours Float?
+  totalLearningHours   Float?
+  cpdCredits           Int?
 
   displayPriceId String?
   displayPrice   Price?  @relation("EditionDisplayPrice", fields: [displayPriceId], references: [id])
-
-  // Format-specific learning and CPD values
-  contactHours              Float?
-  individualActivitiesHours Float?
-  totalLearningHours        Float?
-  cpdCredits                Int?
 
   featuredImageUrl String?
   notes            String? @db.Text
