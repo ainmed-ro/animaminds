@@ -104,34 +104,26 @@ function getPricingInfo(programme: any) {
   const hasOnlineEdition = programme.editions.some((e: any) => e.deliveryFormat === 'ONLINE')
   const hasExperienceEdition = programme.editions.some((e: any) => e.deliveryFormat === 'EXPERIENCE_EDITION')
   
-  const prices = []
-  
-  // Online price
+  // Show price from the first available edition
   if (hasOnlineEdition) {
     const onlineEdition = programme.editions.find((e: any) => e.deliveryFormat === 'ONLINE')
     if (onlineEdition?.displayPrice) {
-      prices.push(`Online: ${onlineEdition.displayPrice.priceCode}`)
+      return { price: `${onlineEdition.displayPrice.priceCode}`, status: "Disponibil Online" }
     }
   }
   
-  // Physical/Organizations price
   if (hasOnsiteEdition) {
     const onsiteEdition = programme.editions.find((e: any) => e.deliveryFormat === 'ONSITE')
     if (onsiteEdition?.displayPrice) {
-      prices.push(`Fizic: ${onsiteEdition.displayPrice.priceCode}`)
+      return { price: `${onsiteEdition.displayPrice.priceCode}`, status: "Disponibil Fizic" }
     }
   }
   
-  // Experience Edition (la munte) price
   if (hasExperienceEdition) {
     const experienceEdition = programme.editions.find((e: any) => e.deliveryFormat === 'EXPERIENCE_EDITION')
     if (experienceEdition?.displayPrice) {
-      prices.push(`La munte: ${experienceEdition.displayPrice.priceCode}`)
+      return { price: `${experienceEdition.displayPrice.priceCode}`, status: "Disponibil La Munte" }
     }
-  }
-  
-  if (prices.length > 0) {
-    return { price: prices.join(' | '), status: "Disponibil" }
   }
   
   return { price: "Preț: 99-299 lei / participant", status: "În curând" }
