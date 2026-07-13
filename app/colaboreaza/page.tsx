@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import OrganizationRequestForm from "@/components/OrganizationRequestForm";
 
 export const metadata: Metadata = {
@@ -12,6 +12,48 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic'
 
 export default function ColaboreazaPage() {
+  const reasons = [
+    "Analiză de nevoi personalizată, nu soluții standard",
+    "Programe adaptate contextului specific al organizației",
+    "Focus pe comportamente măsurabile, nu doar pe teorie",
+    "Parteneriat pe termen lung, nu training izolat",
+    "Expertiză în educație și dezvoltare profesională",
+    "Flexibilitate în format și metodologie"
+  ];
+
+  const partnerTypes = [
+    {
+      title: "Școli și licee",
+      description: "Programe de dezvoltare pentru profesori și elevi",
+      icon: "🏫"
+    },
+    {
+      title: "Universități",
+      description: "Formare pentru cadre didactice universitare",
+      icon: "🎓"
+    },
+    {
+      title: "Companii",
+      description: "Dezvoltare profesională pentru echipe",
+      icon: "🏢"
+    },
+    {
+      title: "ONG-uri",
+      description: "Programe adaptate pentru organizații non-profit",
+      icon: "🤝"
+    },
+    {
+      title: "Instituții publice",
+      description: "Formare profesională pentru sectorul public",
+      icon: "🏛️"
+    },
+    {
+      title: "Grupuri organizate",
+      description: "Programe personalizate pentru grupuri specifice",
+      icon: "👥"
+    }
+  ];
+
   return (
     <div>
       {/* Hero */}
