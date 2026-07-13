@@ -44,7 +44,6 @@ function getCapacityRules(edition: { deliveryFormat: DeliveryFormat; programme: 
   if (!p) return defaults
   switch (edition?.deliveryFormat) {
     case DeliveryFormat.ONLINE:
-    case 'ONLINE_DEDICATED':
       return {
         min: p.onlineMinParticipants ?? defaults.min,
         max: p.onlineMaxParticipants ?? defaults.max,
