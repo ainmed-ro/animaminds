@@ -1,52 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, CheckCircle, Building2, GraduationCap, Users2, Briefcase } from "lucide-react";
 import OrganizationRequestForm from "@/components/OrganizationRequestForm";
 
 export const metadata: Metadata = {
-  title: "Colaborează cu noi",
-  description:
-    "Parteneriate AnimaMinds: programe personalizate pentru companii, instituții, ONG-uri și formatori independenți. Construim împreună.",
+  title: "Colaborează cu noi - AnimaMinds",
+  description: "Solicită ofertă personalizată pentru organizația ta. Programe dedicate școlilor, instituțiilor, ONG-urilor și companiilor.",
 };
 
 export const dynamic = 'force-dynamic'
-
-const reasons = [
-  "Programe proiectate specific pentru nevoile reale ale fiecărui partener",
-  "Formatori cu experiență practică, nu doar academică",
-  "Abordare orientată spre impact real, măsurabil",
-  "Ne deplasăm la sediul companiilor și instituțiilor care ne invită — on-site, online sau hibrid",
-  "Suport continuu după finalizarea programului",
-  "Integrare în comunitatea AnimaMinds",
-];
-
-const partnerTypes = [
-  {
-    icon: Building2,
-    title: "Companii și organizații private",
-    desc: "De la programe de onboarding la dezvoltare de leadership, construim împreună cultură organizațională și performanță.",
-    cta: "Team building, leadership, comunicare, formare internă",
-  },
-  {
-    icon: GraduationCap,
-    title: "Instituții educaționale",
-    desc: "Formare continuă pentru cadre didactice, metodici moderne și instrumente digitale pentru predare.",
-    cta: "Școli, licee, universități, centre de formare",
-  },
-  {
-    icon: Users2,
-    title: "ONG-uri și organizații non-profit",
-    desc: "Sprijin pentru organizații cu misiune socială — formare pentru voluntari, beneficiari și echipe.",
-    cta: "Prețuri adaptate pentru ONG-uri",
-  },
-  {
-    icon: Briefcase,
-    title: "Formatori și traineri independenți",
-    desc: "Intră în rețeaua noastră de formatori. Colaborăm, co-livrăm și creștem împreună.",
-    cta: "Rețea de formatori, proiecte comune",
-  },
-];
 
 export default function ColaboreazaPage() {
   return (
@@ -254,7 +214,7 @@ export default function ColaboreazaPage() {
       </section>
 
       {/* Organization Request Form */}
-      <section className="py-20 bg-gray-50">
+      <section id="solicita-oferta" className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2

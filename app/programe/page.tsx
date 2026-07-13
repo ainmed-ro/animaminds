@@ -159,7 +159,7 @@ export default async function ProgramePage() {
         price: pricingInfo.price,
         active: isActive,
         status: pricingInfo.status,
-        href: isComingSoon ? '#' : (hasOrgFormats ? '/colaboreaza' : (isActive ? `/inscriere?programmeSlug=${programme.slug}` : '/contact')),
+        href: isComingSoon ? '#' : (hasOrgFormats ? '/colaboreaza#solicita-oferta' : (isActive ? `/inscriere?programmeSlug=${programme.slug}` : '/contact')),
         cta: isComingSoon ? 'În curând' : (hasOrgFormats ? 'Cere ofertă' : (isActive ? 'Înscrie-te' : 'Contactează-ne')),
         tags: isComingSoon ? ['coming-soon'] : (hasOrgFormats ? ['organization'] : (isActive ? ['open'] : ['upcoming'])),
         // Additional data for enhanced display
@@ -380,7 +380,7 @@ export default async function ProgramePage() {
               </Link>
             )}
             <Link
-              href="/colaboreaza"
+              href="/colaboreaza#solicita-oferta"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg font-medium transition-all border hover:bg-white/10"
               style={{ color: "white", borderColor: "rgba(255,255,255,0.4)" }}
             >

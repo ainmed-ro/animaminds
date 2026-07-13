@@ -1,5 +1,6 @@
 import HeroSection from "@/components/home/HeroSection";
 import LaunchBanner from "@/components/home/LaunchBanner";
+import ServiceCards from "@/components/home/ServiceCards";
 import TrustSection from "@/components/home/TrustSection";
 import CPDExplanationSection from "@/components/home/CPDExplanationSection";
 import LaunchFeaturedSection from "@/components/home/LaunchFeaturedSection";
@@ -17,6 +18,7 @@ export default function Home() {
     <>
       <HeroSection />
       <LaunchBanner />
+      <ServiceCards />
       <TrustSection />
       <CPDExplanationSection />
       <LaunchFeaturedSection />

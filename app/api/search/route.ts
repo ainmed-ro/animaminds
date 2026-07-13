@@ -13,7 +13,7 @@ const staticPages = [
   { title: 'Calendar Ediții', href: '/calendar', description: 'Vezi edițiile deschise' },
   { title: 'Înscrie-te', href: '/inscriere', description: 'Formular de înscriere' },
   { title: 'Contact', href: '/contact', description: 'Trimite un mesaj' },
-  { title: 'Pentru organizații', href: '/colaboreaza', description: 'Colaborare personalizată' },
+  { title: 'Pentru organizații', href: '/colaboreaza#solicita-oferta', description: 'Colaborare personalizată' },
   { title: 'Busola Deciziilor — Experience Edition', href: '/programe/busola-deciziilor/experience-edition', description: '3 zile în natură' },
   { title: 'Politică de confidențialitate', href: '/politica-de-confidentialitate', description: 'Legal' },
   { title: 'Termeni și condiții', href: '/termeni-si-conditii', description: 'Legal' },
