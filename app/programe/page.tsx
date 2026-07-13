@@ -202,62 +202,44 @@ export default async function ProgramePage() {
   
   return (
     <div>
-      {/* Hero */}
-      <section className="py-12" style={{ backgroundColor: "var(--cream)" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="section-label">Programe</span>
-            <div className="line-accent my-4" />
-            <h1
-              className="text-3xl sm:text-4xl font-semibold mb-4"
-              style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
-            >
-              Dezvoltăm competențele esențiale pentru profesioniști, echipe și organizații într-o lume aflată în continuă schimbare.
-            </h1>
-            <p className="text-base sm:text-lg leading-relaxed mb-5" style={{ color: "var(--charcoal-soft)" }}>
-              Cele 5 programe fundamentale AnimaMinds sunt pentru profesori, echipe din companii, tineri și organizații. Experiențe de învățare care se văd în comportamentul de zi cu zi — Online Live, La sediul instituției / organizației sau în format Experience Edition, la munte sau la mare.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Conversații care Contează - 3 Formate Disponibile */}
-      <section className="py-16 px-4 bg-gradient-to-r from-green-700 via-green-600 to-green-500">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
-            Conversații care Contează - 3 Formate Disponibile
+      <section className="py-12 px-4 bg-gradient-to-r from-green-700 via-green-600 to-green-500">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
+            Conversații care Contează - 3 Formate
           </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Alege formatul potrivit pentru tine - 8 CPD credite
+          <p className="text-lg text-white/90 mb-6">
+            8 CPD credite - Alege formatul potrivit
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <div className="text-2xl mb-3">🌐</div>
-              <h3 className="text-lg font-semibold text-white mb-2">Online Live</h3>
-              <p className="text-sm text-white/80 mb-3">3 întâlniri live + 1h individual</p>
-              <p className="text-white font-medium">199 lei / participant</p>
-              <Link href="/inscriere" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="text-xl mb-2">🌐</div>
+              <h3 className="text-base font-semibold text-white mb-1">Online Live</h3>
+              <p className="text-xs text-white/80 mb-2">3 întâlniri + 1h individual</p>
+              <p className="text-white font-medium text-sm">199 lei / participant</p>
+              <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-green-700 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Înscrie-te
               </Link>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <div className="text-2xl mb-3">🏔️</div>
-              <h3 className="text-lg font-semibold text-white mb-2">Experience Edition</h3>
-              <p className="text-sm text-white/80 mb-3">Rezidențial la munte</p>
-              <p className="text-white font-medium">1.200-1.690 lei / participant</p>
-              <Link href="/experience-edition" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="text-xl mb-2">🏔️</div>
+              <h3 className="text-base font-semibold text-white mb-1">Experience Edition</h3>
+              <p className="text-xs text-white/80 mb-2">Rezidențial la munte</p>
+              <p className="text-white font-medium text-sm">1.200-1.690 lei / participant</p>
+              <Link href="/experience-edition" className="inline-block mt-2 px-3 py-1 bg-white text-green-700 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Rezervă loc
               </Link>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-              <div className="text-2xl mb-3">🏢</div>
-              <h3 className="text-lg font-semibold text-white mb-2">Pentru organizații</h3>
-              <p className="text-sm text-white/80 mb-3">Online dedicat sau la sediu</p>
-              <p className="text-white font-medium">3.500-5.000 lei / grup</p>
-              <Link href="/colaboreaza#solicita-oferta" className="inline-block mt-3 px-4 py-2 bg-white text-green-700 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="text-xl mb-2">🏢</div>
+              <h3 className="text-base font-semibold text-white mb-1">Pentru organizații</h3>
+              <p className="text-xs text-white/80 mb-2">Online dedicat sau la sediu</p>
+              <p className="text-white font-medium text-sm">3.500-5.000 lei / grup</p>
+              <Link href="/colaboreaza#solicita-oferta" className="inline-block mt-2 px-3 py-1 bg-white text-green-700 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Solicită ofertă
               </Link>
             </div>
