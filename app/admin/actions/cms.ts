@@ -29,13 +29,13 @@ function slugify(text: string): string {
 }
 
 // Final capacity business rules (also stored on Programme as defaults)
-const DEFAULT_CAPACITY: Record<DeliveryFormat, { min: number | null; max: number }> = {
-  [DeliveryFormat.ONLINE]: { min: 15, max: 30 },
-  [DeliveryFormat.ONLINE_DEDICATED]: { min: 15, max: 30 },
-  [DeliveryFormat.ONSITE]: { min: 15, max: 30 },
-  [DeliveryFormat.EXPERIENCE_EDITION]: { min: 20, max: 30 },
+const DEFAULT_CAPACITY: Record<string, { min: number | null; max: number }> = {
+  ONLINE: { min: 15, max: 30 },
+  ONLINE_DEDICATED: { min: 15, max: 30 },
+  ONSITE: { min: 15, max: 30 },
+  EXPERIENCE_EDITION: { min: 20, max: 30 },
   // Temporarily added for backward compatibility during migration
-  OPEN_COHORT: { min: 15, max: 30 } as any,
+  OPEN_COHORT: { min: 15, max: 30 },
 }
 
 function getCapacityRules(edition: { deliveryFormat: DeliveryFormat; programme: { onlineMinParticipants: number | null; onlineMaxParticipants: number | null; onsiteMaxParticipants: number | null; experienceMinParticipants: number | null; experienceMaxParticipants: number | null } | null } | null) {
