@@ -70,7 +70,7 @@ export default function LaunchBanner() {
                 mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
-              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Tarif special de lansare</div>
+              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Tarif special de lansare - Experience Edition</div>
               <div className="text-5xl font-bold text-white mb-3">1.200 lei</div>
               <div className="text-white/90 text-sm mb-2">per participant – cameră dublă</div>
               <div className="text-white/80 text-sm">1.400 lei / participant – cameră single</div>
