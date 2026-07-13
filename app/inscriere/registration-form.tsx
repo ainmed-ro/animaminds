@@ -145,7 +145,7 @@ export function PublicRegistrationForm({ editions, defaultEditionId, programme }
           className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border"
         >
           <option value="">Selectează ediția</option>
-          {editions.map((e) => {
+          {editions.filter((e) => e.programme.slug === 'conversatii-care-conteaza').map((e) => {
             const formatName = e.deliveryFormat === 'ONLINE' ? 'Online Live' :
                               e.deliveryFormat === 'ONSITE' ? 'La sediul instituției / organizației' :
                               'Experience Edition'
