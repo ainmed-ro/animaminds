@@ -36,8 +36,8 @@ export default function ServiceCards() {
       ),
       title: "Online Live",
       description: "Programe de formare profesională online, interactive și aplicate.",
-      cta: "Vezi ediția online",
-      href: "/programe",
+      cta: "Înscrie-te acum",
+      href: "/inscriere",
       color: "from-blue-500 to-cyan-600"
     },
     {
@@ -68,8 +68,8 @@ export default function ServiceCards() {
       ),
       title: "Experience Edition",
       description: "Program rezidențial de formare profesională și dezvoltare de competențe.",
-      cta: "Vezi Experience Edition",
-      href: "/programe/experience-edition",
+      cta: "Rezervă loc",
+      href: "/experience-edition",
       color: "from-emerald-500 to-teal-600"
     },
     {
@@ -152,8 +152,8 @@ export default function ServiceCards() {
       ),
       title: "Programe în pregătire",
       description: "Noi programe AnimaMinds vor fi lansate în curând.",
-      cta: "Vezi programele în pregătire",
-      href: "/programe#in-pregatire",
+      cta: "Vezi programele",
+      href: "/programe",
       color: "from-amber-500 to-orange-600"
     }
   ];
