@@ -6,10 +6,10 @@ export default async function InscrierePage({ searchParams }: { searchParams: Pr
   // Force deployment - make live site match code
   const { editionId, programmeSlug } = await searchParams
   
-  // Get editions - filtered by programme if specified
+  // Get editions - only Conversații care Contează is active
   let editions = programmeSlug
     ? await getPublicEditionsByProgramme(programmeSlug)
-    : await getPublicEditions()
+    : await getPublicEditionsByProgramme('conversatii-care-conteaza')
 
   // If no editions found for specific programme, fall back to all editions
   if (editions.length === 0 && programmeSlug) {
