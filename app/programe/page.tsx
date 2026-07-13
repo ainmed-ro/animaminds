@@ -217,7 +217,7 @@ export default async function ProgramePage() {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
               <div className="text-xl mb-2">🌐</div>
               <h3 className="text-base font-semibold text-white mb-1">Online Live</h3>
-              <p className="text-xs text-white/80 mb-2">3 întâlniri + 1h individual</p>
+              <p className="text-xs text-white/80 mb-2">8, 15, 22 Septembrie + 1h individual</p>
               <p className="text-white font-medium text-sm">199 lei / participant</p>
               <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-green-700 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Înscrie-te
