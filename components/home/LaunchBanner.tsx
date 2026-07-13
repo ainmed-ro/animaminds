@@ -8,7 +8,7 @@ export default function LaunchBanner() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-700 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-amber-700 via-amber-600 to-yellow-700 overflow-hidden">
       {/* Elegant celebration background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-32 h-32 bg-yellow-300 rounded-full blur-2xl animate-pulse"></div>
@@ -28,7 +28,7 @@ export default function LaunchBanner() {
           >
             <Star className="w-5 h-5 text-yellow-300 animate-pulse" />
             <span className="text-yellow-300 font-bold text-xl tracking-wide uppercase">
-              ✨ Ediție de lansare Experience Edition
+              ✨ Program complet - 3 formate disponibile
             </span>
             <Star className="w-5 h-5 text-yellow-300 animate-pulse" />
           </div>
@@ -51,7 +51,7 @@ export default function LaunchBanner() {
               }`}
             >
               <Calendar className="w-5 h-5 text-yellow-200" />
-              <span className="font-medium text-lg">23–25 octombrie 2026</span>
+              <span className="font-medium text-lg">Online, Rezidențial, Organizații</span>
             </div>
             <div
               className={`flex items-center gap-2 transition-all duration-700 delay-300 ${
@@ -59,15 +59,7 @@ export default function LaunchBanner() {
               }`}
             >
               <MapPin className="w-5 h-5 text-yellow-200" />
-              <Link 
-                href="https://hotelafrodita.ro/valeni/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="font-medium text-lg hover:text-yellow-200 transition-colors underline decoration-dotted"
-              >
-                Hotel Afrodita**** – Vălenii de Munte
-                <ExternalLink className="w-4 h-4 inline-block ml-1" />
-              </Link>
+              <span className="font-medium text-lg">București, Vălenii de Munte, Online</span>
             </div>
           </div>
 
