@@ -248,6 +248,48 @@ export default async function ProgramePage() {
         </div>
       </section>
 
+      {/* Programe în pregătire */}
+      <section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+            Programe în pregătire
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Aceste programe sunt în dezvoltare și vor fi lansate curând
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
+              <div className="text-2xl mb-2">🤖</div>
+              <h3 className="font-semibold text-gray-900 mb-1">AI Fără Haos</h3>
+              <p className="text-sm text-gray-600">Inteligență artificială aplicată eficient</p>
+              <p className="text-xs text-gray-500 mt-2">În curând</p>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
+              <div className="text-2xl mb-2">🧭</div>
+              <h3 className="font-semibold text-gray-900 mb-1">Busola Deciziilor</h3>
+              <p className="text-sm text-gray-600">Claritate în procesul decizional</p>
+              <p className="text-xs text-gray-500 mt-2">În curând</p>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
+              <div className="text-2xl mb-2">🧘</div>
+              <h3 className="font-semibold text-gray-900 mb-1">Calm sub Presiune</h3>
+              <p className="text-sm text-gray-600">Reziliență emoțională și mentală</p>
+              <p className="text-xs text-gray-500 mt-2">În curând</p>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
+              <div className="text-2xl mb-2">🌟</div>
+              <h3 className="font-semibold text-gray-900 mb-1">Avantajul Uman</h3>
+              <p className="text-sm text-gray-600">Competențe esențiale în era AI</p>
+              <p className="text-xs text-gray-500 mt-2">În curând</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Experience Edition Banner */}
       <section className="py-16 px-4 bg-gradient-to-r from-green-700 via-green-600 to-green-500">
         <div className="max-w-6xl mx-auto text-center">
