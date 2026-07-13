@@ -99,7 +99,7 @@ export default function LaunchBanner() {
             }`}
           >
             <Link
-              href="/programe/experience-edition/conversatii-care-conteaza#rezerva-loc"
+              href="/inscriere"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-400 text-emerald-800 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-xl border-2 border-yellow-500"
             >
               Rezervă un loc

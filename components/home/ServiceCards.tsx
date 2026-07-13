@@ -69,7 +69,7 @@ export default function ServiceCards() {
       title: "Experience Edition",
       description: "Program rezidențial de formare profesională și dezvoltare de competențe.",
       cta: "Rezervă loc",
-      href: "/experience-edition",
+      href: "/inscriere",
       color: "from-emerald-500 to-teal-600"
     },
     {

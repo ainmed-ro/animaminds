@@ -229,7 +229,7 @@ export default async function ProgramePage() {
               <h3 className="text-base font-semibold text-white mb-1">Experience Edition</h3>
               <p className="text-xs text-white/80 mb-2">Rezidențial la munte</p>
               <p className="text-white font-medium text-sm">1.200-1.690 lei / participant</p>
-              <Link href="/experience-edition" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
+              <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
                 Rezervă loc
               </Link>
             </div>
