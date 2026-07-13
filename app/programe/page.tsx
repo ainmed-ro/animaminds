@@ -290,44 +290,6 @@ export default async function ProgramePage() {
         </div>
       </section>
 
-      
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <div className="flex items-center gap-2 text-white">
-              <Calendar className="w-5 h-5" />
-              <span>23–25 octombrie 2026</span>
-            </div>
-            <div className="flex items-center gap-2 text-white">
-              <MapPin className="w-5 h-5" />
-              <span>Hotel Afrodita**** – Vălenii de Munte</span>
-            </div>
-          </div>
-          
-          <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 mb-8 max-w-2xl mx-auto">
-            <div className="text-white text-sm font-medium mb-2">Tarif special de lansare</div>
-            <div className="text-3xl font-bold text-white mb-2">1.200 lei</div>
-            <div className="text-white/80 text-sm">per participant – cameră dublă (vs 1.490 lei standard)</div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="#experience-edition-form"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-800 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
-            >
-              Rezervă un loc
-              <Calendar className="w-5 h-5" />
-            </Link>
-            
-            <Link
-              href="#experience-edition-details"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white rounded-lg font-bold text-lg hover:bg-white/10 transition-colors"
-            >
-              Află mai multe
-              <BookOpen className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Experience Edition Details */}
       <section id="experience-edition-details" className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
