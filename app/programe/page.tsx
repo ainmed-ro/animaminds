@@ -104,18 +104,37 @@ function getPricingInfo(programme: any) {
   const hasOnlineEdition = programme.editions.some((e: any) => e.deliveryFormat === 'ONLINE')
   const hasExperienceEdition = programme.editions.some((e: any) => e.deliveryFormat === 'EXPERIENCE_EDITION')
   
-  if (hasExperienceEdition) {
-    return { price: "Prețul va fi anunțat în curând", status: "În curând" }
-  }
+  const prices = []
   
+  // Online price
   if (hasOnlineEdition) {
     const onlineEdition = programme.editions.find((e: any) => e.deliveryFormat === 'ONLINE')
     if (onlineEdition?.displayPrice) {
-      return { price: `${onlineEdition.displayPrice.priceCode}`, status: "Disponibil acum" }
+      prices.push(`Online: ${onlineEdition.displayPrice.priceCode}`)
     }
   }
   
-  return { price: "Preț de lansare: 99 lei / participant", status: "În curând" }
+  // Physical/Organizations price
+  if (hasOnsiteEdition) {
+    const onsiteEdition = programme.editions.find((e: any) => e.deliveryFormat === 'ONSITE')
+    if (onsiteEdition?.displayPrice) {
+      prices.push(`Fizic: ${onsiteEdition.displayPrice.priceCode}`)
+    }
+  }
+  
+  // Experience Edition (la munte) price
+  if (hasExperienceEdition) {
+    const experienceEdition = programme.editions.find((e: any) => e.deliveryFormat === 'EXPERIENCE_EDITION')
+    if (experienceEdition?.displayPrice) {
+      prices.push(`La munte: ${experienceEdition.displayPrice.priceCode}`)
+    }
+  }
+  
+  if (prices.length > 0) {
+    return { price: prices.join(' | '), status: "Disponibil" }
+  }
+  
+  return { price: "Preț: 99-299 lei / participant", status: "În curând" }
 }
 
 // Helper function to check if programme has active editions
@@ -141,13 +160,21 @@ export default async function ProgramePage() {
     'avantajul-uman'
   ]
   
-  // Remove duplicate programmes by name (keep the first one)
-  const uniqueProgrammes = programmes.filter((programme, index, self) => 
-    index === self.findIndex((p) => p.name === programme.name)
+  // Filter to show only approved programmes
+  const approvedSlugs = [
+    'conversatii-care-conteaza',
+    'ai-fara-haos', 
+    'calm-sub-pressiune',
+    'busola-deciziilor',
+    'avantajul-uman'
+  ]
+  
+  const approvedProgrammes = programmes.filter(programme => 
+    approvedSlugs.includes(programme.slug)
   )
 
   // Transform CMS data to ProgramList format and sort by approved order
-  const programData = uniqueProgrammes
+  const programData = approvedProgrammes
     .map(programme => {
       const config = PROGRAMME_CONFIG[programme.slug as keyof typeof PROGRAMME_CONFIG]
       const isActive = hasActiveEditions(programme) && programme.status === 'ACTIVE'
