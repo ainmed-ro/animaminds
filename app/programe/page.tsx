@@ -102,6 +102,7 @@ function getPricingInfo(programme: any) {
   }
   
   const hasOnlineEdition = programme.editions.some((e: any) => e.deliveryFormat === 'ONLINE')
+  const hasOnsiteEdition = programme.editions.some((e: any) => e.deliveryFormat === 'ONSITE')
   const hasExperienceEdition = programme.editions.some((e: any) => e.deliveryFormat === 'EXPERIENCE_EDITION')
   
   // Show price from the first available edition
