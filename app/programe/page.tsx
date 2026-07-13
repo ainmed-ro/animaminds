@@ -204,7 +204,7 @@ export default async function ProgramePage() {
     <div>
       
       {/* Conversații care Contează - 3 Formate Disponibile */}
-      <section className="py-12 px-4 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-600">
+      <section className="py-12 px-4 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
             Conversații care Contează - 3 Formate
