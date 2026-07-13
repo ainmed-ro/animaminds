@@ -17,11 +17,11 @@ interface Props {
 
 const entityTypeLabels: Record<EntityType, string> = {
   INDIVIDUAL: 'Persoană fizică',
-  PFA: 'PFA',
-  SRL: 'SRL',
-  MEDICAL_PRACTICE: 'Practică medicală',
-  COMPANY: 'Companie',
-  NGO: 'ONG',
+  PFA: 'Persoană fizică autorizată',
+  SRL: 'Societate cu răspundere limitată',
+  MEDICAL_PRACTICE: 'Unitate sanitară / Cabinet medical',
+  COMPANY: 'Companie privată',
+  NGO: 'Organizație neguvernamentală',
   PUBLIC_INSTITUTION: 'Instituție publică',
 }
 
@@ -236,14 +236,14 @@ export function PublicRegistrationForm({ editions, defaultEditionId, programme }
       )}
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Modalitate de participare</label>
+        <label className="block text-sm font-medium text-gray-700">Doriți să vă înscrieți</label>
         <select
           value={participationMethod}
           onChange={(e) => setParticipationMethod(e.target.value as 'individual' | 'organization')}
           className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border"
         >
-          <option value="individual">Înscriere individuală</option>
-          <option value="organization">Instituție / organizație beneficiară</option>
+          <option value="individual">Ca persoană fizică</option>
+          <option value="organization">În numele unei organizații</option>
         </select>
       </div>
 
@@ -252,7 +252,7 @@ export function PublicRegistrationForm({ editions, defaultEditionId, programme }
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Tip entitate</label>
+            <label className="block text-sm font-medium text-gray-700">Tipul organizației</label>
             <select name="entityType" defaultValue="COMPANY" className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border">
               {Object.values(EntityType).filter((t) => t !== 'INDIVIDUAL').map((t) => (
                 <option key={t} value={t}>{entityTypeLabels[t]}</option>
@@ -260,30 +260,30 @@ export function PublicRegistrationForm({ editions, defaultEditionId, programme }
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Organizație / Companie</label>
-            <input name="entityName" className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+            <label className="block text-sm font-medium text-gray-700">Numele organizației</label>
+            <input name="entityName" placeholder="Numele firmei sau instituției" className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
           </div>
         </div>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Nume și prenume</label>
-          <input name="contactName" required className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          <label className="block text-sm font-medium text-gray-700">Nume și prenume *</label>
+          <input name="contactName" placeholder="Ex: Popescu Ana" required className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Email</label>
-          <input name="contactEmail" type="email" required className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          <label className="block text-sm font-medium text-gray-700">Adresă de email *</label>
+          <input name="contactEmail" type="email" placeholder="exemplu@domeniu.ro" required className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">Telefon</label>
-          <input name="contactPhone" className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          <input name="contactPhone" placeholder="07xx xxx xxx" className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Număr participanți</label>
+          <label className="block text-sm font-medium text-gray-700">Număr de participanți *</label>
           <input
             key={selectedEditionId || 'none'}
             name="participantCount"
@@ -305,20 +305,20 @@ export function PublicRegistrationForm({ editions, defaultEditionId, programme }
 
       {participationMethod === 'organization' && (
         <div>
-          <label className="block text-sm font-medium text-gray-700">CUI / Tax ID</label>
-          <input name="cui" className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+          <label className="block text-sm font-medium text-gray-700">CUI (Cifră de Identificare Fiscală)</label>
+          <input name="cui" placeholder="Ex: RO12345678" className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
         </div>
       )}
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Observații</label>
-        <textarea name="notes" rows={3} className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
+        <label className="block text-sm font-medium text-gray-700">Mesaj sau observații (opțional)</label>
+        <textarea name="notes" rows={3} placeholder="Introduceți orice întrebări sau informații suplimentare aici..." className="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 border" />
       </div>
 
       <div className="flex items-start gap-2">
         <input type="checkbox" name="gdprConsent" value="true" required className="mt-1" />
         <label className="text-sm text-gray-600">
-          Sunt de acord cu prelucrarea datelor personale conform politicii de confidențialitate și primesc informații despre programele AnimaMinds.
+          Sunt de acord cu prelucrarea datelor mele personale conform <a href="/politica-de-confidentialitate" target="_blank" className="text-blue-600 hover:underline">politicii de confidențialitate</a> și doresc să primesc informații despre programele AnimaMinds. *
         </label>
       </div>
 
