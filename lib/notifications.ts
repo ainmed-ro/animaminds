@@ -312,3 +312,71 @@ export async function sendWeeklySummaryEmail(data: {
     },
   })
 }
+
+export async function sendAdminOrganizationRequestEmail(data: {
+  organizationName: string
+  organizationType: string
+  contactName: string
+  contactEmail: string
+  contactPhone?: string
+  contactPosition?: string
+  programmeInterest?: string
+  deliveryFormatPreference?: string
+  participantCountEstimate?: number
+  preferredTimeline?: string
+  budgetRange?: string
+  specificRequirements?: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#1C2B1E;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:14px;font-weight:bold;">🏢 Cerere nouă de organizație</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Organizație:</strong> ${data.organizationName}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Tip organizație:</strong> ${data.organizationType}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Contact:</strong> ${data.contactName}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Email:</strong> ${data.contactEmail}</p>
+          ${data.contactPhone ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Telefon:</strong> ${data.contactPhone}</p>` : ''}
+          ${data.contactPosition ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Poziție:</strong> ${data.contactPosition}</p>` : ''}
+          ${data.programmeInterest ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Program interes:</strong> ${data.programmeInterest}</p>` : ''}
+          ${data.deliveryFormatPreference ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Format livrare:</strong> ${data.deliveryFormatPreference}</p>` : ''}
+          ${data.participantCountEstimate ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Număr participanți:</strong> ${data.participantCountEstimate}</p>` : ''}
+          ${data.preferredTimeline ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Timeline preferat:</strong> ${data.preferredTimeline}</p>` : ''}
+          ${data.budgetRange ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Buget:</strong> ${data.budgetRange}</p>` : ''}
+          ${data.specificRequirements ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Cerințe specifice:</strong> ${data.specificRequirements}</p>` : ''}
+          <p style="margin:16px 0 8px;font-size:12px;color:#888;">Data: ${data.createdAt.toLocaleString('ro-RO')}</p>
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}/admin" style="display:inline-block;padding:10px 20px;background:#1C2B1E;color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:bold;">Deschide admin</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: ADMIN_EMAIL,
+    subject: `[AnimaMinds] Cerere organizație — ${data.organizationName} — ${data.contactName}`,
+    html,
+    type: 'ADMIN_ORGANIZATION_REQUEST',
+    recipientName: data.contactName,
+    relatedType: 'ORGANIZATION_REQUEST',
+    metadata: {
+      organizationName: data.organizationName,
+      organizationType: data.organizationType,
+      contactEmail: data.contactEmail,
+      contactPhone: data.contactPhone,
+      programmeInterest: data.programmeInterest,
+      participantCountEstimate: data.participantCountEstimate,
+    },
+  })
+}

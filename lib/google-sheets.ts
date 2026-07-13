@@ -83,3 +83,52 @@ export async function syncContactToGoogleSheets(data: {
     console.error('Google Sheets contact sync error:', err)
   }
 }
+
+export async function syncOrganizationRequestToGoogleSheets(data: {
+  formType: 'ORGANIZATION_REQUEST'
+  organizationName: string
+  organizationType: string
+  contactName: string
+  contactEmail: string
+  contactPhone?: string
+  contactPosition?: string
+  programmeInterest?: string
+  deliveryFormatPreference?: string
+  participantCountEstimate?: number
+  preferredTimeline?: string
+  budgetRange?: string
+  specificRequirements?: string
+  createdAt: Date
+}) {
+  if (!GOOGLE_SHEETS_URL) {
+    console.warn('GOOGLE_SHEETS_URL not configured, skipping Sheets sync')
+    return
+  }
+
+  try {
+    await fetch(GOOGLE_SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: data.formType,
+        numeOrganizatie: data.organizationName,
+        tipOrganizatie: data.organizationType,
+        numeContact: data.contactName,
+        emailContact: data.contactEmail,
+        telefonContact: data.contactPhone || '',
+        pozitieContact: data.contactPosition || '',
+        programInteres: data.programmeInterest || '',
+        formatLivrare: data.deliveryFormatPreference || '',
+        numarParticipanti: data.participantCountEstimate?.toString() || '',
+        timelinePreferat: data.preferredTimeline || '',
+        buget: data.budgetRange || '',
+        cerinteSpecifice: data.specificRequirements || '',
+        data: data.createdAt.toISOString(),
+      }),
+      mode: 'no-cors',
+    })
+    console.log('Organization request synced to Google Sheets:', data.contactEmail)
+  } catch (err) {
+    console.error('Google Sheets organization request sync error:', err)
+  }
+}

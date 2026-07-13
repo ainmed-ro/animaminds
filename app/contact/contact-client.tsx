@@ -343,9 +343,12 @@ export default function ContactPage() {
                       style={{ borderColor: "#E0D9CE", backgroundColor: "var(--gray-warm)", color: "var(--charcoal)" }}
                     >
                       <option value="">Alege un program</option>
-                      <option value="Busola Interioară">Busola Interioară</option>
+                      <option value="AI Fără Haos">AI Fără Haos - Inteligență Artificială pentru profesioniști</option>
+                      <option value="Busola Deciziilor">Busola Deciziilor - Leadership și luarea deciziilor</option>
+                      <option value="Conversații care Contează">Conversații care Contează - Comunicare și colaborare</option>
+                      <option value="Calm sub Presiune">Calm sub Presiune - Managementul conflictelor și reziliență</option>
+                      <option value="Avantajul Uman">Avantajul Uman - Competențe umane pentru viitor</option>
                       <option value="Program pentru organizații / instituții">Program pentru organizații / instituții</option>
-                      <option value="Alt program viitor">Alt program viitor</option>
                       <option value="Nu știu încă">Nu știu încă</option>
                     </select>
                   </div>
