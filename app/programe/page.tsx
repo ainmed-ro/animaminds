@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Star, Calendar, MapPin, Users, CheckCircle, BookOpen } from "lucide-react";
 import ProgramList from "@/components/ProgramList";
 import ExperienceEditionForm from "@/components/ExperienceEditionForm";
+import ProgrameInPregatire from "@/components/ProgrameInPregatire";
 import { getPublicProgrammes } from "@/app/admin/actions/cms";
 
 export const metadata: Metadata = {
@@ -327,43 +328,7 @@ export default async function ProgramePage() {
             Detaliile vor fi comunicate la lansare
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
-              <div className="text-3xl mb-3">🤖</div>
-              <h3 className="font-semibold text-gray-900 mb-2">AI Fără Haos</h3>
-              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
-              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Notifică-mă la lansare
-              </button>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
-              <div className="text-3xl mb-3">🧭</div>
-              <h3 className="font-semibold text-gray-900 mb-2">Busola Deciziilor</h3>
-              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
-              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Notifică-mă la lansare
-              </button>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
-              <div className="text-3xl mb-3">🧘</div>
-              <h3 className="font-semibold text-gray-900 mb-2">Calm sub Presiune</h3>
-              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
-              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Notifică-mă la lansare
-              </button>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
-              <div className="text-3xl mb-3">🌟</div>
-              <h3 className="font-semibold text-gray-900 mb-2">Avantajul Uman</h3>
-              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
-              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Notifică-mă la lansare
-              </button>
-            </div>
-          </div>
+          <ProgrameInPregatire />
         </div>
       </section>
 

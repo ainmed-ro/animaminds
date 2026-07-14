@@ -23,6 +23,7 @@ const navItems = [
   { href: '/admin/users', label: 'Users' },
   { href: '/admin/globals', label: 'Globals' },
   { href: '/admin/emails', label: 'Email Analytics' },
+  { href: '/admin/waitlist', label: '🔔 Waitlist' },
 ]
 
 export default async function AdminLayout({
