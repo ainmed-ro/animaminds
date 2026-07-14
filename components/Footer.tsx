@@ -37,11 +37,19 @@ export default function Footer() {
               </span>
             </div>
             <p
+              className="text-lg leading-relaxed mb-4 max-w-sm font-medium"
+              style={{ 
+                color: "var(--sage-light)",
+                fontFamily: "Playfair Display, serif"
+              }}
+            >
+              Locul unde oamenii și ideile cresc împreună.
+            </p>
+            <p
               className="text-sm leading-relaxed mb-6 max-w-sm"
               style={{ color: "rgba(255,255,255,0.65)" }}
             >
-              Locul unde oamenii și ideile cresc împreună. O comunitate de
-              învățare și dezvoltare profesională construită pe respect,
+              O comunitate de învățare și dezvoltare profesională construită pe respect,
               autenticitate și colaborare.
             </p>
             <p

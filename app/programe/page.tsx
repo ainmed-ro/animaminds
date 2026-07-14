@@ -203,49 +203,158 @@ export default async function ProgramePage() {
   return (
     <div>
       
-      {/* Conversații care Contează - 3 Formate Disponibile */}
-      <section className="py-12 px-4 bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-500">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
-            Conversații care Contează - 3 Formate
-          </h2>
-          <p className="text-lg text-white/90 mb-6">
-            8 CPD credite - Alege formatul potrivit
-          </p>
+      {/* Alege modul în care participi */}
+      <section className="py-16 px-4 bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-500">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
+              Alege modul în care participi
+            </h2>
+            <p className="text-lg text-white/90">
+              Conversații care Contează - 8 CPD credite
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-              <div className="text-xl mb-2">🌐</div>
-              <h3 className="text-base font-semibold text-white mb-1">Online Live</h3>
-              <p className="text-xs text-white/80 mb-2">8, 15, 22 Septembrie + 1h individual</p>
-              <p className="text-white font-medium text-sm">199 lei / participant</p>
-              <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
-                Înscrie-te
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            
+            {/* Online Live */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-3xl">🌐</div>
+                <h3 className="text-2xl font-bold text-white">Online Live</h3>
+              </div>
+              <p className="text-white/90 mb-6">Pentru participanți individuali.</p>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white font-medium">199 lei / participant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white/90">7,5 ore</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white/90">8 credite CPD</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white/90">3 întâlniri online live</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white/90">resurse în Google Classroom</span>
+                </div>
+              </div>
+              
+              <Link href="/inscriere" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
+                ✅ Înscrie-mă
               </Link>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-              <div className="text-xl mb-2">🏔️</div>
-              <h3 className="text-base font-semibold text-white mb-1">Experience Edition</h3>
-              <p className="text-xs text-white/80 mb-2">Rezidențial la munte</p>
-              <p className="text-white font-medium text-sm">1.200-1.400 lei / participant</p>
-              <Link href="/inscriere" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
-                Rezervă loc
+            {/* Experience Edition™ */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-3xl">🏔️</div>
+                <h3 className="text-2xl font-bold text-white">Experience Edition™</h3>
+              </div>
+              <p className="text-white/90 mb-6">Pentru cei care preferă învățarea într-un cadru dedicat.</p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="bg-white/5 rounded-lg p-4">
+                  <h4 className="font-bold text-white mb-2">Ediția 1</h4>
+                  <p className="text-white/80 text-sm mb-2">25–27 septembrie 2026</p>
+                  <p className="text-white font-medium">1.200 lei cameră dublă</p>
+                  <p className="text-white/90 text-sm">1.400 lei cameră single</p>
+                </div>
+                
+                <div className="bg-white/5 rounded-lg p-4">
+                  <h4 className="font-bold text-white mb-2">Ediția 2</h4>
+                  <p className="text-white/80 text-sm mb-2">23–25 octombrie 2026</p>
+                  <p className="text-white font-medium">1.490 lei cameră dublă</p>
+                  <p className="text-white/90 text-sm">1.690 lei cameră single</p>
+                </div>
+                
+                <div className="bg-white/5 rounded-lg p-4">
+                  <h4 className="font-bold text-white mb-2">Ediția 3</h4>
+                  <p className="text-white/80 text-sm mb-2">30 octombrie – 1 noiembrie 2026</p>
+                  <p className="text-white font-medium">1.490 lei cameră dublă</p>
+                  <p className="text-white/90 text-sm">1.690 lei cameră single</p>
+                </div>
+              </div>
+              
+              <Link href="/inscriere" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
+                ✅ Rezervă un loc
               </Link>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-              <div className="text-xl mb-2">🏢</div>
-              <h3 className="text-base font-semibold text-white mb-1">Pentru organizații</h3>
-              <p className="text-xs text-white/80 mb-2">Online dedicat sau la sediu</p>
-              <p className="text-white font-medium text-sm mb-1">3.500 lei / grup (15-30 persoane)</p>
-              <p className="text-white/80 text-xs mb-2">5.000 lei / grup (customizat complet)</p>
-              <Link href="/colaboreaza#solicita-oferta" className="inline-block mt-2 px-3 py-1 bg-white text-slate-800 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
-                Solicită ofertă
+            {/* Pentru organizații */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-3xl">🏢</div>
+                <h3 className="text-2xl font-bold text-white">Pentru organizații</h3>
+              </div>
+              <p className="text-white/90 mb-2">Programe dedicate școlilor, instituțiilor, ONG-urilor, spitalelor și companiilor.</p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="bg-white/5 rounded-lg p-4">
+                  <h4 className="font-bold text-white mb-2">Online dedicat organizației</h4>
+                  <p className="text-white font-medium">3.500 lei / grup</p>
+                  <p className="text-white/90 text-sm">7,5 ore</p>
+                  <p className="text-white/90 text-sm">8 CPD</p>
+                </div>
+                
+                <div className="bg-white/5 rounded-lg p-4">
+                  <h4 className="font-bold text-white mb-2">La sediul beneficiarului</h4>
+                  <p className="text-white font-medium">5.000 lei / grup</p>
+                  <p className="text-white/90 text-sm">7,5 ore</p>
+                  <p className="text-white/90 text-sm">8 CPD</p>
+                </div>
+              </div>
+              
+              <Link href="/colaboreaza#solicita-oferta" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
+                ✅ Solicită ofertă
               </Link>
             </div>
             
-                      </div>
+            {/* Grupuri private */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-3xl">👥</div>
+                <h3 className="text-2xl font-bold text-white">Grupuri private</h3>
+              </div>
+              <p className="text-white/90 mb-6">Pentru grupuri care doresc un program personalizat.</p>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white font-medium">preț personalizat</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white/90">7,5 ore</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
+                  <span className="text-white/90">8 CPD</span>
+                </div>
+              </div>
+              
+              <Link href="/colaboreaza#solicita-oferta" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
+                ✅ Solicită ofertă
+              </Link>
+            </div>
+            
+          </div>
+          
+          {/* Experience Edition™ Explanation */}
+          <div className="mt-12 bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+            <h3 className="text-xl font-bold text-white mb-4">Care este diferența dintre ediții?</h3>
+            <p className="text-white/90 leading-relaxed">
+              Edițiile diferă doar prin perioada de desfășurare și disponibilitatea locurilor. Conținutul, durata programului și creditele CPD sunt identice pentru toate edițiile Experience Edition™.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -256,48 +365,44 @@ export default async function ProgramePage() {
             Programe în pregătire
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            Aceste programe sunt în dezvoltare și vor fi lansate curând
+            Detaliile vor fi comunicate la lansare
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
-              <div className="text-2xl mb-2">🤖</div>
-              <h3 className="font-semibold text-gray-900 mb-1">AI Fără Haos</h3>
-              <p className="text-sm text-gray-600">Inteligență artificială aplicată eficient</p>
-              <p className="text-xs text-gray-500 mt-2">În curând</p>
-              <Link href="/programe/ai-fara-haos" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Află mai multe
-              </Link>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <div className="text-3xl mb-3">🤖</div>
+              <h3 className="font-semibold text-gray-900 mb-2">AI Fără Haos</h3>
+              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
+              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Notifică-mă la lansare
+              </button>
             </div>
             
-            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
-              <div className="text-2xl mb-2">🧭</div>
-              <h3 className="font-semibold text-gray-900 mb-1">Busola Deciziilor</h3>
-              <p className="text-sm text-gray-600">Claritate în procesul decizional</p>
-              <p className="text-xs text-gray-500 mt-2">În curând</p>
-              <Link href="/programe/busola-deciziilor" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Află mai multe
-              </Link>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <div className="text-3xl mb-3">🧭</div>
+              <h3 className="font-semibold text-gray-900 mb-2">Busola Deciziilor</h3>
+              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
+              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Notifică-mă la lansare
+              </button>
             </div>
             
-            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
-              <div className="text-2xl mb-2">🧘</div>
-              <h3 className="font-semibold text-gray-900 mb-1">Calm sub Presiune</h3>
-              <p className="text-sm text-gray-600">Reziliență emoțională și mentală</p>
-              <p className="text-xs text-gray-500 mt-2">În curând</p>
-              <Link href="/programe/calm-sub-pressiune" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Află mai multe
-              </Link>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <div className="text-3xl mb-3">🧘</div>
+              <h3 className="font-semibold text-gray-900 mb-2">Calm sub Presiune</h3>
+              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
+              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Notifică-mă la lansare
+              </button>
             </div>
             
-            <div className="bg-white p-4 rounded-lg border border-gray-200 text-center">
-              <div className="text-2xl mb-2">🌟</div>
-              <h3 className="font-semibold text-gray-900 mb-1">Avantajul Uman</h3>
-              <p className="text-sm text-gray-600">Competențe esențiale în era AI</p>
-              <p className="text-xs text-gray-500 mt-2">În curând</p>
-              <Link href="/programe/avantajul-uman" className="inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-                Află mai multe
-              </Link>
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <div className="text-3xl mb-3">🌟</div>
+              <h3 className="font-semibold text-gray-900 mb-2">Avantajul Uman</h3>
+              <p className="text-sm text-gray-500 mb-4">În pregătire</p>
+              <button className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+                Notifică-mă la lansare
+              </button>
             </div>
           </div>
         </div>
@@ -402,7 +507,7 @@ export default async function ProgramePage() {
       </section>
 
       {/* Programs */}
-      <section className="py-12 bg-white">
+      <section id="conversatii-care-conteaza" className="py-12 bg-white scroll-mt-20">
         <ProgramList programs={programData} />
       </section>
 

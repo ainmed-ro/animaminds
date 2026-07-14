@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, CheckCircle, AlertCircle } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 // Experience Edition Form Component
 export default function ExperienceEditionForm() {
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,10 +14,20 @@ export default function ExperienceEditionForm() {
     company: "",
     programme: "conversatii-care-conteaza",
     accommodation: "",
-    preferredPeriod: "octombrie-2026",
+    preferredPeriod: searchParams?.get('edition') || "octombrie-2026",
     message: "",
     terms: false,
   });
+
+  useEffect(() => {
+    const edition = searchParams?.get('edition');
+    if (edition) {
+      setFormData(prev => ({
+        ...prev,
+        preferredPeriod: edition
+      }));
+    }
+  }, [searchParams]);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");

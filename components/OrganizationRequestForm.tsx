@@ -16,8 +16,8 @@ const organizationTypes = [
 
 const deliveryFormats = [
   "Online Live",
-  "Online Dedicated pentru organizație",
-  "La sediul organizației",
+  "Online dedicat organizației — 3.500 lei / grup",
+  "La sediul beneficiarului — 5.000 lei / grup",
   "Experience Edition (rezidențial)",
   "Nespecificat / Vreau să discut"
 ];

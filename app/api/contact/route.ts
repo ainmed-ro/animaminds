@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertContactMessage, getAllContactMessages } from "@/lib/contact-db";
-import { sendAdminNewContactEmail } from "@/lib/notifications";
+import { sendAdminNewContactEmail, sendUserContactConfirmationEmail } from "@/lib/notifications";
 import { syncContactToGoogleSheets } from "@/lib/google-sheets";
 
 export async function POST(req: NextRequest) {
@@ -44,6 +44,22 @@ export async function POST(req: NextRequest) {
       });
     } catch (emailErr) {
       console.error("Admin contact email error:", emailErr);
+    }
+
+    // Send user confirmation email
+    try {
+      await sendUserContactConfirmationEmail({
+        name,
+        email,
+        phone: phone || "",
+        organization: organization || "",
+        programInteres: programInteres || "",
+        subject,
+        message,
+        createdAt,
+      });
+    } catch (emailErr) {
+      console.error("User contact confirmation email error:", emailErr);
     }
 
     // Trimitere date către Google Sheets

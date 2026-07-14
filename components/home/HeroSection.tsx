@@ -9,7 +9,7 @@ export default function HeroSection() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section className="relative min-h-[55vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -40,24 +40,9 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 w-full">
         <div className="max-w-3xl">
-          {/* Logo */}
-          <div
-            className={`mb-8 transition-all duration-700 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <Image
-              src="/logo-horizontal.png"
-              alt="AnimaMinds"
-              width={400}
-              height={80}
-              className="h-16 w-auto"
-              priority
-            />
-          </div>
-
+          
           {/* CPD Badge */}
           <div
             className={`flex items-center gap-2 mb-6 transition-all duration-700 ${
@@ -83,22 +68,36 @@ export default function HeroSection() {
               color: "var(--charcoal)",
             }}
           >
-            Locul unde oamenii și ideile cresc împreună.
+            Dezvoltare profesională care produce rezultate în practică.
           </h1>
 
           {/* Subtitle */}
           <p
-            className={`text-lg sm:text-xl leading-relaxed mb-8 max-w-3xl transition-all duration-700 delay-200 ${
+            className={`text-lg sm:text-xl leading-relaxed mb-4 max-w-3xl transition-all duration-700 delay-200 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{ color: "var(--charcoal-soft)", fontFamily: "Inter, sans-serif" }}
           >
-            AnimaMinds este o comunitate de învățare și dezvoltare profesională, în care profesioniștii, educatorii, liderii și organizațiile se întâlnesc pentru a învăța, a reflecta și a transforma ideile în rezultate reale.
+            Programe CPD pentru profesioniști, organizații și comunități, disponibile în format Online Live, Experience Edition™ și pentru organizații.
+          </p>
+
+          {/* Brand Tagline */}
+          <p
+            className={`text-lg sm:text-xl leading-relaxed mb-8 max-w-3xl transition-all duration-700 delay-300 ${
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+            style={{ 
+              color: "var(--sage)", 
+              fontFamily: "Playfair Display, serif",
+              fontStyle: "italic"
+            }}
+          >
+            Locul unde oamenii și ideile cresc împreună.
           </p>
 
           {/* CTAs */}
           <div
-            className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${
+            className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-400 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -116,7 +115,7 @@ export default function HeroSection() {
               href="/colaboreaza"
               className="btn-secondary"
             >
-              Solicită ofertă
+              Pentru organizații
             </Link>
           </div>
 

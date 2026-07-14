@@ -28,7 +28,7 @@ export default function LaunchBanner() {
           >
             <Star className="w-5 h-5 text-yellow-300 animate-pulse" />
             <span className="text-yellow-300 font-bold text-xl tracking-wide uppercase">
-              ✨ Conversații care Contează - 3 formate disponibile
+              ✨ Lansare program - 3 formate disponibile
             </span>
             <Star className="w-5 h-5 text-yellow-300 animate-pulse" />
           </div>
@@ -43,7 +43,7 @@ export default function LaunchBanner() {
             Conversații care Contează
           </h1>
 
-          {/* Date and Location */}
+          {/* Formats Available */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8 text-white">
             <div
               className={`flex items-center gap-2 transition-all duration-700 delay-200 ${
@@ -51,7 +51,7 @@ export default function LaunchBanner() {
               }`}
             >
               <Calendar className="w-5 h-5 text-yellow-200" />
-              <span className="font-medium text-lg">Online, Rezidențial, Organizații</span>
+              <span className="font-medium text-lg">Online Live • Experience Edition™ • Pentru organizații</span>
             </div>
             <div
               className={`flex items-center gap-2 transition-all duration-700 delay-300 ${
@@ -59,36 +59,45 @@ export default function LaunchBanner() {
               }`}
             >
               <MapPin className="w-5 h-5 text-yellow-200" />
-              <span className="font-medium text-lg">Vălenii de Munte, Online</span>
+              <span className="font-medium text-lg">Online • Vălenii de Munte • La sediul beneficiarului</span>
             </div>
           </div>
 
-          {/* Price and Group Info */}
+          {/* Format Options */}
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-10">
             <div
               className={`bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transition-all duration-700 delay-400 ${
                 mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
-              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Tarif special de lansare - Experience Edition</div>
-              <div className="text-5xl font-bold text-white mb-3">1.200 lei</div>
-              <div className="text-white/90 text-sm mb-2">per participant – cameră dublă</div>
-              <div className="text-white/80 text-sm">1.400 lei / participant – cameră single</div>
+              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Online Live</div>
+              <div className="text-5xl font-bold text-white mb-3">199 lei</div>
+              <div className="text-white/90 text-sm mb-2">per participant</div>
+              <div className="text-white/80 text-sm">3 sesiuni interactive</div>
             </div>
 
             <div
-              className={`bg-emerald-800/50 backdrop-blur-sm text-white rounded-2xl p-8 border border-emerald-600/30 transition-all duration-700 delay-500 ${
+              className={`bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transition-all duration-700 delay-500 ${
                 mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <Users className="w-5 h-5 text-yellow-200" />
-                <span className="font-bold text-yellow-200">Participanți</span>
-              </div>
-              <div className="text-2xl font-bold mb-2">20–30 participanți</div>
-              <div className="text-sm text-white/90">Grupa se formează la minimum 20 participanți</div>
-              <div className="text-sm text-white/80 mt-1">Număr maxim: 30 participanți</div>
-              <div className="text-sm text-yellow-200 mt-3 font-medium">Plata se realizează doar după confirmarea formării grupei minime</div>
+              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Experience Edition™</div>
+              <div className="text-5xl font-bold text-white mb-3">1.200 lei</div>
+              <div className="text-white/90 text-sm mb-2">per participant</div>
+              <div className="text-white/80 text-sm mb-2">Program intensiv de dezvoltare profesională</div>
+              <div className="text-white/80 text-sm">în cadru rezidențial, grup restrâns</div>
+            </div>
+
+            <div
+              className={`bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transition-all duration-700 delay-600 ${
+                mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+            >
+              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Pentru organizații</div>
+              <div className="text-5xl font-bold text-white mb-3">3.500 lei</div>
+              <div className="text-white/90 text-sm mb-2">per grup</div>
+              <div className="text-white/80 text-sm mb-2">Programe dedicate școlilor, instituțiilor</div>
+              <div className="text-white/80 text-sm">ONG-urilor, spitalelor și companiilor</div>
             </div>
           </div>
 
@@ -99,10 +108,10 @@ export default function LaunchBanner() {
             }`}
           >
             <Link
-              href="/inscriere"
+              href="/programe"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-400 text-emerald-800 rounded-xl font-bold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-xl border-2 border-yellow-500"
             >
-              Rezervă un loc
+              Alege formatul
               <ArrowRight className="w-5 h-5" />
             </Link>
             

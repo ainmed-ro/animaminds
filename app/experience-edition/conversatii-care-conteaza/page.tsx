@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
-import ExperienceEditionForm from "@/components/ExperienceEditionForm";
+import ExperienceEditionFormWrapper from "@/components/ExperienceEditionFormWrapper";
 
 export const metadata: Metadata = {
   title: "Conversații care Contează - Experience Edition | AnimaMinds",
@@ -542,7 +542,7 @@ export default function ConversatiiCareConteazaExperiencePage() {
                 <strong>Important:</strong> Plata se realizează doar după confirmarea formării grupei minime de 20 participanți.
               </p>
             </div>
-            <ExperienceEditionForm />
+            <ExperienceEditionFormWrapper />
           </div>
         </div>
       </section>

@@ -61,11 +61,11 @@ export default function CtaBanner() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/inscriere"
+            href="/programe"
             className="btn-primary group"
             style={{ backgroundColor: "var(--sage)" }}
           >
-            Înscrie-te acum
+            Vezi programele
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
           <Link

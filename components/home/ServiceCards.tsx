@@ -37,7 +37,7 @@ export default function ServiceCards() {
       title: "Online Live",
       description: "Programe de formare profesională online, interactive și aplicate.",
       cta: "Înscrie-te acum",
-      href: "/inscriere",
+      href: "/programe/online-live/conversatii-care-conteaza",
       color: "from-blue-500 to-cyan-600"
     },
     {
@@ -188,7 +188,7 @@ export default function ServiceCards() {
               }`}
             >
               {/* Gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
               
               <div className="relative p-8 h-full flex flex-col">
                 {/* Icon */}

@@ -137,7 +137,7 @@ export async function sendAdminNewRegistrationEmail(data: {
     to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Înscriere nouă — ${data.contactName} — ${data.programmeName}`,
     html,
-    type: 'ADMIN_REGISTRATION',
+    type: 'ADMIN_REGISTRATION' as any,
     recipientName: data.contactName,
     relatedType: 'REGISTRATION',
     relatedId: data.registrationId,
@@ -196,7 +196,7 @@ export async function sendAdminNewContactEmail(data: {
     to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Mesaj contact nou — ${data.name} — ${data.subject}`,
     html,
-    type: 'ADMIN_CONTACT',
+    type: 'ADMIN_CONTACT' as any,
     recipientName: data.name,
     relatedType: 'CONTACT',
     metadata: {
@@ -250,7 +250,7 @@ export async function sendDailySummaryEmail(data: {
     to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Rezumat zilnic — ${new Date().toLocaleDateString('ro-RO')}`,
     html,
-    type: 'DAILY_SUMMARY',
+    type: 'DAILY_SUMMARY' as any,
     metadata: {
       newRegistrations: data.newRegistrations,
       newContacts: data.newContacts,
@@ -302,7 +302,7 @@ export async function sendWeeklySummaryEmail(data: {
     to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Rezumat săptămânal — Săptămâna ${new Date().toLocaleDateString('ro-RO')}`,
     html,
-    type: 'WEEKLY_SUMMARY',
+    type: 'WEEKLY_SUMMARY' as any,
     metadata: {
       totalRegistrations: data.totalRegistrations,
       totalContacts: data.totalContacts,
@@ -367,7 +367,7 @@ export async function sendAdminOrganizationRequestEmail(data: {
     to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Cerere organizație — ${data.organizationName} — ${data.contactName}`,
     html,
-    type: 'ADMIN_ORGANIZATION_REQUEST',
+    type: 'ADMIN_ORGANIZATION_REQUEST' as any,
     recipientName: data.contactName,
     relatedType: 'ORGANIZATION_REQUEST',
     metadata: {
@@ -436,6 +436,481 @@ export async function sendAdminExperienceEditionEmail(data: {
       phone: data.phone,
       company: data.company,
       accommodation: data.accommodation,
+    },
+  })
+}
+
+export async function sendAdminOnlineLiveEmail(data: {
+  name: string
+  email: string
+  phone: string
+  institution?: string
+  role?: string
+  programme: string
+  format: string
+  price: number
+  duration: number
+  cpd: number
+  dates: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#2563eb;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:14px;font-weight:bold;">💻 Înscriere Online Live</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Nume:</strong> ${data.name}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Email:</strong> ${data.email}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Telefon:</strong> ${data.phone}</p>
+          ${data.institution ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Instituție:</strong> ${data.institution}</p>` : ''}
+          ${data.role ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Funcție:</strong> ${data.role}</p>` : ''}
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Program:</strong> ${data.programme}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Format:</strong> ${data.format}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Preț:</strong> ${data.price} lei</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Durată:</strong> ${data.duration} ore</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>CPD:</strong> ${data.cpd}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Date:</strong> ${data.dates}</p>
+          <p style="margin:16px 0 8px;font-size:12px;color:#888;">Data: ${data.createdAt.toLocaleString('ro-RO')}</p>
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}/admin" style="display:inline-block;padding:10px 20px;background:#2563eb;color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:bold;">Deschide admin</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: ADMIN_EMAIL,
+    subject: `[AnimaMinds] Online Live — ${data.name} — ${data.programme}`,
+    html,
+    type: 'ADMIN_ONLINE_LIVE' as any,
+    recipientName: data.name,
+    relatedType: 'ONLINE_LIVE',
+    metadata: {
+      programme: data.programme,
+      email: data.email,
+      phone: data.phone,
+      institution: data.institution,
+      role: data.role,
+    },
+  })
+}
+
+export async function sendUserOnlineLiveConfirmationEmail(data: {
+  name: string
+  email: string
+  phone: string
+  institution?: string
+  role?: string
+  programme: string
+  format: string
+  price: number
+  duration: number
+  cpd: number
+  dates: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#2563eb;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:18px;font-weight:bold;">✅ Înscriere Confirmată</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:16px;color:#333;">Salut, ${data.name}!</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Înscrierea ta la programul <strong>${data.programme} - ${data.format}</strong> a fost înregistrată cu succes.</p>
+          
+          <div style="background:#f8fafc;border-left:4px solid #2563eb;padding:16px;margin:0 0 24px;">
+            <h4 style="margin:0 0 12px;font-size:16px;color:#333;">📅 Detalii program:</h4>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Date:</strong> ${data.dates}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Program:</strong> 17:30–19:30 (8 și 22 Sept), 17:30–20:00 (15 Sept)</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Format:</strong> Online Live (Google Meet)</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Durată:</strong> ${data.duration} ore</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Certificare:</strong> ${data.cpd} CPD</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Investiție:</strong> ${data.price} lei</p>
+          </div>
+
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Pașii următori:</strong></p>
+          <ol style="margin:0 0 24px;padding-left:20px;font-size:14px;color:#333;">
+            <li style="margin-bottom:8px;">Vei primi în curând pe email detaliile de plată</li>
+            <li style="margin-bottom:8px;">După confirmarea plății, vei primi linkul de acces la Google Meet</li>
+            <li style="margin-bottom:8px;">Vei avea acces la materialele cursului în Google Classroom</li>
+            <li>La final vei primi certificatul de participare și fișa competențelor CPD</li>
+          </ol>
+
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Pentru orice întrebări, ne poți contacta la <a href="mailto:contact@animaminds.ro" style="color:#2563eb;">contact@animaminds.ro</a> sau telefon: 07xx xxx xxx.</p>
+
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}" style="display:inline-block;padding:12px 24px;background:#2563eb;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:bold;">Vizitează site-ul</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: data.email,
+    subject: `Înscriere Confirmată - ${data.programme} - Online Live`,
+    html,
+    type: 'USER_ONLINE_LIVE_CONFIRMATION' as any,
+    recipientName: data.name,
+    relatedType: 'ONLINE_LIVE',
+    metadata: {
+      programme: data.programme,
+      phone: data.phone,
+      institution: data.institution,
+      role: data.role,
+    },
+  })
+}
+
+export async function sendAdminPrivateGroupEmail(data: {
+  requesterName: string
+  email: string
+  phone: string
+  programmeRequested: string
+  estimatedGroupSize: number
+  message?: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#9333ea;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:14px;font-weight:bold;">👥 Cerere Grup Privat</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Nume solicitant:</strong> ${data.requesterName}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Email:</strong> ${data.email}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Telefon:</strong> ${data.phone}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Program solicitat:</strong> ${data.programmeRequested}</p>
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Dimensiune grup:</strong> ${data.estimatedGroupSize} persoane</p>
+          ${data.message ? `<p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Mesaj:</strong> ${data.message}</p>` : ''}
+          <p style="margin:16px 0 8px;font-size:12px;color:#888;">Data: ${data.createdAt.toLocaleString('ro-RO')}</p>
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}/admin" style="display:inline-block;padding:10px 20px;background:#9333ea;color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:bold;">Deschide admin</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: ADMIN_EMAIL,
+    subject: `[AnimaMinds] Grup Privat — ${data.requesterName} — ${data.programmeRequested}`,
+    html,
+    type: 'ADMIN_PRIVATE_GROUP' as any,
+    recipientName: data.requesterName,
+    relatedType: 'PRIVATE_GROUP',
+    metadata: {
+      programme: data.programmeRequested,
+      email: data.email,
+      phone: data.phone,
+      groupSize: data.estimatedGroupSize,
+    },
+  })
+}
+
+export async function sendUserPrivateGroupConfirmationEmail(data: {
+  requesterName: string
+  email: string
+  phone: string
+  programmeRequested: string
+  estimatedGroupSize: number
+  message?: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#9333ea;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:18px;font-weight:bold;">✅ Cerere Trimisă</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:16px;color:#333;">Salut, ${data.requesterName}!</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Cererea ta pentru organizarea unui grup privat pentru programul <strong>${data.programmeRequested}</strong> a fost înregistrată cu succes.</p>
+          
+          <div style="background:#f8fafc;border-left:4px solid #9333ea;padding:16px;margin:0 0 24px;">
+            <h4 style="margin:0 0 12px;font-size:16px;color:#333;">📋 Detalii cerere:</h4>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Program solicitat:</strong> ${data.programmeRequested}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Dimensiune grup:</strong> ${data.estimatedGroupSize} persoane</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Email:</strong> ${data.email}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Telefon:</strong> ${data.phone}</p>
+          </div>
+
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Pașii următori:</strong></p>
+          <ol style="margin:0 0 24px;padding-left:20px;font-size:14px;color:#333;">
+            <li style="margin-bottom:8px;">Analizăm cererea ta și nevoile grupului</li>
+            <li style="margin-bottom:8px;">Vei primi în curând o ofertă personalizată</li>
+            <li style="margin-bottom:8px;">Discutăm detaliile de organizare și calendar</li>
+            <li>Confirmăm data și pregătim materialele pentru grup</li>
+          </ol>
+
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Pentru orice întrebări, ne poți contacta la <a href="mailto:contact@animaminds.ro" style="color:#9333ea;">contact@animaminds.ro</a> sau telefon: 07xx xxx xxx.</p>
+
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}" style="display:inline-block;padding:12px 24px;background:#9333ea;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:bold;">Vizitează site-ul</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: data.email,
+    subject: `Cerere Grup Privat Confirmată - ${data.programmeRequested}`,
+    html,
+    type: 'USER_PRIVATE_GROUP_CONFIRMATION' as any,
+    recipientName: data.requesterName,
+    relatedType: 'PRIVATE_GROUP',
+    metadata: {
+      programme: data.programmeRequested,
+      phone: data.phone,
+      groupSize: data.estimatedGroupSize,
+    },
+  })
+}
+
+export async function sendUserExperienceEditionConfirmationEmail(data: {
+  name: string
+  email: string
+  phone: string
+  company?: string
+  programme: string
+  accommodation?: string
+  preferredPeriod?: string
+  message?: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#DC2626;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:18px;font-weight:bold;">✅ Exprimare de Interes Confirmată</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:16px;color:#333;">Salut, ${data.name}!</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Exprimarea ta de interes pentru programul <strong>${data.programme} - Experience Edition™</strong> a fost înregistrată cu succes.</p>
+          
+          <div style="background:#f8fafc;border-left:4px solid #DC2626;padding:16px;margin:0 0 24px;">
+            <h4 style="margin:0 0 12px;font-size:16px;color:#333;">🏔️ Detalii Experience Edition™:</h4>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Program:</strong> ${data.programme}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Locație:</strong> Hotel Afrodita, Vălenii de Munte</p>
+            ${data.preferredPeriod ? `<p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Perioada preferată:</strong> ${data.preferredPeriod}</p>` : ''}
+            ${data.accommodation ? `<p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Cazare preferată:</strong> ${data.accommodation}</p>` : ''}
+            ${data.company ? `<p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Companie:</strong> ${data.company}</p>` : ''}
+          </div>
+
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Pașii următori:</strong></p>
+          <ol style="margin:0 0 24px;padding-left:20px;font-size:14px;color:#333;">
+            <li style="margin-bottom:8px;">Vei primi în curând detaliile despre edițiile disponibile</li>
+            <li style="margin-bottom:8px;">Vei primi opțiunile de cazare și prețuri</li>
+            <li style="margin-bottom:8px;">Poți confirma participarea și rezerva locul</li>
+            <li>La final vei primi certificatul de participare și fișa competențelor CPD</li>
+          </ol>
+
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Pentru orice întrebări, ne poți contacta la <a href="mailto:contact@animaminds.ro" style="color:#DC2626;">contact@animaminds.ro</a> sau telefon: 07xx xxx xxx.</p>
+
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}" style="display:inline-block;padding:12px 24px;background:#DC2626;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:bold;">Vizitează site-ul</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: data.email,
+    subject: `Exprimare de Interes Confirmată - ${data.programme} - Experience Edition™`,
+    html,
+    type: 'USER_EXPERIENCE_EDITION_CONFIRMATION' as any,
+    recipientName: data.name,
+    relatedType: 'EXPERIENCE_EDITION',
+    metadata: {
+      programme: data.programme,
+      phone: data.phone,
+      company: data.company,
+      accommodation: data.accommodation,
+    },
+  })
+}
+
+export async function sendUserContactConfirmationEmail(data: {
+  name: string
+  email: string
+  phone?: string
+  organization?: string
+  programInteres?: string
+  subject: string
+  message: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#059669;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:18px;font-weight:bold;">✅ Mesaj Trimis</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:16px;color:#333;">Salut, ${data.name}!</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Mesajul tău a fost trimis cu succes. Vei primi un răspuns în cel mai scurt timp posibil.</p>
+          
+          <div style="background:#f8fafc;border-left:4px solid #059669;padding:16px;margin:0 0 24px;">
+            <h4 style="margin:0 0 12px;font-size:16px;color:#333;">📋 Detalii mesaj:</h4>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Subiect:</strong> ${data.subject}</p>
+            ${data.organization ? `<p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Organizație:</strong> ${data.organization}</p>` : ''}
+            ${data.programInteres ? `<p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Program de interes:</strong> ${data.programInteres}</p>` : ''}
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Email:</strong> ${data.email}</p>
+            ${data.phone ? `<p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Telefon:</strong> ${data.phone}</p>` : ''}
+          </div>
+
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Ce se întâmplă acum?</strong></p>
+          <ol style="margin:0 0 24px;padding-left:20px;font-size:14px;color:#333;">
+            <li style="margin-bottom:8px;">Mesajul tău a fost primit de echipa AnimaMinds</li>
+            <li style="margin-bottom:8px;">Vom analiza solicitarea ta</li>
+            <li style="margin-bottom:8px;">Vei primi un răspuns personalizat în cel mult 24-48 ore</li>
+            <li>Pentru urgențe, ne poți contacta telefonic</li>
+          </ol>
+
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Pentru suport imediat, ne poți contacta la <a href="mailto:contact@animaminds.ro" style="color:#059669;">contact@animaminds.ro</a> sau telefon: 07xx xxx xxx.</p>
+
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}" style="display:inline-block;padding:12px 24px;background:#059669;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:bold;">Vizitează site-ul</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: data.email,
+    subject: `Mesaj Confirmat - ${data.subject}`,
+    html,
+    type: 'USER_CONTACT_CONFIRMATION' as any,
+    recipientName: data.name,
+    relatedType: 'CONTACT',
+    metadata: {
+      subject: data.subject,
+      phone: data.phone,
+      organization: data.organization,
+      programInteres: data.programInteres,
+    },
+  })
+}
+
+export async function sendUserOrganizationConfirmationEmail(data: {
+  organizationName: string
+  contactPerson: string
+  organizationEmail: string
+  organizationPhone: string
+  programmeInterest: string
+  organizationFormat: string
+  participantCountEstimate: string
+  message?: string
+  createdAt: Date
+}) {
+  const html = `
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:32px 0;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;">
+        <tr><td style="background:#059669;padding:20px 32px;">
+          <p style="margin:0;color:#fff;font-size:18px;font-weight:bold;">✅ Cerere Trimisă</p>
+        </td></tr>
+        <tr><td style="padding:32px;">
+          <p style="margin:0 0 16px;font-size:16px;color:#333;">Salut, ${data.contactPerson}!</p>
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Cererea ta pentru programul <strong>${data.programmeInterest}</strong> pentru organizația <strong>${data.organizationName}</strong> a fost înregistrată cu succes.</p>
+          
+          <div style="background:#f8fafc;border-left:4px solid #059669;padding:16px;margin:0 0 24px;">
+            <h4 style="margin:0 0 12px;font-size:16px;color:#333;">📋 Detalii cerere:</h4>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Organizație:</strong> ${data.organizationName}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Program solicitat:</strong> ${data.programmeInterest}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Format:</strong> ${data.organizationFormat}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Număr participanți:</strong> ${data.participantCountEstimate}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Email:</strong> ${data.organizationEmail}</p>
+            <p style="margin:0 0 8px;font-size:14px;color:#333;"><strong>Telefon:</strong> ${data.organizationPhone}</p>
+          </div>
+
+          <p style="margin:0 0 16px;font-size:15px;color:#333;"><strong>Pașii următori:</strong></p>
+          <ol style="margin:0 0 24px;padding-left:20px;font-size:14px;color:#333;">
+            <li style="margin-bottom:8px;">Analizăm cererea ta și nevoile organizației</li>
+            <li style="margin-bottom:8px;">Vei primi în curând o ofertă personalizată (3500 lei online, 5000 lei la sediu)</li>
+            <li style="margin-bottom:8px;">Discutăm detaliile de organizare și calendar</li>
+            <li>Confirmăm data și pregătim programa pentru echipa ta</li>
+          </ol>
+
+          <p style="margin:0 0 24px;font-size:15px;color:#333;">Pentru orice întrebări, ne poți contacta la <a href="mailto:contact@animaminds.ro" style="color:#059669;">contact@animaminds.ro</a> sau telefon: 07xx xxx xxx.</p>
+
+          <div style="margin-top:24px;">
+            <a href="${SITE_URL}" style="display:inline-block;padding:12px 24px;background:#059669;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:bold;">Vizitează site-ul</a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`
+
+  return sendAndLogEmail({
+    to: data.organizationEmail,
+    subject: `Cerere Organizație Confirmată - ${data.programmeInterest}`,
+    html,
+    type: 'USER_ORGANIZATION_CONFIRMATION' as any,
+    recipientName: data.contactPerson,
+    relatedType: 'ORGANIZATION_REQUEST',
+    metadata: {
+      organizationName: data.organizationName,
+      programme: data.programmeInterest,
+      phone: data.organizationPhone,
+      format: data.organizationFormat,
+      participantCount: data.participantCountEstimate,
     },
   })
 }

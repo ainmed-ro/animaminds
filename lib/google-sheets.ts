@@ -173,3 +173,93 @@ export async function syncExperienceEditionToGoogleSheets(data: {
     console.error('Google Sheets Experience Edition sync error:', err)
   }
 }
+
+export async function syncOnlineLiveToGoogleSheets(data: {
+  formType: 'ONLINE_LIVE_REGISTRATION'
+  programme: string
+  format: string
+  price: number
+  duration: number
+  cpd: number
+  dates: string
+  name: string
+  email: string
+  phone: string
+  institution?: string
+  role?: string
+  gdprConsent: boolean
+  calendarConfirmation: boolean
+  createdAt: Date
+}) {
+  if (!GOOGLE_SHEETS_URL) {
+    console.warn('GOOGLE_SHEETS_URL not configured, skipping Sheets sync')
+    return
+  }
+
+  try {
+    await fetch(GOOGLE_SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: data.formType,
+        program: data.programme,
+        format: data.format,
+        pret: data.price,
+        durata: data.duration,
+        cpd: data.cpd,
+        date: data.dates,
+        nume: data.name,
+        email: data.email,
+        telefon: data.phone,
+        institutie: data.institution || '',
+        functie: data.role || '',
+        gdprConsent: data.gdprConsent,
+        calendarConfirmation: data.calendarConfirmation,
+        data: data.createdAt.toISOString(),
+      }),
+      mode: 'no-cors',
+    })
+    console.log('Online Live registration synced to Google Sheets:', data.email)
+  } catch (err) {
+    console.error('Google Sheets Online Live sync error:', err)
+  }
+}
+
+export async function syncPrivateGroupToGoogleSheets(data: {
+  formType: 'PRIVATE_GROUP_REQUEST'
+  requesterName: string
+  email: string
+  phone: string
+  programmeRequested: string
+  estimatedGroupSize: number
+  message?: string
+  requestType: string
+  createdAt: Date
+}) {
+  if (!GOOGLE_SHEETS_URL) {
+    console.warn('GOOGLE_SHEETS_URL not configured, skipping Sheets sync')
+    return
+  }
+
+  try {
+    await fetch(GOOGLE_SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: data.formType,
+        numeSolicitant: data.requesterName,
+        email: data.email,
+        telefon: data.phone,
+        programSolicitat: data.programmeRequested,
+        dimensiuneGrup: data.estimatedGroupSize,
+        mesaj: data.message || '',
+        tipCerere: data.requestType,
+        data: data.createdAt.toISOString(),
+      }),
+      mode: 'no-cors',
+    })
+    console.log('Private Group request synced to Google Sheets:', data.email)
+  } catch (err) {
+    console.error('Google Sheets Private Group sync error:', err)
+  }
+}

@@ -33,12 +33,22 @@ export default function PovEsteaNoastra() {
               </span>
             </h1>
             <p
-              className="text-base sm:text-lg leading-relaxed"
+              className="text-base sm:text-lg leading-relaxed mb-4"
               style={{ color: "var(--charcoal-soft)" }}
             >
               AnimaMinds s-a născut din convingerea că cei mai buni profesori,
               formatori și lideri sunt, înainte de toate, oameni curioși — oameni
               care nu încetează să învețe.
+            </p>
+            <p
+              className="text-lg sm:text-xl leading-relaxed font-medium"
+              style={{ 
+                color: "var(--sage)",
+                fontFamily: "Playfair Display, serif",
+                fontStyle: "italic"
+              }}
+            >
+              Locul unde oamenii și ideile cresc împreună.
             </p>
           </div>
         </div>

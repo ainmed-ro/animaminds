@@ -4,16 +4,11 @@ import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const experiences = [
-  { name: "MINTEA 2.0", subtitle: "Claritate mentală într-o lume plină de distrageri", category: "Mind", color: "#7C9A7E" },
-  { name: "HUMAN UPGRADE", subtitle: "Abilități umane pentru era inteligenței artificiale", category: "Future", color: "#C4714F" },
-  { name: "AI FĂRĂ HAOS", subtitle: "Cum folosim AI fără să ne pierdem judecata", category: "Future", color: "#C4714F" },
-  { name: "THE ATTENTION LAB", subtitle: "Reconstruirea atenției într-o lume a distragerilor", category: "Mind", color: "#7C9A7E" },
-  { name: "EMOȚII SUB CONTROL", subtitle: "Reacții inteligente sub presiune", category: "Human", color: "#8B6F5E" },
-  { name: "CONVERSAȚII CARE SCHIMBĂ TOT", subtitle: "Puterea dialogului în relații, echipe și organizații", category: "Human", color: "#8B6F5E" },
-  { name: "OAMENI GREI, CONVERSAȚII GRELE", subtitle: "Gestionarea conflictelor și personalităților dificile", category: "Human", color: "#8B6F5E" },
-  { name: "LEADERSHIP FĂRĂ MASCĂ", subtitle: "Leadership autentic pentru oameni reali, nu organigrame", category: "Leadership", color: "#4A6FA5" },
-  { name: "RESET MENTAL", subtitle: "O pauză pentru claritate, energie și echilibru", category: "Wellbeing", color: "#9B7EBD" },
-  { name: "BUSOLA INTERIOARĂ", subtitle: "Claritate și direcție într-o lume plină de opțiuni", category: "Wellbeing", color: "#9B7EBD" },
+  { name: "CONVERSAȚII CARE CONTEAZĂ", subtitle: "Program complex de comunicare și colaborare", category: "Human", color: "#8B6F5E", status: "ACTIVE" },
+  { name: "AI FĂRĂ HAOS", subtitle: "Cum folosim AI fără să ne pierdem judecata", category: "Future", color: "#C4714F", status: "ÎN PREGĂTIRE" },
+  { name: "CALM SUB PRESIUNE", subtitle: "Managementul conflictelor și reziliență", category: "Human", color: "#8B6F5E", status: "ÎN PREGĂTIRE" },
+  { name: "BUSOLA DECIZIILOR", subtitle: "Leadership și luarea deciziilor", category: "Leadership", color: "#4A6FA5", status: "ÎN PREGĂTIRE" },
+  { name: "AVANTAJUL UMAN", subtitle: "Competențe umane pentru viitor", category: "Future", color: "#C4714F", status: "ÎN PREGĂTIRE" },
 ];
 
 export default function ProgramsSection() {

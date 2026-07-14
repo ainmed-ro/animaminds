@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertOrganizationRequest, getAllOrganizationRequests } from "@/lib/organization-requests-db";
-import { sendAdminOrganizationRequestEmail } from "@/lib/notifications";
+import { sendAdminOrganizationRequestEmail, sendUserOrganizationConfirmationEmail } from "@/lib/notifications";
 import { syncOrganizationRequestToGoogleSheets } from "@/lib/google-sheets";
 
 export async function POST(req: NextRequest) {
@@ -78,6 +78,23 @@ export async function POST(req: NextRequest) {
       });
     } catch (emailErr) {
       console.error("Admin organization request email error:", emailErr);
+    }
+
+    // Send user confirmation email
+    try {
+      await sendUserOrganizationConfirmationEmail({
+        organizationName,
+        contactPerson: contactName,
+        organizationEmail: contactEmail,
+        organizationPhone: contactPhone || "",
+        programmeInterest: programmeInterest || "",
+        organizationFormat: deliveryFormatPreference || "",
+        participantCountEstimate: participantCountEstimate ? String(participantCountEstimate) : "0",
+        message: specificRequirements || "",
+        createdAt,
+      });
+    } catch (emailErr) {
+      console.error("User organization confirmation email error:", emailErr);
     }
 
     // Trimitere date către Google Sheets

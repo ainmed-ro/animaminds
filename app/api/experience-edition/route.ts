@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendAdminExperienceEditionEmail } from "@/lib/notifications";
+import { insertExperienceEditionRequest } from "@/lib/experience-edition-db";
+import { sendAdminExperienceEditionEmail, sendUserExperienceEditionConfirmationEmail } from "@/lib/notifications";
 import { syncExperienceEditionToGoogleSheets } from "@/lib/google-sheets";
 
 export async function POST(req: NextRequest) {
@@ -33,6 +34,26 @@ export async function POST(req: NextRequest) {
 
     const createdAt = new Date();
 
+    // Salvare în baza de date Supabase
+    let request;
+    try {
+      request = await insertExperienceEditionRequest({
+        name,
+        email,
+        phone,
+        company: company || "",
+        programme,
+        accommodation: accommodation || "",
+        preferredPeriod: preferredPeriod || "",
+        message: message || "",
+      });
+    } catch (dbErr) {
+      console.error("Experience Edition Supabase storage error:", dbErr);
+      return NextResponse.json({ 
+        error: "Eroare la salvarea exprimării de interes. Te rugăm încercă din nou." 
+      }, { status: 500 });
+    }
+
     // Send admin notification
     try {
       await sendAdminExperienceEditionEmail({
@@ -48,6 +69,23 @@ export async function POST(req: NextRequest) {
       });
     } catch (emailErr) {
       console.error("Admin Experience Edition email error:", emailErr);
+    }
+
+    // Send user confirmation email
+    try {
+      await sendUserExperienceEditionConfirmationEmail({
+        name,
+        email,
+        phone,
+        company: company || "",
+        programme,
+        accommodation: accommodation || "",
+        preferredPeriod: preferredPeriod || "",
+        message: message || "",
+        createdAt,
+      });
+    } catch (emailErr) {
+      console.error("User Experience Edition confirmation email error:", emailErr);
     }
 
     // Sync to Google Sheets
@@ -71,6 +109,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ 
       success: true, 
       message: "Exprimarea de interes a fost trimisă cu succes. Vă vom contacta în curând cu detalii despre prima ediție Experience Edition.",
+      requestId: request.id,
     });
 
   } catch (error) {

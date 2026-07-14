@@ -64,7 +64,7 @@ export default function CommunitySection() {
                 quality={75}
               />
               <div
-                className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                 style={{
                   background: "linear-gradient(180deg, transparent 50%, rgba(90,122,92,0.5) 100%)",
                 }}

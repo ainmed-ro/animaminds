@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
-import ExperienceEditionForm from "@/components/ExperienceEditionForm";
+import ExperienceEditionFormWrapper from "@/components/ExperienceEditionFormWrapper";
 
 export const metadata: Metadata = {
   title: "Experience Edition - Program rezidențial de formare profesională | AnimaMinds",
@@ -729,7 +729,7 @@ export default function ExperienceEditionPage() {
                 <strong>Important:</strong> Plata se realizează doar după confirmarea formării grupei minime de 20 participanți.
               </p>
             </div>
-            <ExperienceEditionForm />
+            <ExperienceEditionFormWrapper />
           </div>
         </div>
       </section>

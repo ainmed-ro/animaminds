@@ -1,11 +1,10 @@
 import HeroSection from "@/components/home/HeroSection";
-import LaunchBanner from "@/components/home/LaunchBanner";
-import ServiceCards from "@/components/home/ServiceCards";
+import FormatSelectionSection from "@/components/home/FormatSelectionSection";
+import SameProgramDifferentFormats from "@/components/home/SameProgramDifferentFormats";
+import FeaturedProgramsSection from "@/components/home/FeaturedProgramsSection";
+import PreparationProgramsSection from "@/components/home/PreparationProgramsSection";
 import TrustSection from "@/components/home/TrustSection";
 import CPDExplanationSection from "@/components/home/CPDExplanationSection";
-import LaunchFeaturedSection from "@/components/home/LaunchFeaturedSection";
-import ContributionSection from "@/components/home/ContributionSection";
-import FeaturedProgramsSection from "@/components/home/FeaturedProgramsSection";
 import AudienceSection from "@/components/home/AudienceSection";
 import CommunitySection from "@/components/home/CommunitySection";
 import PartnershipsSection from "@/components/home/PartnershipsSection";
@@ -17,13 +16,12 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <LaunchBanner />
-      <ServiceCards />
+      <FormatSelectionSection />
+      <SameProgramDifferentFormats />
+      <FeaturedProgramsSection />
+      <PreparationProgramsSection />
       <TrustSection />
       <CPDExplanationSection />
-      <LaunchFeaturedSection />
-      <ContributionSection />
-      <FeaturedProgramsSection />
       <AudienceSection />
       <CommunitySection />
       <PartnershipsSection />

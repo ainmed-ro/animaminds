@@ -74,11 +74,11 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2 lg:gap-3 shrink-0">
             <SearchModal />
             <Link
-              href="/inscriere"
+              href="/programe"
               className="btn-primary text-xs lg:text-sm font-semibold py-2 px-3 lg:px-4 rounded-lg whitespace-nowrap"
               style={{ backgroundColor: "var(--sage)", color: "white", display: "inline-flex", alignItems: "center", transition: "all 0.25s ease", textDecoration: "none" }}
             >
-              Rezervă un loc
+              Vezi programele
             </Link>
           </div>
 
@@ -124,11 +124,11 @@ export default function Navbar() {
           ))}
           <div className="pt-3 border-t border-gray-100 mt-3">
             <Link
-              href="/inscriere"
+              href="/programe"
               className="block w-full text-center py-3 px-4 rounded-lg text-sm font-medium text-white"
               style={{ backgroundColor: "var(--sage)" }}
             >
-              Rezervă un loc
+              Vezi programele
             </Link>
           </div>
         </div>
