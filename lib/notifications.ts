@@ -38,12 +38,19 @@ async function sendAndLogEmail({
 
   for (const recipient of recipients) {
     try {
+      console.log(`Attempting to send email to ${recipient} from ${FROM_EMAIL}, subject: ${subject}`)
       const response = await resend.emails.send({
         from: FROM_EMAIL,
         to: [recipient],
         subject,
         html,
       })
+
+      console.log(`Resend full response for ${recipient}:`, JSON.stringify(response))
+
+      if (response.error) {
+        throw new Error(`Resend API error: ${response.error.name} - ${response.error.message}`)
+      }
 
       const resendId = response.data?.id ?? null
       console.log(`Email sent successfully to ${recipient}, resendId: ${resendId}`)
