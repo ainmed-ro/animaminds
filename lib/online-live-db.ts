@@ -77,9 +77,7 @@ export async function insertOnlineLiveRegistration(
   
   console.log("Supabase client available, attempting insert...");
   
-  const id = `ol_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const insertData = {
-    id,
     programme: registration.programme,
     format: registration.format,
     price: registration.price,
