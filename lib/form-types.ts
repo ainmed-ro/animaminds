@@ -40,6 +40,11 @@ export interface ExperienceEditionSubmission extends BaseSubmission {
   duration: 7.5
   cpdCredits: 8
   location: 'Hotel Afrodita, Vălenii de Munte'
+  participationType?: string
+  groupSize?: number
+  cui?: string
+  locality?: string
+  dietaryRequirements?: string
 }
 
 export interface OrganisationSubmission extends BaseSubmission {

@@ -62,10 +62,15 @@ function userBody(submission: AnySubmission): string {
         <p>Rezervarea ta pentru <strong>${submission.programmeName} – Experience Edition™</strong> a fost înregistrată.</p>
         <table style="width:100%;border-collapse:collapse;font-size:14px;color:#333;">
           <tr><td style="padding:6px 0;"><strong>Ediție:</strong></td><td>${submission.selectedEdition}</td></tr>
+          <tr><td style="padding:6px 0;"><strong>Tip participare:</strong></td><td>${submission.participationType || 'individual'}</td></tr>
+          ${submission.groupSize ? `<tr><td style="padding:6px 0;"><strong>Număr persoane:</strong></td><td>${submission.groupSize}</td></tr>` : ''}
+          ${submission.cui ? `<tr><td style="padding:6px 0;"><strong>CUI/CIF:</strong></td><td>${submission.cui}</td></tr>` : ''}
           <tr><td style="padding:6px 0;"><strong>Cameră:</strong></td><td>${submission.selectedRoomType}</td></tr>
           <tr><td style="padding:6px 0;"><strong>Preț:</strong></td><td>${submission.price} lei</td></tr>
           <tr><td style="padding:6px 0;"><strong>Locație:</strong></td><td>${submission.location}</td></tr>
           <tr><td style="padding:6px 0;"><strong>CPD:</strong></td><td>${submission.cpdCredits} credite</td></tr>
+          ${submission.locality ? `<tr><td style="padding:6px 0;"><strong>Localitate:</strong></td><td>${submission.locality}</td></tr>` : ''}
+          ${submission.dietaryRequirements ? `<tr><td style="padding:6px 0;"><strong>Cerințe alimentare:</strong></td><td>${submission.dietaryRequirements}</td></tr>` : ''}
         </table>
         <p style="margin-top:16px;">Plata se realizează după confirmarea formării grupei minime de participanți.</p>`
       break

@@ -81,6 +81,12 @@ export async function POST(req: NextRequest) {
       participantEmail: email,
       participantPhone: phone,
       institution: company || undefined,
+      role: role || undefined,
+      locality: locality || undefined,
+      dietaryRequirements: dietaryRequirements || undefined,
+      participationType: participationType || undefined,
+      groupSize: groupSize ? Number(groupSize) : undefined,
+      cui: cui || undefined,
       message: message || undefined,
       createdAt: createdAt.toISOString(),
     };
