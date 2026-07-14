@@ -1,9 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insert, readAll, getSpotsByEdition, type RegistrationStatus, type PaymentStatus } from "@/lib/registrations-db";
 import { participantEmailHtml, adminEmailHtml } from "@/lib/email-templates";
-import { sendAndLogEmail } from "@/lib/notifications";
+import { Resend } from "resend";
 
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const FROM_EMAIL = process.env.FROM_EMAIL ?? "AnimaMinds <noreply@animaminds.ro>";
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? "contact@animaminds.ro";
+
+async function sendEmail(to: string, subject: string, html: string): Promise<void> {
+  if (!resend) { console.error('[Registrations] Resend not available'); return; }
+  try {
+    const res = await resend.emails.send({ from: FROM_EMAIL, to: [to], subject, html });
+    if (res.error) console.error(`[Registrations] Resend error to ${to}:`, res.error);
+    else console.log(`[Registrations] Email sent to ${to}, id:`, res.data?.id);
+  } catch (err) {
+    console.error(`[Registrations] Failed to send to ${to}:`, err);
+  }
+}
 
 export async function GET() {
   const all = await readAll();
@@ -75,47 +88,10 @@ export async function POST(req: NextRequest) {
       // Nu blocăm procesul dacă Google Sheets eșuează
     }
 
-    // Email towards participant
-    try {
-      await sendAndLogEmail({
-        to: reg.email,
-        subject: "Manifestarea dumneavoastră de interes a fost înregistrată — BUSOLA INTERIOARĂ",
-        html: participantEmailHtml(reg),
-        type: 'PARTICIPANT_CONFIRMATION',
-        recipientName: reg.nume,
-        relatedType: 'REGISTRATION',
-        relatedId: reg.id,
-        metadata: {
-          edition: reg.editie,
-          participants: reg.participanti,
-          registrationId: reg.id,
-        },
-      });
-    } catch (emailErr) {
-      console.error("Participant email failed:", emailErr);
-    }
-
-    // Notification email to admin
-    try {
-      await sendAndLogEmail({
-        to: ADMIN_EMAIL,
-        subject: `[AnimaMinds] Înscriere nouă — ${reg.nume} — ${reg.editie}`,
-        html: adminEmailHtml(reg),
-        type: 'ADMIN_REGISTRATION',
-        recipientName: reg.nume,
-        relatedType: 'REGISTRATION',
-        relatedId: reg.id,
-        metadata: {
-          contactEmail: reg.email,
-          contactPhone: reg.telefon,
-          edition: reg.editie,
-          participants: reg.participanti,
-          registrationId: reg.id,
-        },
-      });
-    } catch (emailErr) {
-      console.error("Admin email failed:", emailErr);
-    }
+    sendEmail(reg.email, "Manifestarea dumneavoastră de interes a fost înregistrată — AnimaMinds", participantEmailHtml(reg))
+      .catch(e => console.error("Participant email failed:", e));
+    sendEmail(ADMIN_EMAIL, `[AnimaMinds] Înscriere nouă — ${reg.nume} — ${reg.editie}`, adminEmailHtml(reg))
+      .catch(e => console.error("Admin email failed:", e));
 
     return NextResponse.json({ success: true, id: reg.id }, { status: 201 });
   } catch (err) {
