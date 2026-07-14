@@ -18,6 +18,8 @@ export default function ExperienceEditionForm() {
     programme: "conversatii-care-conteaza",
     accommodation: "",
     preferredPeriod: searchParams?.get('edition') || "octombrie-2026",
+    participationType: "",
+    groupSize: "",
     message: "",
     terms: false,
   });
@@ -103,6 +105,8 @@ export default function ExperienceEditionForm() {
               programme: "conversatii-care-conteaza",
               accommodation: "",
               preferredPeriod: "octombrie-2026",
+              participationType: "",
+              groupSize: "",
               message: "",
               terms: false,
             });
@@ -176,22 +180,6 @@ export default function ExperienceEditionForm() {
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Instituție / organizație <span className="text-gray-400 font-normal">(opțional)</span>
-          </label>
-          <input
-            type="text"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-            placeholder="Numele instituției sau organizației"
-          />
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
             Funcție / poziție <span className="text-gray-400 font-normal">(opțional)</span>
           </label>
           <input
@@ -203,7 +191,6 @@ export default function ExperienceEditionForm() {
             placeholder="Ex: psiholog, profesor, manager"
           />
         </div>
-
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Localitate <span className="text-gray-400 font-normal">(opțional)</span>
@@ -218,7 +205,7 @@ export default function ExperienceEditionForm() {
           />
         </div>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Program de interes *
@@ -235,6 +222,60 @@ export default function ExperienceEditionForm() {
         </select>
       </div>
       
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Tip participare *
+        </label>
+        <select
+          name="participationType"
+          value={formData.participationType}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+        >
+          <option value="">Selectează tipul de participare</option>
+          <option value="individual">Individual</option>
+          <option value="grup">Grup</option>
+          <option value="organizatie">Instituție / Organizație</option>
+        </select>
+      </div>
+
+      {(formData.participationType === 'grup' || formData.participationType === 'organizatie') && (
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Număr de persoane *
+            </label>
+            <input
+              type="number"
+              name="groupSize"
+              value={formData.groupSize}
+              onChange={handleChange}
+              required
+              min="2"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+              placeholder="Ex: 5"
+            />
+          </div>
+          {formData.participationType === 'organizatie' && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Nume instituție / organizație *
+              </label>
+              <input
+                type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+                placeholder="Numele instituției sau organizației"
+              />
+            </div>
+          )}
+        </div>
+      )}
+
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
