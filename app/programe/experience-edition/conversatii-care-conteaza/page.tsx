@@ -57,50 +57,56 @@ export default function ConversatiiCareConteazaPage() {
       </section>
 
       {/* Launch Pricing Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-yellow-50 to-orange-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+      <section className="py-14 px-4 bg-gradient-to-r from-yellow-50 to-orange-50">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Ofertă exclusivă de lansare
             </h2>
-            <p className="text-lg text-gray-600">
-              Tarif special valabil exclusiv pentru prima ediție Experience Edition
-            </p>
+            <p className="text-gray-600">Tarif special valabil exclusiv pentru prima ediție · Locuri limitate</p>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Standard Price */}
-            <div className="bg-white p-8 rounded-xl shadow-lg border-2 border-gray-300">
-              <div className="text-center mb-6">
-                <span className="text-gray-500 text-sm font-medium">Tarif standard</span>
-                <div className="text-3xl font-bold text-gray-400 mt-2 line-through">1.490 lei</div>
-                <div className="text-gray-600 text-sm">per participant – cameră dublă</div>
-              </div>
+
+          <div className="rounded-2xl border-2 border-amber-400 overflow-hidden shadow-xl">
+            {/* Header banner */}
+            <div className="bg-amber-500 px-6 py-3 flex items-center justify-between">
+              <span className="text-white font-black uppercase tracking-wider text-sm">🔥 OFERTĂ LANSARE – PRIMA EDIȚIE</span>
+              <span className="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">−17%</span>
             </div>
 
-            {/* Launch Price */}
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl shadow-lg border-2 border-green-500 relative">
-              <div className="absolute -top-3 -right-3 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                -20%
+            <div className="bg-white p-8">
+              {/* Cameră dublă – principal */}
+              <div className="mb-6">
+                <p className="text-gray-400 text-sm mb-1">Cameră dublă</p>
+                <span className="text-gray-400 line-through text-base">1.450 lei</span>
+                <div className="flex items-end gap-3 mt-1">
+                  <span className="text-6xl font-black text-gray-900 leading-none">1.200</span>
+                  <span className="text-xl font-semibold text-gray-700 mb-2">lei</span>
+                </div>
+                <span className="inline-block bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full mt-2">🎁 Economisești 250 lei</span>
               </div>
-              <div className="text-center mb-6">
-                <span className="text-green-600 text-sm font-bold">TARIF DE LANSARE</span>
-                <div className="text-4xl font-bold text-green-700 mt-2">1.200 lei</div>
-                <div className="text-green-600 text-sm">per participant – cameră dublă</div>
-              </div>
-              <div className="text-center">
-                <div className="text-green-600 text-sm mb-2">Camera single: 1.400 lei</div>
-                <div className="text-xs text-orange-600 font-medium">
-                  ⚠️ Valabil exclusiv pentru prima ediție
+
+              {/* Separator */}
+              <div className="border-t border-gray-100 pt-5">
+                <p className="text-gray-400 text-sm mb-1">Cameră single</p>
+                <span className="text-gray-400 line-through text-sm">1.650 lei</span>
+                <div className="flex items-end gap-2 mt-0.5">
+                  <span className="text-3xl font-black text-gray-800 leading-none">1.400</span>
+                  <span className="text-gray-600 font-semibold mb-1">lei</span>
                 </div>
               </div>
+
+              <p className="text-xs text-amber-700 font-medium mt-5 text-center">⚠️ Tarif valabil exclusiv pentru prima ediție · Max 30 locuri disponibile</p>
             </div>
           </div>
-          
-          <div className="text-center mt-8">
-            <p className="text-sm text-gray-600">
-              Locuri limitate: 20-30 participanți pentru experiență premium
-            </p>
+
+          <div className="text-center mt-6">
+            <Link
+              href="#rezerva-loc"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-xl font-bold text-lg hover:bg-emerald-700 transition-all shadow-lg hover:scale-105 transform"
+            >
+              Rezervă acum la tariful de lansare
+              <Calendar className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>

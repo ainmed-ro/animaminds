@@ -231,15 +231,33 @@ export default async function ProgramePage() {
                 <h3 className="text-xl font-bold text-white">Experience Edition™</h3>
               </div>
               <p className="text-white/90 text-sm mb-4">Formare rezidențială · 3 zile la munte · Hotel Afrodita****</p>
-              <div className="space-y-2 mb-5">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-white" />
-                  <span className="text-white text-sm font-semibold">1.200 lei / cameră dublă</span>
+
+              {/* Bloc preț promoțional */}
+              <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 mb-4 border border-white/30">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-black uppercase tracking-wider text-yellow-200">🔥 OFERTĂ LANSARE – PRIMA EDIȚIE</span>
+                  <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">−17%</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-white/80" />
-                  <span className="text-white/90 text-sm">1.400 lei / cameră single</span>
+                {/* Cameră dublă */}
+                <div className="mb-3">
+                  <span className="text-white/50 text-sm line-through">1.450 lei / cameră dublă</span>
+                  <div className="flex items-end gap-2">
+                    <span className="text-4xl font-black text-white leading-none">1.200</span>
+                    <span className="text-white/90 font-semibold mb-1">lei / dublă</span>
+                  </div>
+                  <span className="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded-full mt-1">🎁 Economisești 250 lei</span>
                 </div>
+                {/* Separator */}
+                <div className="border-t border-white/20 pt-3">
+                  <span className="text-white/50 text-xs line-through">1.650 lei / cameră single</span>
+                  <div className="flex items-end gap-2">
+                    <span className="text-2xl font-black text-white/90 leading-none">1.400</span>
+                    <span className="text-white/80 text-sm mb-0.5">lei / single</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-1.5 mb-4">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-white/80" />
                   <span className="text-white/90 text-sm">23–25 octombrie 2026</span>
@@ -398,10 +416,28 @@ export default async function ProgramePage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-5 p-4 bg-amber-50 rounded-xl border border-amber-200">
-                <p className="text-xs text-gray-600 mb-1">Tarif ediție de lansare</p>
-                <p className="font-bold text-gray-900">1.200 lei · cameră dublă</p>
-                <p className="text-sm text-gray-700">1.400 lei · cameră single</p>
+              <div className="mt-5 rounded-xl border-2 border-amber-400 overflow-hidden">
+                <div className="bg-amber-500 px-4 py-2 flex items-center justify-between">
+                  <span className="text-white text-xs font-black uppercase tracking-wider">🔥 OFERTĂ LANSARE – PRIMA EDIȚIE</span>
+                  <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">−17%</span>
+                </div>
+                <div className="bg-white p-4">
+                  <div className="mb-3">
+                    <span className="text-gray-400 text-sm line-through">1.450 lei / cameră dublă</span>
+                    <div className="flex items-end gap-2">
+                      <span className="text-4xl font-black text-gray-900 leading-none">1.200</span>
+                      <span className="text-gray-700 font-semibold mb-1">lei / dublă</span>
+                    </div>
+                    <span className="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded-full mt-1">🎁 Economisești 250 lei</span>
+                  </div>
+                  <div className="border-t border-gray-100 pt-3">
+                    <span className="text-gray-400 text-xs line-through">1.650 lei / cameră single</span>
+                    <div className="flex items-end gap-2">
+                      <span className="text-2xl font-black text-gray-800 leading-none">1.400</span>
+                      <span className="text-gray-600 text-sm mb-0.5">lei / single</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
