@@ -255,7 +255,7 @@ const ProgramPageTemplate: React.FC<{
                       <>
                         <div className="flex items-center gap-2">
                           <CheckCircle size={14} style={{ color: "var(--sage)" }} />
-                          <span className="text-sm text-gray-700">Hotel Afrodita</span>
+                          <a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-700 underline underline-offset-2 hover:text-gray-900 transition-colors">Hotel Afrodita</a>
                         </div>
                         <div className="flex items-center gap-2">
                           <CheckCircle size={14} style={{ color: "var(--sage)" }} />

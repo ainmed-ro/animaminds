@@ -55,6 +55,7 @@ export default function RegistrationConfigurator() {
       price: "199 lei / participant",
       details: ["7,5 ore", "8 CPD", "Google Meet", "Google Classroom"],
       location: "📍 Online",
+      locationLink: "",
       buttonText: "Mă înscriu"
     },
     {
@@ -64,6 +65,7 @@ export default function RegistrationConfigurator() {
       price: "de la 1.200 lei / participant",
       details: ["Hotel Afrodita", "3 ediții disponibile", "8 CPD"],
       location: "📍 Hotel Afrodita, Vălenii de Munte",
+      locationLink: "https://hotelafrodita.ro/valeni/contact/",
       buttonText: "Rezerv un loc"
     },
     {
@@ -73,6 +75,7 @@ export default function RegistrationConfigurator() {
       price: "de la 3.500 lei / grup",
       details: ["Online dedicat", "La sediul beneficiarului", "8 CPD"],
       location: "📍 Online dedicat sau la sediul beneficiarului",
+      locationLink: "",
       buttonText: "Solicit ofertă"
     },
   ];
@@ -273,7 +276,11 @@ export default function RegistrationConfigurator() {
           {formatOptions.map((format) => (
             <div key={format.id} className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow">
               <div className="p-6">
-                <div className="text-sm text-gray-500 mb-2">{format.location}</div>
+                <div className="text-sm text-gray-500 mb-2">
+                  {format.locationLink ? (
+                    <a href={format.locationLink} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-gray-700 transition-colors">{format.location}</a>
+                  ) : format.location}
+                </div>
                 <h3 className="text-xl font-bold mb-2" style={{ color: "var(--charcoal)" }}>{format.title}</h3>
                 <p className="text-gray-600 mb-4">{format.program}</p>
                 

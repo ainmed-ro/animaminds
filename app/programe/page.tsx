@@ -230,7 +230,7 @@ export default async function ProgramePage() {
                 <Mountain className="w-6 h-6 text-white" />
                 <h3 className="text-xl font-bold text-white">Experience Edition™</h3>
               </div>
-              <p className="text-white/90 text-sm mb-4">Formare rezidențială · 3 zile la munte · Hotel Afrodita****</p>
+              <p className="text-white/90 text-sm mb-4">Formare rezidențială · 3 zile la munte · <a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Hotel Afrodita****</a></p>
 
               {/* Bloc preț promoțional */}
               <div className="bg-white/15 backdrop-blur-sm rounded-xl p-4 mb-4 border border-white/30">
@@ -354,7 +354,7 @@ export default async function ProgramePage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Experience Edition™ · 23–25 octombrie 2026
             </h2>
-            <p className="text-gray-600">Hotel Afrodita**** · Vălenii de Munte · Grupă limitată la 30 de locuri</p>
+            <p className="text-gray-600"><a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-gray-900 transition-colors">Hotel Afrodita****</a> · Vălenii de Munte · Grupă limitată la 30 de locuri</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 items-start mb-8">
@@ -368,7 +368,7 @@ export default async function ProgramePage() {
                 <div className="flex items-start gap-2">
                   <Star className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900">Hotel Afrodita****</p>
+                    <a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-900 underline underline-offset-2 hover:text-amber-700 transition-colors">Hotel Afrodita****</a>
                     <p className="text-sm text-gray-600">Bulevardul Nicolae Iorga 14, Vălenii de Munte</p>
                   </div>
                 </div>

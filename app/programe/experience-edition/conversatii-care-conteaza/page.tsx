@@ -34,7 +34,7 @@ export default function ConversatiiCareConteazaPage() {
               Pentru prima ediție, ne-am dorit mai mult decât o locație. Ne-am dorit un loc care să creeze cadrul potrivit pentru oameni, pentru conversații autentice, pentru învățare și pentru momente care rămân cu tine mult timp după încheierea programului.
             </p>
             <p>
-              De aceea am ales <strong>Hotel Afrodita din Vălenii de Munte</strong>. Nu doar pentru confort și facilități, ci pentru atmosfera pe care o oferă. Un loc care invită la reflecție, conectare și dezvoltare, departe de ritmul alert al fiecărei zile.
+              De aceea am ales <strong><a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:opacity-80 transition-opacity">Hotel Afrodita din Vălenii de Munte</a></strong>. Nu doar pentru confort și facilități, ci pentru atmosfera pe care o oferă. Un loc care invită la reflecție, conectare și dezvoltare, departe de ritmul alert al fiecărei zile.
             </p>
           </div>
 
@@ -159,14 +159,14 @@ export default function ConversatiiCareConteazaPage() {
               Locație premium
             </h2>
             <p className="text-lg text-gray-600">
-              Hotel Afrodita**** – Vălenii de Munte
+              <a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-gray-900 transition-colors">Hotel Afrodita****</a> – Vălenii de Munte
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-2xl font-bold mb-6" style={{ color: "var(--charcoal)" }}>
-                De ce Hotel Afrodita?
+                De ce <a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Hotel Afrodita</a>?
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">

@@ -57,7 +57,7 @@ export default function ExperienceEditionPage() {
           </div>
           <h3 className="text-2xl font-semibold mb-2">Conversații care Contează</h3>
           <p className="text-xl mb-4">23–25 octombrie 2026</p>
-          <p className="text-lg opacity-90">Hotel Afrodita**** – Vălenii de Munte</p>
+          <p className="text-lg opacity-90"><a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity">Hotel Afrodita****</a> – Vălenii de Munte</p>
           <div className="mt-6 inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold">
             <CheckCircle className="w-5 h-5 mr-2" />
             DESCHIS PENTRU REZERVĂRI
@@ -408,7 +408,7 @@ export default function ExperienceEditionPage() {
               </h2>
             </div>
             <h3 className="text-2xl font-semibold mb-2" style={{ color: "var(--sage)" }}>
-              Hotel Afrodita**** – Vălenii de Munte
+              <a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Hotel Afrodita****</a> – Vălenii de Munte
             </h3>
           </div>
           
