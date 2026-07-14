@@ -60,7 +60,7 @@ export default function FormatSelectionSection() {
         </div>
 
         {/* Format Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {formats.map((format, index) => {
             const Icon = format.icon;
             return (
