@@ -32,11 +32,11 @@ const budgetRanges = [
 ];
 
 const programmes = [
-  "AI Fără Haos - Inteligență Artificială pentru profesioniști",
-  "Busola Deciziilor - Leadership și luarea deciziilor",
-  "Conversații care Contează - Comunicare și colaborare",
-  "Calm sub Presiune - Managementul conflictelor și reziliență",
-  "Avantajul Uman - Competențe umane pentru viitor",
+  "Conversații care Contează - Comunicare și colaborare (DISPONIBIL)",
+  "AI Fără Haos - Inteligență Artificială pentru profesioniști (ÎN PREGĂTIRE)",
+  "Busola Deciziilor - Leadership și luarea deciziilor (ÎN PREGĂTIRE)",
+  "Calm sub Presiune - Managementul conflictelor și reziliență (ÎN PREGĂTIRE)",
+  "Avantajul Uman - Competențe umane pentru viitor (ÎN PREGĂTIRE)",
   "Nespecificat / Vreau să discut despre opțiuni"
 ];
 

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getPublicEditions, getPublicEditionsByProgramme, getPublicProgramme } from '@/app/admin/actions/cms'
 import { PublicRegistrationForm } from './registration-form'
+import ExperienceEditionForm from '@/components/ExperienceEditionForm'
 
 export default async function InscrierePage({ searchParams }: { searchParams: Promise<{ editionId?: string; programmeSlug?: string }> }) {
   // Force deployment - make live site match code
@@ -11,10 +12,8 @@ export default async function InscrierePage({ searchParams }: { searchParams: Pr
     ? await getPublicEditionsByProgramme(programmeSlug)
     : await getPublicEditionsByProgramme('conversatii-care-conteaza')
 
-  // If no editions found for specific programme, fall back to all editions
-  if (editions.length === 0 && programmeSlug) {
-    editions = await getPublicEditions()
-  }
+  // If no editions found for specific programme, don't fall back to all editions
+  // Keep editions empty to show proper "no editions available" message
 
   // Validate that the requested edition exists and belongs to the right programme
   if (editionId) {
@@ -34,25 +33,18 @@ export default async function InscrierePage({ searchParams }: { searchParams: Pr
   }
 
   if (editions.length === 0) {
+    // Show Experience Edition form even if no editions found
     return (
-      <div className="max-w-6xl mx-auto px-6 py-12 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">
-          {programme ? `Înscriere - ${programme.name}` : 'Înscriere'}
-        </h1>
-        <p className="text-gray-600">
-          {programme 
-            ? `Momentan nu există ediții deschise pentru ${programme.name}. Te rugăm să ne contactezi.`
-            : 'Momentan nu există ediții deschise. Te rugăm să ne contactezi.'
-          }
-        </p>
-        <a href="/contact" className="mt-4 inline-block text-blue-600 hover:underline">Contactează-ne</a>
-        {programme && (
-          <div className="mt-6">
-            <a href={`/programe/${programme.slug}`} className="inline-block text-blue-600 hover:underline">
-              ← Înapoi la {programme.name}
-            </a>
-          </div>
-        )}
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            Înscriere - Conversații care Contează
+          </h1>
+          <p className="text-gray-600 mb-6">
+            Completează formularul de mai jos pentru a te înscrie la programul Conversații care Contează.
+          </p>
+        </div>
+        <ExperienceEditionForm />
       </div>
     )
   }
