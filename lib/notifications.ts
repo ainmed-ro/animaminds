@@ -46,24 +46,31 @@ async function sendAndLogEmail({
       })
 
       const resendId = response.data?.id ?? null
-      const email = await prisma.email.create({
-        data: {
-          resendId,
-          recipient,
-          recipientName,
-          subject,
-          fromAddress: FROM_EMAIL,
-          type,
-          status: 'SENT' as EmailStatus,
-          relatedType,
-          relatedId,
-          metadata: metadata as any,
-        },
-      })
+      console.log(`Email sent successfully to ${recipient}, resendId: ${resendId}`)
 
-      results.push({ success: true, resendId: resendId ?? undefined, emailId: email.id })
+      // Log to Prisma - non-blocking, does not affect email delivery
+      try {
+        const email = await prisma.email.create({
+          data: {
+            resendId,
+            recipient,
+            recipientName,
+            subject,
+            fromAddress: FROM_EMAIL,
+            type,
+            status: 'SENT' as EmailStatus,
+            relatedType,
+            relatedId,
+            metadata: metadata as any,
+          },
+        })
+        results.push({ success: true, resendId: resendId ?? undefined, emailId: email.id })
+      } catch (dbErr) {
+        console.warn('Email sent but DB logging failed:', dbErr)
+        results.push({ success: true, resendId: resendId ?? undefined })
+      }
     } catch (err) {
-      console.error('sendAndLogEmail error:', err)
+      console.error('sendAndLogEmail Resend error:', err)
       try {
         await prisma.email.create({
           data: {
