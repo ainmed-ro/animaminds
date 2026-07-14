@@ -1,5 +1,6 @@
 ﻿"use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, MapPin, Star, BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -90,7 +91,9 @@ export default function ExperienceEditionHero() {
         }
       `}</style>
 
-      <div className="relative max-w-6xl mx-auto text-center">
+      <div className="relative max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="text-center lg:text-left">
         <div className="mb-6">
           <span
             className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600 text-white text-sm font-bold"
@@ -132,7 +135,7 @@ export default function ExperienceEditionHero() {
 
         {/* Countdown */}
         {mounted && (
-          <div className="inline-flex flex-wrap justify-center gap-3 mb-10 bg-white/70 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-emerald-100">
+          <div className="inline-flex flex-wrap justify-center lg:justify-start gap-3 mb-10 bg-white/70 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-emerald-100">
             {[
               { value: days, label: "zile" },
               { value: hours, label: "ore" },
@@ -155,7 +158,7 @@ export default function ExperienceEditionHero() {
           </div>
         )}
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <Link
             href="#rezerva-loc"
             className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-lg font-bold text-lg hover:bg-emerald-700 transition-all transform hover:scale-105 shadow-lg"
@@ -171,6 +174,28 @@ export default function ExperienceEditionHero() {
             <BookOpen className="w-5 h-5" />
           </Link>
         </div>
+        </div>{/* end left col */}
+
+        {/* Right col – hotel image */}
+        <div className="hidden lg:block">
+          <div className="relative h-[480px] rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src="/images/hotel/hotel-exterior.png"
+              alt="Hotel Afrodita – locația Experience Edition"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 0vw, 50vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="text-white text-sm font-medium bg-black/30 backdrop-blur-sm rounded-lg px-3 py-2 inline-block">
+                Hotel Afrodita**** · Vălenii de Munte
+              </p>
+            </div>
+          </div>
+        </div>
+        </div>{/* end grid */}
       </div>
     </section>
   );

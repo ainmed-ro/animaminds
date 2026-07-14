@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
 import ExperienceEditionFormWrapper from "@/components/ExperienceEditionFormWrapper";
 import CPDTrustBlock from "@/components/CPDTrustBlock";
@@ -251,6 +252,46 @@ export default function ConversatiiCareConteazaPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Galerie foto hotel */}
+        <div className="mt-10 grid md:grid-cols-3 gap-6">
+          {[
+            {
+              src: "/images/hotel/hotel-exterior.png",
+              alt: "Exterior Hotel Afrodita",
+              title: "Exterior Hotel Afrodita",
+              caption: "Cadrul ales pentru prima ediție Experience Edition",
+            },
+            {
+              src: "/images/hotel/hotel-camera.png",
+              alt: "Cameră Hotel Afrodita",
+              title: "Cameră Hotel Afrodita",
+              caption: "Confort și spațiu pentru o experiență completă",
+            },
+            {
+              src: "/images/hotel/hotel-lobby.png",
+              alt: "Lobby Hotel Afrodita",
+              title: "Lobby Hotel Afrodita",
+              caption: "Spații care susțin conversațiile și conexiunile autentice",
+            },
+          ].map((img) => (
+            <div key={img.src} className="group rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-white">
+              <div className="relative h-52 overflow-hidden">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="px-4 py-3">
+                <p className="font-semibold text-gray-900 text-sm">{img.title}</p>
+                <p className="text-gray-500 text-xs mt-0.5 italic">{img.caption}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
