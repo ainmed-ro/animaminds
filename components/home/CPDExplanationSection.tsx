@@ -168,6 +168,16 @@ export default function CPDExplanationSection() {
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
+            <Link href="/cpd-provider" className="inline-block mb-8 hover:opacity-80 transition-opacity">
+              <Image
+                src="/cpd-certificate.png"
+                alt="Certificat CPD Approved Provider #790577 – AnimaMinds"
+                width={220}
+                height={155}
+                className="rounded-lg shadow-md object-contain mx-auto"
+              />
+              <p className="text-xs text-gray-500 mt-2">Click pentru detalii despre acreditarea CPD</p>
+            </Link>
             <p className="text-lg text-gray-600 mb-8">
               Descoperă cum AnimaMinds poate transforma dezvoltarea profesională în organizația ta.
             </p>
