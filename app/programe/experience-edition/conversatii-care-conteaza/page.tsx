@@ -68,6 +68,47 @@ export default function ConversatiiCareConteazaPage() {
         </div>
       </section>
 
+      {/* De ce această primă ediție? */}
+      <section className="py-14 px-4 bg-white">
+        <div className="max-w-[800px] mx-auto text-center">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-emerald-700 mb-4">Prima ediție</span>
+          <h2
+            className="text-3xl md:text-4xl font-bold mb-8"
+            style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+          >
+            De ce această primă ediție?
+          </h2>
+
+          <div className="space-y-5 text-gray-700 text-lg leading-relaxed text-left md:text-center">
+            <p>
+              <strong>Experience Edition începe aici.</strong>
+            </p>
+            <p>
+              Pentru prima ediție, ne-am dorit mai mult decât o locație. Ne-am dorit un loc care să creeze cadrul potrivit pentru oameni, pentru conversații autentice, pentru învățare și pentru momente care rămân cu tine mult timp după încheierea programului.
+            </p>
+            <p>
+              De aceea am ales <strong>Hotel Afrodita din Vălenii de Munte</strong>. Nu doar pentru confort și facilități, ci pentru atmosfera pe care o oferă. Un loc care invită la reflecție, conectare și dezvoltare, departe de ritmul alert al fiecărei zile.
+            </p>
+          </div>
+
+          {/* Citat evidențiat */}
+          <blockquote className="my-10 px-6 py-8 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-2xl text-left">
+            <p className="text-xl md:text-2xl font-semibold italic leading-relaxed" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              „Am ales această primă ediție cu sufletul și cu gândul la oameni."
+            </p>
+          </blockquote>
+
+          <div className="space-y-5 text-gray-700 text-lg leading-relaxed text-left md:text-center">
+            <p>
+              Această primă ediție este specială pentru noi. Este începutul unei povești construite cu grijă, cu suflet și cu respect pentru fiecare participant. Ne dorim ca fiecare persoană care ne trece pragul să simtă că face parte dintr-o experiență autentică, în care învățarea, inspirația și conexiunile umane sunt cu adevărat importante.
+            </p>
+            <p className="font-medium text-gray-900">
+              Experience Edition nu este doar un eveniment. Este începutul unei comunități și al unei experiențe create în jurul oamenilor.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Launch Pricing Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-yellow-50 to-orange-50">
         <div className="max-w-6xl mx-auto">
