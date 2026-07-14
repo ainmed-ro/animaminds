@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export default function PovEsteaNoastra() {
           <Image src="/images/poveste-hero.jpg" alt="AnimaMinds workshop" fill className="object-cover object-center" priority quality={85} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(245,240,232,0.92) 0%, rgba(245,240,232,0.75) 50%, rgba(124,154,126,0.10) 100%)" }} />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10 w-full">
           <div className="max-w-3xl">
             <span className="section-label">Povestea noastră</span>
             <div className="line-accent my-4" />

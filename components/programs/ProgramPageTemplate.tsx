@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -62,7 +62,7 @@ const ProgramPageTemplate: React.FC<{
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-white to-gray-50">
+      <section className="py-8 px-4 bg-gradient-to-br from-white to-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-6">
             {getStatusBadge()}
@@ -127,10 +127,10 @@ const ProgramPageTemplate: React.FC<{
       </section>
 
       {/* What You Learn Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-8 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 
-            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold mb-6 text-center"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
             Ce vei învăța
@@ -151,10 +151,10 @@ const ProgramPageTemplate: React.FC<{
       </section>
 
       {/* Target Audience Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-8 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <h2 
-            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold mb-6 text-center"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
             Cui se adresează
@@ -174,10 +174,10 @@ const ProgramPageTemplate: React.FC<{
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-8 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 
-            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold mb-6 text-center"
             style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
           >
             Competențe dezvoltate
@@ -202,10 +202,10 @@ const ProgramPageTemplate: React.FC<{
 
       {/* Formats Section */}
       {program.status === "available" && (
-        <section id="formate" className="py-16 px-4 bg-gray-50">
+        <section id="formate" className="py-8 px-4 bg-gray-50">
           <div className="max-w-6xl mx-auto">
             <h2 
-              className="text-3xl md:text-4xl font-bold mb-12 text-center"
+              className="text-3xl md:text-4xl font-bold mb-6 text-center"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Alege formatul
@@ -301,10 +301,10 @@ const ProgramPageTemplate: React.FC<{
 
       {/* Editions Section (only for Experience Edition™) */}
       {editions && editions.length > 0 && selectedFormat === "experience-edition" && (
-        <section className="py-16 px-4 bg-white">
+        <section className="py-8 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <h2 
-              className="text-3xl md:text-4xl font-bold mb-12 text-center"
+              className="text-3xl md:text-4xl font-bold mb-6 text-center"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
             >
               Ediții disponibile
@@ -357,7 +357,7 @@ const ProgramPageTemplate: React.FC<{
 
       {/* CTA Section */}
       {program.status === "preparation" && (
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-8 px-4 bg-gray-50">
           <div className="max-w-4xl mx-auto text-center">
             <h2 
               className="text-3xl md:text-4xl font-bold mb-6"

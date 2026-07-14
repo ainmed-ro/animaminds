@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { User, Building, MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle, Send } from "lucide-react";
 import { useState } from "react";
@@ -63,7 +63,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-white to-gray-50">
+      <section className="py-8 px-4 bg-gradient-to-br from-white to-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h1 
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
@@ -158,7 +158,7 @@ export default function ContactPage() {
       {/* Contact Form Section */}
       <section id="contact-form" className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 
               className="text-3xl md:text-4xl font-bold mb-4"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
@@ -283,7 +283,7 @@ export default function ContactPage() {
       {/* Contact Information Section */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 
               className="text-3xl md:text-4xl font-bold mb-4"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
@@ -292,7 +292,7 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
             <div className="text-center">
               <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: "var(--sage)" }}>
                 <Mail size={24} color="white" />

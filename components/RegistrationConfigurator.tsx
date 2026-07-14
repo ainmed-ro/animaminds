@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { Calendar, MapPin, Users, Star, CheckCircle, ArrowRight } from "lucide-react";
@@ -246,7 +246,7 @@ export default function RegistrationConfigurator() {
   if (submitted) {
     const confirmation = getConfirmationMessage();
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
           <h2 className="text-2xl font-bold text-green-800 mb-4">{confirmation.title}</h2>
@@ -260,9 +260,9 @@ export default function RegistrationConfigurator() {
 
   if (!selectedFormat) {
     return (
-      <div className="max-w-6xl mx-auto px-4 py-16">
+      <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Alege modul în care dorești să participi
           </h1>
@@ -321,7 +321,7 @@ export default function RegistrationConfigurator() {
     switch (selectedFormat) {
       case "online-live":
         return (
-          <div className="max-w-4xl mx-auto px-4 py-16">
+          <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
               <h2 className="text-3xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
                 Conversații care Contează — Online Live
@@ -447,7 +447,7 @@ export default function RegistrationConfigurator() {
 
       case "experience-edition":
         return (
-          <div className="max-w-4xl mx-auto px-4 py-16">
+          <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
               <h2 className="text-3xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
                 Conversații care Contează — Experience Edition™
@@ -750,7 +750,7 @@ export default function RegistrationConfigurator() {
 
       case "organizations":
         return (
-          <div className="max-w-4xl mx-auto px-4 py-16">
+          <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
               <h2 className="text-3xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
                 Solicită ofertă

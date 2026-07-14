@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { Award, ExternalLink } from "lucide-react";
@@ -9,7 +9,7 @@ export default function TrustSection() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
           {/* Title */}
@@ -38,7 +38,7 @@ export default function TrustSection() {
 
           {/* CPD Number */}
           <div
-            className={`flex items-center justify-center gap-2 mb-12 transition-all duration-700 delay-200 ${
+            className={`flex items-center justify-center gap-2 mb-6 transition-all duration-700 delay-200 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
@@ -50,7 +50,7 @@ export default function TrustSection() {
 
           {/* Certificates */}
           <div
-            className={`grid md:grid-cols-3 gap-8 mb-12 transition-all duration-700 delay-300 ${
+            className={`grid md:grid-cols-3 gap-8 mb-6 transition-all duration-700 delay-300 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
@@ -75,7 +75,7 @@ export default function FeaturedProgramsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {availablePrograms.map((program, i) => (
             <div
               key={program.title}

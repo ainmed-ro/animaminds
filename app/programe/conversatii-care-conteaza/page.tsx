@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
@@ -13,7 +13,7 @@ export default function ConversatiiCareConteazaPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-sage-50 to-blue-50 py-20 px-4">
+      <section className="relative bg-gradient-to-br from-sage-50 to-blue-50 py-10 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium">
@@ -51,9 +51,9 @@ export default function ConversatiiCareConteazaPage() {
       </section>
 
       {/* Online Live Section */}
-      <section id="online-live" className="py-20 px-4 bg-white">
+      <section id="online-live" className="py-10 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Format Online Live
             </h2>
@@ -62,7 +62,7 @@ export default function ConversatiiCareConteazaPage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div className="bg-sage-50 p-6 rounded-xl">
               <h3 className="text-xl font-bold mb-4" style={{ color: "var(--charcoal)" }}>
                 Program
@@ -128,9 +128,9 @@ export default function ConversatiiCareConteazaPage() {
       </section>
 
       {/* Details Section */}
-      <section id="detalii" className="py-20 px-4 bg-gray-50">
+      <section id="detalii" className="py-10 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Despre Program
             </h2>
@@ -180,7 +180,7 @@ export default function ConversatiiCareConteazaPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-sage-600">
+      <section className="py-10 px-4 bg-sage-600">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6 text-white">
             Pregătit pentru conversații cu adevărat semnificative?

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
 import ExperienceEditionFormWrapper from "@/components/ExperienceEditionFormWrapper";
@@ -12,7 +12,7 @@ export default function ConversatiiCareConteazaExperiencePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-sage-50 to-blue-50 py-20 px-4">
+      <section className="relative bg-gradient-to-br from-sage-50 to-blue-50 py-10 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium">
@@ -53,7 +53,7 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Pricing Launch */}
-      <section className="py-16 px-4 bg-gradient-to-r from-green-50 to-blue-50">
+      <section className="py-8 px-4 bg-gradient-to-r from-green-50 to-blue-50">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block bg-green-100 px-6 py-3 rounded-lg mb-6">
             <span className="text-green-800 font-bold text-lg">TARIF DE LANSARE</span>
@@ -88,9 +88,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Experience Description */}
-      <section className="py-20 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Experience Edition
             </h2>
@@ -113,9 +113,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Location Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               📍 Locația Experience Edition
             </h2>
@@ -165,9 +165,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* What's Included */}
-      <section className="py-20 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Ce include Experience Edition
             </h2>
@@ -205,9 +205,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Learning Activities */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Activități de învățare
             </h2>
@@ -239,9 +239,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Complementary Experiences */}
-      <section className="py-20 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Experiențe complementare de învățare
             </h2>
@@ -281,9 +281,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Participation Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Cum dorești să participi?
             </h2>
@@ -438,7 +438,7 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Transport Support Notice */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-8 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
             <div className="flex items-start gap-3">
@@ -462,9 +462,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Capacity */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Capacitate
             </h2>
@@ -489,9 +489,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* SICAP/SEAP */}
-      <section className="py-20 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Achiziții publice
             </h2>
@@ -507,9 +507,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Reception Documents */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Documente de recepție
             </h2>
@@ -525,9 +525,9 @@ export default function ConversatiiCareConteazaExperiencePage() {
       </section>
 
       {/* Registration Form Section */}
-      <section id="rezerva-loc" className="py-20 px-4 bg-gray-50">
+      <section id="rezerva-loc" className="py-10 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Rezervă un loc
             </h2>

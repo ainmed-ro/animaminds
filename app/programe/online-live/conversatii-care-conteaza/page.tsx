@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import OnlineLiveForm from "@/components/OnlineLiveForm";
 import { Calendar, Clock, Award, Users, Globe, CheckCircle } from "lucide-react";
 
@@ -11,7 +11,7 @@ export default function ConversatiiCareConteazaOnlineLivePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-50 py-20 px-4">
+      <section className="relative bg-gradient-to-br from-blue-50 to-indigo-50 py-10 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-bold">
@@ -60,13 +60,13 @@ export default function ConversatiiCareConteazaOnlineLivePage() {
       </section>
 
       {/* Program Details */}
-      <section className="py-16 px-4">
+      <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+          <h2 className="text-3xl font-bold text-center mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Detalii Program
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4 text-gray-900">Calendar</h3>
               <div className="space-y-3">
@@ -117,7 +117,7 @@ export default function ConversatiiCareConteazaOnlineLivePage() {
             </div>
           </div>
 
-          <div className="bg-blue-50 rounded-lg p-6 mb-12">
+          <div className="bg-blue-50 rounded-lg p-6 mb-6">
             <h3 className="text-xl font-semibold mb-4 text-gray-900">Format Online Live</h3>
             <p className="text-gray-700 mb-4">
               Programul se desfășoară exclusiv online prin platforma Google Meet. Participanții vor primi:
@@ -145,9 +145,9 @@ export default function ConversatiiCareConteazaOnlineLivePage() {
       </section>
 
       {/* Registration Form */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-8 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+          <h2 className="text-3xl font-bold text-center mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Înscriere
           </h2>
           <OnlineLiveForm />

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Politica cookies",
@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 export default function CookiesPage() {
   return (
     <div>
-      <section className="py-20" style={{ backgroundColor: "var(--cream)" }}>
+      <section className="py-10" style={{ backgroundColor: "var(--cream)" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="section-label">Legal</span>
           <div className="line-accent my-4" />
@@ -26,7 +26,7 @@ export default function CookiesPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-10">
             {[

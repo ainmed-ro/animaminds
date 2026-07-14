@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { Star, Calendar, MapPin, Users, BookOpen, Coffee, Utensils, Bed, Wifi, CheckCircle, ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -33,7 +33,7 @@ export default function LaunchFeaturedSection() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {[
             {
               icon: <BookOpen className="w-8 h-8" />,
@@ -71,7 +71,7 @@ export default function LaunchFeaturedSection() {
         </div>
 
         {/* Price Comparison */}
-        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 mb-16">
+        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 mb-8">
           <h3
             className={`text-2xl font-bold mb-8 text-center transition-all duration-700 delay-300 ${
               mounted ? "opacity-100" : "opacity-0"
@@ -119,7 +119,7 @@ export default function LaunchFeaturedSection() {
         </div>
 
         {/* What's Included */}
-        <div className="bg-gradient-to-r from-sage-100 to-blue-100 p-8 rounded-xl mb-16">
+        <div className="bg-gradient-to-r from-sage-100 to-blue-100 p-8 rounded-xl mb-8">
           <h3
             className={`text-2xl font-bold mb-8 text-center transition-all duration-700 delay-600 ${
               mounted ? "opacity-100" : "opacity-0"

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { Calendar, MapPin, Star, BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -48,7 +48,7 @@ export default function ExperienceEditionHero() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 py-20 px-4">
+    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 py-10 px-4">
       {/* Particule animate */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {PARTICLES.map((p, i) => (

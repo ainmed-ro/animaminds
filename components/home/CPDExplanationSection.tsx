@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, BookOpen, Users, Target, Lightbulb, CheckCircle } from "lucide-react";
@@ -52,7 +52,7 @@ export default function CPDExplanationSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           {[
             {
               icon: <BookOpen className="w-8 h-8" />,
@@ -96,7 +96,7 @@ export default function CPDExplanationSection() {
         </div>
 
         {/* What Participants Receive */}
-        <div className="bg-gradient-to-r from-sage-50 to-blue-50 p-8 rounded-xl mb-16">
+        <div className="bg-gradient-to-r from-sage-50 to-blue-50 p-8 rounded-xl mb-8">
           <h3
             className={`text-2xl font-bold mb-6 text-center transition-all duration-700 delay-300 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -129,7 +129,7 @@ export default function CPDExplanationSection() {
         </div>
 
         {/* What Institutions Receive */}
-        <div className="bg-gradient-to-r from-blue-50 to-terracotta-50 p-8 rounded-xl mb-16">
+        <div className="bg-gradient-to-r from-blue-50 to-terracotta-50 p-8 rounded-xl mb-8">
           <h3
             className={`text-2xl font-bold mb-6 text-center transition-all duration-700 delay-500 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"

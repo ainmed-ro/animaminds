@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState, useCallback } from 'react'
 
@@ -172,9 +172,9 @@ export default function PaymentsAdminPage() {
         </div>
 
         {loading ? (
-          <div className="text-center py-16 text-gray-400">Se încarcă...</div>
+          <div className="text-center py-8 text-gray-400">Se încarcă...</div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-16 text-gray-400">Nicio înregistrare găsită.</div>
+          <div className="text-center py-8 text-gray-400">Nicio înregistrare găsită.</div>
         ) : (
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-sm">

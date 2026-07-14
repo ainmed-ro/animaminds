@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { Monitor, MapPin, Building, Clock, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -161,7 +161,7 @@ export default function ServiceCards() {
   return (
     <section className="py-10 px-4 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h2 
             className={`text-3xl md:text-4xl font-bold mb-4 transition-all duration-700 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"

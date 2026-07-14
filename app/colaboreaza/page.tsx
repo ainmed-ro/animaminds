@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
@@ -64,7 +64,7 @@ export default function ColaboreazaPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="py-24 lg:py-28 relative overflow-hidden">
+      <section className="py-10 lg:py-10 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/group-outdoor.jpg"
@@ -110,7 +110,7 @@ export default function ColaboreazaPage() {
       </section>
 
       {/* Why AnimaMinds */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -161,7 +161,7 @@ export default function ColaboreazaPage() {
 
       {/* Partner types */}
       <section
-        className="py-20"
+        className="py-10"
         style={{ backgroundColor: "var(--gray-warm)" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -222,7 +222,7 @@ export default function ColaboreazaPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="section-label">Procesul nostru</span>
@@ -265,9 +265,9 @@ export default function ColaboreazaPage() {
       </section>
 
       {/* Organization Request Form */}
-      <section id="solicita-oferta" className="py-20 bg-gray-50">
+      <section id="solicita-oferta" className="py-10 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2
               className="text-4xl font-semibold mb-5"
               style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}

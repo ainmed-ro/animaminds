@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
@@ -13,7 +13,7 @@ export default function ExperienceEditionPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-sage-50 to-blue-50 py-20 px-4">
+      <section className="relative bg-gradient-to-br from-sage-50 to-blue-50 py-10 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-6">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-800 text-sm font-medium">
@@ -51,9 +51,9 @@ export default function ExperienceEditionPage() {
       </section>
 
       {/* Experience Editions List */}
-      <section id="detalii" className="py-20 px-4">
+      <section id="detalii" className="py-10 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Experience Editions
             </h2>
@@ -187,9 +187,9 @@ export default function ExperienceEditionPage() {
       </section>
 
       {/* What's Included */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Ce este inclus în Experience Edition
             </h2>
@@ -239,7 +239,7 @@ export default function ExperienceEditionPage() {
       </section>
 
       {/* Capacity Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Grupă limitată pentru experiență premium
@@ -268,9 +268,9 @@ export default function ExperienceEditionPage() {
       </section>
 
       {/* Participation Section */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Cum dorești să participi?
             </h2>
@@ -425,9 +425,9 @@ export default function ExperienceEditionPage() {
       </section>
 
       {/* Registration Form */}
-      <section id="rezerva-loc" className="py-20 px-4 bg-white">
+      <section id="rezerva-loc" className="py-10 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
               Rezervă un loc la Experience Edition
             </h2>
@@ -443,7 +443,7 @@ export default function ExperienceEditionPage() {
       </section>
 
       {/* Transport Support Notice */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-8 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
             <div className="flex items-start gap-3">
