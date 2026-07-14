@@ -41,16 +41,6 @@ export default function FormatSelectionSection() {
       buttonText: "Solicită ofertă",
       buttonLink: "/colaboreaza#solicita-oferta"
     },
-    {
-      id: "private-groups",
-      title: "Grupuri private",
-      description: "Program disponibil pentru grupuri organizate, comunități profesionale și echipe.",
-      features: ["format personalizat", "program adaptat", "ofertă dedicată"],
-      icon: Calendar,
-      color: "var(--charcoal)",
-      buttonText: "Solicită ofertă pentru grup",
-      buttonLink: "/colaboreaza#solicita-oferta?tip=grup-privat"
-    }
   ];
 
   return (

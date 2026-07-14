@@ -304,33 +304,6 @@ export default async function ProgramePage() {
               </Link>
             </div>
             
-            {/* Grupuri private */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="text-3xl">👥</div>
-                <h3 className="text-2xl font-bold text-white">Grupuri private</h3>
-              </div>
-              <p className="text-white/90 mb-6">Pentru grupuri care doresc un program personalizat.</p>
-              
-              <div className="space-y-3 mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white font-medium">preț personalizat</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white/90">7,5 ore</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white/90">8 CPD</span>
-                </div>
-              </div>
-              
-              <Link href="/colaboreaza#solicita-oferta" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
-                ✅ Solicită ofertă
-              </Link>
-            </div>
             
           </div>
           

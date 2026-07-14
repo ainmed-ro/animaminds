@@ -2,7 +2,6 @@ export type RequestType =
   | 'online_live_registration'
   | 'experience_edition_reservation'
   | 'organisation_request'
-  | 'private_group_request'
   | 'contact_message'
 
 export interface BaseSubmission {
@@ -60,15 +59,6 @@ export interface OrganisationSubmission extends BaseSubmission {
   budgetRange?: string
 }
 
-export interface PrivateGroupSubmission extends BaseSubmission {
-  requestType: 'private_group_request'
-  programmeName: string
-  programmeSlug?: string
-  format: 'Grup privat'
-  estimatedParticipants: number
-  price: 'Pe bază de ofertă'
-}
-
 export interface ContactSubmission extends BaseSubmission {
   requestType: 'contact_message'
   subject: string
@@ -80,5 +70,4 @@ export type AnySubmission =
   | OnlineLiveSubmission
   | ExperienceEditionSubmission
   | OrganisationSubmission
-  | PrivateGroupSubmission
   | ContactSubmission

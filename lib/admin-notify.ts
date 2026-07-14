@@ -20,9 +20,6 @@ function buildRows(submission: AnySubmission): string {
     case 'organisation_request':
       specific = row('Program', submission.programmeName) + row('Format', submission.format) + row('Organizație', submission.organizationName) + row('Tip org.', submission.organizationType) + row('Participanți', String(submission.estimatedParticipants)) + row('Buget', submission.budgetRange)
       break
-    case 'private_group_request':
-      specific = row('Program', submission.programmeName) + row('Format', submission.format) + row('Participanți grup', String(submission.estimatedParticipants))
-      break
     case 'contact_message':
       specific = row('Subiect', submission.subject) + row('Program interes', submission.programInteres) + row('Mesaj', submission.message?.substring(0, 300))
       break

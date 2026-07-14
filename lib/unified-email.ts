@@ -31,8 +31,6 @@ function userSubject(submission: AnySubmission): string {
       return `Rezervare Confirmată – ${submission.programmeName} – Experience Edition™`
     case 'organisation_request':
       return `Solicitare Organizație Înregistrată – AnimaMinds`
-    case 'private_group_request':
-      return `Solicitare Grup Privat Înregistrată – AnimaMinds`
     case 'contact_message':
       return `Mesajul tău a fost transmis – AnimaMinds`
   }
@@ -84,16 +82,6 @@ function userBody(submission: AnySubmission): string {
           <tr><td style="padding:6px 0;"><strong>Participanți estimați:</strong></td><td>${submission.estimatedParticipants}</td></tr>
         </table>
         <p style="margin-top:16px;">Te vom contacta în curând cu o ofertă personalizată.</p>`
-      break
-
-    case 'private_group_request':
-      details = `
-        <p>Solicitarea pentru <strong>grup privat – ${submission.programmeName}</strong> a fost înregistrată.</p>
-        <table style="width:100%;border-collapse:collapse;font-size:14px;color:#333;">
-          <tr><td style="padding:6px 0;"><strong>Participanți estimați:</strong></td><td>${submission.estimatedParticipants}</td></tr>
-          <tr><td style="padding:6px 0;"><strong>Preț:</strong></td><td>${submission.price}</td></tr>
-        </table>
-        <p style="margin-top:16px;">Te vom contacta în curând cu detalii și o ofertă.</p>`
       break
 
     case 'contact_message':

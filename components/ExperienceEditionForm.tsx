@@ -237,12 +237,11 @@ export default function ExperienceEditionForm() {
         >
           <option value="">Selectează tipul de participare</option>
           <option value="individual">Individual</option>
-          <option value="grup">Grup</option>
           <option value="organizatie">Instituție / Organizație</option>
         </select>
       </div>
 
-      {(formData.participationType === 'grup' || formData.participationType === 'organizatie') && (
+      {formData.participationType === 'organizatie' && (
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -261,7 +260,7 @@ export default function ExperienceEditionForm() {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              {formData.participationType === 'grup' ? 'Reprezentant grup *' : 'Nume instituție / organizație *'}
+              Nume instituție / organizație *
             </label>
             <input
               type="text"
@@ -270,7 +269,7 @@ export default function ExperienceEditionForm() {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-              placeholder={formData.participationType === 'grup' ? 'Ex: Echipa HR, Grupul de colegi' : 'Numele instituției sau organizației'}
+              placeholder="Numele instituției sau organizației"
             />
           </div>
         </div>

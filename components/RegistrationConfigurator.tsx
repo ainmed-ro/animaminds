@@ -35,14 +35,6 @@ export default function RegistrationConfigurator() {
     organizationType: "",
     message: "",
     
-    // Private Groups
-    groupName: "",
-    groupEmail: "",
-    groupPhone: "",
-    groupSize: "",
-    groupProgram: "",
-    groupMessage: "",
-    
     // Common
     agreeTerms: false,
     confirmParticipation: false,
@@ -83,15 +75,6 @@ export default function RegistrationConfigurator() {
       location: "📍 Online dedicat sau la sediul beneficiarului",
       buttonText: "Solicit ofertă"
     },
-    {
-      id: "private-groups",
-      title: "Grup privat",
-      program: "Format personalizat",
-      price: "preț la cerere",
-      details: ["Grupuri profesionale", "Comunități", "Echipe"],
-      location: "📍 Format personalizat",
-      buttonText: "Solicit ofertă pentru grup"
-    }
   ];
 
   const experienceEditions = [
@@ -197,21 +180,6 @@ export default function RegistrationConfigurator() {
           });
           break;
           
-        case "private-groups":
-          response = await fetch("/api/private-groups", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              requesterName: formData.groupName,
-              email: formData.groupEmail,
-              phone: formData.groupPhone,
-              programmeRequested: formData.groupProgram,
-              estimatedGroupSize: formData.groupSize,
-              message: formData.groupMessage,
-            }),
-          });
-          break;
-          
         default:
           throw new Error("Format necunoscut");
       }
@@ -266,11 +234,6 @@ export default function RegistrationConfigurator() {
         return {
           title: formData.organizationType === "company" ? "✅ Cererea dumneavoastră a fost transmisă" : "✅ Solicitarea a fost înregistrată",
           message: customMessage
-        };
-      case "private-groups":
-        return {
-          title: "✅ Cererea a fost înregistrată",
-          message: `Mulțumim, ${formData.groupName}.\n\nAm primit solicitarea pentru organizarea unui grup privat.\n\nVom reveni cu o propunere personalizată care va include:\nformatul recomandat;\ncalendarul de desfășurare;\ncondițiile de participare;\noferta financiară.`
         };
       default:
         return { title: "", message: "" };
@@ -940,91 +903,6 @@ export default function RegistrationConfigurator() {
                   style={{ backgroundColor: "var(--sage)" }}
                 >
                   {loading ? "Se procesează..." : "Solicită ofertă personalizată"}
-                </button>
-              </form>
-            </div>
-          </div>
-        );
-
-      case "private-groups":
-        return (
-          <div className="max-w-4xl mx-auto px-4 py-16">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
-              <h2 className="text-3xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-                Solicită ofertă pentru grup
-              </h2>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    name="groupName"
-                    placeholder="Nume"
-                    value={formData.groupName}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-                  />
-                  <input
-                    type="email"
-                    name="groupEmail"
-                    placeholder="E-mail"
-                    value={formData.groupEmail}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-                  />
-                  <input
-                    type="tel"
-                    name="groupPhone"
-                    placeholder="Telefon"
-                    value={formData.groupPhone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-                  />
-                  <input
-                    type="text"
-                    name="groupSize"
-                    placeholder="Număr participanți"
-                    value={formData.groupSize}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-                  />
-                </div>
-
-                <input
-                  type="text"
-                  name="groupProgram"
-                  placeholder="Program dorit"
-                  value={formData.groupProgram}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-                />
-
-                <textarea
-                  name="groupMessage"
-                  placeholder="Mesaj"
-                  value={formData.groupMessage}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-                />
-
-                {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
-                    {error}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-4 px-6 rounded-xl font-bold text-white transition-all disabled:opacity-50"
-                  style={{ backgroundColor: "var(--sage)" }}
-                >
-                  {loading ? "Se procesează..." : "Solicită ofertă pentru grup"}
                 </button>
               </form>
             </div>

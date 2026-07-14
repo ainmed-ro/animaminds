@@ -69,21 +69,6 @@ export async function syncToGoogleSheets(submission: AnySubmission): Promise<voi
       break
     }
 
-    case 'private_group_request': {
-      experience = `${submission.programmeName} - Grup Privat`
-      editie = ''
-      format = submission.format
-      price = submission.price
-      duration = ''
-      cpd = ''
-      name = submission.participantName
-      email = submission.participantEmail
-      phone = submission.participantPhone || ''
-      participanti = String(submission.estimatedParticipants)
-      observatii = submission.message || ''
-      break
-    }
-
     case 'contact_message': {
       formType = 'CONTACT'
       name = submission.participantName

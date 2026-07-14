@@ -29,13 +29,6 @@ export default function SameProgramDifferentFormats() {
       suitableFor: "Școli, spitale, ONG-uri, companii",
       description: "Programe dedicate și personalizate pentru nevoile organizației"
     },
-    {
-      name: "Grupuri private",
-      icon: Calendar,
-      color: "var(--charcoal)",
-      suitableFor: "Comunități și grupuri organizate",
-      description: "Format adaptat pentru grupuri profesionale sau comunitare"
-    }
   ];
 
   return (
