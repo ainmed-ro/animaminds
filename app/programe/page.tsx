@@ -289,11 +289,15 @@ export default async function ProgramePage() {
                 <h3 className="text-xl font-bold text-white">Online Live</h3>
               </div>
               <p className="text-white/80 text-sm mb-4">Participi de oriunde · 3 întâlniri live + Google Classroom</p>
-              <div className="space-y-2 mb-5">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-amber-400" />
-                  <span className="text-white font-semibold text-sm">199 lei / participant</span>
+              <div className="bg-white/15 rounded-xl p-4 mb-4 border border-white/30">
+                <p className="text-white/70 text-xs mb-1 uppercase tracking-wide">Taxă participare</p>
+                <div className="flex items-end gap-2">
+                  <span className="text-4xl font-black text-white leading-none">199</span>
+                  <span className="text-white/90 font-semibold mb-1">lei</span>
                 </div>
+                <p className="text-white/70 text-xs mt-1">/ participant · toate sesiunile incluse</p>
+              </div>
+              <div className="space-y-1.5 mb-5">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-white/60" />
                   <span className="text-white/80 text-sm">7,5 ore · 8 credite CPD</span>
@@ -315,19 +319,25 @@ export default async function ProgramePage() {
                 <h3 className="text-xl font-bold text-white">Pentru organizații</h3>
               </div>
               <p className="text-white/80 text-sm mb-4">Școli · Instituții · ONG-uri · Companii</p>
-              <div className="space-y-2 mb-5">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-amber-400" />
-                  <span className="text-white font-semibold text-sm">3.500 lei / grup · online</span>
+              <div className="bg-white/15 rounded-xl p-4 mb-4 border border-white/30 space-y-3">
+                <div>
+                  <p className="text-white/70 text-xs uppercase tracking-wide mb-0.5">Online dedicat</p>
+                  <div className="flex items-end gap-2">
+                    <span className="text-3xl font-black text-white leading-none">3.500</span>
+                    <span className="text-white/90 font-semibold mb-0.5">lei / grup</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-white/60" />
-                  <span className="text-white/80 text-sm">5.000 lei / grup · la sediu</span>
+                <div className="border-t border-white/20 pt-3">
+                  <p className="text-white/70 text-xs uppercase tracking-wide mb-0.5">La sediul beneficiarului</p>
+                  <div className="flex items-end gap-2">
+                    <span className="text-2xl font-black text-white/90 leading-none">5.000</span>
+                    <span className="text-white/80 font-semibold mb-0.5">lei / grup</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-white/60" />
-                  <span className="text-white/80 text-sm">7,5 ore · 8 CPD / participant</span>
-                </div>
+              </div>
+              <div className="flex items-center gap-2 mb-5">
+                <CheckCircle className="w-4 h-4 text-white/60" />
+                <span className="text-white/80 text-sm">7,5 ore · 8 CPD / participant</span>
               </div>
               <Link href="/colaboreaza#solicita-oferta" className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all text-sm">
                 Solicită ofertă

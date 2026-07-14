@@ -286,8 +286,9 @@ export default function RegistrationConfigurator() {
                   ))}
                 </div>
                 
-                <div className="mb-6">
-                  <div className="text-2xl font-bold" style={{ color: "var(--sage)" }}>{format.price}</div>
+                <div className="mb-6 bg-gray-50 rounded-xl p-3 border border-gray-200">
+                  <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Preț</p>
+                  <div className="text-3xl font-black text-gray-900 leading-tight">{format.price}</div>
                 </div>
                 
                 <button

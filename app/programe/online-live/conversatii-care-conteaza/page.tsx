@@ -28,7 +28,7 @@ export default function ConversatiiCareConteazaOnlineLivePage() {
             Program de comunicare și colaborare în format online live
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-8">
+          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mb-6">
             <div className="text-center">
               <Calendar className="w-8 h-8 text-blue-600 mx-auto mb-2" />
               <p className="text-sm font-medium text-gray-900">8, 15, 22 Sept</p>
@@ -41,9 +41,19 @@ export default function ConversatiiCareConteazaOnlineLivePage() {
               <Award className="w-8 h-8 text-blue-600 mx-auto mb-2" />
               <p className="text-sm font-medium text-gray-900">8 CPD</p>
             </div>
-            <div className="text-center">
-              <Users className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-              <p className="text-sm font-medium text-gray-900">199 lei</p>
+          </div>
+
+          {/* Preț evidențiat */}
+          <div className="max-w-xs mx-auto mb-8 rounded-2xl border-2 border-blue-500 overflow-hidden shadow-lg">
+            <div className="bg-blue-600 px-4 py-2 text-center">
+              <span className="text-white text-xs font-black uppercase tracking-wider">Taxă de participare</span>
+            </div>
+            <div className="bg-white px-6 py-4 text-center">
+              <div className="flex items-end justify-center gap-2">
+                <span className="text-5xl font-black text-gray-900 leading-none">199</span>
+                <span className="text-xl font-semibold text-gray-700 mb-1">lei</span>
+              </div>
+              <p className="text-gray-400 text-xs mt-1">/ participant · toate sesiunile incluse</p>
             </div>
           </div>
         </div>

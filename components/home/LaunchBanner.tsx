@@ -70,9 +70,12 @@ export default function LaunchBanner() {
                 mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
-              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Online Live</div>
-              <div className="text-5xl font-bold text-white mb-3">199 lei</div>
-              <div className="text-white/90 text-sm mb-2">per participant</div>
+              <div className="text-yellow-200 text-xs font-bold mb-3 uppercase tracking-wider">Online Live</div>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-6xl font-black text-white leading-none">199</span>
+                <span className="text-xl font-semibold text-white/90 mb-1">lei</span>
+              </div>
+              <div className="text-white/70 text-xs mb-2">/ participant</div>
               <div className="text-white/80 text-sm">3 sesiuni interactive</div>
             </div>
 
@@ -81,9 +84,12 @@ export default function LaunchBanner() {
                 mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
-              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Experience Edition™</div>
-              <div className="text-5xl font-bold text-white mb-3">1.200 lei</div>
-              <div className="text-white/90 text-sm mb-2">per participant</div>
+              <div className="text-yellow-200 text-xs font-bold mb-3 uppercase tracking-wider">Experience Edition™</div>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-6xl font-black text-white leading-none">1.200</span>
+                <span className="text-xl font-semibold text-white/90 mb-1">lei</span>
+              </div>
+              <div className="text-white/70 text-xs mb-2">/ participant</div>
               <div className="text-white/80 text-sm mb-2">Program intensiv de dezvoltare profesională</div>
               <div className="text-white/80 text-sm">în cadru rezidențial, grup restrâns</div>
             </div>
@@ -93,9 +99,12 @@ export default function LaunchBanner() {
                 mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
             >
-              <div className="text-yellow-200 text-sm font-medium mb-3 uppercase tracking-wide">Pentru organizații</div>
-              <div className="text-5xl font-bold text-white mb-3">3.500 lei</div>
-              <div className="text-white/90 text-sm mb-2">per grup</div>
+              <div className="text-yellow-200 text-xs font-bold mb-3 uppercase tracking-wider">Pentru organizații</div>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-6xl font-black text-white leading-none">3.500</span>
+                <span className="text-xl font-semibold text-white/90 mb-1">lei</span>
+              </div>
+              <div className="text-white/70 text-xs mb-2">/ grup</div>
               <div className="text-white/80 text-sm mb-2">Programe dedicate școlilor, instituțiilor</div>
               <div className="text-white/80 text-sm">ONG-urilor, spitalelor și companiilor</div>
             </div>

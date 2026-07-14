@@ -87,12 +87,18 @@ export default function ConversatiiCareConteazaPage() {
               </ul>
             </div>
             
-            <div className="bg-blue-50 p-6 rounded-xl">
-              <h3 className="text-xl font-bold mb-4" style={{ color: "var(--charcoal)" }}>
-                Investiție
-              </h3>
-              <div className="text-3xl font-bold text-sage-700 mb-2">199 lei</div>
-              <p className="text-gray-600 mb-4">Taxă de participare pentru întregul program</p>
+            <div className="rounded-xl overflow-hidden border-2 border-emerald-400">
+              <div className="bg-emerald-600 px-5 py-2 flex items-center justify-between">
+                <h3 className="text-white font-bold">Investiție</h3>
+                <span className="text-emerald-100 text-xs">taxa de participare</span>
+              </div>
+              <div className="bg-white p-6">
+              <div className="mb-1 text-gray-400 text-sm">Preț per participant</div>
+              <div className="flex items-end gap-2 mb-1">
+                <span className="text-5xl font-black text-gray-900 leading-none">199</span>
+                <span className="text-xl font-semibold text-gray-700 mb-1">lei</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-4">Acces complet la întregul program</p>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
@@ -111,6 +117,7 @@ export default function ConversatiiCareConteazaPage() {
                   Suport pe durata programului
                 </li>
               </ul>
+              </div>
             </div>
           </div>
           
