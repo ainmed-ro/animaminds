@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
 import ExperienceEditionForm from "@/components/ExperienceEditionForm";
 
@@ -435,7 +436,9 @@ export default function ExperienceEditionPage() {
             </p>
           </div>
           
-          <ExperienceEditionForm />
+          <Suspense fallback={<div>Se încarcă formularul...</div>}>
+            <ExperienceEditionForm />
+          </Suspense>
         </div>
       </section>
 
