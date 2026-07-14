@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   navigatie: [
@@ -70,21 +71,19 @@ export default function Footer() {
               <p className="text-xs font-medium mb-2" style={{ color: "rgba(255,255,255,0.8)" }}>
                 NICULAE ALINA-IONELA PFA
               </p>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs" style={{ color: "var(--sage-light)" }}>
-                  CPD Approved Provider #790577
-                </span>
-              </div>
               <a
-                href="https://thecpdregister.com"
+                href="https://thecpd.group/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs text-sage-light hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
               >
-                Verifică furnizorul
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
-                </svg>
+                <Image
+                  src="/cpd-badge.png"
+                  alt="CPD Approved Provider #790577"
+                  width={120}
+                  height={60}
+                  className="object-contain"
+                />
               </a>
             </div>
 

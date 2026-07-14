@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
 import ExperienceEditionFormWrapper from "@/components/ExperienceEditionFormWrapper";
+import CPDTrustBlock from "@/components/CPDTrustBlock";
 
 export const metadata: Metadata = {
   title: "Conversații care Contează - Experience Edition | AnimaMinds",
@@ -394,6 +395,32 @@ export default function ConversatiiCareConteazaPage() {
                 <Building className="w-4 h-4" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CPD Info Block */}
+      <section className="py-12 px-4 bg-amber-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Ce primești la finalul programului
+            </h2>
+            <p className="text-gray-600 text-sm">Conversații care Contează · 7,5 ore total · 8 credite CPD</p>
+          </div>
+          <CPDTrustBlock variant="full" credits={8} />
+          <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+            {[
+              { label: "7,5 ore total", sub: "program" },
+              { label: "6,5 ore", sub: "activitate sincronă" },
+              { label: "1 oră", sub: "activitate individuală ghidată" },
+              { label: "8 credite", sub: "CPD" },
+            ].map((item) => (
+              <div key={item.label} className="bg-white border border-amber-200 rounded-lg py-3 px-2">
+                <p className="font-bold text-gray-900">{item.label}</p>
+                <p className="text-xs text-gray-500">{item.sub}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

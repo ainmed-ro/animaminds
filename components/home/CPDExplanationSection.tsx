@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { Award, BookOpen, Users, Target, Lightbulb, CheckCircle } from "lucide-react";
+import Image from "next/image";
+import { ExternalLink, BookOpen, Users, Target, Lightbulb, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function CPDExplanationSection() {
@@ -11,6 +12,15 @@ export default function CPDExplanationSection() {
     <section className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/cpd-badge.png"
+              alt="CPD Approved Provider #790577"
+              width={180}
+              height={90}
+              className="object-contain"
+            />
+          </div>
           <h2
             className={`text-4xl font-bold mb-6 transition-all duration-700 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -20,7 +30,7 @@ export default function CPDExplanationSection() {
               color: "var(--charcoal)",
             }}
           >
-            Ce înseamnă CPD?
+            AnimaMinds este CPD Approved Provider
           </h2>
 
           <p
@@ -29,7 +39,7 @@ export default function CPDExplanationSection() {
             }`}
             style={{ color: "var(--charcoal-soft)" }}
           >
-            CPD – Continuing Professional Development – înseamnă dezvoltare profesională continuă.
+            AnimaMinds este furnizor CPD aprobat, cu numărul de provider <strong>#790577</strong>. Programele noastre sunt concepute ca activități de dezvoltare profesională continuă, cu obiective clare, activități aplicate și dovezi de participare.
           </p>
 
           <p
@@ -38,7 +48,7 @@ export default function CPDExplanationSection() {
             }`}
             style={{ color: "var(--charcoal-soft)" }}
           >
-            Pentru AnimaMinds, CPD nu înseamnă doar credite sau certificate. Înseamnă învățare aplicată, reflecție, dezvoltare continuă și transformarea ideilor în rezultate reale.
+            CPD – <em>Continuing Professional Development</em> – descrie activitățile de învățare prin care profesioniștii își dezvoltă, actualizează și consolidează cunoștințele, competențele și abilitățile pe parcursul carierei.
           </p>
         </div>
 
@@ -98,12 +108,12 @@ export default function CPDExplanationSection() {
           
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              "Certificat de participare recunoscut CPD",
-              "Fișa competențelor dobândite",
-              "Resurse digitale și materiale de curs",
-              "Acces la comunitatea AnimaMinds",
+              "Certificat de participare",
+              "Fișa competențelor dezvoltate",
+              "Credite CPD aferente programului",
+              "Resurse digitale",
               "Instrumente practice aplicabile imediat",
-              "Oportunități de networking profesional"
+              "Acces la comunitatea AnimaMinds"
             ].map((item, index) => (
               <div
                 key={index}
@@ -165,19 +175,20 @@ export default function CPDExplanationSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/cpd-provider"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-sage-600 text-white rounded-lg font-medium hover:bg-sage-700 transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-green-700 text-white rounded-lg font-medium hover:bg-green-800 transition-colors"
               >
-                <Award className="w-5 h-5" />
                 Află mai multe despre CPD
               </Link>
               
-              <Link
-                href="/colaboreaza"
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-sage-600 text-sage-600 rounded-lg font-medium hover:bg-sage-50 transition-colors"
+              <a
+                href="https://thecpd.group/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-amber-500 text-amber-700 rounded-lg font-medium hover:bg-amber-50 transition-colors"
               >
-                <Users className="w-5 h-5" />
-                Solicită ofertă personalizată
-              </Link>
+                <ExternalLink className="w-5 h-5" />
+                Verifică statutul CPD
+              </a>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import CPDTrustBlock from "@/components/CPDTrustBlock";
 import { Calendar, CheckCircle, AlertCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
@@ -369,6 +370,8 @@ export default function ExperienceEditionForm() {
         </label>
       </div>
       
+      <CPDTrustBlock variant="compact" credits={8} />
+
       <div className="text-center">
         <button
           type="submit"
