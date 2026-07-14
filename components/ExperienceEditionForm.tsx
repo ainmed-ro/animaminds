@@ -20,6 +20,7 @@ export default function ExperienceEditionForm() {
     preferredPeriod: searchParams?.get('edition') || "octombrie-2026",
     participationType: "",
     groupSize: "",
+    cui: "",
     message: "",
     terms: false,
   });
@@ -107,6 +108,7 @@ export default function ExperienceEditionForm() {
               preferredPeriod: "octombrie-2026",
               participationType: "",
               groupSize: "",
+              cui: "",
               message: "",
               terms: false,
             });
@@ -273,6 +275,23 @@ export default function ExperienceEditionForm() {
               />
             </div>
           )}
+        </div>
+      )}
+
+      {formData.participationType === 'organizatie' && (
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            CUI / CIF *
+          </label>
+          <input
+            type="text"
+            name="cui"
+            value={formData.cui}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+            placeholder="Ex: RO12345678"
+          />
         </div>
       )}
 
