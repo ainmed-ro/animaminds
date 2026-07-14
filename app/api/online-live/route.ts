@@ -132,14 +132,3 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
-  try {
-    const registrations = await getAllOnlineLiveRegistrations();
-    return NextResponse.json({ registrations });
-  } catch (error) {
-    console.error("Get Online Live registrations error:", error);
-    return NextResponse.json({ 
-      error: "A apărut o eroare la încărcarea înscrierilor Online Live." 
-    }, { status: 500 });
-  }
-}
