@@ -37,7 +37,7 @@ export default function ServiceCards() {
       title: "Online Live",
       description: "Programe de formare profesională online, interactive și aplicate.",
       cta: "Înscrie-te acum",
-      href: "/programe/online-live/conversatii-care-conteaza",
+      href: "/programe/conversatii-care-conteaza#online-live",
       color: "from-blue-500 to-cyan-600"
     },
     {
