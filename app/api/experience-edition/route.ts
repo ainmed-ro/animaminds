@@ -48,9 +48,11 @@ export async function POST(req: NextRequest) {
         message: message || "",
       });
     } catch (dbErr) {
-      console.error("Experience Edition Supabase storage error:", dbErr);
+      const err = dbErr as Error;
+      console.error("Experience Edition Supabase storage error:", err.message);
       return NextResponse.json({ 
-        error: "Eroare la salvarea exprimării de interes. Te rugăm încercă din nou." 
+        error: "Eroare la salvarea exprimării de interes. Te rugăm încercă din nou.",
+        details: err.message
       }, { status: 500 });
     }
 
