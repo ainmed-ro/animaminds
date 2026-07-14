@@ -248,7 +248,7 @@ export default async function ProgramePage() {
                 </div>
               </div>
               
-              <Link href="/inscriere" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
+              <Link href="/programe/online-live/conversatii-care-conteaza" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
                 ✅ Înscrie-mă
               </Link>
             </div>
@@ -263,28 +263,14 @@ export default async function ProgramePage() {
               
               <div className="space-y-4 mb-6">
                 <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="font-bold text-white mb-2">Ediția 1</h4>
-                  <p className="text-white/80 text-sm mb-2">25–27 septembrie 2026</p>
+                  <h4 className="font-bold text-white mb-2">Ediția de lansare</h4>
+                  <p className="text-white/80 text-sm mb-2">23–25 octombrie 2026</p>
                   <p className="text-white font-medium">1.200 lei cameră dublă</p>
                   <p className="text-white/90 text-sm">1.400 lei cameră single</p>
                 </div>
-                
-                <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="font-bold text-white mb-2">Ediția 2</h4>
-                  <p className="text-white/80 text-sm mb-2">23–25 octombrie 2026</p>
-                  <p className="text-white font-medium">1.490 lei cameră dublă</p>
-                  <p className="text-white/90 text-sm">1.690 lei cameră single</p>
-                </div>
-                
-                <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="font-bold text-white mb-2">Ediția 3</h4>
-                  <p className="text-white/80 text-sm mb-2">30 octombrie – 1 noiembrie 2026</p>
-                  <p className="text-white font-medium">1.490 lei cameră dublă</p>
-                  <p className="text-white/90 text-sm">1.690 lei cameră single</p>
-                </div>
               </div>
               
-              <Link href="/inscriere" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
+              <Link href="/programe/experience-edition/conversatii-care-conteaza#rezerva-loc" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
                 ✅ Rezervă un loc
               </Link>
             </div>
