@@ -259,22 +259,20 @@ export default function ExperienceEditionForm() {
               placeholder="Ex: 5"
             />
           </div>
-          {formData.participationType === 'organizatie' && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Nume instituție / organizație *
-              </label>
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-                placeholder="Numele instituției sau organizației"
-              />
-            </div>
-          )}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              {formData.participationType === 'grup' ? 'Reprezentant grup *' : 'Nume instituție / organizație *'}
+            </label>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+              placeholder={formData.participationType === 'grup' ? 'Ex: Echipa HR, Grupul de colegi' : 'Numele instituției sau organizației'}
+            />
+          </div>
         </div>
       )}
 
