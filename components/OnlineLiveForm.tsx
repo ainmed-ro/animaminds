@@ -31,6 +31,9 @@ export default function OnlineLiveForm() {
     setLoading(true);
     setError("");
 
+    console.log("Online Live submit started");
+    console.log("Payload:", formData);
+
     try {
       const response = await fetch("/api/online-live", {
         method: "POST",
@@ -41,13 +44,16 @@ export default function OnlineLiveForm() {
       });
 
       const data = await response.json();
+      console.log("API response:", response.status, data);
 
       if (!response.ok) {
-        throw new Error(data.error || "Eroare la trimiterea formularului");
+        const errMsg = data.details ? `${data.error} (${data.details})` : data.error || "Eroare la trimiterea formularului";
+        throw new Error(errMsg);
       }
 
       setSubmitted(true);
     } catch (err) {
+      console.error("Online Live form error:", err);
       setError(err instanceof Error ? err.message : "A apărut o eroare. Vă rugăm încercați din nou.");
     } finally {
       setLoading(false);
