@@ -13,9 +13,15 @@ export async function POST(req: NextRequest) {
       email,
       phone,
       company,
+      role,
+      locality,
+      dietaryRequirements,
       programme,
       accommodation,
       preferredPeriod,
+      participationType,
+      groupSize,
+      cui,
       message,
     } = body;
 
@@ -43,9 +49,15 @@ export async function POST(req: NextRequest) {
         email,
         phone,
         company: company || "",
+        role: role || undefined,
+        locality: locality || undefined,
+        dietaryRequirements: dietaryRequirements || undefined,
         programme,
         accommodation: accommodation || "",
         preferredPeriod: preferredPeriod || "",
+        participationType: participationType || undefined,
+        groupSize: groupSize ? Number(groupSize) : undefined,
+        cui: cui || undefined,
         message: message || "",
       });
     } catch (dbErr) {
