@@ -319,7 +319,10 @@ export default function ContactPage() {
               </div>
               <h3 className="font-semibold mb-2" style={{ color: "var(--charcoal)" }}>Locație</h3>
               <p className="text-gray-600">
-                București, România
+                Lehliu Gară, jud. Călărași
+              </p>
+              <p className="text-sm text-gray-500">
+                Programe desfășurate în toată România
               </p>
             </div>
           </div>

@@ -7,6 +7,7 @@ const footerLinks = {
     { href: "/povestea-noastra", label: "Povestea noastră" },
     { href: "/programe", label: "Programe" },
     { href: "/colaboreaza", label: "Colaborează cu noi" },
+    { href: "/cpd-provider", label: "CPD Approved Provider" },
     { href: "/contact", label: "Contact" },
   ],
   legal: [

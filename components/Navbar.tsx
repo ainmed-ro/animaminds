@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/povestea-noastra", label: "Povestea noastră" },
   { href: "/programe", label: "Programe" },
   { href: "/colaboreaza#solicita-oferta", label: "Pentru organizații" },
+  { href: "/cpd-provider", label: "CPD" },
   { href: "/contact", label: "Contact" },
 ];
 

@@ -37,7 +37,14 @@ export default function ConversatiiCareConteazaPage() {
             </div>
             <div className="flex items-center gap-2 text-gray-700">
               <MapPin className="w-5 h-5 text-terracotta-600" />
-              <span>Hotel Afrodita**** – Vălenii de Munte</span>
+              <a
+                href="https://maps.google.com/?q=Hotel+Afrodita+Valenii+de+Munte"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-terracotta-600 underline underline-offset-2 transition-colors"
+              >
+                Hotel Afrodita**** – Vălenii de Munte
+              </a>
             </div>
           </div>
           
@@ -199,15 +206,26 @@ export default function ConversatiiCareConteazaPage() {
                 </div>
               </div>
               
-              <Link
-                href="https://hotelafrodita.ro/valeni/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 text-terracotta-600 hover:text-terracotta-700 font-medium transition-colors"
-              >
-                Vizitează hotelul
-                <MapPin className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-wrap gap-4 mt-6">
+                <Link
+                  href="https://hotelafrodita.ro/valeni/contact/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-terracotta-600 hover:text-terracotta-700 font-medium transition-colors"
+                >
+                  Vizitează hotelul
+                  <MapPin className="w-4 h-4" />
+                </Link>
+                <a
+                  href="https://maps.google.com/?q=Hotel+Afrodita+Valenii+de+Munte"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                >
+                  Deschide în Google Maps
+                  <MapPin className="w-4 h-4" />
+                </a>
+              </div>
             </div>
             
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
