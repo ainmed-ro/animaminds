@@ -48,11 +48,9 @@ export async function insertPrivateGroupRequest(
     throw new Error("Database not available");
   }
   
-  const id = `pg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const { data, error } = await supabase
     .from("private_group_requests")
     .insert([{
-      id,
       requester_name: request.requesterName,
       email: request.email,
       phone: request.phone,
@@ -65,7 +63,7 @@ export async function insertPrivateGroupRequest(
     .select()
     .single();
     
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(`Supabase error: ${error.message} (Code: ${error.code})`);
   return toPrivateGroupRequest(data as DbRow);
 }
 

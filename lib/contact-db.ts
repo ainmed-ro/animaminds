@@ -44,11 +44,9 @@ export async function insertContactMessage(
   if (!supabase) {
     throw new Error("Database not available");
   }
-  const id = `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const { data, error } = await supabase
     .from("contact_messages")
     .insert([{ 
-      id, 
       name: message.name, 
       email: message.email, 
       phone: message.phone, 
@@ -59,7 +57,7 @@ export async function insertContactMessage(
     }])
     .select()
     .single();
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(`Supabase error: ${error.message} (Code: ${error.code})`);
   return toContactMessage(data as DbRow);
 }
 

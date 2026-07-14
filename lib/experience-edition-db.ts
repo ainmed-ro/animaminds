@@ -51,11 +51,9 @@ export async function insertExperienceEditionRequest(
     throw new Error("Database not available");
   }
   
-  const id = `ee_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const { data, error } = await supabase
     .from("experience_edition_requests")
     .insert([{
-      id,
       name: request.name,
       email: request.email,
       phone: request.phone,
@@ -69,7 +67,7 @@ export async function insertExperienceEditionRequest(
     .select()
     .single();
     
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(`Supabase error: ${error.message} (Code: ${error.code})`);
   return toExperienceEditionRequest(data as DbRow);
 }
 

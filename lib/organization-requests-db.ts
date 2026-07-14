@@ -68,13 +68,11 @@ export async function insertOrganizationRequest(
     throw new Error("Database not available");
   }
   
-  const id = `org_req_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const now = new Date().toISOString();
   
   const { data, error } = await supabase
     .from("organization_requests")
     .insert([{
-      id,
       organization_name: request.organizationName,
       organization_type: request.organizationType,
       contact_name: request.contactName,
@@ -94,7 +92,7 @@ export async function insertOrganizationRequest(
     .select()
     .single();
     
-  if (error) throw new Error(error.message);
+  if (error) throw new Error(`Supabase error: ${error.message} (Code: ${error.code})`);
   return toOrganizationRequest(data as DbRow);
 }
 
