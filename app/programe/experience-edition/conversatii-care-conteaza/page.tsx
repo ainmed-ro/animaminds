@@ -38,7 +38,7 @@ export default function ConversatiiCareConteazaPage() {
             <div className="flex items-center gap-2 text-gray-700">
               <MapPin className="w-5 h-5 text-terracotta-600" />
               <a
-                href="https://maps.google.com/?q=Hotel+Afrodita+Valenii+de+Munte"
+                href="https://www.google.com/maps/dir//Hotel+Afrodita,+Bulevardul+Nicolae+Iorga+14,+106400+V%C4%83lenii+de+Munte/@44.3711488,26.1292032,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x40b3affed454b427:0xaa58f43d712816dd!2m2!1d26.0356329!2d45.1781049?entry=ttu"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-terracotta-600 underline underline-offset-2 transition-colors"
@@ -217,7 +217,7 @@ export default function ConversatiiCareConteazaPage() {
                   <MapPin className="w-4 h-4" />
                 </Link>
                 <a
-                  href="https://maps.google.com/?q=Hotel+Afrodita+Valenii+de+Munte"
+                  href="https://www.google.com/maps/dir//Hotel+Afrodita,+Bulevardul+Nicolae+Iorga+14,+106400+V%C4%83lenii+de+Munte/@44.3711488,26.1292032,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x40b3affed454b427:0xaa58f43d712816dd!2m2!1d26.0356329!2d45.1781049?entry=ttu"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
