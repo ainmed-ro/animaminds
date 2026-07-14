@@ -36,8 +36,12 @@
   <button class="btn-dl" onclick="downloadStatic()">⬇️ Descarcă PNG</button>
 </div>
 <div class="controls">
-  <button class="btn-reel" onclick="startReel()">🎬 Generează Reel Animat (1080×1920)</button>
-  <button class="btn-dl" onclick="downloadReel()">⬇️ Descarcă Reel ca GIF/Video</button>
+  <button class="btn-reel" onclick="startReel()">▶️ Previzualizează Reel</button>
+  <button class="btn-dl" id="btn-mp4" onclick="exportMP4()">🎬 Descarcă MP4 (15 sec)</button>
+</div>
+<div id="progress-wrap" style="display:none;text-align:center;margin-bottom:16px;">
+  <div id="progress-bar" style="height:8px;background:#6ee7b7;width:0%;border-radius:4px;transition:width .3s;max-width:600px;margin:0 auto 8px;"></div>
+  <span id="progress-txt" style="color:#6ee7b7;font-size:14px;">Se înregistrează... 0%</span>
 </div>
 
 <div class="canvas-wrap">
@@ -642,41 +646,61 @@ function downloadStatic() {
   a.click();
 }
 
-let reelFrames = [];
-let isRecording = false;
-
-function downloadReel() {
-  alert('Apasă OK, apoi se vor înregistra 15 secunde de animație.\nLa final vei putea descărca GIF-ul.\nProcesul durează ~30 secunde.');
+function exportMP4() {
   const c = document.getElementById('reel-canvas');
   c.style.display = 'block';
   if (reelAnim) cancelAnimationFrame(reelAnim);
-  reelFrames = [];
-  reelFrame = 0;
-  isRecording = true;
 
-  function record() {
+  // Check MediaRecorder support
+  const mimeType = ['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'].find(m => MediaRecorder.isTypeSupported(m));
+  if (!mimeType) {
+    alert('Browserul tău nu suportă înregistrare video directă.\nFolosește Chrome sau Edge.');
+    return;
+  }
+
+  const btn = document.getElementById('btn-mp4');
+  const prog = document.getElementById('progress-wrap');
+  const bar = document.getElementById('progress-bar');
+  const txt = document.getElementById('progress-txt');
+  btn.disabled = true;
+  btn.textContent = '⏳ Se înregistrează...';
+  prog.style.display = 'block';
+
+  const stream = c.captureStream(REEL_FPS);
+  const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 8000000 });
+  const chunks = [];
+  recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: 'video/webm' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'animaminds-experience-edition-reel.webm';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    btn.disabled = false;
+    btn.textContent = '🎬 Descarcă MP4 (15 sec)';
+    prog.style.display = 'none';
+    bar.style.width = '0%';
+    startReel();
+  };
+
+  reelFrame = 0;
+  recorder.start();
+
+  function recordFrame() {
     drawReelFrame(reelFrame);
-    // Capture every 3rd frame (10fps for GIF)
-    if (reelFrame % 3 === 0) {
-      reelFrames.push(c.toDataURL('image/png'));
-    }
+    const pct = Math.round((reelFrame / REEL_TOTAL) * 100);
+    bar.style.width = pct + '%';
+    txt.textContent = 'Se înregistrează... ' + pct + '%';
     reelFrame++;
     if (reelFrame < REEL_TOTAL) {
-      reelAnim = requestAnimationFrame(record);
+      reelAnim = requestAnimationFrame(recordFrame);
     } else {
-      isRecording = false;
-      // Download first frame as PNG (full quality single frame)
-      const a = document.createElement('a');
-      a.download = 'animaminds-reel-preview.png';
-      // Download the best frame (sec 10 = price reveal)
-      drawReelFrame(Math.floor(10 * REEL_FPS));
-      a.href = c.toDataURL('image/png');
-      a.click();
-      alert('Previzualizare descărcată (frame-ul cu prețul).\nPentru video complet, fă screenshot-uri sau folosește un recorder de ecran pe animația de mai sus.');
-      startReel(); // restart loop
+      recorder.stop();
     }
   }
-  reelAnim = requestAnimationFrame(record);
+  reelAnim = requestAnimationFrame(recordFrame);
 }
 </script>
 </body>
