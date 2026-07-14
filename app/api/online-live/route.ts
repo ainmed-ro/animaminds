@@ -78,14 +78,15 @@ export async function POST(req: NextRequest) {
       console.log("Successfully inserted registration:", registration);
     } catch (dbErr) {
       console.error("Online Live Supabase storage error:", dbErr);
+      const error = dbErr as Error;
       console.error("Error details:", {
-        message: dbErr.message,
-        stack: dbErr.stack,
-        name: dbErr.name
+        message: error.message,
+        stack: error.stack,
+        name: error.name
       });
       return NextResponse.json({ 
         error: "Eroare la salvarea înregistrării. Te rugăm încercă din nou.",
-        details: dbErr.message
+        details: error.message
       }, { status: 500 });
     }
 
