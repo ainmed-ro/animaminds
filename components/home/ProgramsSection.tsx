@@ -16,7 +16,7 @@ export default function ProgramsSection() {
 
   return (
     <section
-      className="py-24 lg:py-32"
+      className="py-12"
       style={{ backgroundColor: "var(--gray-warm)" }}
       ref={ref}
     >

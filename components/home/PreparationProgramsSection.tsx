@@ -47,10 +47,10 @@ export default function PreparationProgramsSection() {
   ];
 
   return (
-    <section className="py-16 px-4" style={{ backgroundColor: "var(--gray-warm)" }}>
+    <section className="py-10 px-4" style={{ backgroundColor: "var(--gray-warm)" }}>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <div className={`transition-all duration-700 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}>

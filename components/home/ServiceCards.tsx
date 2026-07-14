@@ -159,7 +159,7 @@ export default function ServiceCards() {
   ];
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-10 px-4 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 

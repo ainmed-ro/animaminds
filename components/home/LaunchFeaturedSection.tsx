@@ -8,9 +8,9 @@ export default function LaunchFeaturedSection() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-sage-50 to-blue-50">
+    <section className="py-12 px-4 bg-gradient-to-br from-sage-50 to-blue-50">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <div
             className={`inline-flex items-center gap-2 mb-6 transition-all duration-700 ${
               mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"

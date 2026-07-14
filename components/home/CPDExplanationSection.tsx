@@ -9,9 +9,9 @@ export default function CPDExplanationSection() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-12 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-10">
           <div className="flex justify-center mb-8">
             <Image
               src="/cpd-badge.png"

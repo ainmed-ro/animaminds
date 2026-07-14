@@ -13,7 +13,7 @@ export default function CPDProviderPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero */}
-      <section className="py-20 px-4 bg-gradient-to-br from-amber-50 to-yellow-50">
+      <section className="py-14 px-4 bg-gradient-to-br from-amber-50 to-yellow-50">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center mb-8">
             <Image
@@ -57,7 +57,7 @@ export default function CPDProviderPage() {
       </section>
 
       {/* Tipuri activități CPD */}
-      <section className="py-16 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-4 text-center" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Tipuri de activități CPD
@@ -102,7 +102,7 @@ export default function CPDProviderPage() {
       </section>
 
       {/* Ce primești */}
-      <section className="py-16 px-4 bg-amber-50">
+      <section className="py-10 px-4 bg-amber-50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-4 text-center" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Ce primești la finalul unui program AnimaMinds?
@@ -131,7 +131,7 @@ export default function CPDProviderPage() {
       </section>
 
       {/* Certificat de participare */}
-      <section className="py-16 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -180,7 +180,7 @@ export default function CPDProviderPage() {
       </section>
 
       {/* Fișa competențelor */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2 mb-4">
             <Award className="w-6 h-6 text-amber-600" />
@@ -215,7 +215,7 @@ export default function CPDProviderPage() {
       </section>
 
       {/* Verificare furnizor */}
-      <section className="py-16 px-4">
+      <section className="py-10 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Verifică statutul CPD al AnimaMinds
@@ -257,7 +257,7 @@ export default function CPDProviderPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
             Participă la un program AnimaMinds
