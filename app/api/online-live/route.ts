@@ -53,6 +53,17 @@ export async function POST(req: NextRequest) {
     // Salvare în baza de date Supabase
     let registration;
     try {
+      console.log("Attempting to insert Online Live registration with data:", {
+        ...programmeData,
+        name,
+        email,
+        phone,
+        institution: institution || "",
+        role: role || "",
+        gdprConsent,
+        calendarConfirmation,
+      });
+      
       registration = await insertOnlineLiveRegistration({
         ...programmeData,
         name,
@@ -63,10 +74,18 @@ export async function POST(req: NextRequest) {
         gdprConsent,
         calendarConfirmation,
       });
+      
+      console.log("Successfully inserted registration:", registration);
     } catch (dbErr) {
       console.error("Online Live Supabase storage error:", dbErr);
+      console.error("Error details:", {
+        message: dbErr.message,
+        stack: dbErr.stack,
+        name: dbErr.name
+      });
       return NextResponse.json({ 
-        error: "Eroare la salvarea înregistrării. Te rugăm încercă din nou." 
+        error: "Eroare la salvarea înregistrării. Te rugăm încercă din nou.",
+        details: dbErr.message
       }, { status: 500 });
     }
 

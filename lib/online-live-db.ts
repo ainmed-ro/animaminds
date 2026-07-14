@@ -68,35 +68,55 @@ export async function insertOnlineLiveRegistration(
     paymentStatus?: OnlineLiveRegistration["paymentStatus"];
   }
 ): Promise<OnlineLiveRegistration> {
+  console.log("insertOnlineLiveRegistration called with:", registration);
+  
   if (!supabase) {
+    console.error("Supabase client is null");
     throw new Error("Database not available");
   }
   
+  console.log("Supabase client available, attempting insert...");
+  
   const id = `ol_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const insertData = {
+    id,
+    programme: registration.programme,
+    format: registration.format,
+    price: registration.price,
+    duration: registration.duration,
+    cpd: registration.cpd,
+    dates: registration.dates,
+    name: registration.name,
+    email: registration.email,
+    phone: registration.phone,
+    institution: registration.institution,
+    role: registration.role,
+    gdpr_consent: registration.gdprConsent,
+    calendar_confirmation: registration.calendarConfirmation,
+    status: registration.status ?? "INTERESAT",
+    payment_status: registration.paymentStatus ?? "NEACHITAT",
+  };
+  
+  console.log("Insert data prepared:", insertData);
+  
   const { data, error } = await supabase
     .from("online_live_registrations")
-    .insert([{
-      id,
-      programme: registration.programme,
-      format: registration.format,
-      price: registration.price,
-      duration: registration.duration,
-      cpd: registration.cpd,
-      dates: registration.dates,
-      name: registration.name,
-      email: registration.email,
-      phone: registration.phone,
-      institution: registration.institution,
-      role: registration.role,
-      gdpr_consent: registration.gdprConsent,
-      calendar_confirmation: registration.calendarConfirmation,
-      status: registration.status ?? "INTERESAT",
-      payment_status: registration.paymentStatus ?? "NEACHITAT",
-    }])
+    .insert([insertData])
     .select()
     .single();
     
-  if (error) throw new Error(error.message);
+  console.log("Supabase insert result:", { data, error });
+  
+  if (error) {
+    console.error("Supabase error details:", {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code
+    });
+    throw new Error(`Supabase error: ${error.message} (Code: ${error.code})`);
+  }
+  
   return toOnlineLiveRegistration(data as DbRow);
 }
 
