@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MapPin, CheckCircle, Star, Users, Calendar, Clock, Coffee, Utensils, Bed, Wifi, Car, Building, BookOpen, Lightbulb, Award, FileText } from "lucide-react";
 import ExperienceEditionFormWrapper from "@/components/ExperienceEditionFormWrapper";
 import CPDTrustBlock from "@/components/CPDTrustBlock";
+import ExperienceEditionHero from "@/components/ExperienceEditionHero";
 
 export const metadata: Metadata = {
   title: "Conversații care Contează - Experience Edition | AnimaMinds",
@@ -12,61 +13,7 @@ export const metadata: Metadata = {
 export default function ConversatiiCareConteazaPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-emerald-50 to-teal-50 py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-600 text-white text-sm font-bold">
-              <Star className="w-4 h-4 mr-2" />
-              ✨ Ediție de lansare Experience Edition
-            </span>
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-            Conversații care Contează
-          </h1>
-          
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Experience Edition - Program rezidențial de comunicare și colaborare
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <div className="flex items-center gap-2 text-gray-700">
-              <Calendar className="w-5 h-5 text-terracotta-600" />
-              <span>23–25 octombrie 2026</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <MapPin className="w-5 h-5 text-terracotta-600" />
-              <a
-                href="https://www.google.com/maps/dir//Hotel+Afrodita,+Bulevardul+Nicolae+Iorga+14,+106400+V%C4%83lenii+de+Munte/@44.3711488,26.1292032,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x40b3affed454b427:0xaa58f43d712816dd!2m2!1d26.0356329!2d45.1781049?entry=ttu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-terracotta-600 underline underline-offset-2 transition-colors"
-              >
-                Hotel Afrodita**** – Vălenii de Munte
-              </a>
-            </div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="#rezerva-loc"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-lg font-bold text-lg hover:bg-emerald-700 transition-all transform hover:scale-105 shadow-lg"
-            >
-              Rezervă un loc acum
-              <Calendar className="w-5 h-5" />
-            </Link>
-            
-            <Link
-              href="/programe/experience-edition"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-terracotta-600 text-terracotta-600 rounded-lg font-bold text-lg hover:bg-terracotta-50 transition-colors"
-            >
-              Vezi toate edițiile
-              <BookOpen className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ExperienceEditionHero />
 
       {/* De ce această primă ediție? */}
       <section className="py-14 px-4 bg-white">
