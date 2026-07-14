@@ -340,7 +340,7 @@ export default function ConversatiiCareConteazaPage() {
                 </ul>
               </div>
               <Link
-                href="/colaboreaza"
+                href="/colaboreaza#solicita-oferta"
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
               >
                 Solicită ofertă
@@ -387,7 +387,7 @@ export default function ConversatiiCareConteazaPage() {
                 </ul>
               </div>
               <Link
-                href="/colaboreaza"
+                href="/colaboreaza#solicita-oferta"
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-terracotta-600 text-white rounded-lg font-medium hover:bg-terracotta-700 transition-colors"
               >
                 Solicită ofertă
