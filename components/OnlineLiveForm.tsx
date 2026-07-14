@@ -186,7 +186,7 @@ export default function OnlineLiveForm() {
 
             <div>
               <label htmlFor="institution" className="block text-sm font-medium text-gray-700 mb-2">
-                Instituție / organizație (opțional)
+                Instituție / organizație <span className="text-gray-400 font-normal">(opțional)</span>
               </label>
               <input
                 type="text"
@@ -202,7 +202,7 @@ export default function OnlineLiveForm() {
 
           <div>
             <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-              Funcție (opțional)
+              Funcție / poziție <span className="text-gray-400 font-normal">(opțional)</span>
             </label>
             <input
               type="text"

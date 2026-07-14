@@ -12,6 +12,9 @@ export default function ExperienceEditionForm() {
     email: "",
     phone: "",
     company: "",
+    role: "",
+    locality: "",
+    dietaryRequirements: "",
     programme: "conversatii-care-conteaza",
     accommodation: "",
     preferredPeriod: searchParams?.get('edition') || "octombrie-2026",
@@ -94,6 +97,9 @@ export default function ExperienceEditionForm() {
               email: "",
               phone: "",
               company: "",
+              role: "",
+              locality: "",
+              dietaryRequirements: "",
               programme: "conversatii-care-conteaza",
               accommodation: "",
               preferredPeriod: "octombrie-2026",
@@ -170,7 +176,7 @@ export default function ExperienceEditionForm() {
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Companie / Organizație
+            Instituție / organizație <span className="text-gray-400 font-normal">(opțional)</span>
           </label>
           <input
             type="text"
@@ -178,7 +184,37 @@ export default function ExperienceEditionForm() {
             value={formData.company}
             onChange={handleChange}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
-            placeholder="Opțional"
+            placeholder="Numele instituției sau organizației"
+          />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Funcție / poziție <span className="text-gray-400 font-normal">(opțional)</span>
+          </label>
+          <input
+            type="text"
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+            placeholder="Ex: psiholog, profesor, manager"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Localitate <span className="text-gray-400 font-normal">(opțional)</span>
+          </label>
+          <input
+            type="text"
+            name="locality"
+            value={formData.locality}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+            placeholder="Orașul tău"
           />
         </div>
       </div>
@@ -236,7 +272,21 @@ export default function ExperienceEditionForm() {
       
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Mesaj sau întrebări
+          Cerințe alimentare <span className="text-gray-400 font-normal">(opțional)</span>
+        </label>
+        <input
+          type="text"
+          name="dietaryRequirements"
+          value={formData.dietaryRequirements}
+          onChange={handleChange}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+          placeholder="Ex: vegetarian, vegan, alergii alimentare"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Mesaj sau întrebări <span className="text-gray-400 font-normal">(opțional)</span>
         </label>
         <textarea
           name="message"
