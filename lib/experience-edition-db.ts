@@ -62,7 +62,7 @@ export async function insertExperienceEditionRequest(
       accommodation: request.accommodation,
       preferred_period: request.preferredPeriod,
       message: request.message,
-      status: "PRIMITĂ",
+      status: "INTERESAT",
     }])
     .select()
     .single();

@@ -68,8 +68,6 @@ export async function insertOrganizationRequest(
     throw new Error("Database not available");
   }
   
-  const now = new Date().toISOString();
-  
   const { data, error } = await supabase
     .from("organization_requests")
     .insert([{
@@ -85,9 +83,7 @@ export async function insertOrganizationRequest(
       preferred_timeline: request.preferredTimeline ?? "",
       budget_range: request.budgetRange ?? "",
       specific_requirements: request.specificRequirements ?? "",
-      created_at: now,
-      updated_at: now,
-      status: "NEW",
+      status: "PRIMITĂ",
     }])
     .select()
     .single();
