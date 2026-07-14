@@ -295,6 +295,45 @@ export default function ConversatiiCareConteazaPage() {
         </div>
       </section>
 
+      {/* Cadrul experientei - zona naturala */}
+      <section className="py-10 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Contextul experienței</span>
+            <h2 className="text-2xl font-bold" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Vălenii de Munte — cadrul ales pentru această ediție
+            </h2>
+            <p className="text-gray-500 text-sm mt-2 max-w-xl mx-auto">
+              Dincolo de program, zona oferă un cadru natural care invită la reflecție și reîncărcare.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { src: "/images/hotel/zona-cascada.webp", alt: "Cascadă în zona Vălenii de Munte", caption: "Natură și liniște în jur" },
+              { src: "/images/hotel/zona-lac.jpg", alt: "Lac în zona Vălenii de Munte", caption: "Peisaj de munte autentic" },
+              { src: "/images/hotel/zona-natura.jpg", alt: "Peisaj verde Vălenii de Munte", caption: "Cadru propice reflecției" },
+            ].map((img) => (
+              <div key={img.src} className="relative h-40 md:h-52 rounded-xl overflow-hidden group">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 33vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <p className="absolute bottom-2 left-3 right-3 text-white text-xs font-medium">{img.caption}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-xs text-gray-400 mt-4 italic">
+            Aceste imagini prezintă zona din jurul hotelului — nu fac parte din programul de formare.
+          </p>
+        </div>
+      </section>
+
       {/* Participation Section */}
       <section className="py-10 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
