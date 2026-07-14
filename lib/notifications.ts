@@ -506,7 +506,7 @@ export async function sendAdminOnlineLiveEmail(data: {
     to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Online Live — ${data.name} — ${data.programme}`,
     html,
-    type: 'ADMIN_ONLINE_LIVE' as any,
+    type: 'ADMIN_REGISTRATION' as any,
     recipientName: data.name,
     relatedType: 'ONLINE_LIVE',
     metadata: {
@@ -582,7 +582,7 @@ export async function sendUserOnlineLiveConfirmationEmail(data: {
     to: data.email,
     subject: `Înscriere Confirmată - ${data.programme} - Online Live`,
     html,
-    type: 'USER_ONLINE_LIVE_CONFIRMATION' as any,
+    type: 'PARTICIPANT_CONFIRMATION' as any,
     recipientName: data.name,
     relatedType: 'ONLINE_LIVE',
     metadata: {
@@ -636,7 +636,7 @@ export async function sendAdminPrivateGroupEmail(data: {
     to: ADMIN_EMAIL,
     subject: `[AnimaMinds] Grup Privat — ${data.requesterName} — ${data.programmeRequested}`,
     html,
-    type: 'ADMIN_PRIVATE_GROUP' as any,
+    type: 'ADMIN_REGISTRATION' as any,
     recipientName: data.requesterName,
     relatedType: 'PRIVATE_GROUP',
     metadata: {
@@ -704,7 +704,7 @@ export async function sendUserPrivateGroupConfirmationEmail(data: {
     to: data.email,
     subject: `Cerere Grup Privat Confirmată - ${data.programmeRequested}`,
     html,
-    type: 'USER_PRIVATE_GROUP_CONFIRMATION' as any,
+    type: 'PARTICIPANT_CONFIRMATION' as any,
     recipientName: data.requesterName,
     relatedType: 'PRIVATE_GROUP',
     metadata: {
@@ -774,7 +774,7 @@ export async function sendUserExperienceEditionConfirmationEmail(data: {
     to: data.email,
     subject: `Exprimare de Interes Confirmată - ${data.programme} - Experience Edition™`,
     html,
-    type: 'USER_EXPERIENCE_EDITION_CONFIRMATION' as any,
+    type: 'PARTICIPANT_CONFIRMATION' as any,
     recipientName: data.name,
     relatedType: 'EXPERIENCE_EDITION',
     metadata: {
@@ -844,7 +844,7 @@ export async function sendUserContactConfirmationEmail(data: {
     to: data.email,
     subject: `Mesaj Confirmat - ${data.subject}`,
     html,
-    type: 'USER_CONTACT_CONFIRMATION' as any,
+    type: 'ADMIN_CONTACT' as any,
     recipientName: data.name,
     relatedType: 'CONTACT',
     metadata: {
@@ -916,7 +916,7 @@ export async function sendUserOrganizationConfirmationEmail(data: {
     to: data.organizationEmail,
     subject: `Cerere Organizație Confirmată - ${data.programmeInterest}`,
     html,
-    type: 'USER_ORGANIZATION_CONFIRMATION' as any,
+    type: 'PARTICIPANT_CONFIRMATION' as any,
     recipientName: data.contactPerson,
     relatedType: 'ORGANIZATION_REQUEST',
     metadata: {
