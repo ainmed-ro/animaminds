@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Star, Calendar, MapPin, Users, CheckCircle, BookOpen } from "lucide-react";
+import { ArrowRight, Star, Calendar, MapPin, Users, CheckCircle, Globe, Building2, Mountain } from "lucide-react";
 import ProgramList from "@/components/ProgramList";
-import ExperienceEditionForm from "@/components/ExperienceEditionForm";
 import ProgrameInPregatire from "@/components/ProgrameInPregatire";
 import { getPublicProgrammes } from "@/app/admin/actions/cms";
 
@@ -203,119 +202,225 @@ export default async function ProgramePage() {
   
   return (
     <div>
-      
-      {/* Alege modul în care participi */}
-      <section className="py-16 px-4 bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-500">
+
+      {/* ===== HERO: Experience Edition – scos în evidență ===== */}
+      <section className="relative py-14 px-4 overflow-hidden" style={{ background: "linear-gradient(135deg, #1a2e1c 0%, #2d4a2f 50%, #3a5c3c 100%)" }}>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "Playfair Display, serif", color: "white" }}>
-              Alege modul în care participi
-            </h2>
-            <p className="text-lg text-white/90">
-              Conversații care Contează - 8 CPD credite
-            </p>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-400/20 border border-amber-400/40 rounded-full mb-4">
+              <Star className="w-4 h-4 text-amber-400" />
+              <span className="text-amber-300 font-bold text-sm uppercase tracking-wide">Program activ · Înscrierea deschisă</span>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-3" style={{ fontFamily: "Playfair Display, serif" }}>
+              Conversații care Contează
+            </h1>
+            <p className="text-lg text-white/80 mb-2">Comunicare profesională · 8 credite CPD · 7,5 ore</p>
+            <p className="text-sm text-white/60">Singurul program activ AnimaMinds · Disponibil în 3 formate</p>
           </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            
+
+          {/* 3 formate */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+            {/* Experience Edition – primul, cel mai vizibil */}
+            <div className="md:col-span-1 relative bg-amber-500 rounded-2xl p-6 border-2 border-amber-300 shadow-xl">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-white text-amber-700 text-xs font-bold px-3 py-1 rounded-full shadow">⭐ RECOMANDAT</span>
+              </div>
+              <div className="flex items-center gap-2 mb-3 mt-2">
+                <Mountain className="w-6 h-6 text-white" />
+                <h3 className="text-xl font-bold text-white">Experience Edition™</h3>
+              </div>
+              <p className="text-white/90 text-sm mb-4">Formare rezidențială · 3 zile la munte · Hotel Afrodita****</p>
+              <div className="space-y-2 mb-5">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-white" />
+                  <span className="text-white text-sm font-semibold">1.200 lei / cameră dublă</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-white/80" />
+                  <span className="text-white/90 text-sm">1.400 lei / cameră single</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-white/80" />
+                  <span className="text-white/90 text-sm">23–25 octombrie 2026</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-white/80" />
+                  <a href="https://www.google.com/maps/dir//Hotel+Afrodita,+Bulevardul+Nicolae+Iorga+14,+106400+V%C4%83lenii+de+Munte/@44.3711488,26.1292032,14z" target="_blank" rel="noopener noreferrer" className="text-white/90 text-sm underline hover:text-white">Hotel Afrodita**** · Vălenii de Munte</a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-white/80" />
+                  <span className="text-white/90 text-sm">Max 30 locuri · grupă limitată</span>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Link href="/programe/experience-edition/conversatii-care-conteaza" className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white text-amber-700 rounded-xl font-bold hover:bg-amber-50 transition-all text-sm">
+                  Vezi detalii complete
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/programe/experience-edition/conversatii-care-conteaza#rezerva-loc" className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-amber-700 text-white rounded-xl font-bold hover:bg-amber-800 transition-all text-sm">
+                  Rezervă un loc
+                </Link>
+              </div>
+            </div>
+
             {/* Online Live */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="text-3xl">🌐</div>
-                <h3 className="text-2xl font-bold text-white">Online Live</h3>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <div className="flex items-center gap-2 mb-3">
+                <Globe className="w-6 h-6 text-white" />
+                <h3 className="text-xl font-bold text-white">Online Live</h3>
               </div>
-              <p className="text-white/90 mb-6">Pentru participanți individuali.</p>
-              
-              <div className="space-y-3 mb-6">
+              <p className="text-white/80 text-sm mb-4">Participi de oriunde · 3 întâlniri live + Google Classroom</p>
+              <div className="space-y-2 mb-5">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white font-medium">199 lei / participant</span>
+                  <CheckCircle className="w-4 h-4 text-amber-400" />
+                  <span className="text-white font-semibold text-sm">199 lei / participant</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white/90">7,5 ore</span>
+                  <CheckCircle className="w-4 h-4 text-white/60" />
+                  <span className="text-white/80 text-sm">7,5 ore · 8 credite CPD</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white/90">8 credite CPD</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white/90">3 întâlniri online live</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-300 rounded-full"></div>
-                  <span className="text-white/90">resurse în Google Classroom</span>
+                  <CheckCircle className="w-4 h-4 text-white/60" />
+                  <span className="text-white/80 text-sm">Certificat de participare</span>
                 </div>
               </div>
-              
-              <Link href="/programe/online-live/conversatii-care-conteaza" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
-                ✅ Înscrie-mă
+              <Link href="/programe/online-live/conversatii-care-conteaza" className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all text-sm">
+                Înscrie-mă online
               </Link>
             </div>
-            
-            {/* Experience Edition™ */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="text-3xl">🏔️</div>
-                <h3 className="text-2xl font-bold text-white">Experience Edition™</h3>
-              </div>
-              <p className="text-white/90 mb-6">Pentru cei care preferă învățarea într-un cadru dedicat.</p>
-              
-              <div className="space-y-4 mb-6">
-                <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="font-bold text-white mb-2">Ediția de lansare</h4>
-                  <p className="text-white/80 text-sm mb-2">23–25 octombrie 2026</p>
-                  <p className="text-white font-medium">1.200 lei cameră dublă</p>
-                  <p className="text-white/90 text-sm">1.400 lei cameră single</p>
-                </div>
-              </div>
-              
-              <Link href="/programe/experience-edition/conversatii-care-conteaza#rezerva-loc" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
-                ✅ Rezervă un loc
-              </Link>
-            </div>
-            
+
             {/* Pentru organizații */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="text-3xl">🏢</div>
-                <h3 className="text-2xl font-bold text-white">Pentru organizații</h3>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+              <div className="flex items-center gap-2 mb-3">
+                <Building2 className="w-6 h-6 text-white" />
+                <h3 className="text-xl font-bold text-white">Pentru organizații</h3>
               </div>
-              <p className="text-white/90 mb-2">Programe dedicate școlilor, instituțiilor, ONG-urilor, spitalelor și companiilor.</p>
-              
-              <div className="space-y-4 mb-6">
-                <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="font-bold text-white mb-2">Online dedicat organizației</h4>
-                  <p className="text-white font-medium">3.500 lei / grup</p>
-                  <p className="text-white/90 text-sm">7,5 ore</p>
-                  <p className="text-white/90 text-sm">8 CPD</p>
+              <p className="text-white/80 text-sm mb-4">Școli · Instituții · ONG-uri · Companii</p>
+              <div className="space-y-2 mb-5">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-400" />
+                  <span className="text-white font-semibold text-sm">3.500 lei / grup · online</span>
                 </div>
-                
-                <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="font-bold text-white mb-2">La sediul beneficiarului</h4>
-                  <p className="text-white font-medium">5.000 lei / grup</p>
-                  <p className="text-white/90 text-sm">7,5 ore</p>
-                  <p className="text-white/90 text-sm">8 CPD</p>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-white/60" />
+                  <span className="text-white/80 text-sm">5.000 lei / grup · la sediu</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-white/60" />
+                  <span className="text-white/80 text-sm">7,5 ore · 8 CPD / participant</span>
                 </div>
               </div>
-              
-              <Link href="/colaboreaza#solicita-oferta" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all">
-                ✅ Solicită ofertă
+              <Link href="/colaboreaza#solicita-oferta" className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white text-slate-800 rounded-xl font-bold hover:bg-gray-100 transition-all text-sm">
+                Solicită ofertă
               </Link>
             </div>
-            
-            
-          </div>
-          
-          {/* Experience Edition™ Explanation */}
-          <div className="mt-12 bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-            <h3 className="text-xl font-bold text-white mb-4">Care este diferența dintre ediții?</h3>
-            <p className="text-white/90 leading-relaxed">
-              Edițiile diferă doar prin perioada de desfășurare și disponibilitatea locurilor. Conținutul, durata programului și creditele CPD sunt identice pentru toate edițiile Experience Edition™.
-            </p>
           </div>
         </div>
+      </section>
+
+      {/* ===== Experience Edition – Hotel highlight ===== */}
+      <section className="py-12 px-4 bg-amber-50 border-b border-amber-100">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
+              Experience Edition™ · 23–25 octombrie 2026
+            </h2>
+            <p className="text-gray-600">Hotel Afrodita**** · Vălenii de Munte · Grupă limitată la 30 de locuri</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-start mb-8">
+            {/* Hotel info */}
+            <div className="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm">
+              <div className="flex items-center gap-2 mb-4">
+                <MapPin className="w-5 h-5 text-amber-600" />
+                <h3 className="font-bold text-gray-900">Locație premium</h3>
+              </div>
+              <div className="space-y-3 mb-5">
+                <div className="flex items-start gap-2">
+                  <Star className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Hotel Afrodita****</p>
+                    <p className="text-sm text-gray-600">Bulevardul Nicolae Iorga 14, Vălenii de Munte</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Sală de conferințe dedicată</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">2 nopți cazare incluse în tarif</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Mese incluse: cină vineri, mic dejun + prânz + cină sâmbătă, mic dejun duminică</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Acces Rooftop8 cu vedere panoramică</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-amber-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">Coffee break premium</span>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a href="https://hotelafrodita.ro/valeni/contact/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-amber-700 font-medium hover:text-amber-800 underline underline-offset-2">
+                  Site hotel
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+                <a href="https://www.google.com/maps/dir//Hotel+Afrodita,+Bulevardul+Nicolae+Iorga+14,+106400+V%C4%83lenii+de+Munte/@44.3711488,26.1292032,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x40b3affed454b427:0xaa58f43d712816dd!2m2!1d26.0356329!2d45.1781049?entry=ttu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-blue-600 font-medium hover:text-blue-700 underline underline-offset-2">
+                  Google Maps
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            {/* Ce este inclus */}
+            <div className="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm">
+              <h3 className="font-bold text-gray-900 mb-4">Ce este inclus în tarif</h3>
+              <div className="grid grid-cols-1 gap-2">
+                {[
+                  "Participarea la programul de formare profesională",
+                  "8 credite CPD + certificat de participare",
+                  "Fișa competențelor dobândite",
+                  "2 nopți cazare la Hotel Afrodita****",
+                  "Toate mesele incluse (vineri–duminică)",
+                  "Coffee break premium",
+                  "Acces Rooftop8 cu vedere panoramică",
+                  "Resurse digitale și materiale de curs",
+                  "Networking profesional",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p className="text-xs text-gray-600 mb-1">Tarif ediție de lansare</p>
+                <p className="font-bold text-gray-900">1.200 lei · cameră dublă</p>
+                <p className="text-sm text-gray-700">1.400 lei · cameră single</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/programe/experience-edition/conversatii-care-conteaza#rezerva-loc"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-600 text-white rounded-xl font-bold hover:bg-amber-700 transition-all shadow-lg text-lg"
+            >
+              Rezervă un loc la Experience Edition
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Programs */}
+      <section id="conversatii-care-conteaza" className="py-12 bg-white scroll-mt-20">
+        <ProgramList programs={programData} />
       </section>
 
       {/* Programe în pregătire */}
@@ -327,112 +432,8 @@ export default async function ProgramePage() {
           <p className="text-center text-gray-600 mb-8">
             Detaliile vor fi comunicate la lansare
           </p>
-          
           <ProgrameInPregatire />
         </div>
-      </section>
-
-      {/* Experience Edition Details */}
-      <section id="experience-edition-details" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-              Ce este inclus în Experience Edition
-            </h3>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-            {[
-              "Participarea la programul de formare profesională",
-              "Workshop-uri experiențiale și activități aplicate",
-              "Certificat de participare recunoscut CPD",
-              "Fișa competențelor dobândite",
-              "Resurse digitale și materiale de curs",
-              "Activități de reflecție profesională",
-              "Networking profesional și schimb de experiență",
-              "Acces la sala de conferințe dedicată",
-              "2 nopți de cazare la Hotel Afrodita****",
-              "Cină de bun venit (vineri)",
-              "Mic dejun (sâmbătă și duminică)",
-              "Prânz (sâmbătă)",
-              "Cină (sâmbătă)",
-              "Coffee break premium (sâmbătă și duminică)",
-              "Acces la Rooftop8 cu vedere panoramică",
-              "Activități complementare de învățare contextualizată"
-            ].map((item, index) => (
-              <div key={index} className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-700 text-sm">{item}</span>
-              </div>
-            ))}
-          </div>
-          
-          <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h4 className="text-2xl font-bold mb-4" style={{ color: "var(--charcoal)" }}>
-                  Locație premium
-                </h4>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-sage-600" />
-                    <span className="text-gray-700">Hotel Afrodita**** – Vălenii de Munte</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-sage-600" />
-                    <span className="text-gray-700">23–25 octombrie 2026</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Users className="w-5 h-5 text-sage-600" />
-                    <span className="text-gray-700">20–30 participanți (grupă limitată)</span>
-                  </div>
-                </div>
-                
-                <Link
-                  href="https://hotelafrodita.ro/valeni/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sage-600 hover:text-sage-700 font-medium transition-colors"
-                >
-                  Vizitează hotelul
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              <div className="text-center">
-                <div className="bg-slate-800 text-white rounded-xl p-6 mb-6">
-                  <div className="flex items-center justify-center gap-2 mb-3">
-                    <Star className="w-6 h-6" />
-                    <span className="font-bold text-lg">Locuri limitate!</span>
-                  </div>
-                  <div className="text-3xl font-bold mb-2">20–30</div>
-                  <div className="text-sm opacity-90">participanți maxim</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Edition Form */}
-      <section id="experience-edition-form" className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold mb-6" style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}>
-              Rezervă un loc la Ediția de Lansare
-            </h3>
-            <p className="text-lg text-gray-600">
-              Completează formularul și vei fi contactat pentru confirmarea rezervării
-            </p>
-          </div>
-          
-          <ExperienceEditionForm />
-        </div>
-      </section>
-
-      {/* Programs */}
-      <section id="conversatii-care-conteaza" className="py-12 bg-white scroll-mt-20">
-        <ProgramList programs={programData} />
       </section>
 
       {/* CTA */}
