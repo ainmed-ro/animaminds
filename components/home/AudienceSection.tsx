@@ -82,7 +82,7 @@ export default function AudienceSection() {
                 7.000+
               </p>
               <p className="text-xs mt-1" style={{ color: "var(--charcoal-soft)" }}>
-                participanți la programele noastre
+                profesioniști formați de experții noștri
               </p>
             </div>
           </div>
