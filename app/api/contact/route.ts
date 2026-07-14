@@ -44,9 +44,11 @@ export async function POST(req: NextRequest) {
       createdAt: createdAt.toISOString(),
     };
 
-    sendUnifiedEmails(submission).catch(e => console.error("[Contact] Email error:", e));
-    syncToGoogleSheets(submission).catch(e => console.error("[Contact] Sheets error:", e));
-    sendAdminNotifications(submission).catch(e => console.error("[Contact] WhatsApp error:", e));
+    await Promise.allSettled([
+      sendUnifiedEmails(submission).catch(e => console.error("[Contact] Email error:", e)),
+      syncToGoogleSheets(submission).catch(e => console.error("[Contact] Sheets error:", e)),
+      sendAdminNotifications(submission).catch(e => console.error("[Contact] Admin notify error:", e)),
+    ]);
 
     return NextResponse.json({ 
       success: true, 

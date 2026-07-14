@@ -80,9 +80,11 @@ export async function POST(req: NextRequest) {
       createdAt: createdAt.toISOString(),
     };
 
-    sendUnifiedEmails(submission).catch(e => console.error("[OrgRequest] Email error:", e));
-    syncToGoogleSheets(submission).catch(e => console.error("[OrgRequest] Sheets error:", e));
-    sendAdminNotifications(submission).catch(e => console.error("[OrgRequest] WhatsApp error:", e));
+    await Promise.allSettled([
+      sendUnifiedEmails(submission).catch(e => console.error("[OrgRequest] Email error:", e)),
+      syncToGoogleSheets(submission).catch(e => console.error("[OrgRequest] Sheets error:", e)),
+      sendAdminNotifications(submission).catch(e => console.error("[OrgRequest] Admin notify error:", e)),
+    ]);
 
     return NextResponse.json({ 
       success: true, 

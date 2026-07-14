@@ -71,9 +71,11 @@ export async function POST(req: NextRequest) {
       createdAt: createdAt.toISOString(),
     };
 
-    sendUnifiedEmails(submission).catch(e => console.error("[PrivateGroup] Email error:", e));
-    syncToGoogleSheets(submission).catch(e => console.error("[PrivateGroup] Sheets error:", e));
-    sendAdminNotifications(submission).catch(e => console.error("[PrivateGroup] WhatsApp error:", e));
+    await Promise.allSettled([
+      sendUnifiedEmails(submission).catch(e => console.error("[PrivateGroup] Email error:", e)),
+      syncToGoogleSheets(submission).catch(e => console.error("[PrivateGroup] Sheets error:", e)),
+      sendAdminNotifications(submission).catch(e => console.error("[PrivateGroup] Admin notify error:", e)),
+    ]);
 
     return NextResponse.json({ 
       success: true, 

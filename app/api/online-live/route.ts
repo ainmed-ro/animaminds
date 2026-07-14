@@ -85,10 +85,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Eroare la salvarea înregistrării. Te rugăm încearcă din nou.", details: err.message }, { status: 500 });
     }
 
-    // Email + Sheets + WhatsApp - non-blocking
-    sendUnifiedEmails(submission).catch(e => console.error("[OnlineLive] Email error:", e));
-    syncToGoogleSheets(submission).catch(e => console.error("[OnlineLive] Sheets error:", e));
-    sendAdminNotifications(submission).catch(e => console.error("[OnlineLive] WhatsApp error:", e));
+    // Email + Sheets + Notifications - await all so Vercel doesn't kill them
+    await Promise.allSettled([
+      sendUnifiedEmails(submission).catch(e => console.error("[OnlineLive] Email error:", e)),
+      syncToGoogleSheets(submission).catch(e => console.error("[OnlineLive] Sheets error:", e)),
+      sendAdminNotifications(submission).catch(e => console.error("[OnlineLive] Admin notify error:", e)),
+    ]);
 
     return NextResponse.json({ 
       success: true, 
