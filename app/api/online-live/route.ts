@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertOnlineLiveRegistration } from "@/lib/online-live-db";
-import { sendAdminOnlineLiveEmail, sendUserOnlineLiveConfirmationEmail } from "@/lib/notifications";
-import { syncOnlineLiveToGoogleSheets } from "@/lib/google-sheets";
+import { sendUnifiedEmails } from "@/lib/unified-email";
+import { syncToGoogleSheets } from "@/lib/unified-sheets";
+import type { OnlineLiveSubmission } from "@/lib/form-types";
 
 export async function POST(req: NextRequest) {
   try {
@@ -40,32 +41,35 @@ export async function POST(req: NextRequest) {
 
     const createdAt = new Date();
 
-    // Fixed programme data for Online Live
-    const programmeData = {
-      programme: "Conversații care Contează",
-      format: "Online Live",
+    const submission: OnlineLiveSubmission = {
+      requestType: 'online_live_registration',
+      programmeName: 'Conversații care Contează',
+      programmeSlug: 'conversatii-care-conteaza',
+      format: 'Online Live',
       price: 199,
       duration: 7.5,
-      cpd: 8,
-      dates: "8, 15, 22 Septembrie 2026",
+      cpdCredits: 8,
+      dates: '8, 15, 22 Septembrie 2026',
+      participantName: name,
+      participantEmail: email,
+      participantPhone: phone,
+      institution: institution || undefined,
+      role: role || undefined,
+      gdprConsent,
+      calendarConfirmation,
+      createdAt: createdAt.toISOString(),
     };
 
-    // Salvare în baza de date Supabase
+    // Supabase insert - blocking, must succeed
     let registration;
     try {
-      console.log("Attempting to insert Online Live registration with data:", {
-        ...programmeData,
-        name,
-        email,
-        phone,
-        institution: institution || "",
-        role: role || "",
-        gdprConsent,
-        calendarConfirmation,
-      });
-      
       registration = await insertOnlineLiveRegistration({
-        ...programmeData,
+        programme: submission.programmeName,
+        format: submission.format,
+        price: submission.price,
+        duration: submission.duration,
+        cpd: submission.cpdCredits,
+        dates: submission.dates,
         name,
         email,
         phone,
@@ -74,69 +78,15 @@ export async function POST(req: NextRequest) {
         gdprConsent,
         calendarConfirmation,
       });
-      
-      console.log("Successfully inserted registration:", registration);
     } catch (dbErr) {
-      console.error("Online Live Supabase storage error:", dbErr);
-      const error = dbErr as Error;
-      console.error("Error details:", {
-        message: error.message,
-        stack: error.stack,
-        name: error.name
-      });
-      return NextResponse.json({ 
-        error: "Eroare la salvarea înregistrării. Te rugăm încercă din nou.",
-        details: error.message
-      }, { status: 500 });
+      const err = dbErr as Error;
+      console.error("[OnlineLive] Supabase error:", err.message);
+      return NextResponse.json({ error: "Eroare la salvarea înregistrării. Te rugăm încearcă din nou.", details: err.message }, { status: 500 });
     }
 
-    // Send admin notification
-    try {
-      await sendAdminOnlineLiveEmail({
-        ...programmeData,
-        name,
-        email,
-        phone,
-        institution: institution || "",
-        role: role || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("Admin Online Live email error:", emailErr);
-    }
-
-    // Send user confirmation email
-    try {
-      await sendUserOnlineLiveConfirmationEmail({
-        ...programmeData,
-        name,
-        email,
-        phone,
-        institution: institution || "",
-        role: role || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("User Online Live confirmation email error:", emailErr);
-    }
-
-    // Sync to Google Sheets
-    try {
-      await syncOnlineLiveToGoogleSheets({
-        formType: "ONLINE_LIVE_REGISTRATION",
-        ...programmeData,
-        name,
-        email,
-        phone,
-        institution: institution || "",
-        role: role || "",
-        gdprConsent,
-        calendarConfirmation,
-        createdAt,
-      });
-    } catch (googleSheetsErr) {
-      console.error("Google Sheets Online Live error:", googleSheetsErr);
-    }
+    // Email + Sheets - non-blocking
+    sendUnifiedEmails(submission).catch(e => console.error("[OnlineLive] Email error:", e));
+    syncToGoogleSheets(submission).catch(e => console.error("[OnlineLive] Sheets error:", e));
 
     return NextResponse.json({ 
       success: true, 

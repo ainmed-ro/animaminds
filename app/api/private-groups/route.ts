@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertPrivateGroupRequest, getAllPrivateGroupRequests } from "@/lib/private-groups-db";
-import { sendAdminPrivateGroupEmail, sendUserPrivateGroupConfirmationEmail } from "@/lib/notifications";
-import { syncPrivateGroupToGoogleSheets } from "@/lib/google-sheets";
+import { sendUnifiedEmails } from "@/lib/unified-email";
+import { syncToGoogleSheets } from "@/lib/unified-sheets";
+import type { PrivateGroupSubmission } from "@/lib/form-types";
 
 export async function POST(req: NextRequest) {
   try {
@@ -39,7 +40,6 @@ export async function POST(req: NextRequest) {
 
     const createdAt = new Date();
 
-    // Salvare în baza de date Supabase
     let request;
     try {
       request = await insertPrivateGroupRequest({
@@ -52,58 +52,26 @@ export async function POST(req: NextRequest) {
         requestType: "Private Group",
       });
     } catch (dbErr) {
-      console.error("Private Group Supabase storage error:", dbErr);
-      return NextResponse.json({ 
-        error: "Eroare la salvarea cererii. Te rugăm încercă din nou." 
-      }, { status: 500 });
+      const err = dbErr as Error;
+      console.error("[PrivateGroup] Supabase error:", err.message);
+      return NextResponse.json({ error: "Eroare la salvarea cererii. Te rugăm încercă din nou.", details: err.message }, { status: 500 });
     }
 
-    // Send admin notification
-    try {
-      await sendAdminPrivateGroupEmail({
-        requesterName,
-        email,
-        phone,
-        programmeRequested,
-        estimatedGroupSize: Number(estimatedGroupSize),
-        message: message || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("Admin Private Group email error:", emailErr);
-    }
+    const submission: PrivateGroupSubmission = {
+      requestType: 'private_group_request',
+      programmeName: programmeRequested,
+      format: 'Grup privat',
+      price: 'Pe bază de ofertă',
+      estimatedParticipants: Number(estimatedGroupSize),
+      participantName: requesterName,
+      participantEmail: email,
+      participantPhone: phone,
+      message: message || undefined,
+      createdAt: createdAt.toISOString(),
+    };
 
-    // Send user confirmation email
-    try {
-      await sendUserPrivateGroupConfirmationEmail({
-        requesterName,
-        email,
-        phone,
-        programmeRequested,
-        estimatedGroupSize: Number(estimatedGroupSize),
-        message: message || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("User Private Group confirmation email error:", emailErr);
-    }
-
-    // Sync to Google Sheets
-    try {
-      await syncPrivateGroupToGoogleSheets({
-        formType: "PRIVATE_GROUP_REQUEST",
-        requesterName,
-        email,
-        phone,
-        programmeRequested,
-        estimatedGroupSize: Number(estimatedGroupSize),
-        message: message || "",
-        requestType: "Private Group",
-        createdAt,
-      });
-    } catch (googleSheetsErr) {
-      console.error("Google Sheets Private Group error:", googleSheetsErr);
-    }
+    sendUnifiedEmails(submission).catch(e => console.error("[PrivateGroup] Email error:", e));
+    syncToGoogleSheets(submission).catch(e => console.error("[PrivateGroup] Sheets error:", e));
 
     return NextResponse.json({ 
       success: true, 

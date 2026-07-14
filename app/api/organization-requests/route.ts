@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertOrganizationRequest, getAllOrganizationRequests } from "@/lib/organization-requests-db";
-import { sendAdminOrganizationRequestEmail, sendUserOrganizationConfirmationEmail } from "@/lib/notifications";
-import { syncOrganizationRequestToGoogleSheets } from "@/lib/google-sheets";
+import { sendUnifiedEmails } from "@/lib/unified-email";
+import { syncToGoogleSheets } from "@/lib/unified-sheets";
+import type { OrganisationSubmission } from "@/lib/form-types";
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,10 +37,10 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    // Salvare în baza de date Supabase (non-blocking pentru email/Sheets)
-    let createdAt = new Date();
+    const createdAt = new Date();
+
     try {
-      const organizationRequest = await insertOrganizationRequest({
+      await insertOrganizationRequest({
         organizationName,
         organizationType,
         contactName,
@@ -53,71 +54,33 @@ export async function POST(req: NextRequest) {
         budgetRange: budgetRange || "",
         specificRequirements: specificRequirements || "",
       });
-      createdAt = new Date(organizationRequest.createdAt);
     } catch (dbErr) {
-      console.error("Organization Request Supabase storage error:", dbErr);
-      // Continuăm cu notificarea și sincronizarea chiar dacă stocarea eșuează
+      const err = dbErr as Error;
+      console.error("[OrgRequest] Supabase error:", err.message);
+      return NextResponse.json({ error: "Eroare la salvarea cererii. Te rugăm încercă din nou.", details: err.message }, { status: 500 });
     }
 
-    // Notificare admin
-    try {
-      await sendAdminOrganizationRequestEmail({
-        organizationName,
-        organizationType,
-        contactName,
-        contactEmail,
-        contactPhone: contactPhone || "",
-        contactPosition: contactPosition || "",
-        programmeInterest: programmeInterest || "",
-        deliveryFormatPreference: deliveryFormatPreference || "",
-        participantCountEstimate: participantCountEstimate ? Number(participantCountEstimate) : 0,
-        preferredTimeline: preferredTimeline || "",
-        budgetRange: budgetRange || "",
-        specificRequirements: specificRequirements || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("Admin organization request email error:", emailErr);
-    }
+    const formatPrice = deliveryFormatPreference === 'La sediul beneficiarului' ? 5000 : 3500;
+    const submission: OrganisationSubmission = {
+      requestType: 'organisation_request',
+      programmeName: programmeInterest || 'Nespecificat',
+      format: (deliveryFormatPreference as OrganisationSubmission['format']) || 'Online dedicat organizației',
+      price: formatPrice as OrganisationSubmission['price'],
+      organizationName,
+      organizationType,
+      estimatedParticipants: participantCountEstimate ? Number(participantCountEstimate) : 0,
+      preferredTimeline: preferredTimeline || undefined,
+      budgetRange: budgetRange || undefined,
+      participantName: contactName,
+      participantEmail: contactEmail,
+      participantPhone: contactPhone || undefined,
+      role: contactPosition || undefined,
+      message: specificRequirements || undefined,
+      createdAt: createdAt.toISOString(),
+    };
 
-    // Send user confirmation email
-    try {
-      await sendUserOrganizationConfirmationEmail({
-        organizationName,
-        contactPerson: contactName,
-        organizationEmail: contactEmail,
-        organizationPhone: contactPhone || "",
-        programmeInterest: programmeInterest || "",
-        organizationFormat: deliveryFormatPreference || "",
-        participantCountEstimate: participantCountEstimate ? String(participantCountEstimate) : "0",
-        message: specificRequirements || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("User organization confirmation email error:", emailErr);
-    }
-
-    // Trimitere date către Google Sheets
-    try {
-      await syncOrganizationRequestToGoogleSheets({
-        formType: "ORGANIZATION_REQUEST",
-        organizationName,
-        organizationType,
-        contactName,
-        contactEmail,
-        contactPhone: contactPhone || "",
-        contactPosition: contactPosition || "",
-        programmeInterest: programmeInterest || "",
-        deliveryFormatPreference: deliveryFormatPreference || "",
-        participantCountEstimate: participantCountEstimate ? Number(participantCountEstimate) : 0,
-        preferredTimeline: preferredTimeline || "",
-        budgetRange: budgetRange || "",
-        specificRequirements: specificRequirements || "",
-        createdAt,
-      });
-    } catch (googleSheetsErr) {
-      console.error("Google Sheets organization request error:", googleSheetsErr);
-    }
+    sendUnifiedEmails(submission).catch(e => console.error("[OrgRequest] Email error:", e));
+    syncToGoogleSheets(submission).catch(e => console.error("[OrgRequest] Sheets error:", e));
 
     return NextResponse.json({ 
       success: true, 

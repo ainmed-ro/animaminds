@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertExperienceEditionRequest } from "@/lib/experience-edition-db";
-import { sendAdminExperienceEditionEmail, sendUserExperienceEditionConfirmationEmail } from "@/lib/notifications";
-import { syncExperienceEditionToGoogleSheets } from "@/lib/google-sheets";
+import { sendUnifiedEmails } from "@/lib/unified-email";
+import { syncToGoogleSheets } from "@/lib/unified-sheets";
+import type { ExperienceEditionSubmission } from "@/lib/form-types";
 
 export async function POST(req: NextRequest) {
   try {
@@ -34,7 +35,6 @@ export async function POST(req: NextRequest) {
 
     const createdAt = new Date();
 
-    // Salvare în baza de date Supabase
     let request;
     try {
       request = await insertExperienceEditionRequest({
@@ -49,64 +49,31 @@ export async function POST(req: NextRequest) {
       });
     } catch (dbErr) {
       const err = dbErr as Error;
-      console.error("Experience Edition Supabase storage error:", err.message);
-      return NextResponse.json({ 
-        error: "Eroare la salvarea exprimării de interes. Te rugăm încercă din nou.",
-        details: err.message
-      }, { status: 500 });
+      console.error("[ExperienceEdition] Supabase error:", err.message);
+      return NextResponse.json({ error: "Eroare la salvarea exprimării de interes. Te rugăm încercă din nou.", details: err.message }, { status: 500 });
     }
 
-    // Send admin notification
-    try {
-      await sendAdminExperienceEditionEmail({
-        name,
-        email,
-        phone,
-        company: company || "",
-        programme,
-        accommodation: accommodation || "",
-        preferredPeriod: preferredPeriod || "",
-        message: message || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("Admin Experience Edition email error:", emailErr);
-    }
+    const submission: ExperienceEditionSubmission = {
+      requestType: 'experience_edition_reservation',
+      programmeName: 'Conversații care Contează',
+      programmeSlug: 'conversatii-care-conteaza',
+      format: 'Experience Edition™',
+      selectedEdition: preferredPeriod || 'octombrie-2026',
+      selectedRoomType: accommodation || 'nespecificat',
+      price: accommodation === 'camera-single' ? 1400 : 1200,
+      duration: 7.5,
+      cpdCredits: 8,
+      location: 'Hotel Afrodita, Vălenii de Munte',
+      participantName: name,
+      participantEmail: email,
+      participantPhone: phone,
+      institution: company || undefined,
+      message: message || undefined,
+      createdAt: createdAt.toISOString(),
+    };
 
-    // Send user confirmation email
-    try {
-      await sendUserExperienceEditionConfirmationEmail({
-        name,
-        email,
-        phone,
-        company: company || "",
-        programme,
-        accommodation: accommodation || "",
-        preferredPeriod: preferredPeriod || "",
-        message: message || "",
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("User Experience Edition confirmation email error:", emailErr);
-    }
-
-    // Sync to Google Sheets
-    try {
-      await syncExperienceEditionToGoogleSheets({
-        formType: "EXPERIENCE_EDITION_INTEREST",
-        name,
-        email,
-        phone,
-        company: company || "",
-        programme,
-        accommodation: accommodation || "",
-        preferredPeriod: preferredPeriod || "",
-        message: message || "",
-        createdAt,
-      });
-    } catch (googleSheetsErr) {
-      console.error("Google Sheets Experience Edition error:", googleSheetsErr);
-    }
+    sendUnifiedEmails(submission).catch(e => console.error("[ExperienceEdition] Email error:", e));
+    syncToGoogleSheets(submission).catch(e => console.error("[ExperienceEdition] Sheets error:", e));
 
     return NextResponse.json({ 
       success: true, 

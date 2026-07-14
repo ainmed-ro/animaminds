@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertContactMessage, getAllContactMessages } from "@/lib/contact-db";
-import { sendAdminNewContactEmail, sendUserContactConfirmationEmail } from "@/lib/notifications";
-import { syncContactToGoogleSheets } from "@/lib/google-sheets";
+import { sendUnifiedEmails } from "@/lib/unified-email";
+import { syncToGoogleSheets } from "@/lib/unified-sheets";
+import type { ContactSubmission } from "@/lib/form-types";
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,10 +13,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Câmpuri obligatorii lipsă." }, { status: 400 });
     }
 
-    // Salvare în baza de date Supabase (non-blocking pentru email/Sheets)
-    let createdAt = new Date();
+    const createdAt = new Date();
+
     try {
-      const contactMessage = await insertContactMessage({
+      await insertContactMessage({
         name,
         email,
         phone: phone || "",
@@ -24,60 +25,26 @@ export async function POST(req: NextRequest) {
         subject,
         message,
       });
-      createdAt = new Date(contactMessage.created_at);
     } catch (dbErr) {
-      console.error("Contact Supabase storage error:", dbErr);
-      // Continuăm cu notificarea și sincronizarea chiar dacă stocarea eșuează
+      const err = dbErr as Error;
+      console.error("[Contact] Supabase error:", err.message);
+      return NextResponse.json({ error: "Eroare la salvarea mesajului. Te rugăm încercă din nou.", details: err.message }, { status: 500 });
     }
 
-    // Notificare admin
-    try {
-      await sendAdminNewContactEmail({
-        name,
-        email,
-        phone: phone || "",
-        organization: organization || "",
-        programInteres: programInteres || "",
-        subject,
-        message,
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("Admin contact email error:", emailErr);
-    }
+    const submission: ContactSubmission = {
+      requestType: 'contact_message',
+      subject,
+      organizationName: organization || undefined,
+      programInteres: programInteres || undefined,
+      participantName: name,
+      participantEmail: email,
+      participantPhone: phone || undefined,
+      message,
+      createdAt: createdAt.toISOString(),
+    };
 
-    // Send user confirmation email
-    try {
-      await sendUserContactConfirmationEmail({
-        name,
-        email,
-        phone: phone || "",
-        organization: organization || "",
-        programInteres: programInteres || "",
-        subject,
-        message,
-        createdAt,
-      });
-    } catch (emailErr) {
-      console.error("User contact confirmation email error:", emailErr);
-    }
-
-    // Trimitere date către Google Sheets
-    try {
-      await syncContactToGoogleSheets({
-        formType: "CONTACT",
-        name,
-        email,
-        phone: phone || "",
-        organization: organization || "",
-        programInteres: programInteres || "",
-        subject,
-        message,
-        createdAt,
-      });
-    } catch (googleSheetsErr) {
-      console.error("Google Sheets contact error:", googleSheetsErr);
-    }
+    sendUnifiedEmails(submission).catch(e => console.error("[Contact] Email error:", e));
+    syncToGoogleSheets(submission).catch(e => console.error("[Contact] Sheets error:", e));
 
     return NextResponse.json({ 
       success: true, 
