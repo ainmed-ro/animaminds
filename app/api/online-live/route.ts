@@ -3,6 +3,7 @@ import { insertOnlineLiveRegistration } from "@/lib/online-live-db";
 import { sendUnifiedEmails } from "@/lib/unified-email";
 import { syncToGoogleSheets } from "@/lib/unified-sheets";
 import type { OnlineLiveSubmission } from "@/lib/form-types";
+import { sendAdminNotifications } from "@/lib/admin-notify";
 
 export async function POST(req: NextRequest) {
   try {
@@ -84,9 +85,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Eroare la salvarea înregistrării. Te rugăm încearcă din nou.", details: err.message }, { status: 500 });
     }
 
-    // Email + Sheets - non-blocking
+    // Email + Sheets + WhatsApp - non-blocking
     sendUnifiedEmails(submission).catch(e => console.error("[OnlineLive] Email error:", e));
     syncToGoogleSheets(submission).catch(e => console.error("[OnlineLive] Sheets error:", e));
+    sendAdminNotifications(submission).catch(e => console.error("[OnlineLive] WhatsApp error:", e));
 
     return NextResponse.json({ 
       success: true, 

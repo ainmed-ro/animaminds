@@ -3,6 +3,7 @@ import { insertExperienceEditionRequest } from "@/lib/experience-edition-db";
 import { sendUnifiedEmails } from "@/lib/unified-email";
 import { syncToGoogleSheets } from "@/lib/unified-sheets";
 import type { ExperienceEditionSubmission } from "@/lib/form-types";
+import { sendAdminNotifications } from "@/lib/admin-notify";
 
 export async function POST(req: NextRequest) {
   try {
@@ -74,6 +75,7 @@ export async function POST(req: NextRequest) {
 
     sendUnifiedEmails(submission).catch(e => console.error("[ExperienceEdition] Email error:", e));
     syncToGoogleSheets(submission).catch(e => console.error("[ExperienceEdition] Sheets error:", e));
+    sendAdminNotifications(submission).catch(e => console.error("[ExperienceEdition] WhatsApp error:", e));
 
     return NextResponse.json({ 
       success: true, 
