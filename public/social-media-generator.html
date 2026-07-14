@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnimaMinds – Social Media Generator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+  h1 { text-align: center; margin-bottom: 30px; font-size: 24px; color: #a8d8a8; }
+  .controls { display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+  button {
+    padding: 12px 28px; border: none; border-radius: 8px; cursor: pointer;
+    font-size: 15px; font-weight: 700; transition: all .2s;
+  }
+  .btn-static { background: #2d6a4f; color: white; }
+  .btn-static:hover { background: #1b4332; }
+  .btn-reel { background: #7b2d8b; color: white; }
+  .btn-reel:hover { background: #5a1f66; }
+  .btn-dl { background: #c9732a; color: white; }
+  .btn-dl:hover { background: #a05520; }
+  .note { text-align:center; color:#aaa; font-size:13px; margin-bottom:20px; }
+  .canvas-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  canvas { border-radius: 12px; box-shadow: 0 8px 40px rgba(0,0,0,0.6); max-width: 100%; }
+  .section-title { color: #a8d8a8; font-size: 18px; font-weight: 700; margin-top: 10px; }
+  #reel-canvas { display: none; }
+</style>
+</head>
+<body>
+
+<h1>🎨 AnimaMinds — Social Media Generator</h1>
+<p class="note">Generează materiale vizuale pentru lansarea Experience Edition pe Facebook</p>
+
+<div class="controls">
+  <button class="btn-static" onclick="drawStatic()">🖼️ Generează Colaj Static (1080×1350)</button>
+  <button class="btn-dl" onclick="downloadStatic()">⬇️ Descarcă PNG</button>
+</div>
+<div class="controls">
+  <button class="btn-reel" onclick="startReel()">🎬 Generează Reel Animat (1080×1920)</button>
+  <button class="btn-dl" onclick="downloadReel()">⬇️ Descarcă Reel ca GIF/Video</button>
+</div>
+
+<div class="canvas-wrap">
+  <div class="section-title">📸 Colaj Static Facebook (1080×1350)</div>
+  <canvas id="static-canvas" width="1080" height="1350"></canvas>
+  <div class="section-title">🎬 Reel Facebook (1080×1920)</div>
+  <canvas id="reel-canvas" width="1080" height="1920"></canvas>
+</div>
+
+<script>
+// ─── LOAD IMAGES ────────────────────────────────────────────────────────────
+const imgPaths = {
+  exterior: '/images/hotel/hotel-exterior.png',
+  camera:   '/images/hotel/hotel-camera.png',
+  lobby:    '/images/hotel/hotel-lobby.png',
+  cascada:  '/images/hotel/zona-cascada.webp',
+  lac:      '/images/hotel/zona-lac.jpg',
+  natura:   '/images/hotel/zona-natura.jpg',
+};
+const loaded = {};
+function loadImg(key, src) {
+  return new Promise(res => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => { loaded[key] = img; res(); };
+    img.onerror = () => { loaded[key] = null; res(); };
+    img.src = src;
+  });
+}
+Promise.all(Object.entries(imgPaths).map(([k,v]) => loadImg(k,v)))
+  .then(() => { drawStatic(); });
+
+// ─── HELPERS ────────────────────────────────────────────────────────────────
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function drawImgCover(ctx, img, x, y, w, h) {
+  if (!img) return;
+  const ir = img.width / img.height;
+  const cr = w / h;
+  let sx, sy, sw, sh;
+  if (ir > cr) { sh = img.height; sw = sh * cr; sx = (img.width - sw) / 2; sy = 0; }
+  else          { sw = img.width; sh = sw / cr; sx = 0; sy = (img.height - sh) / 2; }
+  ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+}
+
+function textFit(ctx, text, maxW, startSize) {
+  let size = startSize;
+  do { ctx.font = `900 ${size}px 'Georgia', serif`; size -= 2; }
+  while (ctx.measureText(text).width > maxW && size > 20);
+  ctx.font = `900 ${size + 2}px 'Georgia', serif`;
+}
+
+// ─── STATIC 1080×1350 ───────────────────────────────────────────────────────
+function drawStatic() {
+  const c = document.getElementById('static-canvas');
+  const ctx = c.getContext('2d');
+  const W = 1080, H = 1350;
+
+  // 1. BG gradient premium
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#0d1f12');
+  bg.addColorStop(0.5, '#1a3520');
+  bg.addColorStop(1, '#0d1f12');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // 2. Hero image (exterior) – top area clipped
+  if (loaded.exterior) {
+    ctx.save();
+    roundRect(ctx, 40, 40, W - 80, 480, 24);
+    ctx.clip();
+    drawImgCover(ctx, loaded.exterior, 40, 40, W - 80, 480);
+    // Dark overlay top
+    const ov = ctx.createLinearGradient(0, 40, 0, 520);
+    ov.addColorStop(0, 'rgba(0,0,0,0.25)');
+    ov.addColorStop(1, 'rgba(13,31,18,0.92)');
+    ctx.fillStyle = ov;
+    ctx.fillRect(40, 40, W - 80, 480);
+    ctx.restore();
+  }
+
+  // 3. BADGE top-left "PRIMA EDIȚIE"
+  ctx.save();
+  roundRect(ctx, 70, 70, 220, 46, 23);
+  ctx.fillStyle = 'rgba(255,255,255,0.12)';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+  ctx.fillStyle = '#fff';
+  ctx.font = '700 17px "Segoe UI", sans-serif';
+  ctx.letterSpacing = '2px';
+  ctx.fillText('✨ PRIMA EDIȚIE', 90, 100);
+  ctx.restore();
+
+  // 4. Main title on image
+  ctx.save();
+  ctx.fillStyle = '#ffffff';
+  ctx.shadowColor = 'rgba(0,0,0,0.8)';
+  ctx.shadowBlur = 20;
+  ctx.font = '900 86px Georgia, serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('Experience', W / 2, 290);
+  ctx.fillStyle = '#6ee7b7';
+  ctx.fillText('Edition', W / 2, 380);
+  ctx.restore();
+
+  // 5. Subtitle on image
+  ctx.save();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.font = '400 28px Georgia, serif';
+  ctx.fillText('Conversații care Contează', W / 2, 460);
+  ctx.restore();
+
+  // ── Section 2: Info strip
+  let y = 530;
+
+  // Date + location pill
+  ctx.save();
+  roundRect(ctx, 100, y, W - 200, 64, 32);
+  ctx.fillStyle = 'rgba(255,255,255,0.07)';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(110,231,183,0.3)';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#6ee7b7';
+  ctx.font = '700 22px "Segoe UI", sans-serif';
+  ctx.fillText('📅  23–25 octombrie 2026   •   📍  Hotel Afrodita**** · Vălenii de Munte', W / 2, y + 38);
+  ctx.restore();
+
+  y += 90;
+
+  // ── 3 small hotel photo strip
+  const imgStrip = [loaded.camera, loaded.lobby, loaded.cascada];
+  const sw = 300, sh = 190, sgap = 20;
+  const stripX = (W - (sw * 3 + sgap * 2)) / 2;
+  imgStrip.forEach((img, i) => {
+    ctx.save();
+    roundRect(ctx, stripX + i * (sw + sgap), y, sw, sh, 14);
+    ctx.clip();
+    if (img) drawImgCover(ctx, img, stripX + i * (sw + sgap), y, sw, sh);
+    else { ctx.fillStyle = '#1a3520'; ctx.fillRect(stripX + i * (sw + sgap), y, sw, sh); }
+    // subtle overlay
+    ctx.fillStyle = 'rgba(0,0,0,0.18)';
+    ctx.fillRect(stripX + i * (sw + sgap), y, sw, sh);
+    ctx.restore();
+  });
+
+  y += sh + 36;
+
+  // ── PRICE CARD ──────────────────────────────────────────────
+  ctx.save();
+  // Outer card
+  roundRect(ctx, 60, y, W - 120, 330, 24);
+  const cardGrad = ctx.createLinearGradient(60, y, W - 60, y + 330);
+  cardGrad.addColorStop(0, '#1b4332');
+  cardGrad.addColorStop(1, '#0d2b1e');
+  ctx.fillStyle = cardGrad;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(110,231,183,0.25)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // BADGE "OFERTĂ DE LANSARE"
+  const badgeW = 340, badgeH = 44;
+  roundRect(ctx, W/2 - badgeW/2, y - badgeH/2, badgeW, badgeH, 22);
+  ctx.fillStyle = '#d97706';
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.font = '800 18px "Segoe UI", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🔥  OFERTĂ DE LANSARE – PRIMA EDIȚIE', W / 2, y + 10);
+
+  // -20% badge top-right
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(W - 110, y + 50, 44, 0, Math.PI * 2);
+  ctx.fillStyle = '#dc2626';
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.font = '900 22px "Segoe UI", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('−17%', W - 110, y + 46);
+  ctx.font = '600 13px "Segoe UI", sans-serif';
+  ctx.fillText('reducere', W - 110, y + 63);
+  ctx.restore();
+
+  // Cameră dublă price
+  const py = y + 70;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.font = '400 20px "Segoe UI", sans-serif';
+  ctx.fillText('Cameră dublă', 110, py);
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = '400 22px "Segoe UI", sans-serif';
+  // strikethrough
+  const stText = '1.450 lei';
+  ctx.fillText(stText, 110, py + 34);
+  ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+  ctx.lineWidth = 2;
+  const stW = ctx.measureText(stText).width;
+  ctx.beginPath(); ctx.moveTo(110, py + 26); ctx.lineTo(110 + stW, py + 26); ctx.stroke();
+  // Big price
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 90px Georgia, serif';
+  ctx.fillText('1.200', 110, py + 120);
+  ctx.font = '600 30px "Segoe UI", sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.fillText('lei / cameră dublă', 110, py + 155);
+
+  // Savings badge
+  roundRect(ctx, 110, py + 170, 260, 38, 19);
+  ctx.fillStyle = '#fbbf24';
+  ctx.fill();
+  ctx.fillStyle = '#78350f';
+  ctx.font = '700 18px "Segoe UI", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🎁 Economisești 250 lei', 240, py + 195);
+
+  // Single price
+  const rx = W - 380;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.font = '400 20px "Segoe UI", sans-serif';
+  ctx.fillText('Cameră single', rx, py);
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = '400 20px "Segoe UI", sans-serif';
+  const stS = '1.650 lei';
+  ctx.fillText(stS, rx, py + 34);
+  const stSW = ctx.measureText(stS).width;
+  ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(rx, py + 26); ctx.lineTo(rx + stSW, py + 26); ctx.stroke();
+  ctx.fillStyle = '#fff';
+  ctx.font = '900 60px Georgia, serif';
+  ctx.fillText('1.400', rx, py + 105);
+  ctx.font = '500 24px "Segoe UI", sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.fillText('lei / single', rx, py + 140);
+
+  ctx.restore();
+
+  y += 360;
+
+  // ── Bottom info row
+  const infos = ['👥 20–30 locuri', '🏨 Cazare inclusă', '📋 8 CPD', '✅ Înscrieri deschise'];
+  const iw = (W - 120) / infos.length;
+  infos.forEach((txt, i) => {
+    ctx.save();
+    roundRect(ctx, 60 + i * iw, y, iw - 10, 68, 14);
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(110,231,183,0.15)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#d1fae5';
+    ctx.font = '600 22px "Segoe UI", sans-serif';
+    ctx.fillText(txt, 60 + i * iw + (iw - 10) / 2, y + 40);
+    ctx.restore();
+  });
+
+  y += 96;
+
+  // ── AnimaMinds branding footer
+  ctx.save();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = '500 22px "Segoe UI", sans-serif';
+  ctx.fillText('animaminds.ro  •  program de formare profesională', W / 2, y + 28);
+  ctx.restore();
+
+  // Decorative line
+  ctx.save();
+  const dl = ctx.createLinearGradient(0, H - 8, W, H - 8);
+  dl.addColorStop(0, 'transparent');
+  dl.addColorStop(0.5, '#6ee7b7');
+  dl.addColorStop(1, 'transparent');
+  ctx.strokeStyle = dl;
+  ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(0, H - 8); ctx.lineTo(W, H - 8); ctx.stroke();
+  ctx.restore();
+}
+
+// ─── REEL ANIMATION 1080×1920 ───────────────────────────────────────────────
+let reelAnim = null;
+let reelFrame = 0;
+const REEL_FPS = 30;
+const REEL_DURATION = 15; // seconds
+const REEL_TOTAL = REEL_FPS * REEL_DURATION;
+
+function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+function lerp(a, b, t) { return a + (b - a) * t; }
+function clamp01(t) { return Math.max(0, Math.min(1, t)); }
+
+// segment: [startSec, endSec]
+function segProgress(frame, startSec, endSec) {
+  const s = startSec * REEL_FPS, e = endSec * REEL_FPS;
+  return clamp01((frame - s) / (e - s));
+}
+
+function drawReelFrame(frame) {
+  const c = document.getElementById('reel-canvas');
+  const ctx = c.getContext('2d');
+  const W = 1080, H = 1920;
+  const t = frame / REEL_FPS; // time in seconds
+
+  // BG
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#071510');
+  bg.addColorStop(0.5, '#0d2b1e');
+  bg.addColorStop(1, '#071510');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // Background image with slow zoom (exterior throughout)
+  if (loaded.exterior) {
+    const zoom = 1 + t * 0.008; // slow Ken Burns
+    ctx.save();
+    ctx.globalAlpha = 0.22;
+    const iw = W * zoom, ih = H * zoom;
+    drawImgCover(ctx, loaded.exterior, -(iw - W) / 2, -(ih - H) / 2, iw, ih);
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  }
+
+  // Decorative vertical lines
+  ctx.save();
+  ctx.strokeStyle = 'rgba(110,231,183,0.08)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 120) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  ctx.restore();
+
+  // ── SEG 1: 0–3s — Experience Edition / Prima editie
+  {
+    const p = easeInOut(clamp01(segProgress(frame, 0, 2.5)));
+    const fadeOut = t > 2.5 ? easeInOut(clamp01(1 - (t - 2.5) / 0.5)) : 1;
+    const alpha = p * fadeOut;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#6ee7b7';
+    ctx.font = '700 36px "Segoe UI", sans-serif';
+    ctx.fillText('✨ PRIMA EDIȚIE', W / 2, 700 - (1 - p) * 30);
+    ctx.fillStyle = '#fff';
+    ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 30;
+    ctx.font = '900 148px Georgia, serif';
+    ctx.fillText('Experience', W / 2, 870 - (1 - p) * 40);
+    ctx.fillStyle = '#6ee7b7';
+    ctx.font = '900 148px Georgia, serif';
+    ctx.fillText('Edition', W / 2, 1020 - (1 - p) * 40);
+    ctx.restore();
+  }
+
+  // ── SEG 2: 3–6s — Conversatii care Conteaza
+  if (t >= 2.8 && t < 6.5) {
+    const p = easeInOut(clamp01(segProgress(frame, 2.8, 5)));
+    const fadeOut = t > 5.5 ? easeInOut(clamp01(1 - (t - 5.5) / 1)) : 1;
+    const alpha = p * fadeOut;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.textAlign = 'center';
+    // Hotel image card
+    if (loaded.camera) {
+      ctx.save();
+      roundRect(ctx, 140, 560, W - 280, 360, 20);
+      ctx.clip();
+      drawImgCover(ctx, loaded.camera, 140, 560, W - 280, 360);
+      ctx.fillStyle = 'rgba(0,0,0,0.45)';
+      ctx.fillRect(140, 560, W - 280, 360);
+      ctx.restore();
+    }
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.font = '400 32px Georgia, serif';
+    ctx.fillText('Program rezidențial de formare profesională', W / 2, 620 - (1 - p) * 20);
+    ctx.fillStyle = '#fff';
+    ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 20;
+    ctx.font = '900 82px Georgia, serif';
+    ctx.fillText('Conversații care', W / 2, 840 - (1 - p) * 30);
+    ctx.fillText('Contează', W / 2, 940 - (1 - p) * 30);
+    ctx.restore();
+  }
+
+  // ── SEG 3: 6–9s — Hotel + Date
+  if (t >= 5.8 && t < 9.5) {
+    const p = easeInOut(clamp01(segProgress(frame, 5.8, 8)));
+    const fadeOut = t > 8.5 ? easeInOut(clamp01(1 - (t - 8.5) / 1)) : 1;
+    const alpha = p * fadeOut;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    if (loaded.exterior) {
+      ctx.save();
+      roundRect(ctx, 80, 520, W - 160, 500, 24);
+      ctx.clip();
+      drawImgCover(ctx, loaded.exterior, 80, 520, W - 160, 500);
+      const ov = ctx.createLinearGradient(0, 520, 0, 1020);
+      ov.addColorStop(0, 'rgba(0,0,0,0.1)');
+      ov.addColorStop(1, 'rgba(7,21,16,0.95)');
+      ctx.fillStyle = ov;
+      ctx.fillRect(80, 520, W - 160, 500);
+      ctx.restore();
+    }
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#6ee7b7';
+    ctx.font = '700 38px "Segoe UI", sans-serif';
+    ctx.fillText('📍  Hotel Afrodita****', W / 2, 930 - (1-p)*20);
+    ctx.fillStyle = 'rgba(255,255,255,0.75)';
+    ctx.font = '400 32px "Segoe UI", sans-serif';
+    ctx.fillText('Vălenii de Munte', W / 2, 980 - (1-p)*20);
+    ctx.fillStyle = '#fff';
+    ctx.font = '700 52px Georgia, serif';
+    ctx.fillText('23–25 octombrie 2026', W / 2, 1060 - (1-p)*20);
+    ctx.restore();
+  }
+
+  // ── SEG 4: 9–12s — Price card
+  if (t >= 8.8 && t < 12.5) {
+    const p = easeInOut(clamp01(segProgress(frame, 8.8, 11)));
+    const fadeOut = t > 11.5 ? easeInOut(clamp01(1 - (t - 11.5) / 1)) : 1;
+    const alpha = p * fadeOut;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    // Card BG
+    const cy = 500, ch = 600;
+    roundRect(ctx, 80, cy, W - 160, ch, 28);
+    const cg = ctx.createLinearGradient(80, cy, W - 160, cy + ch);
+    cg.addColorStop(0, '#1b4332');
+    cg.addColorStop(1, '#0d2b1e');
+    ctx.fillStyle = cg;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(110,231,183,0.3)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Badge OFERTA
+    roundRect(ctx, W/2 - 280, cy - 26, 560, 52, 26);
+    ctx.fillStyle = '#d97706';
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.font = '800 24px "Segoe UI", sans-serif';
+    ctx.fillText('🔥  OFERTĂ DE LANSARE', W / 2, cy + 8);
+
+    // -17% circle
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(W - 140, cy + 90, 58, 0, Math.PI * 2);
+    ctx.fillStyle = '#dc2626';
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = '900 28px "Segoe UI", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('−17%', W - 140, cy + 86);
+    ctx.font = '600 16px "Segoe UI", sans-serif';
+    ctx.fillText('reducere', W - 140, cy + 108);
+    ctx.restore();
+
+    // Standard price crossed
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = '400 26px "Segoe UI", sans-serif';
+    ctx.fillText('Tarif standard: 1.450 lei', 130, cy + 80);
+    const tw = ctx.measureText('Tarif standard: 1.450 lei').width;
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(130, cy + 70); ctx.lineTo(130 + tw, cy + 70); ctx.stroke();
+
+    // Big launch price
+    ctx.fillStyle = '#fff';
+    ctx.font = '400 32px "Segoe UI", sans-serif';
+    ctx.fillText('Tarif lansare', 130, cy + 140);
+    ctx.font = '900 160px Georgia, serif';
+    ctx.fillStyle = '#6ee7b7';
+    ctx.fillText('1.200', 100, cy + 320);
+    ctx.font = '600 42px "Segoe UI", sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.fillText('lei / cameră dublă', 130, cy + 375);
+
+    // Savings badge
+    roundRect(ctx, 130, cy + 400, 320, 50, 25);
+    ctx.fillStyle = '#fbbf24';
+    ctx.fill();
+    ctx.fillStyle = '#78350f';
+    ctx.font = '700 22px "Segoe UI", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('🎁 Economisești 250 lei', 290, cy + 432);
+
+    // Single price
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '400 24px "Segoe UI", sans-serif';
+    ctx.fillText('Cameră single: 1.400 lei', 130, cy + 490);
+
+    ctx.restore();
+  }
+
+  // ── SEG 5: 12–15s — CTA
+  if (t >= 11.8) {
+    const p = easeInOut(clamp01(segProgress(frame, 11.8, 14)));
+    ctx.save();
+    ctx.globalAlpha = p;
+
+    // Nature bg subtle
+    if (loaded.lac) {
+      ctx.save();
+      ctx.globalAlpha = 0.15 * p;
+      roundRect(ctx, 0, 400, W, H - 400, 0);
+      ctx.clip();
+      drawImgCover(ctx, loaded.lac, 0, 400, W, H - 400);
+      ctx.restore();
+    }
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#dc2626';
+    ctx.font = '900 52px "Segoe UI", sans-serif';
+    ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 20;
+    ctx.fillText('⚡ LOCURI LIMITATE', W / 2, 750 - (1-p)*30);
+
+    ctx.fillStyle = '#fff';
+    ctx.font = '700 48px Georgia, serif';
+    ctx.fillText('20–30 participanți', W / 2, 830 - (1-p)*30);
+
+    ctx.fillStyle = '#6ee7b7';
+    ctx.font = '900 62px "Segoe UI", sans-serif';
+    ctx.fillText('ÎNSCRIERI DESCHISE', W / 2, 960 - (1-p)*30);
+
+    // Animated pulsing button
+    const pulse = 1 + 0.03 * Math.sin(frame * 0.2);
+    ctx.save();
+    ctx.translate(W / 2, 1080);
+    ctx.scale(pulse, pulse);
+    roundRect(ctx, -260, -40, 520, 80, 40);
+    ctx.fillStyle = '#059669';
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = '800 30px "Segoe UI", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Rezervă un loc acum', 0, 12);
+    ctx.restore();
+
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '500 30px "Segoe UI", sans-serif';
+    ctx.fillText('animaminds.ro', W / 2, 1190 - (1-p)*20);
+
+    ctx.restore();
+  }
+
+  // ── Persistent branding (always visible)
+  ctx.save();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.2)';
+  ctx.font = '500 24px "Segoe UI", sans-serif';
+  ctx.fillText('AnimaMinds  •  program de formare profesională', W / 2, H - 40);
+  // bottom green line
+  const dl = ctx.createLinearGradient(0, H - 6, W, H - 6);
+  dl.addColorStop(0, 'transparent');
+  dl.addColorStop(0.5, '#6ee7b7');
+  dl.addColorStop(1, 'transparent');
+  ctx.strokeStyle = dl;
+  ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(0, H - 6); ctx.lineTo(W, H - 6); ctx.stroke();
+  ctx.restore();
+}
+
+function startReel() {
+  const c = document.getElementById('reel-canvas');
+  c.style.display = 'block';
+  if (reelAnim) cancelAnimationFrame(reelAnim);
+  reelFrame = 0;
+  function step() {
+    drawReelFrame(reelFrame);
+    reelFrame++;
+    if (reelFrame < REEL_TOTAL) reelAnim = requestAnimationFrame(step);
+    else { reelFrame = 0; reelAnim = requestAnimationFrame(step); } // loop
+  }
+  reelAnim = requestAnimationFrame(step);
+}
+
+// ─── DOWNLOAD ───────────────────────────────────────────────────────────────
+function downloadStatic() {
+  drawStatic();
+  const a = document.createElement('a');
+  a.download = 'animaminds-experience-edition-fb.png';
+  a.href = document.getElementById('static-canvas').toDataURL('image/png');
+  a.click();
+}
+
+let reelFrames = [];
+let isRecording = false;
+
+function downloadReel() {
+  alert('Apasă OK, apoi se vor înregistra 15 secunde de animație.\nLa final vei putea descărca GIF-ul.\nProcesul durează ~30 secunde.');
+  const c = document.getElementById('reel-canvas');
+  c.style.display = 'block';
+  if (reelAnim) cancelAnimationFrame(reelAnim);
+  reelFrames = [];
+  reelFrame = 0;
+  isRecording = true;
+
+  function record() {
+    drawReelFrame(reelFrame);
+    // Capture every 3rd frame (10fps for GIF)
+    if (reelFrame % 3 === 0) {
+      reelFrames.push(c.toDataURL('image/png'));
+    }
+    reelFrame++;
+    if (reelFrame < REEL_TOTAL) {
+      reelAnim = requestAnimationFrame(record);
+    } else {
+      isRecording = false;
+      // Download first frame as PNG (full quality single frame)
+      const a = document.createElement('a');
+      a.download = 'animaminds-reel-preview.png';
+      // Download the best frame (sec 10 = price reveal)
+      drawReelFrame(Math.floor(10 * REEL_FPS));
+      a.href = c.toDataURL('image/png');
+      a.click();
+      alert('Previzualizare descărcată (frame-ul cu prețul).\nPentru video complet, fă screenshot-uri sau folosește un recorder de ecran pe animația de mai sus.');
+      startReel(); // restart loop
+    }
+  }
+  reelAnim = requestAnimationFrame(record);
+}
+</script>
+</body>
+</html>
