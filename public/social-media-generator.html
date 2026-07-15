@@ -112,193 +112,234 @@ function drawStatic() {
   const ctx = c.getContext('2d');
   const W = 1080, H = 1350;
 
-  // 1. BG gradient premium
-  const bg = ctx.createLinearGradient(0, 0, W, H);
-  bg.addColorStop(0, '#0d1f12');
-  bg.addColorStop(0.5, '#1a3520');
-  bg.addColorStop(1, '#0d1f12');
-  ctx.fillStyle = bg;
+  // ── 1. BG solid dark premium
+  ctx.fillStyle = '#0c1c14';
   ctx.fillRect(0, 0, W, H);
 
-  // 2. Hero image (exterior) – top area clipped
+  // ── 2. Hero image full-width, top half, strong text overlay
   if (loaded.exterior) {
     ctx.save();
-    roundRect(ctx, 40, 40, W - 80, 480, 24);
+    roundRect(ctx, 0, 0, W, 520, 0);
     ctx.clip();
-    drawImgCover(ctx, loaded.exterior, 40, 40, W - 80, 480);
-    // Dark overlay top
-    const ov = ctx.createLinearGradient(0, 40, 0, 520);
-    ov.addColorStop(0, 'rgba(0,0,0,0.25)');
-    ov.addColorStop(1, 'rgba(13,31,18,0.92)');
+    drawImgCover(ctx, loaded.exterior, 0, 0, W, 520);
+    // Strong gradient so text is always readable
+    const ov = ctx.createLinearGradient(0, 0, 0, 520);
+    ov.addColorStop(0,   'rgba(12,28,20,0.55)');
+    ov.addColorStop(0.6, 'rgba(12,28,20,0.75)');
+    ov.addColorStop(1,   'rgba(12,28,20,1)');
     ctx.fillStyle = ov;
-    ctx.fillRect(40, 40, W - 80, 480);
+    ctx.fillRect(0, 0, W, 520);
     ctx.restore();
   }
 
-  // 3. BADGE top-left "PRIMA EDIȚIE"
+  // ── 3. "PRIMA EDIȚIE" pill — top-left, inside image
   ctx.save();
-  roundRect(ctx, 70, 70, 220, 46, 23);
-  ctx.fillStyle = 'rgba(255,255,255,0.12)';
+  roundRect(ctx, 50, 50, 230, 46, 23);
+  ctx.fillStyle = 'rgba(255,255,255,0.13)';
   ctx.fill();
-  ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+  ctx.strokeStyle = 'rgba(110,231,183,0.5)';
   ctx.lineWidth = 1.5;
   ctx.stroke();
-  ctx.fillStyle = '#fff';
-  ctx.font = '700 17px "Segoe UI", sans-serif';
-  ctx.letterSpacing = '2px';
-  ctx.fillText('✨ PRIMA EDIȚIE', 90, 100);
-  ctx.restore();
-
-  // 4. Main title on image
-  ctx.save();
-  ctx.fillStyle = '#ffffff';
-  ctx.shadowColor = 'rgba(0,0,0,0.8)';
-  ctx.shadowBlur = 20;
-  ctx.font = '900 86px Georgia, serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('Experience', W / 2, 290);
   ctx.fillStyle = '#6ee7b7';
-  ctx.fillText('Edition', W / 2, 380);
+  ctx.font = '700 17px "Segoe UI", sans-serif';
+  ctx.fillText('✦  PRIMA EDIȚIE', 72, 80);
   ctx.restore();
 
-  // 5. Subtitle on image
+  // ── 4. Program label — small, centered, above title
   ctx.save();
   ctx.textAlign = 'center';
-  ctx.fillStyle = 'rgba(255,255,255,0.85)';
-  ctx.font = '400 28px Georgia, serif';
-  ctx.fillText('Conversații care Contează', W / 2, 460);
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.font = '500 22px "Segoe UI", sans-serif';
+  ctx.fillText('Program rezidențial de formare profesională', W / 2, 190);
   ctx.restore();
 
-  // ── Section 2: Info strip
-  let y = 530;
-
-  // Date + location pill
+  // ── 5. Main title — CONVERSAȚII CARE CONTEAZĂ (the program name is hero)
   ctx.save();
-  roundRect(ctx, 100, y, W - 200, 64, 32);
-  ctx.fillStyle = 'rgba(255,255,255,0.07)';
+  ctx.textAlign = 'center';
+  ctx.shadowColor = 'rgba(0,0,0,0.9)';
+  ctx.shadowBlur = 24;
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '900 72px Georgia, serif';
+  ctx.fillText('Conversații care', W / 2, 300);
+  ctx.fillStyle = '#6ee7b7';
+  ctx.fillText('Contează', W / 2, 390);
+  ctx.restore();
+
+  // ── 6. Experience Edition sub-label
+  ctx.save();
+  ctx.textAlign = 'center';
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.font = '400 26px Georgia, serif';
+  ctx.fillText('Experience Edition™  ·  AnimaMinds', W / 2, 468);
+  ctx.restore();
+
+  // ── SEPARATOR LINE
+  ctx.save();
+  const sep = ctx.createLinearGradient(0, 540, W, 540);
+  sep.addColorStop(0, 'transparent');
+  sep.addColorStop(0.5, 'rgba(110,231,183,0.4)');
+  sep.addColorStop(1, 'transparent');
+  ctx.strokeStyle = sep;
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(60, 540); ctx.lineTo(W - 60, 540); ctx.stroke();
+  ctx.restore();
+
+  // ── 7. Key details row: date, location, group size
+  let y = 570;
+  const details = [
+    { icon: '📅', line1: '23–25 octombrie 2026', line2: '3 zile rezidențial' },
+    { icon: '📍', line1: 'Hotel Afrodita****', line2: 'Vălenii de Munte' },
+    { icon: '👥', line1: '20–30 participanți', line2: 'Grup restrâns' },
+  ];
+  const dw = (W - 120) / 3;
+  details.forEach((d, i) => {
+    const dx = 60 + i * dw + dw / 2;
+    ctx.save();
+    // card bg
+    roundRect(ctx, 60 + i * dw + 8, y, dw - 16, 120, 16);
+    ctx.fillStyle = 'rgba(255,255,255,0.05)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(110,231,183,0.12)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.textAlign = 'center';
+    ctx.font = '500 28px "Segoe UI", sans-serif';
+    ctx.fillText(d.icon, dx, y + 42);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '700 22px "Segoe UI", sans-serif';
+    ctx.fillText(d.line1, dx, y + 76);
+    ctx.fillStyle = 'rgba(255,255,255,0.45)';
+    ctx.font = '400 18px "Segoe UI", sans-serif';
+    ctx.fillText(d.line2, dx, y + 100);
+    ctx.restore();
+  });
+
+  y += 148;
+
+  // ── 8. CPD + format strip
+  ctx.save();
+  roundRect(ctx, 60, y, W - 120, 60, 30);
+  ctx.fillStyle = 'rgba(110,231,183,0.08)';
   ctx.fill();
-  ctx.strokeStyle = 'rgba(110,231,183,0.3)';
+  ctx.strokeStyle = 'rgba(110,231,183,0.2)';
   ctx.lineWidth = 1;
   ctx.stroke();
   ctx.textAlign = 'center';
   ctx.fillStyle = '#6ee7b7';
-  ctx.font = '700 22px "Segoe UI", sans-serif';
-  ctx.fillText('📅  23–25 octombrie 2026   •   📍  Hotel Afrodita**** · Vălenii de Munte', W / 2, y + 38);
+  ctx.font = '600 22px "Segoe UI", sans-serif';
+  ctx.fillText('8 credite CPD   ·   Cazare inclusă   ·   Mese incluse   ·   Materiale de formare', W / 2, y + 36);
   ctx.restore();
 
-  y += 90;
+  y += 84;
 
-  // ── 3 small hotel photo strip
-  const imgStrip = [loaded.camera, loaded.lobby, loaded.cascada];
-  const sw = 300, sh = 190, sgap = 20;
-  const stripX = (W - (sw * 3 + sgap * 2)) / 2;
-  imgStrip.forEach((img, i) => {
-    ctx.save();
-    roundRect(ctx, stripX + i * (sw + sgap), y, sw, sh, 14);
-    ctx.clip();
-    if (img) drawImgCover(ctx, img, stripX + i * (sw + sgap), y, sw, sh);
-    else { ctx.fillStyle = '#1a3520'; ctx.fillRect(stripX + i * (sw + sgap), y, sw, sh); }
-    // subtle overlay
-    ctx.fillStyle = 'rgba(0,0,0,0.18)';
-    ctx.fillRect(stripX + i * (sw + sgap), y, sw, sh);
-    ctx.restore();
-  });
-
-  y += sh + 36;
-
-  // ── PRICE CARD ──────────────────────────────────────────────
+  // ── 9. PRICE CARD — badge INSIDE, clean layout
+  const cardH = 380;
   ctx.save();
-  // Outer card
-  roundRect(ctx, 60, y, W - 120, 330, 24);
-  const cardGrad = ctx.createLinearGradient(60, y, W - 60, y + 330);
-  cardGrad.addColorStop(0, '#1b4332');
-  cardGrad.addColorStop(1, '#0d2b1e');
-  ctx.fillStyle = cardGrad;
+  roundRect(ctx, 60, y, W - 120, cardH, 24);
+  const cg = ctx.createLinearGradient(60, y, W - 120, y + cardH);
+  cg.addColorStop(0, '#163b28');
+  cg.addColorStop(1, '#0c2318');
+  ctx.fillStyle = cg;
   ctx.fill();
-  ctx.strokeStyle = 'rgba(110,231,183,0.25)';
+  ctx.strokeStyle = 'rgba(110,231,183,0.3)';
   ctx.lineWidth = 1.5;
   ctx.stroke();
 
-  // BADGE "OFERTĂ DE LANSARE"
-  const badgeW = 340, badgeH = 44;
-  roundRect(ctx, W/2 - badgeW/2, y - badgeH/2, badgeW, badgeH, 22);
+  // Badge INSIDE card, top-center
+  const bw = 480, bh = 48;
+  roundRect(ctx, W/2 - bw/2, y + 20, bw, bh, 24);
   ctx.fillStyle = '#d97706';
   ctx.fill();
   ctx.fillStyle = '#fff';
-  ctx.font = '800 18px "Segoe UI", sans-serif';
+  ctx.font = '800 20px "Segoe UI", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('🔥  OFERTĂ DE LANSARE – PRIMA EDIȚIE', W / 2, y + 10);
+  ctx.fillText('🔥  OFERTĂ DE LANSARE – PRIMA EDIȚIE', W / 2, y + 52);
 
-  // -20% badge top-right
+  // Divider inside card
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(100, y + 86); ctx.lineTo(W - 100, y + 86); ctx.stroke();
+
+  // LEFT — cameră dublă
+  const lx = 110;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.font = '500 20px "Segoe UI", sans-serif';
+  ctx.fillText('Cameră dublă', lx, y + 120);
+
+  // crossed price
+  const stD = '1.450 lei';
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.font = '400 20px "Segoe UI", sans-serif';
+  ctx.fillText(stD, lx, y + 148);
+  const stDw = ctx.measureText(stD).width;
+  ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(lx, y + 140); ctx.lineTo(lx + stDw, y + 140); ctx.stroke();
+
+  // big price
+  ctx.fillStyle = '#fff';
+  ctx.font = '900 100px Georgia, serif';
+  ctx.fillText('1.200', lx, y + 260);
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.font = '500 24px "Segoe UI", sans-serif';
+  ctx.fillText('lei / cameră dublă', lx, y + 295);
+
+  // savings pill
+  roundRect(ctx, lx, y + 312, 280, 42, 21);
+  ctx.fillStyle = '#fbbf24';
+  ctx.fill();
+  ctx.fillStyle = '#78350f';
+  ctx.font = '700 19px "Segoe UI", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🎁 Economisești 250 lei', lx + 140, y + 339);
+
+  // VERTICAL DIVIDER
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(W/2 + 20, y + 96); ctx.lineTo(W/2 + 20, y + cardH - 20); ctx.stroke();
+
+  // RIGHT — cameră single
+  const rx2 = W/2 + 50;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.font = '500 20px "Segoe UI", sans-serif';
+  ctx.fillText('Cameră single', rx2, y + 120);
+
+  const stS2 = '1.650 lei';
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.font = '400 20px "Segoe UI", sans-serif';
+  ctx.fillText(stS2, rx2, y + 148);
+  const stS2w = ctx.measureText(stS2).width;
+  ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(rx2, y + 140); ctx.lineTo(rx2 + stS2w, y + 140); ctx.stroke();
+
+  ctx.fillStyle = '#6ee7b7';
+  ctx.font = '900 100px Georgia, serif';
+  ctx.fillText('1.400', rx2, y + 260);
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.font = '500 24px "Segoe UI", sans-serif';
+  ctx.fillText('lei / single', rx2, y + 295);
+
+  // -17% circle — top right of card
   ctx.save();
   ctx.beginPath();
-  ctx.arc(W - 110, y + 50, 44, 0, Math.PI * 2);
+  ctx.arc(W - 85, y + 58, 46, 0, Math.PI * 2);
   ctx.fillStyle = '#dc2626';
   ctx.fill();
   ctx.fillStyle = '#fff';
   ctx.font = '900 22px "Segoe UI", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('−17%', W - 110, y + 46);
+  ctx.fillText('−17%', W - 85, y + 54);
   ctx.font = '600 13px "Segoe UI", sans-serif';
-  ctx.fillText('reducere', W - 110, y + 63);
+  ctx.fillText('reducere', W - 85, y + 72);
   ctx.restore();
-
-  // Cameră dublă price
-  const py = y + 70;
-  ctx.textAlign = 'left';
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
-  ctx.font = '400 20px "Segoe UI", sans-serif';
-  ctx.fillText('Cameră dublă', 110, py);
-  ctx.fillStyle = 'rgba(255,255,255,0.35)';
-  ctx.font = '400 22px "Segoe UI", sans-serif';
-  // strikethrough
-  const stText = '1.450 lei';
-  ctx.fillText(stText, 110, py + 34);
-  ctx.strokeStyle = 'rgba(255,255,255,0.4)';
-  ctx.lineWidth = 2;
-  const stW = ctx.measureText(stText).width;
-  ctx.beginPath(); ctx.moveTo(110, py + 26); ctx.lineTo(110 + stW, py + 26); ctx.stroke();
-  // Big price
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '900 90px Georgia, serif';
-  ctx.fillText('1.200', 110, py + 120);
-  ctx.font = '600 30px "Segoe UI", sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  ctx.fillText('lei / cameră dublă', 110, py + 155);
-
-  // Savings badge
-  roundRect(ctx, 110, py + 170, 260, 38, 19);
-  ctx.fillStyle = '#fbbf24';
-  ctx.fill();
-  ctx.fillStyle = '#78350f';
-  ctx.font = '700 18px "Segoe UI", sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('🎁 Economisești 250 lei', 240, py + 195);
-
-  // Single price
-  const rx = W - 380;
-  ctx.textAlign = 'left';
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
-  ctx.font = '400 20px "Segoe UI", sans-serif';
-  ctx.fillText('Cameră single', rx, py);
-  ctx.fillStyle = 'rgba(255,255,255,0.35)';
-  ctx.font = '400 20px "Segoe UI", sans-serif';
-  const stS = '1.650 lei';
-  ctx.fillText(stS, rx, py + 34);
-  const stSW = ctx.measureText(stS).width;
-  ctx.strokeStyle = 'rgba(255,255,255,0.4)';
-  ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(rx, py + 26); ctx.lineTo(rx + stSW, py + 26); ctx.stroke();
-  ctx.fillStyle = '#fff';
-  ctx.font = '900 60px Georgia, serif';
-  ctx.fillText('1.400', rx, py + 105);
-  ctx.font = '500 24px "Segoe UI", sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  ctx.fillText('lei / single', rx, py + 140);
 
   ctx.restore();
 
-  y += 360;
+  y += cardH + 24;
 
   // ── Bottom info row
   const infos = ['👥 20–30 locuri', '🏨 Cazare inclusă', '📋 8 CPD', '✅ Înscrieri deschise'];
