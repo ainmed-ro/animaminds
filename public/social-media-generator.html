@@ -112,273 +112,206 @@ function drawStatic() {
   const ctx = c.getContext('2d');
   const W = 1080, H = 1350;
 
-  // ── 1. BG solid dark premium
-  ctx.fillStyle = '#0c1c14';
+  // BG dark charcoal
+  ctx.fillStyle = '#0f172a';
   ctx.fillRect(0, 0, W, H);
 
-  // ── 2. Hero image full-width, top half, strong text overlay
-  if (loaded.exterior) {
+  // Subtle grid
+  ctx.save(); ctx.globalAlpha = 0.03; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1;
+  for (let gx = 0; gx < W; gx += 80) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+  for (let gy = 0; gy < H; gy += 80) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
+  ctx.globalAlpha = 1; ctx.restore();
+
+  // Decorative arc top-right
+  ctx.save(); ctx.globalAlpha = 0.07; ctx.strokeStyle = '#6ee7b7';
+  ctx.lineWidth = 100; ctx.beginPath(); ctx.arc(W+80, -80, 580, 0, Math.PI*0.55); ctx.stroke();
+  ctx.lineWidth = 50; ctx.beginPath(); ctx.arc(W+80, -80, 780, 0, Math.PI*0.45); ctx.stroke();
+  ctx.globalAlpha = 1; ctx.restore();
+
+  // Top accent bar
+  ctx.fillStyle = '#059669'; ctx.fillRect(0, 0, W, 6);
+
+  // PRIMA EDIȚIE pill
+  ctx.save();
+  roundRect(ctx, 60, 34, 270, 48, 24);
+  ctx.fillStyle = 'rgba(5,150,105,0.18)'; ctx.fill();
+  ctx.strokeStyle = '#059669'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#6ee7b7'; ctx.font = '700 19px "Segoe UI", sans-serif';
+  ctx.fillText('✦  PRIMA EDIȚIE  ·  2026', 82, 64);
+  ctx.restore();
+
+  // AnimaMinds top-right
+  ctx.save(); ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(255,255,255,0.22)'; ctx.font = '500 18px "Segoe UI", sans-serif';
+  ctx.fillText('animaminds.ro', W - 60, 64); ctx.restore();
+
+  // Categorie program
+  ctx.save(); ctx.textAlign = 'center';
+  ctx.fillStyle = '#059669'; ctx.font = '700 20px "Segoe UI", sans-serif';
+  ctx.fillText('PROGRAM DE FORMARE PROFESIONALĂ', W/2, 168); ctx.restore();
+
+  // Linie sub categorie
+  ctx.save(); ctx.strokeStyle = 'rgba(5,150,105,0.3)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(W/2-300,182); ctx.lineTo(W/2+300,182); ctx.stroke(); ctx.restore();
+
+  // Titlu mare
+  ctx.save(); ctx.textAlign = 'center';
+  ctx.fillStyle = '#ffffff'; ctx.font = '900 100px Georgia, serif';
+  ctx.fillText('Conversații', W/2, 310);
+  ctx.fillStyle = '#6ee7b7'; ctx.font = '900 100px Georgia, serif';
+  ctx.fillText('care Contează', W/2, 426); ctx.restore();
+
+  // Experience Edition
+  ctx.save(); ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.font = '400 28px Georgia, serif';
+  ctx.fillText('Experience Edition™', W/2, 492); ctx.restore();
+
+  // Separator
+  ctx.save();
+  const sep = ctx.createLinearGradient(0,520,W,520);
+  sep.addColorStop(0,'transparent'); sep.addColorStop(0.5,'rgba(110,231,183,0.3)'); sep.addColorStop(1,'transparent');
+  ctx.strokeStyle = sep; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80,520); ctx.lineTo(W-80,520); ctx.stroke(); ctx.restore();
+
+  // Info 3 carduri text
+  let y = 544;
+  [
+    { icon:'📅', top:'23–25 octombrie 2026', bot:'3 zile · format rezidențial' },
+    { icon:'�', top:'Grup restrâns', bot:'20–30 participanți' },
+    { icon:'🎓', top:'8 credite CPD', bot:'Certificat de participare' },
+  ].forEach((d, i) => {
+    const dw2 = (W-120)/3;
+    const cx2 = 60 + i*dw2 + dw2/2;
     ctx.save();
-    roundRect(ctx, 0, 0, W, 520, 0);
-    ctx.clip();
-    drawImgCover(ctx, loaded.exterior, 0, 0, W, 520);
-    // Strong gradient so text is always readable
-    const ov = ctx.createLinearGradient(0, 0, 0, 520);
-    ov.addColorStop(0,   'rgba(12,28,20,0.55)');
-    ov.addColorStop(0.6, 'rgba(12,28,20,0.75)');
-    ov.addColorStop(1,   'rgba(12,28,20,1)');
-    ctx.fillStyle = ov;
-    ctx.fillRect(0, 0, W, 520);
-    ctx.restore();
-  }
-
-  // ── 3. "PRIMA EDIȚIE" pill — top-left, inside image
-  ctx.save();
-  roundRect(ctx, 50, 50, 230, 46, 23);
-  ctx.fillStyle = 'rgba(255,255,255,0.13)';
-  ctx.fill();
-  ctx.strokeStyle = 'rgba(110,231,183,0.5)';
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
-  ctx.fillStyle = '#6ee7b7';
-  ctx.font = '700 17px "Segoe UI", sans-serif';
-  ctx.fillText('✦  PRIMA EDIȚIE', 72, 80);
-  ctx.restore();
-
-  // ── 4. Program label — small, centered, above title
-  ctx.save();
-  ctx.textAlign = 'center';
-  ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.font = '500 22px "Segoe UI", sans-serif';
-  ctx.fillText('Program rezidențial de formare profesională', W / 2, 190);
-  ctx.restore();
-
-  // ── 5. Main title — CONVERSAȚII CARE CONTEAZĂ (the program name is hero)
-  ctx.save();
-  ctx.textAlign = 'center';
-  ctx.shadowColor = 'rgba(0,0,0,0.9)';
-  ctx.shadowBlur = 24;
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '900 72px Georgia, serif';
-  ctx.fillText('Conversații care', W / 2, 300);
-  ctx.fillStyle = '#6ee7b7';
-  ctx.fillText('Contează', W / 2, 390);
-  ctx.restore();
-
-  // ── 6. Experience Edition sub-label
-  ctx.save();
-  ctx.textAlign = 'center';
-  ctx.shadowBlur = 0;
-  ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  ctx.font = '400 26px Georgia, serif';
-  ctx.fillText('Experience Edition™  ·  AnimaMinds', W / 2, 468);
-  ctx.restore();
-
-  // ── SEPARATOR LINE
-  ctx.save();
-  const sep = ctx.createLinearGradient(0, 540, W, 540);
-  sep.addColorStop(0, 'transparent');
-  sep.addColorStop(0.5, 'rgba(110,231,183,0.4)');
-  sep.addColorStop(1, 'transparent');
-  ctx.strokeStyle = sep;
-  ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(60, 540); ctx.lineTo(W - 60, 540); ctx.stroke();
-  ctx.restore();
-
-  // ── 7. Key details row: date, location, group size
-  let y = 570;
-  const details = [
-    { icon: '📅', line1: '23–25 octombrie 2026', line2: '3 zile rezidențial' },
-    { icon: '📍', line1: 'Hotel Afrodita****', line2: 'Vălenii de Munte' },
-    { icon: '👥', line1: '20–30 participanți', line2: 'Grup restrâns' },
-  ];
-  const dw = (W - 120) / 3;
-  details.forEach((d, i) => {
-    const dx = 60 + i * dw + dw / 2;
-    ctx.save();
-    // card bg
-    roundRect(ctx, 60 + i * dw + 8, y, dw - 16, 120, 16);
-    ctx.fillStyle = 'rgba(255,255,255,0.05)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(110,231,183,0.12)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
+    roundRect(ctx, 60+i*dw2+8, y, dw2-16, 118, 16);
+    ctx.fillStyle = 'rgba(255,255,255,0.04)'; ctx.fill();
+    ctx.strokeStyle = 'rgba(110,231,183,0.1)'; ctx.lineWidth = 1; ctx.stroke();
     ctx.textAlign = 'center';
-    ctx.font = '500 28px "Segoe UI", sans-serif';
-    ctx.fillText(d.icon, dx, y + 42);
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '700 22px "Segoe UI", sans-serif';
-    ctx.fillText(d.line1, dx, y + 76);
-    ctx.fillStyle = 'rgba(255,255,255,0.45)';
-    ctx.font = '400 18px "Segoe UI", sans-serif';
-    ctx.fillText(d.line2, dx, y + 100);
+    ctx.font = '26px "Segoe UI"'; ctx.fillStyle = '#fff'; ctx.fillText(d.icon, cx2, y+40);
+    ctx.font = '700 21px "Segoe UI", sans-serif'; ctx.fillStyle = '#ffffff'; ctx.fillText(d.top, cx2, y+74);
+    ctx.font = '400 17px "Segoe UI", sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.fillText(d.bot, cx2, y+98);
     ctx.restore();
   });
 
-  y += 148;
+  y += 142;
 
-  // ── 8. CPD + format strip
+  // Beneficii strip
   ctx.save();
-  roundRect(ctx, 60, y, W - 120, 60, 30);
-  ctx.fillStyle = 'rgba(110,231,183,0.08)';
-  ctx.fill();
-  ctx.strokeStyle = 'rgba(110,231,183,0.2)';
-  ctx.lineWidth = 1;
-  ctx.stroke();
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#6ee7b7';
-  ctx.font = '600 22px "Segoe UI", sans-serif';
-  ctx.fillText('8 credite CPD   ·   Cazare inclusă   ·   Mese incluse   ·   Materiale de formare', W / 2, y + 36);
+  roundRect(ctx, 60, y, W-120, 58, 29);
+  ctx.fillStyle = 'rgba(110,231,183,0.07)'; ctx.fill();
+  ctx.strokeStyle = 'rgba(110,231,183,0.18)'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.textAlign = 'center'; ctx.fillStyle = '#6ee7b7'; ctx.font = '600 20px "Segoe UI", sans-serif';
+  ctx.fillText('Cazare inclusă  ·  Mese incluse  ·  Materiale de formare  ·  Acces complet', W/2, y+34);
   ctx.restore();
 
-  y += 84;
+  y += 78;
 
-  // ── 9. PRICE CARD — badge INSIDE, clean layout
-  const cardH = 380;
+  // PRICE CARD
+  const cardH = 360;
   ctx.save();
-  roundRect(ctx, 60, y, W - 120, cardH, 24);
-  const cg = ctx.createLinearGradient(60, y, W - 120, y + cardH);
-  cg.addColorStop(0, '#163b28');
-  cg.addColorStop(1, '#0c2318');
-  ctx.fillStyle = cg;
-  ctx.fill();
-  ctx.strokeStyle = 'rgba(110,231,183,0.3)';
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
+  roundRect(ctx, 60, y, W-120, cardH, 22);
+  const cg = ctx.createLinearGradient(60, y, W-120, y+cardH);
+  cg.addColorStop(0,'#14532d'); cg.addColorStop(1,'#052e16');
+  ctx.fillStyle = cg; ctx.fill();
+  ctx.strokeStyle = 'rgba(110,231,183,0.28)'; ctx.lineWidth = 1.5; ctx.stroke();
 
-  // Badge INSIDE card, top-center
-  const bw = 480, bh = 48;
-  roundRect(ctx, W/2 - bw/2, y + 20, bw, bh, 24);
-  ctx.fillStyle = '#d97706';
-  ctx.fill();
-  ctx.fillStyle = '#fff';
-  ctx.font = '800 20px "Segoe UI", sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('🔥  OFERTĂ DE LANSARE – PRIMA EDIȚIE', W / 2, y + 52);
+  // Badge INSIDE top-center
+  roundRect(ctx, W/2-260, y+18, 520, 50, 25);
+  ctx.fillStyle = '#b45309'; ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.font = '800 20px "Segoe UI", sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('🔥  OFERTĂ DE LANSARE – PRIMA EDIȚIE', W/2, y+50);
 
-  // Divider inside card
-  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-  ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(100, y + 86); ctx.lineTo(W - 100, y + 86); ctx.stroke();
+  // Divider
+  ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(110, y+84); ctx.lineTo(W-110, y+84); ctx.stroke();
 
-  // LEFT — cameră dublă
+  // Label pachet
+  ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = '500 17px "Segoe UI", sans-serif';
+  ctx.fillText('Pachet complet: formare + cazare + mese', W/2, y+110);
+
+  // LEFT — cu cameră dublă
   const lx = 110;
   ctx.textAlign = 'left';
-  ctx.fillStyle = 'rgba(255,255,255,0.45)';
-  ctx.font = '500 20px "Segoe UI", sans-serif';
-  ctx.fillText('Cameră dublă', lx, y + 120);
-
-  // crossed price
+  ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '500 19px "Segoe UI", sans-serif';
+  ctx.fillText('Cu cameră dublă', lx, y+148);
   const stD = '1.450 lei';
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  ctx.font = '400 20px "Segoe UI", sans-serif';
-  ctx.fillText(stD, lx, y + 148);
+  ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.font = '400 19px "Segoe UI", sans-serif';
+  ctx.fillText(stD, lx, y+174);
   const stDw = ctx.measureText(stD).width;
-  ctx.strokeStyle = 'rgba(255,255,255,0.35)';
-  ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(lx, y + 140); ctx.lineTo(lx + stDw, y + 140); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(lx,y+166); ctx.lineTo(lx+stDw,y+166); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = '900 88px Georgia, serif';
+  ctx.fillText('1.200', lx, y+278);
+  ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.font = '500 21px "Segoe UI", sans-serif';
+  ctx.fillText('lei / participant', lx, y+308);
+  roundRect(ctx, lx, y+320, 250, 38, 19);
+  ctx.fillStyle = '#fbbf24'; ctx.fill();
+  ctx.fillStyle = '#78350f'; ctx.font = '700 17px "Segoe UI", sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('🎁 Economisești 250 lei', lx+125, y+344);
 
-  // big price
-  ctx.fillStyle = '#fff';
-  ctx.font = '900 100px Georgia, serif';
-  ctx.fillText('1.200', lx, y + 260);
-  ctx.fillStyle = 'rgba(255,255,255,0.6)';
-  ctx.font = '500 24px "Segoe UI", sans-serif';
-  ctx.fillText('lei / cameră dublă', lx, y + 295);
+  // Vertical divider
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(W/2+10,y+90); ctx.lineTo(W/2+10,y+cardH-16); ctx.stroke();
 
-  // savings pill
-  roundRect(ctx, lx, y + 312, 280, 42, 21);
-  ctx.fillStyle = '#fbbf24';
-  ctx.fill();
-  ctx.fillStyle = '#78350f';
-  ctx.font = '700 19px "Segoe UI", sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('🎁 Economisești 250 lei', lx + 140, y + 339);
-
-  // VERTICAL DIVIDER
-  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-  ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(W/2 + 20, y + 96); ctx.lineTo(W/2 + 20, y + cardH - 20); ctx.stroke();
-
-  // RIGHT — cameră single
-  const rx2 = W/2 + 50;
+  // RIGHT — cu cameră single
+  const rx2 = W/2+40;
   ctx.textAlign = 'left';
-  ctx.fillStyle = 'rgba(255,255,255,0.45)';
-  ctx.font = '500 20px "Segoe UI", sans-serif';
-  ctx.fillText('Cameră single', rx2, y + 120);
+  ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '500 19px "Segoe UI", sans-serif';
+  ctx.fillText('Cu cameră single', rx2, y+148);
+  const stS = '1.650 lei';
+  ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.font = '400 19px "Segoe UI", sans-serif';
+  ctx.fillText(stS, rx2, y+174);
+  const stSw = ctx.measureText(stS).width;
+  ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(rx2,y+166); ctx.lineTo(rx2+stSw,y+166); ctx.stroke();
+  ctx.fillStyle = '#6ee7b7'; ctx.font = '900 88px Georgia, serif';
+  ctx.fillText('1.400', rx2, y+278);
+  ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.font = '500 21px "Segoe UI", sans-serif';
+  ctx.fillText('lei / participant', rx2, y+308);
 
-  const stS2 = '1.650 lei';
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  ctx.font = '400 20px "Segoe UI", sans-serif';
-  ctx.fillText(stS2, rx2, y + 148);
-  const stS2w = ctx.measureText(stS2).width;
-  ctx.strokeStyle = 'rgba(255,255,255,0.35)';
-  ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(rx2, y + 140); ctx.lineTo(rx2 + stS2w, y + 140); ctx.stroke();
-
-  ctx.fillStyle = '#6ee7b7';
-  ctx.font = '900 100px Georgia, serif';
-  ctx.fillText('1.400', rx2, y + 260);
-  ctx.fillStyle = 'rgba(255,255,255,0.6)';
-  ctx.font = '500 24px "Segoe UI", sans-serif';
-  ctx.fillText('lei / single', rx2, y + 295);
-
-  // -17% circle — top right of card
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(W - 85, y + 58, 46, 0, Math.PI * 2);
-  ctx.fillStyle = '#dc2626';
-  ctx.fill();
-  ctx.fillStyle = '#fff';
-  ctx.font = '900 22px "Segoe UI", sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('−17%', W - 85, y + 54);
-  ctx.font = '600 13px "Segoe UI", sans-serif';
-  ctx.fillText('reducere', W - 85, y + 72);
-  ctx.restore();
+  // -17% circle
+  ctx.save(); ctx.beginPath(); ctx.arc(W-88,y+52,44,0,Math.PI*2);
+  ctx.fillStyle = '#dc2626'; ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.font = '900 21px "Segoe UI", sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('−17%', W-88, y+48); ctx.font = '600 12px "Segoe UI", sans-serif';
+  ctx.fillText('reducere', W-88, y+65); ctx.restore();
 
   ctx.restore();
+  y += cardH + 20;
 
-  y += cardH + 24;
-
-  // ── Bottom info row
-  const infos = ['👥 20–30 locuri', '🏨 Cazare inclusă', '📋 8 CPD', '✅ Înscrieri deschise'];
-  const iw = (W - 120) / infos.length;
-  infos.forEach((txt, i) => {
+  // 3 imagini mici circulare ca context vizual discret
+  const imgList = [loaded.exterior, loaded.camera, loaded.lobby];
+  const labels = ['Locație', 'Cazare', 'Spații comune'];
+  const r = 60, gap = 40;
+  const totalW = imgList.length * (r*2) + (imgList.length-1) * gap;
+  const startX = (W - totalW) / 2;
+  imgList.forEach((img, i) => {
+    const cx3 = startX + i*(r*2+gap) + r;
+    const cy3 = y + r + 10;
     ctx.save();
-    roundRect(ctx, 60 + i * iw, y, iw - 10, 68, 14);
-    ctx.fillStyle = 'rgba(255,255,255,0.06)';
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(110,231,183,0.15)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#d1fae5';
-    ctx.font = '600 22px "Segoe UI", sans-serif';
-    ctx.fillText(txt, 60 + i * iw + (iw - 10) / 2, y + 40);
+    ctx.beginPath(); ctx.arc(cx3, cy3, r, 0, Math.PI*2); ctx.clip();
+    if (img) drawImgCover(ctx, img, cx3-r, cy3-r, r*2, r*2);
+    else { ctx.fillStyle = '#1e3a2f'; ctx.fill(); }
     ctx.restore();
+    // ring
+    ctx.save(); ctx.beginPath(); ctx.arc(cx3, cy3, r, 0, Math.PI*2);
+    ctx.strokeStyle = 'rgba(110,231,183,0.25)'; ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
+    // label
+    ctx.save(); ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.font = '400 15px "Segoe UI", sans-serif';
+    ctx.fillText(labels[i], cx3, cy3 + r + 18); ctx.restore();
   });
 
-  y += 96;
+  y += r*2 + 44;
 
-  // ── AnimaMinds branding footer
-  ctx.save();
-  ctx.textAlign = 'center';
-  ctx.fillStyle = 'rgba(255,255,255,0.35)';
-  ctx.font = '500 22px "Segoe UI", sans-serif';
-  ctx.fillText('animaminds.ro  •  program de formare profesională', W / 2, y + 28);
-  ctx.restore();
+  // Footer
+  ctx.save(); ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.22)'; ctx.font = '500 19px "Segoe UI", sans-serif';
+  ctx.fillText('animaminds.ro  ·  program de formare profesională', W/2, y+16); ctx.restore();
 
-  // Decorative line
-  ctx.save();
-  const dl = ctx.createLinearGradient(0, H - 8, W, H - 8);
-  dl.addColorStop(0, 'transparent');
-  dl.addColorStop(0.5, '#6ee7b7');
-  dl.addColorStop(1, 'transparent');
-  ctx.strokeStyle = dl;
-  ctx.lineWidth = 3;
-  ctx.beginPath(); ctx.moveTo(0, H - 8); ctx.lineTo(W, H - 8); ctx.stroke();
-  ctx.restore();
+  // Bottom bar
+  ctx.fillStyle = '#059669'; ctx.fillRect(0, H-6, W, 6);
 }
 
 // ─── REEL ANIMATION 1080×1920 ───────────────────────────────────────────────
