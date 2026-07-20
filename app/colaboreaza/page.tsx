@@ -221,6 +221,85 @@ export default function ColaboreazaPage() {
         </div>
       </section>
 
+      {/* Downloadable offers */}
+      <section className="py-10 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="section-label">Oferte disponibile</span>
+            <div className="line-accent mx-auto my-4" />
+            <h2
+              className="text-4xl font-semibold"
+              style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+            >
+              Descarcă oferta potrivită
+            </h2>
+            <p className="mt-4 text-lg" style={{ color: "var(--charcoal-soft)" }}>
+              Alege varianta de ofertă care corespunde profilului organizației tale.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a
+              href="/oferte/ANIMAMINDS_Oferta_Program_Organizatii.pdf"
+              download
+              className="group p-8 rounded-2xl bg-white card-hover border flex flex-col items-start"
+              style={{ borderColor: "rgba(124,154,126,0.3)", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}
+            >
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{ backgroundColor: "rgba(124,154,126,0.1)" }}
+              >
+                <span style={{ fontSize: "22px" }}>🏢</span>
+              </div>
+              <h3
+                className="text-xl font-semibold mb-2"
+                style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+              >
+                Ofertă pentru organizații
+              </h3>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
+                Companii, ONG-uri, SRL, PFA și alte forme organizate.
+              </p>
+              <span
+                className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
+                style={{ color: "var(--sage)" }}
+              >
+                Descarcă PDF →
+              </span>
+            </a>
+
+            <a
+              href="/oferte/AnimaMinds_Oferta_Program_Institutii.pdf"
+              download
+              className="group p-8 rounded-2xl bg-white card-hover border flex flex-col items-start"
+              style={{ borderColor: "rgba(74,111,165,0.3)", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}
+            >
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{ backgroundColor: "rgba(74,111,165,0.1)" }}
+              >
+                <span style={{ fontSize: "22px" }}>🏛️</span>
+              </div>
+              <h3
+                className="text-xl font-semibold mb-2"
+                style={{ fontFamily: "Playfair Display, serif", color: "var(--charcoal)" }}
+              >
+                Ofertă pentru instituții
+              </h3>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--charcoal-soft)" }}>
+                Școli, licee, universități, instituții publice și unități sanitare.
+              </p>
+              <span
+                className="inline-flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3"
+                style={{ color: "#4A6FA5" }}
+              >
+                Descarcă PDF →
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Process */}
       <section className="py-10 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
